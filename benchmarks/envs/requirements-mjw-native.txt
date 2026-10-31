@@ -1,0 +1,10 @@
+# The native MuJoCo Warp environment ('mjw-native'): the PyPI release, its MuJoCo, and Warp 1.18.0. On drivers
+# without CUDA 13 support (< 580) and on Volta, benchmarks/envs/setup.sh replaces warp-lang by NVIDIA's 1.18.0+cu12
+# wheel of the same release (recorded in <prefix>/mjw-native/warp_wheel.txt and in the results' package tags).
+mujoco==3.17.0
+mujoco-warp==3.17.0
+warp-lang==1.18.0
+# the dependency versions pip resolved for the tested environment (2026-10-28)
+absl-py==2.5.1
+etils[epath]==1.14.0
+numpy==2.5.4

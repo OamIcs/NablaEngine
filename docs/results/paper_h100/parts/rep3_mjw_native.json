@@ -1,0 +1,302 @@
+{
+ "part": "mjw_native",
+ "nworld": 4096,
+ "iterations": 10,
+ "substeps": 4,
+ "env": {
+  "python": "3.12.3",
+  "executable": ".../python",
+  "packages": {
+   "mujoco": "3.17.0",
+   "mujoco-warp": "3.17.0",
+   "warp-lang": "1.18.0",
+   "numpy": "2.5.4"
+  },
+  "cpu": {
+   "model": "Intel(R) Xeon(R) Platinum 8462Y+",
+   "logical_cpus": 128,
+   "allocated": 128,
+   "affinity": "0-127",
+   "omp_num_threads": null,
+   "scheduler_cpu_counts": null,
+   "cpu_engine_threads": {
+    "threads": 13,
+    "rule": "PAPER_BENCH_MJC_THREADS"
+   }
+  },
+  "gpu": {
+   "name": "NVIDIA H100 80GB HBM3",
+   "compute_cap": "9.0",
+   "driver": "595.91.07",
+   "memory": "81559 MiB"
+  },
+  "env": {
+   "PAPER_BENCH_MJC_THREADS": "13",
+   "XLA_PYTHON_CLIENT_PREALLOCATE": "false",
+   "PAPER_BENCH_JOB_START": "1793258583",
+   "PAPER_BENCH_PYTHON": ".../python",
+   "PAPER_BENCH_DEV_PYTHON": ".../python",
+   "PAPER_BENCH_PREFIX": ".../paper_bench_env",
+   "DK_FIXTURES": "fixtures/mjlab"
+  },
+  "quick": false
+ },
+ "mujoco_warp_file": ".../__init__.py",
+ "warp_version": "1.18.0",
+ "cells": {
+  "mf_s0/procedure/nw4096": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "capacity": "procedure",
+   "nconmax": 24,
+   "njmax": 128,
+   "naconmax": 94687,
+   "stats_last_substep": {
+    "overflow_bits_or": 1536,
+    "overflow_flags": [
+     "ITERATIONS",
+     "LS_ITERATIONS"
+    ],
+    "capacity_overflow": [],
+    "capacity_overflow_worlds": 0,
+    "nefc": {
+     "mean": 25.463623046875,
+     "max": 112.0
+    },
+    "solver_niter": {
+     "mean": 3.287841796875,
+     "max": 10.0
+    },
+    "nacon_total": 27117,
+    "finite_worlds": 4096
+   },
+   "graph_ctrlstep": {
+    "ms": {
+     "median": 8.65106,
+     "p10": 8.64888,
+     "p90": 8.65248,
+     "min": 8.64751,
+     "max": 8.65259,
+     "rounds": [
+      8.64751,
+      8.65106,
+      8.6523,
+      8.65092,
+      8.65259
+     ]
+    },
+    "n": 29,
+    "kept_rounds": 5,
+    "warmup_calls": 116,
+    "warmup_s": 1.007,
+    "latency_ms_median": 8.66456
+   },
+   "first_call_s": 0.616,
+   "capture_s": 0.037,
+   "put_model_s": 0.202
+  },
+  "mf_s1/procedure/nw4096": {
+   "corpus": {
+    "name": "mf_s1",
+    "path": "benchmarks/data/mf_s1.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "capacity": "procedure",
+   "nconmax": 24,
+   "njmax": 128,
+   "naconmax": 94687,
+   "stats_last_substep": {
+    "overflow_bits_or": 1536,
+    "overflow_flags": [
+     "ITERATIONS",
+     "LS_ITERATIONS"
+    ],
+    "capacity_overflow": [],
+    "capacity_overflow_worlds": 0,
+    "nefc": {
+     "mean": 26.466796875,
+     "max": 114.0
+    },
+    "solver_niter": {
+     "mean": 3.34033203125,
+     "max": 10.0
+    },
+    "nacon_total": 28130,
+    "finite_worlds": 4096
+   },
+   "graph_ctrlstep": {
+    "ms": {
+     "median": 8.67533,
+     "p10": 8.67427,
+     "p90": 8.67783,
+     "min": 8.6742,
+     "max": 8.67904,
+     "rounds": [
+      8.67601,
+      8.6742,
+      8.67533,
+      8.67904,
+      8.67436
+     ]
+    },
+    "n": 29,
+    "kept_rounds": 5,
+    "warmup_calls": 116,
+    "warmup_s": 1.008,
+    "latency_ms_median": 8.68841
+   },
+   "first_call_s": 0.616,
+   "capture_s": 0.037,
+   "put_model_s": 0.202
+  },
+  "mf_s0/matched/nw4096": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "capacity": "matched",
+   "nconmax": 64,
+   "njmax": 192,
+   "naconmax": 262144,
+   "stats_last_substep": {
+    "overflow_bits_or": 1536,
+    "overflow_flags": [
+     "ITERATIONS",
+     "LS_ITERATIONS"
+    ],
+    "capacity_overflow": [],
+    "capacity_overflow_worlds": 0,
+    "nefc": {
+     "mean": 25.463623046875,
+     "max": 112.0
+    },
+    "solver_niter": {
+     "mean": 3.287841796875,
+     "max": 10.0
+    },
+    "nacon_total": 27117,
+    "finite_worlds": 4096
+   },
+   "graph_ctrlstep": {
+    "ms": {
+     "median": 8.76905,
+     "p10": 8.76836,
+     "p90": 8.77038,
+     "min": 8.76814,
+     "max": 8.7709,
+     "rounds": [
+      8.7709,
+      8.76814,
+      8.7696,
+      8.76905,
+      8.76869
+     ]
+    },
+    "n": 28,
+    "kept_rounds": 5,
+    "warmup_calls": 114,
+    "warmup_s": 1.002,
+    "latency_ms_median": 8.78135
+   },
+   "first_call_s": 0.035,
+   "capture_s": 0.019,
+   "put_model_s": 0.202
+  },
+  "mf_s1/matched/nw4096": {
+   "corpus": {
+    "name": "mf_s1",
+    "path": "benchmarks/data/mf_s1.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "capacity": "matched",
+   "nconmax": 64,
+   "njmax": 192,
+   "naconmax": 262144,
+   "stats_last_substep": {
+    "overflow_bits_or": 1536,
+    "overflow_flags": [
+     "ITERATIONS",
+     "LS_ITERATIONS"
+    ],
+    "capacity_overflow": [],
+    "capacity_overflow_worlds": 0,
+    "nefc": {
+     "mean": 26.4658203125,
+     "max": 114.0
+    },
+    "solver_niter": {
+     "mean": 3.34033203125,
+     "max": 10.0
+    },
+    "nacon_total": 28129,
+    "finite_worlds": 4096
+   },
+   "graph_ctrlstep": {
+    "ms": {
+     "median": 8.8037,
+     "p10": 8.80307,
+     "p90": 8.80441,
+     "min": 8.80281,
+     "max": 8.8047,
+     "rounds": [
+      8.80397,
+      8.8037,
+      8.80345,
+      8.80281,
+      8.8047
+     ]
+    },
+    "n": 28,
+    "kept_rounds": 5,
+    "warmup_calls": 114,
+    "warmup_s": 1.005,
+    "latency_ms_median": 8.80945
+   },
+   "first_call_s": 0.035,
+   "capture_s": 0.019,
+   "put_model_s": 0.202
+  }
+ },
+ "errors": {},
+ "warp_cuda_toolkit": "13.4",
+ "warp_cuda_driver": "13.2",
+ "opt": {
+  "iterations": "10",
+  "ls_iterations": "8",
+  "tolerance": "[1.e-06]",
+  "ls_tolerance": "[0.01]",
+  "solver": "2",
+  "cone": "0",
+  "integrator": "3",
+  "graph_conditional": "True",
+  "warn_overflow": "2559"
+ },
+ "default_capacity": {
+  "nconmax": 48,
+  "njmax": 64
+ },
+ "procedure_capacity": {
+  "nconmax": 24,
+  "naconmax": 94687,
+  "njmax": 128,
+  "source": "benchmarks/data/mjw_capacity.json",
+  "inputs": {
+   "pool_mean_max": 18.487548828125,
+   "contacts_world_max": 30,
+   "rows_max": 114,
+   "margin": 0.25
+  }
+ }
+}

@@ -1,0 +1,18 @@
+# The tested versions of the direct dependencies (the complete freeze: requirements-lock.txt).
+# Python 3.12, Linux x86_64, an NVIDIA driver for CUDA 12.x. mujoco must be exactly 3.17.0: the model
+# fixtures/mjlab/g1_train.mjb is in its binary format.
+numpy==2.5.4
+mujoco==3.17.0
+mujoco-mjx==3.17.0                       # scripts/kinematics_check.py compares with MJX
+# JAX: the JAX interface (nablaengine.jax_ffi) and the float64 JAX references of the checks
+jax==0.12.0.1
+jaxlib==0.12.0.1
+jax-cuda12-plugin[with-cuda]==0.12.0.1   # with-cuda: the CUDA 12 libraries JAX needs (cuBLAS, cuDNN, ...) as wheels
+jax-cuda12-pjrt==0.12.0.1
+nvidia-cuda-nvcc-cu12==12.9.86           # ptxas for JAX; this wheel has no nvcc binary (the engine's nvcc: README.md)
+scipy==1.18.1                            # the statistical tests of the checks (also a JAX dependency)
+# warp-lang is not installed from PyPI but from a pinned wheel: the CUDA 12 build of Warp 1.18.0 (CUDA 13 dropped
+# sm_70), needed only by the checks against MuJoCo Warp. scripts/setup_env.sh installs it and checks its sha256;
+# by hand:
+#   pip install "warp-lang @ https://github.com/NVIDIA/warp/releases/download/v1.18.0/warp_lang-1.18.0+cu12-py3-none-manylinux_2_28_x86_64.whl#sha256=6dda3c163dde4edaa7d46ade9fff3ddb1126ee7b147d9d890cd38cc70dafd656"
+# MuJoCo Warp, the reference of those checks, is installed separately: see README.md.

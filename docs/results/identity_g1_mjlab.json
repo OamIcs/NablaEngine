@@ -1,0 +1,3367 @@
+{
+ "schema": "dk-identity/1",
+ "about": "Identity manifest of the mjlab G1's production build units (scripts/identity_gate.py, nablaengine.identity): per target and toolchain the L0 / L1 / L2 hashes of every FFI library unit and check binary",
+ "model": {
+  "mjb": "fixtures/mjlab/g1_train.mjb",
+  "sha256": "757b0997d992073b645732a1daaeab92587f00e29691b93aa76094a3f02ef379",
+  "mujoco": "3.17.0",
+  "foot_pairs": [
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   16,
+   17,
+   18,
+   19,
+   20,
+   21,
+   22
+  ]
+ },
+ "normalization": {
+  "module_id": "nvcc -keep's <file>.module_id replaced by <MODULE> in PTX, SASS, resource names and host code",
+  "mangle": [
+   "_INTERNAL_[0-9a-f]{8}_[0-9]+_[A-Za-z0-9_]+?_cu_[0-9a-f]{8}",
+   "_GLOBAL__N__[0-9a-f]{8}_[0-9]+_[A-Za-z0-9_]+?_cu_[0-9a-f]{8}"
+  ],
+  "sass_header_dropped": [
+   "Fatbin",
+   "code for",
+   "arch =",
+   "code version",
+   "host =",
+   "compile_size",
+   "identifier",
+   "producer"
+  ],
+  "ptx": "comment lines dropped",
+  "host": "#if 0 blocks (device code bodies) and preprocessor lines dropped",
+  "preprocessed": "trailing white space and blank lines dropped"
+ },
+ "targets": {
+  "sm_120 nvcc 12.4.131 ptxas 12.9.86 gcc 11.4.0 cuobjdump 12.8.55": {
+   "arch": "sm_120",
+   "toolchain": {
+    "nvcc": "12.4.131 (cuda_12.4.r12.4/compiler.34097967_0)",
+    "host": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "ptxas": "12.9.86 (cuda_12.9.r12.9/compiler.36037853_0)",
+    "cuobjdump": "12.8.55 (cuda_12.8.r12.8/compiler.35351055_0)"
+   },
+   "route": "ptxas",
+   "units": {
+    "ffi/dk_ffi.cu": {
+     "defines": [],
+     "command": "nvcc -O3 -arch=compute_90 -code=sm_120 -std=c++17 -Xcompiler -fPIC -I{jax_ffi_include} -c -o {out} {src}",
+     "L0": {
+      "source": "b2ca9071cb091ff116cecdc3631a6d0fd74d9318e1434624cce1db2ec709e03d",
+      "defines": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "command": "86e42a20628938ec9c8a03baef7e95a6cceca0ac870abb0f97b4f7cf4dbd9406",
+      "source_bytes": 39739,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_90",
+      "device": "ab327db55242e05a7913c9eb5e196e51d48ef64e94746db9165135f5a1f2e2bb",
+      "host": "b7a87e13a1c93fdf8b698936ddc5023910ca9a75cec625110aceeebbd3abe934"
+     },
+     "L2": {
+      "route": "ptxas",
+      "ptx_virtual": "compute_90",
+      "ptx": "b63c46423344a5ea1159ecbc1fba77f9c24995779d6308503eafd19bfec48562",
+      "sass": "5af0a859c8aaa41934e63286fb4d9de2457b3b06293ef8aca12bc06ec75d5393",
+      "sass_lines": 2560,
+      "resources": {
+       "_Z10k_diag_bwdiPKfS0_S0_S0_S0_Pi": {
+        "REG": 40,
+        "STACK": 0,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[0]": 952,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z10k_diag_fwdiiiPKiPKf": {
+        "REG": 34,
+        "STACK": 0,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[0]": 928,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z10k_last_fwdiPKii": {
+        "REG": 37,
+        "STACK": 0,
+        "SHARED": 1408,
+        "LOCAL": 0,
+        "CONSTANT[0]": 916,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z11k_diag_readPji": {
+        "REG": 16,
+        "STACK": 0,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[0]": 908,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z11k_last_readPj": {
+        "REG": 14,
+        "STACK": 0,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[0]": 904,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "bc3d6b8d4b1aaa69e6b6730d2694c7d0385510ab6958811d8040889b04b95496"
+     }
+    },
+    "ffi/dk_kv0_n0.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=0",
+      "-DDK_ADJ_NORMAL=0"
+     ],
+     "command": "nvcc -O3 -arch=compute_90 -code=sm_120 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=0 -DDK_ADJ_NORMAL=0 -c -o {out} {src}",
+     "L0": {
+      "source": "d1d1061a2ba7c0af897aafd94a99053591fca686c55c6a25df84893d148f3a79",
+      "defines": "8c5065ef04151f5876cf2cd820bbacd4890982ba8f6943277f41b49d579e7c46",
+      "command": "ad0e8cd88773c0236a2278778c3f94f3674b299026d26634d8b2c8d610051f40",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_90",
+      "device": "c14c11e75184aa0a6cc0c6e01eea9e89feab0ef3114f0ced553b87719d8116c1",
+      "host": "929756abcec7444a72a18dfff44dd8d4445fcdb0cdc9af65a60d96b0550893d3"
+     },
+     "L2": {
+      "route": "ptxas",
+      "ptx_virtual": "compute_90",
+      "ptx": "d12cd162027d99fcaa055b8e63b16de2505eb51e5fef8ff7265f5ec86f5579e0",
+      "sass": "87aae915d6b1eacd32a18e8522f94b451e40ccd3064e5fe6cdfa823bec546895",
+      "sass_lines": 18452,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_": {
+        "REG": 128,
+        "STACK": 288,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 992,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "0e4939ca2b973b63a8110fdbe429d27de604c8c3a7caaab3413ea8ef0adfcf09"
+     }
+    },
+    "ffi/dk_kv0_n1.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=0",
+      "-DDK_ADJ_NORMAL=1"
+     ],
+     "command": "nvcc -O3 -arch=compute_90 -code=sm_120 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=0 -DDK_ADJ_NORMAL=1 -c -o {out} {src}",
+     "L0": {
+      "source": "1639fa8135121df7f2b41ffdf8df5cd13684cddb6c872c388582b75cf6163fbc",
+      "defines": "8496c7924b10c76a488bb05ab64984020f312adf30f4f8f66ead3eeb20d7e16a",
+      "command": "4b9d69401438903950b56f13207f7fa728f1dcc883564df36c7791cb286480f2",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_90",
+      "device": "68c5c70f48ecdb7322e02c972a7d0b04ae833cb73f876bfec65a22a5f7937801",
+      "host": "59b113a933f1d402959d8db897c565bf9ef6af8be81fd5d96beffc2d615d6de2"
+     },
+     "L2": {
+      "route": "ptxas",
+      "ptx_virtual": "compute_90",
+      "ptx": "2f42d32dfa84afed22a1e9743c3335c0e332fcd13740844a1fccdeed10128047",
+      "sass": "480c8f148eb5596abd3be30ed7bacb2651a1fbf38c8a86a119e39a899cf6ee04",
+      "sass_lines": 18452,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_": {
+        "REG": 127,
+        "STACK": 288,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 992,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "968c74820b4caef4b6ba0ad6b13992209600ea0e2d8ed8625a61d979b7d46b2e"
+     }
+    },
+    "ffi/dk_kv0_n2.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=0",
+      "-DDK_ADJ_NORMAL=2"
+     ],
+     "command": "nvcc -O3 -arch=compute_90 -code=sm_120 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=0 -DDK_ADJ_NORMAL=2 -c -o {out} {src}",
+     "L0": {
+      "source": "9711707f598d2f1c7f9fbfdd52c3f295fa729e112d51f5fcb380336ef1a2bede",
+      "defines": "3de37a4fad396da9e94b322e17df92c1b4a77b2d65a6c9402ffefabdbcd77572",
+      "command": "cc864bc841af6b5ab94cce94e339995ee1696c7f3353d5daa101bf51d9c4ccde",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_90",
+      "device": "e199c4d4df677119c9c4ecc7040f18544cf98be761032c11eead5fc4a9b80caa",
+      "host": "e421e5205d0d536a131c052d8b106cc608815032233f3ea0dd24e47aa9287bab"
+     },
+     "L2": {
+      "route": "ptxas",
+      "ptx_virtual": "compute_90",
+      "ptx": "7bec0bf49756582a8214bac16dd42b1d5c5d689e1cc04df313725344e8857dcb",
+      "sass": "acec1112a48f807d6ac9bc5dd9c11058105c26c0ada9a9ade010231d759fa3e8",
+      "sass_lines": 18580,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_": {
+        "REG": 128,
+        "STACK": 288,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 992,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "9357cd4bafb2e2c89f4db29b4090ab194dd85770be683188a935c86e7e127cfc"
+     }
+    },
+    "ffi/dk_kv0_n3.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=0",
+      "-DDK_ADJ_NORMAL=3",
+      "-DSPLIT_PRE_MINB=16"
+     ],
+     "command": "nvcc -O3 -arch=compute_90 -code=sm_120 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=0 -DDK_ADJ_NORMAL=3 -DSPLIT_PRE_MINB=16 -c -o {out} {src}",
+     "L0": {
+      "source": "cc27fecb5f574cca969b257054d55bf45f3afb50c036c2f0f3f12098c1fda1ff",
+      "defines": "e671eb1e5dd71147636c8ec9c4b95ca3e0e13790e1079ccad889181d266e6344",
+      "command": "db056ac0ab67c8ef054b60bf4a5af6bbce9178b87c6d8d0be248731edfefb423",
+      "source_bytes": 270935,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_90",
+      "device": "07f5fa4cbb4bb2289e7ac21874e8c23ec229df26d30f6958486d5c32a0c5ec08",
+      "host": "16bae375952bdc3e39b43ce0e38be2d3f481b29cc367a8c485033ac292aed274"
+     },
+     "L2": {
+      "route": "ptxas",
+      "ptx_virtual": "compute_90",
+      "ptx": "16106bce983541a102106f9d8bcd014e2f9acae621ac113b2ac563416ad3f7a7",
+      "sass": "07934227170d7913700add001b95d7dd73b56ff194048301a58d896a7c563156",
+      "sass_lines": 96835,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>5k_kinEiPKfS1_S1_PfS2_S2_S2_S2_": {
+        "REG": 52,
+        "STACK": 0,
+        "SHARED": 10640,
+        "LOCAL": 0,
+        "CONSTANT[0]": 968,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_ZN45_GLOBAL__N_<MODULE>5k_preEiPKfS1_S1_S1_S1_iiPNS_4HandEPfS4_": {
+        "REG": 128,
+        "STACK": 32,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 976,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_ZN45_GLOBAL__N_<MODULE>6k_postEiPKfS1_S1_iiiPNS_4HandEPfS4_S4_PiS4_": {
+        "REG": 168,
+        "STACK": 32,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 992,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_": {
+        "REG": 127,
+        "STACK": 288,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 992,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_ZN45_GLOBAL__N_<MODULE>9k_kin_vjpEiPKfS1_S1_S1_S1_S1_S1_S1_S1_S1_PfS2_": {
+        "REG": 65,
+        "STACK": 0,
+        "SHARED": 19216,
+        "LOCAL": 0,
+        "CONSTANT[0]": 1000,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_ZN45_GLOBAL__N_<MODULE>9k_substepEiPKfS1_S1_S1_S1_S1_iiPfS2_S2_PiS2_S2_": {
+        "REG": 253,
+        "STACK": 72,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 1008,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "6c32f8a734a6f36c98b91ddde663692672e6bb7be1e6472b732d20f072875317"
+     }
+    },
+    "ffi/dk_kv1_n0.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=1",
+      "-DDK_ADJ_NORMAL=0"
+     ],
+     "command": "nvcc -O3 -arch=compute_90 -code=sm_120 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=1 -DDK_ADJ_NORMAL=0 -c -o {out} {src}",
+     "L0": {
+      "source": "6d3f04a30d4b985936049d64cc612601903b36a59ce6e826b8a6fb5abcd268eb",
+      "defines": "b636d6162de2290328b33720293945e3c00a3a00bcfafc72516baf8081f335ca",
+      "command": "4af4aeef59c78af9e63af0348ef934e401d8d1b5506f06250ef63f77d6d86516",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_90",
+      "device": "5dbca6ff26a68b43df39ce76139b49ffd760d9fda35d22d57a69bd5d18852a26",
+      "host": "698351ad5dbf7e7820f66747a13ccc2b2e65377f5f5726c9dd0fefa59856d323"
+     },
+     "L2": {
+      "route": "ptxas",
+      "ptx_virtual": "compute_90",
+      "ptx": "397b550257305060d4bad7b8a93adbe714b7cebca4b3da1f164cf66302577e57",
+      "sass": "85db0a0c1b4641b360e2513497525f639c96cc8c0837fdc03b93319fe4dec18f",
+      "sass_lines": 18452,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_": {
+        "REG": 128,
+        "STACK": 288,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 992,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "58304e63d272ed76961b75da9c622990bf3379a4a5e1d8429586c56c90530a81"
+     }
+    },
+    "ffi/dk_kv1_n1.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=1",
+      "-DDK_ADJ_NORMAL=1"
+     ],
+     "command": "nvcc -O3 -arch=compute_90 -code=sm_120 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=1 -DDK_ADJ_NORMAL=1 -c -o {out} {src}",
+     "L0": {
+      "source": "8eedf36b9181954abd30f93d658d139e6ab66faf676c2b0d61622278247ac538",
+      "defines": "864ddc919284bf728c1621eb8d2f6ac6359455773b4fc5ed672a11a32e3db05a",
+      "command": "756bf3c529a29b70987d485bba89a237a2f3fb9122b59bab9185275c0ce53cad",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_90",
+      "device": "bae683b62984d39c9c4a11fc445cba44cbea5b95b60360054f213b713284a3da",
+      "host": "9729a83ddf10f2eda27f4215530f170e38c95446bd488303704601579145b48f"
+     },
+     "L2": {
+      "route": "ptxas",
+      "ptx_virtual": "compute_90",
+      "ptx": "452a38c6da208a9e4a74ee56978bcb43a33c723426708f01e4fea3ada9440236",
+      "sass": "64fb59d75f988b516c6d11bfb17949a24a11d69983aba166d1436fa5e5a8ccdd",
+      "sass_lines": 18436,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_": {
+        "REG": 127,
+        "STACK": 288,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 992,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "ea5589e259da20520fd28d346f8c6df43a02a9912c63ba81e14c3c049be6c6bc"
+     }
+    },
+    "ffi/dk_kv1_n2.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=1",
+      "-DDK_ADJ_NORMAL=2"
+     ],
+     "command": "nvcc -O3 -arch=compute_90 -code=sm_120 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=1 -DDK_ADJ_NORMAL=2 -c -o {out} {src}",
+     "L0": {
+      "source": "ade225cafef66c37344dee522c7803a3ba859cf096e0475c16f2ebd0b9445f78",
+      "defines": "77e92c03510ed52b83c99a40cebfbc00eda6f15edc494220a2e71dca8185340b",
+      "command": "5abc6f15855fe68182fbb47b8bfde807b4c0adefa235b5edfac0ac4c6cc076da",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_90",
+      "device": "096d7f90b9127392deca06af412e9fba7f9535b4e8bf487133a461a82f88b797",
+      "host": "bfdbc09fe2e8ee8fa371085d3aaec2db58ef41de2e1718d4e3b49add234bffa1"
+     },
+     "L2": {
+      "route": "ptxas",
+      "ptx_virtual": "compute_90",
+      "ptx": "0c0ee47f0cd81d558ffefd818def6b9865616a4c204d2832f2afaac1979e0347",
+      "sass": "5d3323ffae0abace05b7d7f3a2b4c460c3cd6fe1144ca54eb9793c7b8b880ac7",
+      "sass_lines": 18580,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_": {
+        "REG": 128,
+        "STACK": 288,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 992,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "ca8f156301a3b66cba0ae66d852012bb7aa1fa2bed29c689afe33fc4f0f009c7"
+     }
+    },
+    "ffi/dk_kv1_n3.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=1",
+      "-DDK_ADJ_NORMAL=3"
+     ],
+     "command": "nvcc -O3 -arch=compute_90 -code=sm_120 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=1 -DDK_ADJ_NORMAL=3 -c -o {out} {src}",
+     "L0": {
+      "source": "20fcb6c0a62dda78577df3406a7b56e1c6aca8a7751ee36868b37fc5e30cb92c",
+      "defines": "4a6c1c9ef899dae62139137720055ce85353e4351365f87fe2482a50a1903b9e",
+      "command": "557f7dbaf2cc2f025d59d65a611f6b8aff811a81f31e6cc3f5c255bf73377478",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_90",
+      "device": "de7df505b6f501a207805da9f569e57508851b06de131d63092abf9c93faeb7e",
+      "host": "321a929b0ab6f15a3eca7aab7f5a030dd101c644ee64b5c2d75b747e49a38fae"
+     },
+     "L2": {
+      "route": "ptxas",
+      "ptx_virtual": "compute_90",
+      "ptx": "3760917a3570bf6f1946122c31d67351eb505e75976b51aff84c473efbb4ac1a",
+      "sass": "871e8c72c4818c3fdfc65dd9966da59b8bb4996d6009586b6d31f6d85477e1c5",
+      "sass_lines": 18516,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_": {
+        "REG": 127,
+        "STACK": 288,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 992,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "98ecf11fa5db77d87bb1edcdf22bd8f8b67ae97944b331bf68faf3ee98ee03d0"
+     }
+    },
+    "ffi/dk_kv2_n0.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=2",
+      "-DDK_ADJ_NORMAL=0"
+     ],
+     "command": "nvcc -O3 -arch=compute_90 -code=sm_120 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=2 -DDK_ADJ_NORMAL=0 -c -o {out} {src}",
+     "L0": {
+      "source": "c484f3b8bc54262eeadaf58400e943e096d1ef94e86bed942e03c1cef3651222",
+      "defines": "9fbdccbf13146828516685612cd41492c4848be2058da4931a471c4fa48cfbf4",
+      "command": "2e997a2bc4e81d031a1d1a466e6d5919f5b36fa6941a2e7d488beee7a0485985",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_90",
+      "device": "863da0e3037ad469e1d8293a15977db99ff800832b68edb72be37f9d4d632198",
+      "host": "44cda8ccdf40c4b12f03a5fc230de9229459894371bde6126b3951fbf0ebd360"
+     },
+     "L2": {
+      "route": "ptxas",
+      "ptx_virtual": "compute_90",
+      "ptx": "0045d08ca944151c8dd2158b71aabf1c0d9150e31d158d4a7260ebade16ca669",
+      "sass": "d003020539eaed81f82b8d6ca536cc83905150c31ae769cd5b050c7dab8527ac",
+      "sass_lines": 18612,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_f": {
+        "REG": 128,
+        "STACK": 288,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 996,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "69f93688dace6680c0ba60b96df2133124e0e426f1cb7dc7c49c5aaf9cbb6ce3"
+     }
+    },
+    "ffi/dk_kv2_n1.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=2",
+      "-DDK_ADJ_NORMAL=1"
+     ],
+     "command": "nvcc -O3 -arch=compute_90 -code=sm_120 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=2 -DDK_ADJ_NORMAL=1 -c -o {out} {src}",
+     "L0": {
+      "source": "e7f6cf3c00df00da72bd2741127fc5cd5d0cf2bfffb4dde92373aeba0541a502",
+      "defines": "96a0bc4d0e233aa82137f7195a191dffbd17c91b948c835146ee1fc0c40bbf1d",
+      "command": "d496c2379b161f78f26d72a55a258b76a3c60dc102a87034bc25f494aab9232c",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_90",
+      "device": "b67d26a4eb164d4463332e7ec9f897a85f74f3d950c67bdcc903ba73b98254e2",
+      "host": "e7582b689ef2db13cd7f4bff8f2a115f4c5fd343eb4bab8286170ed50104a3b8"
+     },
+     "L2": {
+      "route": "ptxas",
+      "ptx_virtual": "compute_90",
+      "ptx": "25a3487b02d65dddac87d5d675cecf686835adc30440da738ea265a5f8eb3c68",
+      "sass": "51d52b0efde0ca3c5f43169f96f552205b99471e29c2b528a083e4af838ac02f",
+      "sass_lines": 18580,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_f": {
+        "REG": 128,
+        "STACK": 288,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 996,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "1bb9c397851b75e080ab97451bea090b08848cfa9f6114f2d8b61615ea57b286"
+     }
+    },
+    "ffi/dk_kv2_n2.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=2",
+      "-DDK_ADJ_NORMAL=2"
+     ],
+     "command": "nvcc -O3 -arch=compute_90 -code=sm_120 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=2 -DDK_ADJ_NORMAL=2 -c -o {out} {src}",
+     "L0": {
+      "source": "9e7361310c9e0ce45ef83575d073f8345b6c1a79d439bdf43e19acba9fe6db79",
+      "defines": "bfe2a96c191113efd4f53042894fc90bd72226747007eaa5b42099f36b7ab29e",
+      "command": "17a04994a9e358d76591e2898dd5345568328d075c8a07c92f84e708c8d3fd45",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_90",
+      "device": "cb9f8584ff2e1ed8777d87eb5dda75087b4b89b02b9abdc16631bc67bbfb9e17",
+      "host": "ad1666aa09041dea5d72a595c792afcd8a374baae319be6845c692066557a17d"
+     },
+     "L2": {
+      "route": "ptxas",
+      "ptx_virtual": "compute_90",
+      "ptx": "83da6b56e6e2443cff0ac6f721e4aa537403aec9b36c9c2a0a6de2b2f2ac6022",
+      "sass": "d59df397b5eca4e145548efaeac36cc20fb56d6be24ed05f6cf434219a2de2f7",
+      "sass_lines": 18676,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_f": {
+        "REG": 128,
+        "STACK": 288,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 996,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "cca1e50d0033781c1fb8dd15a8ad8611328558becd1fff0e271c65c10f14cf79"
+     }
+    },
+    "ffi/dk_kv2_n3.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=2",
+      "-DDK_ADJ_NORMAL=3"
+     ],
+     "command": "nvcc -O3 -arch=compute_90 -code=sm_120 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=2 -DDK_ADJ_NORMAL=3 -c -o {out} {src}",
+     "L0": {
+      "source": "cf4d2a5a43c953277141851becfad67cb41b5e0072137f7e2170dd5ae2ab6aab",
+      "defines": "4e1dfcf9a137e45eb66985b793f2db9c788c4456971ac032b65fc684981b454c",
+      "command": "33c53e0cdab7634c905255c9ad8f2d9b1bfd3ecb77ae341427b62b6d281bc55d",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_90",
+      "device": "513c112d3ed4cd1951f4d9fc10f113a0d4fcdd52ddcca6275d0c8a6a34f3c836",
+      "host": "6b094c36793614810920b0becb3db2d186f132d1c72f52a0f416fb7fcc1f4116"
+     },
+     "L2": {
+      "route": "ptxas",
+      "ptx_virtual": "compute_90",
+      "ptx": "7c8567baa646249f917c6a4223478bd474b15a4579cf5e01baaa7fea4fabfa5e",
+      "sass": "01ce4522cbb1f55386fbbe14193c94721c96cd9e5169440d27989cf651471fa8",
+      "sass_lines": 18676,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_f": {
+        "REG": 128,
+        "STACK": 288,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 996,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "2816612130026489a56d527289ec57c4e6b80a11cadfb6766b556b9df75cc4bf"
+     }
+    },
+    "check/step.cu": {
+     "defines": [
+      "-DSPLIT_PRE_MINB=16"
+     ],
+     "command": "nvcc -O3 -arch=compute_90 -code=sm_120 -std=c++17 -DSPLIT_PRE_MINB=16 -o {out} {src}",
+     "L0": {
+      "source": "b95427a8e42aea86595607089f0caaecdae63046ee45655b8bd650a59a7772b0",
+      "defines": "5fa9f5bc4e0fecb6a9ec7265e06d6c5bd83dd3111fdbabb17ba000e065113443",
+      "command": "8ff03cfd933d45e0d442282adeb4d58a51cc34445ae2cbefc6523e6a4bbca1e8",
+      "source_bytes": 160142,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_90",
+      "device": "40e02380fd4710c152b0e471985ff0f2d46b875a8f52c411c43fda88bb5197a4",
+      "host": "19d924c7ebeced9af7971c11adb665ed952f63f09b8c32337f156e334818392b"
+     },
+     "L2": {
+      "route": "ptxas",
+      "ptx_virtual": "compute_90",
+      "ptx": "45fad15808e00bd6261d6a08a8dcd14f789c78bfe5cfeffe909ec6d3338405c6",
+      "sass": "fd081a99601d36a9fbf009a5631521fd452689417481d32493afc702fb9eba63",
+      "sass_lines": 71690,
+      "resources": {
+       "_Z5k_preiPKfS0_S0_S0_S0_iiP4HandPfS3_": {
+        "REG": 128,
+        "STACK": 32,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 976,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z6k_postiPKfS0_S0_iiiP4HandPfS3_S3_PiS3_": {
+        "REG": 168,
+        "STACK": 32,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 992,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z9k_substepiPKfS0_S0_S0_S0_S0_iiPfS1_S1_PiS1_S1_": {
+        "REG": 253,
+        "STACK": 72,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 1008,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "c36a9abb5d9e0eac082529813887a16786f568ec24be5026f0a2bdb19b8acd98"
+     }
+    },
+    "check/step_fused.cu": {
+     "defines": [
+      "-DDK_SPLIT=0",
+      "-DSPLIT_PRE_MINB=16"
+     ],
+     "command": "nvcc -O3 -arch=compute_90 -code=sm_120 -std=c++17 -DDK_SPLIT=0 -DSPLIT_PRE_MINB=16 -o {out} {src}",
+     "L0": {
+      "source": "b95427a8e42aea86595607089f0caaecdae63046ee45655b8bd650a59a7772b0",
+      "defines": "0eb6989f52ad61304ee36c414c115fd72812273d5ed3a5fb47175018b24d92c0",
+      "command": "deb33971f158d90e6cf81b6576134d4ec5e94c5f95a35b542fd83fa502c61a9b",
+      "source_bytes": 160142,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_90",
+      "device": "3f67166d77d77d55fb11165129bcb283ac1b703b2b1a957f35e68cba15c69902",
+      "host": "3d85f7d275d5b578556307d980610539c3034a755219dd8d2b32e69884073455"
+     },
+     "L2": {
+      "route": "ptxas",
+      "ptx_virtual": "compute_90",
+      "ptx": "45fad15808e00bd6261d6a08a8dcd14f789c78bfe5cfeffe909ec6d3338405c6",
+      "sass": "fd081a99601d36a9fbf009a5631521fd452689417481d32493afc702fb9eba63",
+      "sass_lines": 71690,
+      "resources": {
+       "_Z5k_preiPKfS0_S0_S0_S0_iiP4HandPfS3_": {
+        "REG": 128,
+        "STACK": 32,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 976,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z6k_postiPKfS0_S0_iiiP4HandPfS3_S3_PiS3_": {
+        "REG": 168,
+        "STACK": 32,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 992,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z9k_substepiPKfS0_S0_S0_S0_S0_iiPfS1_S1_PiS1_S1_": {
+        "REG": 253,
+        "STACK": 72,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 1008,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "ac338f2a79bb0dcc01388f5e000321148d7daf19fd5a2e790f4b4af569a8e405"
+     }
+    },
+    "check/adj.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=1",
+      "-DDK_ADJ_STAGE=3",
+      "-DDK_ADJ_NORMAL=0",
+      "-DDK_ADJ_PARALLEL=0",
+      "-DSPLIT_PRE_MINB=16"
+     ],
+     "command": "nvcc -O3 -arch=compute_90 -code=sm_120 -std=c++17 -DDK_ADJ_CLAMP_KV=1 -DDK_ADJ_STAGE=3 -DDK_ADJ_NORMAL=0 -DDK_ADJ_PARALLEL=0 -DSPLIT_PRE_MINB=16 -o {out} {src}",
+     "L0": {
+      "source": "0da10aa615a349dda54f981cc3c4644dc20682b3ceabf82b11cc0289064bf3e1",
+      "defines": "14b8572785f3a4ac98ca441d7450e06ed3b79e59caf569b9e91aa47737bef433",
+      "command": "3a95423b002c8fe3ca188d4101e2753f1281d09381ea180ace781057ccc34365",
+      "source_bytes": 258681,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_90",
+      "device": "8f0761b4123d7164a495f6437d433281d421944157c22a513d7bb0eaa9adc19e",
+      "host": "310de027c998913841c1ad0a9e488fb41e9ec848adce01594522412ee068cef2"
+     },
+     "L2": {
+      "route": "ptxas",
+      "ptx_virtual": "compute_90",
+      "ptx": "4a90abb5a94e1776b256196dfa0e5592ec76a84429df72bd8e54cc0f8db34a88",
+      "sass": "9e4bcc8b60c41df330bf85c3c338dae8913cf2e247f135fc8c5992758f5cf787",
+      "sass_lines": 90141,
+      "resources": {
+       "_Z5k_preiPKfS0_S0_S0_S0_iiP4HandPfS3_": {
+        "REG": 128,
+        "STACK": 32,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 976,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z6k_postiPKfS0_S0_iiiP4HandPfS3_S3_PiS3_": {
+        "REG": 168,
+        "STACK": 32,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 992,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z9k_adjointiiPKfS0_S0_S0_S0_PfS1_S1_PiS1_S0_": {
+        "REG": 128,
+        "STACK": 288,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 992,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z9k_substepiPKfS0_S0_S0_S0_S0_iiPfS1_S1_PiS1_S1_": {
+        "REG": 253,
+        "STACK": 72,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 1008,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "c7ee094e1ce5e71fe820faa157aef7de31727b7f9ad3a859e9663b6d4be18e74"
+     }
+    }
+   }
+  },
+  "sm_70 nvcc 12.4.131 gcc 11.4.0 cuobjdump 12.8.55": {
+   "arch": "sm_70",
+   "toolchain": {
+    "nvcc": "12.4.131 (cuda_12.4.r12.4/compiler.34097967_0)",
+    "host": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "cuobjdump": "12.8.55 (cuda_12.8.r12.8/compiler.35351055_0)"
+   },
+   "route": "nvcc",
+   "units": {
+    "ffi/dk_ffi.cu": {
+     "defines": [],
+     "command": "nvcc -O3 -arch=sm_70 -std=c++17 -Xcompiler -fPIC -I{jax_ffi_include} -c -o {out} {src}",
+     "L0": {
+      "source": "b2ca9071cb091ff116cecdc3631a6d0fd74d9318e1434624cce1db2ec709e03d",
+      "defines": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "command": "ef5d7e6eeb56974bb3226354d0d5897f9567dc16c001bdd2b82678d2c784f75e",
+      "source_bytes": 39739,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_70",
+      "device": "3b2fd928722cf1702adb3cef4ee33cc75ee9537f3dc97a0617daec95a9bf3e99",
+      "host": "b7a87e13a1c93fdf8b698936ddc5023910ca9a75cec625110aceeebbd3abe934"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_70",
+      "ptx": "bcfe8dbf84580ae6ddd1769c4547dc2854be9ce4d4dcb71fff4abbb5f483329f",
+      "sass": "4e788d1b994fcc49a4eb2bc568597665acac41c546a1e216039907401df7346e",
+      "sass_lines": 2639,
+      "resources": {
+       "_Z10k_diag_bwdiPKfS0_S0_S0_S0_Pi": {
+        "REG": 32,
+        "STACK": 0,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 8,
+        "CONSTANT[0]": 408,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z10k_diag_fwdiiiPKiPKf": {
+        "REG": 31,
+        "STACK": 0,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 8,
+        "CONSTANT[0]": 384,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z10k_last_fwdiPKii": {
+        "REG": 30,
+        "STACK": 0,
+        "SHARED": 384,
+        "LOCAL": 0,
+        "CONSTANT[0]": 372,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z11k_diag_readPji": {
+        "REG": 10,
+        "STACK": 0,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[0]": 364,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z11k_last_readPj": {
+        "REG": 10,
+        "STACK": 0,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[0]": 360,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "bc3d6b8d4b1aaa69e6b6730d2694c7d0385510ab6958811d8040889b04b95496"
+     }
+    },
+    "ffi/dk_kv0_n0.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=0",
+      "-DDK_ADJ_NORMAL=0"
+     ],
+     "command": "nvcc -O3 -arch=sm_70 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=0 -DDK_ADJ_NORMAL=0 -c -o {out} {src}",
+     "L0": {
+      "source": "d1d1061a2ba7c0af897aafd94a99053591fca686c55c6a25df84893d148f3a79",
+      "defines": "8c5065ef04151f5876cf2cd820bbacd4890982ba8f6943277f41b49d579e7c46",
+      "command": "1ed74a5ad3c7b90639c121250887cdf44d37209e7b099740415950f3e2dbf476",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_70",
+      "device": "1eaffabae4acf28ae7c9041bb997501e3e919a1a16a292d8ea5529962a763aae",
+      "host": "929756abcec7444a72a18dfff44dd8d4445fcdb0cdc9af65a60d96b0550893d3"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_70",
+      "ptx": "b56746a415eb89d20fceca4fbc16622ad9fbce22b91329722161319b2e82c0cc",
+      "sass": "dccbbedd879014e913cc890a667318ca2cc689435ee5d8fdd169067b4a175954",
+      "sass_lines": 18307,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_": {
+        "REG": 134,
+        "STACK": 288,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 8,
+        "CONSTANT[0]": 448,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "0e4939ca2b973b63a8110fdbe429d27de604c8c3a7caaab3413ea8ef0adfcf09"
+     }
+    },
+    "ffi/dk_kv0_n1.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=0",
+      "-DDK_ADJ_NORMAL=1"
+     ],
+     "command": "nvcc -O3 -arch=sm_70 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=0 -DDK_ADJ_NORMAL=1 -c -o {out} {src}",
+     "L0": {
+      "source": "1639fa8135121df7f2b41ffdf8df5cd13684cddb6c872c388582b75cf6163fbc",
+      "defines": "8496c7924b10c76a488bb05ab64984020f312adf30f4f8f66ead3eeb20d7e16a",
+      "command": "af237d2786ccad79165327253b24af5c8229aa866b1f7e8c4d9f4bfcbf65f0b7",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_70",
+      "device": "625854ba27f4aed4818e80f3dddcacd3429974a6ce8916756d60424ec38d1b52",
+      "host": "59b113a933f1d402959d8db897c565bf9ef6af8be81fd5d96beffc2d615d6de2"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_70",
+      "ptx": "edcde4fe19dc1d0a0746ed1d02470649baae7947bc3c153589d62fed49df5aa2",
+      "sass": "32a25ebda7e88534975a5b8d79a7a7076bf7e6175e7a481f2f1b2b46c8d4a14b",
+      "sass_lines": 18227,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_": {
+        "REG": 134,
+        "STACK": 288,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 8,
+        "CONSTANT[0]": 448,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "968c74820b4caef4b6ba0ad6b13992209600ea0e2d8ed8625a61d979b7d46b2e"
+     }
+    },
+    "ffi/dk_kv0_n2.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=0",
+      "-DDK_ADJ_NORMAL=2"
+     ],
+     "command": "nvcc -O3 -arch=sm_70 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=0 -DDK_ADJ_NORMAL=2 -c -o {out} {src}",
+     "L0": {
+      "source": "9711707f598d2f1c7f9fbfdd52c3f295fa729e112d51f5fcb380336ef1a2bede",
+      "defines": "3de37a4fad396da9e94b322e17df92c1b4a77b2d65a6c9402ffefabdbcd77572",
+      "command": "914c28a523e33b8e4ba8bc3cddfbab4d694131c4394f63983199b6876cf118bb",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_70",
+      "device": "f238f0e296e9ac43a9ebbddd7bad98dfe4d30c75dd3d0a01e47cf3e1c9e9c39d",
+      "host": "e421e5205d0d536a131c052d8b106cc608815032233f3ea0dd24e47aa9287bab"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_70",
+      "ptx": "a105e5c8653cdf8dbbcc56a715c8aa191e3c821d13f12d742f4b9d427b8a7fa8",
+      "sass": "3364f2a1bb144fb11c5d50c06fd5e0a4a8fafa02fa6e8a0a02a87050650254c4",
+      "sass_lines": 18387,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_": {
+        "REG": 134,
+        "STACK": 288,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 8,
+        "CONSTANT[0]": 448,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "9357cd4bafb2e2c89f4db29b4090ab194dd85770be683188a935c86e7e127cfc"
+     }
+    },
+    "ffi/dk_kv0_n3.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=0",
+      "-DDK_ADJ_NORMAL=3"
+     ],
+     "command": "nvcc -O3 -arch=sm_70 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=0 -DDK_ADJ_NORMAL=3 -c -o {out} {src}",
+     "L0": {
+      "source": "cc27fecb5f574cca969b257054d55bf45f3afb50c036c2f0f3f12098c1fda1ff",
+      "defines": "b4e3c82c3221f752fdf0b95556a74fab216a1db3d4ea53967d2af263ce5f931a",
+      "command": "898aa570351e8e0acaecda36c6d2f416c97af8ea2018bd9a0fb1fcfe905cd923",
+      "source_bytes": 270935,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_70",
+      "device": "967c255a3787b1362cae098d3474eec3aee83394545dc2c103863c0eec0b6143",
+      "host": "4ff8689492d511cbf08674786419e066ffe1032dd29f803b6839d688d15ebfe0"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_70",
+      "ptx": "4f9e66b82f5a12360a8aec3251bf7394b003802d6147ad24b3969a2889597cc1",
+      "sass": "3b67ad2bf2c97abe7ddfd7a2a7aa4afab888a2d3d4416e689e5c849a46d770e0",
+      "sass_lines": 95042,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>5k_kinEiPKfS1_S1_PfS2_S2_S2_S2_": {
+        "REG": 47,
+        "STACK": 0,
+        "SHARED": 9616,
+        "LOCAL": 0,
+        "CONSTANT[2]": 8,
+        "CONSTANT[0]": 424,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_ZN45_GLOBAL__N_<MODULE>5k_preEiPKfS1_S1_S1_S1_iiPNS_4HandEPfS4_": {
+        "REG": 155,
+        "STACK": 32,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 24,
+        "CONSTANT[0]": 432,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_ZN45_GLOBAL__N_<MODULE>6k_postEiPKfS1_S1_iiiPNS_4HandEPfS4_S4_PiS4_": {
+        "REG": 168,
+        "STACK": 32,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 16,
+        "CONSTANT[0]": 448,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_": {
+        "REG": 134,
+        "STACK": 288,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 8,
+        "CONSTANT[0]": 448,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_ZN45_GLOBAL__N_<MODULE>9k_kin_vjpEiPKfS1_S1_S1_S1_S1_S1_S1_S1_S1_PfS2_": {
+        "REG": 68,
+        "STACK": 0,
+        "SHARED": 18192,
+        "LOCAL": 0,
+        "CONSTANT[2]": 8,
+        "CONSTANT[0]": 456,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_ZN45_GLOBAL__N_<MODULE>9k_substepEiPKfS1_S1_S1_S1_S1_iiPfS2_S2_PiS2_S2_": {
+        "REG": 236,
+        "STACK": 72,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 16,
+        "CONSTANT[0]": 464,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "6c32f8a734a6f36c98b91ddde663692672e6bb7be1e6472b732d20f072875317"
+     }
+    },
+    "ffi/dk_kv1_n0.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=1",
+      "-DDK_ADJ_NORMAL=0"
+     ],
+     "command": "nvcc -O3 -arch=sm_70 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=1 -DDK_ADJ_NORMAL=0 -c -o {out} {src}",
+     "L0": {
+      "source": "6d3f04a30d4b985936049d64cc612601903b36a59ce6e826b8a6fb5abcd268eb",
+      "defines": "b636d6162de2290328b33720293945e3c00a3a00bcfafc72516baf8081f335ca",
+      "command": "1f23c560898422b772784bb4ec3869a50972ebec4e5f3d0a65d96d970791289b",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_70",
+      "device": "81cd0b4148752373ec008486c8da65b3088d76cc86bbbf9d16ea307cb7733cdb",
+      "host": "698351ad5dbf7e7820f66747a13ccc2b2e65377f5f5726c9dd0fefa59856d323"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_70",
+      "ptx": "cb7f1b4b2cfcf3d641a2d336e17d3455c06ee0d4101fac8515fb85fcf5c7eede",
+      "sass": "a9629f212776c12de795bd517c94715a6fd4b8b51c63267cdcdb2e7448f77d27",
+      "sass_lines": 18291,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_": {
+        "REG": 134,
+        "STACK": 288,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 8,
+        "CONSTANT[0]": 448,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "58304e63d272ed76961b75da9c622990bf3379a4a5e1d8429586c56c90530a81"
+     }
+    },
+    "ffi/dk_kv1_n1.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=1",
+      "-DDK_ADJ_NORMAL=1"
+     ],
+     "command": "nvcc -O3 -arch=sm_70 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=1 -DDK_ADJ_NORMAL=1 -c -o {out} {src}",
+     "L0": {
+      "source": "8eedf36b9181954abd30f93d658d139e6ab66faf676c2b0d61622278247ac538",
+      "defines": "864ddc919284bf728c1621eb8d2f6ac6359455773b4fc5ed672a11a32e3db05a",
+      "command": "3a03f4575ec130331131e9cfe2ea8866e810399f5547073fc1a3fe30bd8e4279",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_70",
+      "device": "86f4368bab8f8cff7f2dd0c26106c6a600ac0972b342e27d99a73c56b5c5dd70",
+      "host": "9729a83ddf10f2eda27f4215530f170e38c95446bd488303704601579145b48f"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_70",
+      "ptx": "87f60e2557cb629f912cd2af9373ac73f30a56b7f6b870264c3dfbffb6ceb460",
+      "sass": "c87eff3cf032484fc93d29b320840f4191cbeba31347cbcaa5dcc056847f7bdc",
+      "sass_lines": 18211,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_": {
+        "REG": 134,
+        "STACK": 288,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 8,
+        "CONSTANT[0]": 448,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "ea5589e259da20520fd28d346f8c6df43a02a9912c63ba81e14c3c049be6c6bc"
+     }
+    },
+    "ffi/dk_kv1_n2.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=1",
+      "-DDK_ADJ_NORMAL=2"
+     ],
+     "command": "nvcc -O3 -arch=sm_70 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=1 -DDK_ADJ_NORMAL=2 -c -o {out} {src}",
+     "L0": {
+      "source": "ade225cafef66c37344dee522c7803a3ba859cf096e0475c16f2ebd0b9445f78",
+      "defines": "77e92c03510ed52b83c99a40cebfbc00eda6f15edc494220a2e71dca8185340b",
+      "command": "af04de791bc918e9c84f9299a2aae86bf5d26ec88a586137aa5283cbfd0942a9",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_70",
+      "device": "685c911e404f24c2e9e7c815e1dd1e47e120f2efc7f6e96fee38292d1e3ca23f",
+      "host": "bfdbc09fe2e8ee8fa371085d3aaec2db58ef41de2e1718d4e3b49add234bffa1"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_70",
+      "ptx": "662d693b3f9aa2d274e1587df84e0c1ca4a68ce33409197e5e8251659e236b4a",
+      "sass": "95a3b37a5a948a5993ed11c6c6e8ea7ce1988eab00560cc33ce11998faad9c9a",
+      "sass_lines": 18371,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_": {
+        "REG": 134,
+        "STACK": 288,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 8,
+        "CONSTANT[0]": 448,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "ca8f156301a3b66cba0ae66d852012bb7aa1fa2bed29c689afe33fc4f0f009c7"
+     }
+    },
+    "ffi/dk_kv1_n3.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=1",
+      "-DDK_ADJ_NORMAL=3"
+     ],
+     "command": "nvcc -O3 -arch=sm_70 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=1 -DDK_ADJ_NORMAL=3 -c -o {out} {src}",
+     "L0": {
+      "source": "20fcb6c0a62dda78577df3406a7b56e1c6aca8a7751ee36868b37fc5e30cb92c",
+      "defines": "4a6c1c9ef899dae62139137720055ce85353e4351365f87fe2482a50a1903b9e",
+      "command": "f8550e2abc3e799ea033b5235d7fb7838511c549c64e3cdf2efa7a3d03fe256f",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_70",
+      "device": "01052070e31f082525f9ffb1704524b078a023402adb6b80dc46b526574d2c32",
+      "host": "321a929b0ab6f15a3eca7aab7f5a030dd101c644ee64b5c2d75b747e49a38fae"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_70",
+      "ptx": "1725c7ad01c8c233512e18395a02e52c115edac54730236c02a14862252d6395",
+      "sass": "fe1013810593b4d8aa0dff21ad0d96cf1768830ad8dfcdfef1388f7512d0ed77",
+      "sass_lines": 18371,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_": {
+        "REG": 134,
+        "STACK": 288,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 8,
+        "CONSTANT[0]": 448,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "98ecf11fa5db77d87bb1edcdf22bd8f8b67ae97944b331bf68faf3ee98ee03d0"
+     }
+    },
+    "ffi/dk_kv2_n0.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=2",
+      "-DDK_ADJ_NORMAL=0"
+     ],
+     "command": "nvcc -O3 -arch=sm_70 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=2 -DDK_ADJ_NORMAL=0 -c -o {out} {src}",
+     "L0": {
+      "source": "c484f3b8bc54262eeadaf58400e943e096d1ef94e86bed942e03c1cef3651222",
+      "defines": "9fbdccbf13146828516685612cd41492c4848be2058da4931a471c4fa48cfbf4",
+      "command": "9ec66b55a74947d22381da79de6b433ad7d83b5fdb37965d48eba0281e4157e1",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_70",
+      "device": "855138d49555ea941aea1ffd662a40cd3c716208559a02d7b74dde60d56a9fbf",
+      "host": "44cda8ccdf40c4b12f03a5fc230de9229459894371bde6126b3951fbf0ebd360"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_70",
+      "ptx": "35161d406bd5223185a112007eee996c7e554bc2457945cc2e4ca9d2cd0d7db2",
+      "sass": "a05593c86961a470dc42a90ed625e3d5305d774c1cc74a5522473926b50feed4",
+      "sass_lines": 18451,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_f": {
+        "REG": 135,
+        "STACK": 288,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 8,
+        "CONSTANT[0]": 452,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "69f93688dace6680c0ba60b96df2133124e0e426f1cb7dc7c49c5aaf9cbb6ce3"
+     }
+    },
+    "ffi/dk_kv2_n1.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=2",
+      "-DDK_ADJ_NORMAL=1"
+     ],
+     "command": "nvcc -O3 -arch=sm_70 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=2 -DDK_ADJ_NORMAL=1 -c -o {out} {src}",
+     "L0": {
+      "source": "e7f6cf3c00df00da72bd2741127fc5cd5d0cf2bfffb4dde92373aeba0541a502",
+      "defines": "96a0bc4d0e233aa82137f7195a191dffbd17c91b948c835146ee1fc0c40bbf1d",
+      "command": "c664ba7ab1de4f46f23e107abbb127992d103c6a7a8d74b7bc3e1d4b4d157a04",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_70",
+      "device": "93dcb3e274a330e81eb7adeaf512edc55b67353206d1eedbd51c1a2d418cbb40",
+      "host": "e7582b689ef2db13cd7f4bff8f2a115f4c5fd343eb4bab8286170ed50104a3b8"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_70",
+      "ptx": "6bdd9a0b40bcc35a3941b6687f7ee25f2d5e59d33693d1f3e32cbf41cb391b5d",
+      "sass": "595bbcff610ae1a3baacfb5e93e3de115941f1d2277e5f09576fd47fb9e9a307",
+      "sass_lines": 18371,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_f": {
+        "REG": 135,
+        "STACK": 288,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 8,
+        "CONSTANT[0]": 452,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "1bb9c397851b75e080ab97451bea090b08848cfa9f6114f2d8b61615ea57b286"
+     }
+    },
+    "ffi/dk_kv2_n2.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=2",
+      "-DDK_ADJ_NORMAL=2"
+     ],
+     "command": "nvcc -O3 -arch=sm_70 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=2 -DDK_ADJ_NORMAL=2 -c -o {out} {src}",
+     "L0": {
+      "source": "9e7361310c9e0ce45ef83575d073f8345b6c1a79d439bdf43e19acba9fe6db79",
+      "defines": "bfe2a96c191113efd4f53042894fc90bd72226747007eaa5b42099f36b7ab29e",
+      "command": "e4dabedba4890bbb55964c0517798a3761f1683100cf761cc61b58f33190a6a0",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_70",
+      "device": "807f44a88a0811e56c4e0777ce4eac6b8ecc3f4185b9a00b68ac32c299801c99",
+      "host": "ad1666aa09041dea5d72a595c792afcd8a374baae319be6845c692066557a17d"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_70",
+      "ptx": "6b6726b4d2982bc2f7cacbbecd4afaaaef69375f107bf297d4de6f1ff10b2198",
+      "sass": "d2e63038c707358951a75b4dcf74825c4cd0653108cdfc3203ec39546a4f0908",
+      "sass_lines": 18531,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_f": {
+        "REG": 135,
+        "STACK": 288,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 8,
+        "CONSTANT[0]": 452,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "cca1e50d0033781c1fb8dd15a8ad8611328558becd1fff0e271c65c10f14cf79"
+     }
+    },
+    "ffi/dk_kv2_n3.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=2",
+      "-DDK_ADJ_NORMAL=3"
+     ],
+     "command": "nvcc -O3 -arch=sm_70 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=2 -DDK_ADJ_NORMAL=3 -c -o {out} {src}",
+     "L0": {
+      "source": "cf4d2a5a43c953277141851becfad67cb41b5e0072137f7e2170dd5ae2ab6aab",
+      "defines": "4e1dfcf9a137e45eb66985b793f2db9c788c4456971ac032b65fc684981b454c",
+      "command": "19d61d7d2c80723861b32e6261e283d7e4418885eb063a1eb41f330976640b79",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_70",
+      "device": "99c8fdb6ccf831e6cc096da88950b5e527ab7e024434c2b84a341a61d071a2bc",
+      "host": "6b094c36793614810920b0becb3db2d186f132d1c72f52a0f416fb7fcc1f4116"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_70",
+      "ptx": "73758fb4f9aebd10a918fa9638013ef40667358553eef6f26b984e8750558a65",
+      "sass": "a4248f3867ce9bb23d8826994da98a7ffc7bda64fdccc2044bfd7731d377601e",
+      "sass_lines": 18515,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_f": {
+        "REG": 135,
+        "STACK": 288,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 8,
+        "CONSTANT[0]": 452,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "2816612130026489a56d527289ec57c4e6b80a11cadfb6766b556b9df75cc4bf"
+     }
+    },
+    "check/step.cu": {
+     "defines": [],
+     "command": "nvcc -O3 -arch=sm_70 -std=c++17 -o {out} {src}",
+     "L0": {
+      "source": "b95427a8e42aea86595607089f0caaecdae63046ee45655b8bd650a59a7772b0",
+      "defines": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "command": "e39b106e0edaae538041ee8fcfe6f0cbe52c9ae7d50ce3cea9fd710a50f7cfef",
+      "source_bytes": 160142,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_70",
+      "device": "5746bf46900e97552431518aa937c6416a6e62551ed3a8cedb7ea6cb7336f0aa",
+      "host": "464d739a1816b9a509fc316dd597ba7a4dd94a1aede978f011283bf3348c3fc4"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_70",
+      "ptx": "88c4faef711c68e40265908a47606c1672cfcca6056c2fff487f1c12de515a4d",
+      "sass": "e92fa152e2f9be03fbbed1449c5786f2cf9f799efe7b6d673568108a13441377",
+      "sass_lines": 69625,
+      "resources": {
+       "_Z5k_preiPKfS0_S0_S0_S0_iiP4HandPfS3_": {
+        "REG": 155,
+        "STACK": 32,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 24,
+        "CONSTANT[0]": 432,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z6k_postiPKfS0_S0_iiiP4HandPfS3_S3_PiS3_": {
+        "REG": 168,
+        "STACK": 32,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 16,
+        "CONSTANT[0]": 448,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z9k_substepiPKfS0_S0_S0_S0_S0_iiPfS1_S1_PiS1_S1_": {
+        "REG": 236,
+        "STACK": 72,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 16,
+        "CONSTANT[0]": 464,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "c36a9abb5d9e0eac082529813887a16786f568ec24be5026f0a2bdb19b8acd98"
+     }
+    },
+    "check/step_fused.cu": {
+     "defines": [
+      "-DDK_SPLIT=0"
+     ],
+     "command": "nvcc -O3 -arch=sm_70 -std=c++17 -DDK_SPLIT=0 -o {out} {src}",
+     "L0": {
+      "source": "b95427a8e42aea86595607089f0caaecdae63046ee45655b8bd650a59a7772b0",
+      "defines": "02f4e78ad3b9eb997cf08f15d533568eca2bb6ce27e33a4e000fdb8dfdb407d8",
+      "command": "3d1fdd7aed05764ae64fb5e22faac75e6696b8a0c9c46838ef862dbf83e7f761",
+      "source_bytes": 160142,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_70",
+      "device": "0f8022a9f8b10c4b093f17fe9ce2d04c649451fec90dddd8792e6a589dbdf053",
+      "host": "a78edce8424ba14ae8e97f1c842ffd17e4f00965b2aebd72dadaf96970d1f52a"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_70",
+      "ptx": "88c4faef711c68e40265908a47606c1672cfcca6056c2fff487f1c12de515a4d",
+      "sass": "e92fa152e2f9be03fbbed1449c5786f2cf9f799efe7b6d673568108a13441377",
+      "sass_lines": 69625,
+      "resources": {
+       "_Z5k_preiPKfS0_S0_S0_S0_iiP4HandPfS3_": {
+        "REG": 155,
+        "STACK": 32,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 24,
+        "CONSTANT[0]": 432,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z6k_postiPKfS0_S0_iiiP4HandPfS3_S3_PiS3_": {
+        "REG": 168,
+        "STACK": 32,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 16,
+        "CONSTANT[0]": 448,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z9k_substepiPKfS0_S0_S0_S0_S0_iiPfS1_S1_PiS1_S1_": {
+        "REG": 236,
+        "STACK": 72,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 16,
+        "CONSTANT[0]": 464,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "ac338f2a79bb0dcc01388f5e000321148d7daf19fd5a2e790f4b4af569a8e405"
+     }
+    },
+    "check/adj.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=1",
+      "-DDK_ADJ_STAGE=3",
+      "-DDK_ADJ_NORMAL=0",
+      "-DDK_ADJ_PARALLEL=0"
+     ],
+     "command": "nvcc -O3 -arch=sm_70 -std=c++17 -DDK_ADJ_CLAMP_KV=1 -DDK_ADJ_STAGE=3 -DDK_ADJ_NORMAL=0 -DDK_ADJ_PARALLEL=0 -o {out} {src}",
+     "L0": {
+      "source": "0da10aa615a349dda54f981cc3c4644dc20682b3ceabf82b11cc0289064bf3e1",
+      "defines": "91289f0a7fe9915bd8396bcb1398b3073c5d38eca6dcf6a484a024f02ce828c6",
+      "command": "742e4ae6445d81f9d58e6402ffb13585e1b8d63c4a01658f2636da7dc8dea14d",
+      "source_bytes": 258681,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_70",
+      "device": "3c2effaf26a1149b92e6bb658c6af19b1c47f8a18f3989b8217e1ad0e30af053",
+      "host": "1c31ea1b8558fc8643fbc9368af8a5293dddef72d446052cc2040ed557da1d0d"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_70",
+      "ptx": "096305fdd26efc88f50c090bccc0b9777daf76657940a733ea9dcca5dcd21bb7",
+      "sass": "c0b3b64a83e981bad8469b9f4e012efbc6dc4cbc6bb071236d8507bef74b9798",
+      "sass_lines": 87916,
+      "resources": {
+       "_Z5k_preiPKfS0_S0_S0_S0_iiP4HandPfS3_": {
+        "REG": 155,
+        "STACK": 32,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 24,
+        "CONSTANT[0]": 432,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z6k_postiPKfS0_S0_iiiP4HandPfS3_S3_PiS3_": {
+        "REG": 168,
+        "STACK": 32,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 16,
+        "CONSTANT[0]": 448,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z9k_adjointiiPKfS0_S0_S0_S0_PfS1_S1_PiS1_S0_": {
+        "REG": 134,
+        "STACK": 288,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 8,
+        "CONSTANT[0]": 448,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z9k_substepiPKfS0_S0_S0_S0_S0_iiPfS1_S1_PiS1_S1_": {
+        "REG": 236,
+        "STACK": 72,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 16,
+        "CONSTANT[0]": 464,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "c7ee094e1ce5e71fe820faa157aef7de31727b7f9ad3a859e9663b6d4be18e74"
+     }
+    }
+   }
+  },
+  "sm_86 nvcc 12.4.131 gcc 11.4.0 cuobjdump 12.8.55": {
+   "arch": "sm_86",
+   "toolchain": {
+    "nvcc": "12.4.131 (cuda_12.4.r12.4/compiler.34097967_0)",
+    "host": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "cuobjdump": "12.8.55 (cuda_12.8.r12.8/compiler.35351055_0)"
+   },
+   "route": "nvcc",
+   "units": {
+    "ffi/dk_ffi.cu": {
+     "defines": [],
+     "command": "nvcc -O3 -arch=sm_86 -std=c++17 -Xcompiler -fPIC -I{jax_ffi_include} -c -o {out} {src}",
+     "L0": {
+      "source": "b2ca9071cb091ff116cecdc3631a6d0fd74d9318e1434624cce1db2ec709e03d",
+      "defines": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "command": "e935ed67436b767acf2d10834fc24fb6f142f0d4a10aafb4b9c55be74beccc29",
+      "source_bytes": 39739,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_86",
+      "device": "88efee6f2ec370277d25d792e9e085895bf37004cc0e2449fdb9edcb0b8b5e1a",
+      "host": "b7a87e13a1c93fdf8b698936ddc5023910ca9a75cec625110aceeebbd3abe934"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_86",
+      "ptx": "3afb2119f1a8d189fc63c159f7e5a2852db021709e813d1d7cdb951ca17d0e7c",
+      "sass": "e808104edb71c1017bc6c67d5af03b3cb0e8d4c39c392f9976b04ab88fefb5cf",
+      "sass_lines": 2575,
+      "resources": {
+       "_Z10k_diag_bwdiPKfS0_S0_S0_S0_Pi": {
+        "REG": 40,
+        "STACK": 0,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 8,
+        "CONSTANT[0]": 408,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z10k_diag_fwdiiiPKiPKf": {
+        "REG": 30,
+        "STACK": 0,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 8,
+        "CONSTANT[0]": 384,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z10k_last_fwdiPKii": {
+        "REG": 37,
+        "STACK": 0,
+        "SHARED": 384,
+        "LOCAL": 0,
+        "CONSTANT[0]": 372,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z11k_diag_readPji": {
+        "REG": 10,
+        "STACK": 0,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[0]": 364,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z11k_last_readPj": {
+        "REG": 10,
+        "STACK": 0,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[0]": 360,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "bc3d6b8d4b1aaa69e6b6730d2694c7d0385510ab6958811d8040889b04b95496"
+     }
+    },
+    "ffi/dk_kv0_n0.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=0",
+      "-DDK_ADJ_NORMAL=0"
+     ],
+     "command": "nvcc -O3 -arch=sm_86 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=0 -DDK_ADJ_NORMAL=0 -c -o {out} {src}",
+     "L0": {
+      "source": "d1d1061a2ba7c0af897aafd94a99053591fca686c55c6a25df84893d148f3a79",
+      "defines": "8c5065ef04151f5876cf2cd820bbacd4890982ba8f6943277f41b49d579e7c46",
+      "command": "b5974284d52782ae0909bf24df3a34ee2ab60a3e909cc9814aa0a2e8ede26e72",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_86",
+      "device": "fde7905d2a14f44870dfdc85b70d6f86f7fa025660d9558bf38ff6f8cf42dc8e",
+      "host": "929756abcec7444a72a18dfff44dd8d4445fcdb0cdc9af65a60d96b0550893d3"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_86",
+      "ptx": "f8c9413fdaa0be7f115200200d71965995a09adeea8484d29c1e2c92829fff4c",
+      "sass": "93ccd0a8fbfa9d3362a7d932f0129316040e0656b2f4d2afe0b9ea25dee5d017",
+      "sass_lines": 17939,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_": {
+        "REG": 131,
+        "STACK": 288,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 8,
+        "CONSTANT[0]": 448,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "0e4939ca2b973b63a8110fdbe429d27de604c8c3a7caaab3413ea8ef0adfcf09"
+     }
+    },
+    "ffi/dk_kv0_n1.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=0",
+      "-DDK_ADJ_NORMAL=1"
+     ],
+     "command": "nvcc -O3 -arch=sm_86 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=0 -DDK_ADJ_NORMAL=1 -c -o {out} {src}",
+     "L0": {
+      "source": "1639fa8135121df7f2b41ffdf8df5cd13684cddb6c872c388582b75cf6163fbc",
+      "defines": "8496c7924b10c76a488bb05ab64984020f312adf30f4f8f66ead3eeb20d7e16a",
+      "command": "5f089d36903812d55e839dd93d53d32e29412a864cc557054166bea842dce4a5",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_86",
+      "device": "5487a88d2647c379a999b1ff98e77196f89b968e4f899b6eb39d82773750b00c",
+      "host": "59b113a933f1d402959d8db897c565bf9ef6af8be81fd5d96beffc2d615d6de2"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_86",
+      "ptx": "8e6839627131998c71d42019d201bb2a16b94ec3e21b93fdafd6e0fbdf7d52a7",
+      "sass": "15481edfbc75a02b9ce104a3d1cfc461ada77a70bca1baa6e5543a486ea3afeb",
+      "sass_lines": 17891,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_": {
+        "REG": 131,
+        "STACK": 288,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 8,
+        "CONSTANT[0]": 448,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "968c74820b4caef4b6ba0ad6b13992209600ea0e2d8ed8625a61d979b7d46b2e"
+     }
+    },
+    "ffi/dk_kv0_n2.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=0",
+      "-DDK_ADJ_NORMAL=2"
+     ],
+     "command": "nvcc -O3 -arch=sm_86 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=0 -DDK_ADJ_NORMAL=2 -c -o {out} {src}",
+     "L0": {
+      "source": "9711707f598d2f1c7f9fbfdd52c3f295fa729e112d51f5fcb380336ef1a2bede",
+      "defines": "3de37a4fad396da9e94b322e17df92c1b4a77b2d65a6c9402ffefabdbcd77572",
+      "command": "737c3a94e6a0ff9fbba60b23d3c3ff764376ce44bdd66c9cb8629ea6eb96520c",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_86",
+      "device": "c70246604f0427ce41c21b9f126e84ad577a421aa49fb8dc09596f1ec7b0ee6d",
+      "host": "e421e5205d0d536a131c052d8b106cc608815032233f3ea0dd24e47aa9287bab"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_86",
+      "ptx": "de5461b35cb561a2d8324dd89d4ba96c6999a17dc5aeaf6fd05e6c424c4d5025",
+      "sass": "263c1840c70865bff72840aeae115581af7d08e38dff3750da8e714c38fee0d4",
+      "sass_lines": 18003,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_": {
+        "REG": 131,
+        "STACK": 288,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 8,
+        "CONSTANT[0]": 448,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "9357cd4bafb2e2c89f4db29b4090ab194dd85770be683188a935c86e7e127cfc"
+     }
+    },
+    "ffi/dk_kv0_n3.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=0",
+      "-DDK_ADJ_NORMAL=3"
+     ],
+     "command": "nvcc -O3 -arch=sm_86 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=0 -DDK_ADJ_NORMAL=3 -c -o {out} {src}",
+     "L0": {
+      "source": "cc27fecb5f574cca969b257054d55bf45f3afb50c036c2f0f3f12098c1fda1ff",
+      "defines": "b4e3c82c3221f752fdf0b95556a74fab216a1db3d4ea53967d2af263ce5f931a",
+      "command": "8529eea80e8b09c789f9231226f41729bc920547c5642706266063324d190a81",
+      "source_bytes": 270935,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_86",
+      "device": "ea8358973e41992d62c24bfc07d735b0b9cfa563310e946e04148befe9bf4fd9",
+      "host": "4ff8689492d511cbf08674786419e066ffe1032dd29f803b6839d688d15ebfe0"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_86",
+      "ptx": "191733ee9b05660da6f5b056566b6d7411f5daa14458c19d5d6ff90d2e5fcbb9",
+      "sass": "5e0acea9554d23542041eae1dee4020831ed189fdaf912c7dfa37638472da42a",
+      "sass_lines": 91714,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>5k_kinEiPKfS1_S1_PfS2_S2_S2_S2_": {
+        "REG": 48,
+        "STACK": 0,
+        "SHARED": 9616,
+        "LOCAL": 0,
+        "CONSTANT[2]": 8,
+        "CONSTANT[0]": 424,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_ZN45_GLOBAL__N_<MODULE>5k_preEiPKfS1_S1_S1_S1_iiPNS_4HandEPfS4_": {
+        "REG": 153,
+        "STACK": 32,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 24,
+        "CONSTANT[0]": 432,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_ZN45_GLOBAL__N_<MODULE>6k_postEiPKfS1_S1_iiiPNS_4HandEPfS4_S4_PiS4_": {
+        "REG": 168,
+        "STACK": 32,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 16,
+        "CONSTANT[0]": 448,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_": {
+        "REG": 131,
+        "STACK": 288,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 8,
+        "CONSTANT[0]": 448,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_ZN45_GLOBAL__N_<MODULE>9k_kin_vjpEiPKfS1_S1_S1_S1_S1_S1_S1_S1_S1_PfS2_": {
+        "REG": 66,
+        "STACK": 0,
+        "SHARED": 18192,
+        "LOCAL": 0,
+        "CONSTANT[2]": 8,
+        "CONSTANT[0]": 456,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_ZN45_GLOBAL__N_<MODULE>9k_substepEiPKfS1_S1_S1_S1_S1_iiPfS2_S2_PiS2_S2_": {
+        "REG": 240,
+        "STACK": 72,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 16,
+        "CONSTANT[0]": 464,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "6c32f8a734a6f36c98b91ddde663692672e6bb7be1e6472b732d20f072875317"
+     }
+    },
+    "ffi/dk_kv1_n0.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=1",
+      "-DDK_ADJ_NORMAL=0"
+     ],
+     "command": "nvcc -O3 -arch=sm_86 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=1 -DDK_ADJ_NORMAL=0 -c -o {out} {src}",
+     "L0": {
+      "source": "6d3f04a30d4b985936049d64cc612601903b36a59ce6e826b8a6fb5abcd268eb",
+      "defines": "b636d6162de2290328b33720293945e3c00a3a00bcfafc72516baf8081f335ca",
+      "command": "62af1076057d241a72a34322a69bcdc068f0f7865cb76c58d851cf7684ca8366",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_86",
+      "device": "0138798635f7549624b370d7fc672082f626197eb840cfdbeb9480dd098a47ae",
+      "host": "698351ad5dbf7e7820f66747a13ccc2b2e65377f5f5726c9dd0fefa59856d323"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_86",
+      "ptx": "5774d2bd5fa9ec7eb60462a24c97b655aa29ba9c1d8c81e392f58ffccbdaecc0",
+      "sass": "68f07ac20aa714f1d778960541a96b28e41856c453ddd4ff170eba33fc5c536f",
+      "sass_lines": 17939,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_": {
+        "REG": 131,
+        "STACK": 288,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 8,
+        "CONSTANT[0]": 448,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "58304e63d272ed76961b75da9c622990bf3379a4a5e1d8429586c56c90530a81"
+     }
+    },
+    "ffi/dk_kv1_n1.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=1",
+      "-DDK_ADJ_NORMAL=1"
+     ],
+     "command": "nvcc -O3 -arch=sm_86 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=1 -DDK_ADJ_NORMAL=1 -c -o {out} {src}",
+     "L0": {
+      "source": "8eedf36b9181954abd30f93d658d139e6ab66faf676c2b0d61622278247ac538",
+      "defines": "864ddc919284bf728c1621eb8d2f6ac6359455773b4fc5ed672a11a32e3db05a",
+      "command": "16371386177592b208fe7971c6f94f91e9e5b07c127fee1f27e5788bf4007009",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_86",
+      "device": "202c53846cece711369f283778f3644426df388fa215fe2da63a210ee9829a8d",
+      "host": "9729a83ddf10f2eda27f4215530f170e38c95446bd488303704601579145b48f"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_86",
+      "ptx": "78371d4ac96890d0147c9d05030fbd4d5533fe7638ae683ce9a58a022a20dd92",
+      "sass": "58c92b67b965ab8e75fb600e5d2bba7ca6a29bef89911e9a172a4b615227ede0",
+      "sass_lines": 17875,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_": {
+        "REG": 131,
+        "STACK": 288,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 8,
+        "CONSTANT[0]": 448,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "ea5589e259da20520fd28d346f8c6df43a02a9912c63ba81e14c3c049be6c6bc"
+     }
+    },
+    "ffi/dk_kv1_n2.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=1",
+      "-DDK_ADJ_NORMAL=2"
+     ],
+     "command": "nvcc -O3 -arch=sm_86 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=1 -DDK_ADJ_NORMAL=2 -c -o {out} {src}",
+     "L0": {
+      "source": "ade225cafef66c37344dee522c7803a3ba859cf096e0475c16f2ebd0b9445f78",
+      "defines": "77e92c03510ed52b83c99a40cebfbc00eda6f15edc494220a2e71dca8185340b",
+      "command": "2a1e2dfb9226305f87c4c517b9ac254d807a517bbbe4068efade2b4f83001a6b",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_86",
+      "device": "c03467fbfc7edd7658041c907afbaf49abc3dbcd41b157edb7ed82faf762a8a9",
+      "host": "bfdbc09fe2e8ee8fa371085d3aaec2db58ef41de2e1718d4e3b49add234bffa1"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_86",
+      "ptx": "3eaa7e95be67663f18588063911d8233fe990ea07a021e3ce4449fc1140e5784",
+      "sass": "788fdec3d1b0c4693b94a1ac9c93ea2dead020bb313b10965f59d4db09469007",
+      "sass_lines": 18003,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_": {
+        "REG": 131,
+        "STACK": 288,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 8,
+        "CONSTANT[0]": 448,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "ca8f156301a3b66cba0ae66d852012bb7aa1fa2bed29c689afe33fc4f0f009c7"
+     }
+    },
+    "ffi/dk_kv1_n3.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=1",
+      "-DDK_ADJ_NORMAL=3"
+     ],
+     "command": "nvcc -O3 -arch=sm_86 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=1 -DDK_ADJ_NORMAL=3 -c -o {out} {src}",
+     "L0": {
+      "source": "20fcb6c0a62dda78577df3406a7b56e1c6aca8a7751ee36868b37fc5e30cb92c",
+      "defines": "4a6c1c9ef899dae62139137720055ce85353e4351365f87fe2482a50a1903b9e",
+      "command": "c34eee572db41fb062eef6f722ebf111047c718b976d83f438f1922b6adda9dc",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_86",
+      "device": "b2f44177fd5e4d018d5d87b04037dbff9c2a9ce5aa591553c736fa97ef0da60c",
+      "host": "321a929b0ab6f15a3eca7aab7f5a030dd101c644ee64b5c2d75b747e49a38fae"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_86",
+      "ptx": "82ae995a5a5297621bec4c9cb2704171c3c9c519b27ef2067147c0ad40c9fed2",
+      "sass": "9e053fbed6c634d834b76f8f70b965f18ad5a7ff740969397943ac4088c0fd26",
+      "sass_lines": 17987,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_": {
+        "REG": 131,
+        "STACK": 288,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 8,
+        "CONSTANT[0]": 448,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "98ecf11fa5db77d87bb1edcdf22bd8f8b67ae97944b331bf68faf3ee98ee03d0"
+     }
+    },
+    "ffi/dk_kv2_n0.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=2",
+      "-DDK_ADJ_NORMAL=0"
+     ],
+     "command": "nvcc -O3 -arch=sm_86 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=2 -DDK_ADJ_NORMAL=0 -c -o {out} {src}",
+     "L0": {
+      "source": "c484f3b8bc54262eeadaf58400e943e096d1ef94e86bed942e03c1cef3651222",
+      "defines": "9fbdccbf13146828516685612cd41492c4848be2058da4931a471c4fa48cfbf4",
+      "command": "4420b45901656db97795243c9b98cbd26bab9eff87e6d852e0a54a3660ad9dd4",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_86",
+      "device": "3541b58fb4415c90aa9b9a40368adb344b4f3ca0020396d9141e831c9b72454f",
+      "host": "44cda8ccdf40c4b12f03a5fc230de9229459894371bde6126b3951fbf0ebd360"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_86",
+      "ptx": "68d459311efdbdcfe55e5783ce05f608bdd837f3ca1329d924f4b920345e7c57",
+      "sass": "61c048f7f83591fe1294f1fa22213121e3131cb0fd20a08713bc2f1bc7dea4d1",
+      "sass_lines": 18083,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_f": {
+        "REG": 132,
+        "STACK": 288,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 8,
+        "CONSTANT[0]": 452,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "69f93688dace6680c0ba60b96df2133124e0e426f1cb7dc7c49c5aaf9cbb6ce3"
+     }
+    },
+    "ffi/dk_kv2_n1.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=2",
+      "-DDK_ADJ_NORMAL=1"
+     ],
+     "command": "nvcc -O3 -arch=sm_86 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=2 -DDK_ADJ_NORMAL=1 -c -o {out} {src}",
+     "L0": {
+      "source": "e7f6cf3c00df00da72bd2741127fc5cd5d0cf2bfffb4dde92373aeba0541a502",
+      "defines": "96a0bc4d0e233aa82137f7195a191dffbd17c91b948c835146ee1fc0c40bbf1d",
+      "command": "12f1f6116cca366927fc710c41dd5d0f820988ae264522d4ec8b403901bf33bd",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_86",
+      "device": "f1f1895462a61c4a45c38d84d3b045f8126e45ca70cdbb96ee39ba15734e4588",
+      "host": "e7582b689ef2db13cd7f4bff8f2a115f4c5fd343eb4bab8286170ed50104a3b8"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_86",
+      "ptx": "975174f70ca99a5708dca8d66e7dc83d184958c755724150c4599a51db59d2e1",
+      "sass": "5d3f4a048af93a4678710e0292816d04712fa0ec7ecd3f757c5d815465d8f28c",
+      "sass_lines": 18019,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_f": {
+        "REG": 132,
+        "STACK": 288,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 8,
+        "CONSTANT[0]": 452,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "1bb9c397851b75e080ab97451bea090b08848cfa9f6114f2d8b61615ea57b286"
+     }
+    },
+    "ffi/dk_kv2_n2.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=2",
+      "-DDK_ADJ_NORMAL=2"
+     ],
+     "command": "nvcc -O3 -arch=sm_86 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=2 -DDK_ADJ_NORMAL=2 -c -o {out} {src}",
+     "L0": {
+      "source": "9e7361310c9e0ce45ef83575d073f8345b6c1a79d439bdf43e19acba9fe6db79",
+      "defines": "bfe2a96c191113efd4f53042894fc90bd72226747007eaa5b42099f36b7ab29e",
+      "command": "25967f5acf1cfbd839a5315f04a4a8d1dd272ac78e6b2a51be028173ef7a840b",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_86",
+      "device": "4f9689f1c5ede0a82e52a5b757acfd6e3af559bff9d848876b8c9aefd12ea0f3",
+      "host": "ad1666aa09041dea5d72a595c792afcd8a374baae319be6845c692066557a17d"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_86",
+      "ptx": "8358a304ec6c4aa9621fb9dc08dd7bb92c0c93c2bc945276de240664c7b6641c",
+      "sass": "e1ac33bd2e5359143cbe671eac9ea061bcc9af8be7127d14fb62400b11d83f51",
+      "sass_lines": 18147,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_f": {
+        "REG": 132,
+        "STACK": 288,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 8,
+        "CONSTANT[0]": 452,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "cca1e50d0033781c1fb8dd15a8ad8611328558becd1fff0e271c65c10f14cf79"
+     }
+    },
+    "ffi/dk_kv2_n3.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=2",
+      "-DDK_ADJ_NORMAL=3"
+     ],
+     "command": "nvcc -O3 -arch=sm_86 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=2 -DDK_ADJ_NORMAL=3 -c -o {out} {src}",
+     "L0": {
+      "source": "cf4d2a5a43c953277141851becfad67cb41b5e0072137f7e2170dd5ae2ab6aab",
+      "defines": "4e1dfcf9a137e45eb66985b793f2db9c788c4456971ac032b65fc684981b454c",
+      "command": "a73ac2ad71923e2d40673615dc0edbd30d924c76e952b759417bb3e42f2e2412",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_86",
+      "device": "60fafc4f1880f9b9a751f3d409671faf75b7068735074ab4c4d9ff737199eaca",
+      "host": "6b094c36793614810920b0becb3db2d186f132d1c72f52a0f416fb7fcc1f4116"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_86",
+      "ptx": "e68d7890ed9aaba33e7390d447f7369fc6f24c5a7e09ae2e3220d2e7af908a22",
+      "sass": "da531963f1b851d200f87a4d05593f8ed6012f9e58e5e7caa4c40baa46390397",
+      "sass_lines": 18131,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_f": {
+        "REG": 132,
+        "STACK": 288,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 8,
+        "CONSTANT[0]": 452,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "2816612130026489a56d527289ec57c4e6b80a11cadfb6766b556b9df75cc4bf"
+     }
+    },
+    "check/step.cu": {
+     "defines": [],
+     "command": "nvcc -O3 -arch=sm_86 -std=c++17 -o {out} {src}",
+     "L0": {
+      "source": "b95427a8e42aea86595607089f0caaecdae63046ee45655b8bd650a59a7772b0",
+      "defines": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "command": "3936dd3bf286061b93847d934ccb1e10253bfbf60707d5a3c70afd91322404e1",
+      "source_bytes": 160142,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_86",
+      "device": "e3ea2540a9b602ce226aa2814ff8b0f6357c5348533095535661409d31f33ee4",
+      "host": "464d739a1816b9a509fc316dd597ba7a4dd94a1aede978f011283bf3348c3fc4"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_86",
+      "ptx": "fb2f86933cb53a514adb69990cf74e3b84a7d8b7a576b19ae4dafbc528a3f8ed",
+      "sass": "757c0e1809bd95435813210260494b5b178a0cd97fce68fa7b4bf337f53fac08",
+      "sass_lines": 66809,
+      "resources": {
+       "_Z5k_preiPKfS0_S0_S0_S0_iiP4HandPfS3_": {
+        "REG": 153,
+        "STACK": 32,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 24,
+        "CONSTANT[0]": 432,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z6k_postiPKfS0_S0_iiiP4HandPfS3_S3_PiS3_": {
+        "REG": 168,
+        "STACK": 32,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 16,
+        "CONSTANT[0]": 448,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z9k_substepiPKfS0_S0_S0_S0_S0_iiPfS1_S1_PiS1_S1_": {
+        "REG": 240,
+        "STACK": 72,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 16,
+        "CONSTANT[0]": 464,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "c36a9abb5d9e0eac082529813887a16786f568ec24be5026f0a2bdb19b8acd98"
+     }
+    },
+    "check/step_fused.cu": {
+     "defines": [
+      "-DDK_SPLIT=0"
+     ],
+     "command": "nvcc -O3 -arch=sm_86 -std=c++17 -DDK_SPLIT=0 -o {out} {src}",
+     "L0": {
+      "source": "b95427a8e42aea86595607089f0caaecdae63046ee45655b8bd650a59a7772b0",
+      "defines": "02f4e78ad3b9eb997cf08f15d533568eca2bb6ce27e33a4e000fdb8dfdb407d8",
+      "command": "4801dd55f6019ca8cb615cd45055eaa3e48f15d9443e78682b23af7c96040103",
+      "source_bytes": 160142,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_86",
+      "device": "aaa91cd9e059fbc94907478927592080966db929a86371b64790fb08d0459ce9",
+      "host": "a78edce8424ba14ae8e97f1c842ffd17e4f00965b2aebd72dadaf96970d1f52a"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_86",
+      "ptx": "fb2f86933cb53a514adb69990cf74e3b84a7d8b7a576b19ae4dafbc528a3f8ed",
+      "sass": "757c0e1809bd95435813210260494b5b178a0cd97fce68fa7b4bf337f53fac08",
+      "sass_lines": 66809,
+      "resources": {
+       "_Z5k_preiPKfS0_S0_S0_S0_iiP4HandPfS3_": {
+        "REG": 153,
+        "STACK": 32,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 24,
+        "CONSTANT[0]": 432,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z6k_postiPKfS0_S0_iiiP4HandPfS3_S3_PiS3_": {
+        "REG": 168,
+        "STACK": 32,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 16,
+        "CONSTANT[0]": 448,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z9k_substepiPKfS0_S0_S0_S0_S0_iiPfS1_S1_PiS1_S1_": {
+        "REG": 240,
+        "STACK": 72,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 16,
+        "CONSTANT[0]": 464,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "ac338f2a79bb0dcc01388f5e000321148d7daf19fd5a2e790f4b4af569a8e405"
+     }
+    },
+    "check/adj.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=1",
+      "-DDK_ADJ_STAGE=3",
+      "-DDK_ADJ_NORMAL=0",
+      "-DDK_ADJ_PARALLEL=0"
+     ],
+     "command": "nvcc -O3 -arch=sm_86 -std=c++17 -DDK_ADJ_CLAMP_KV=1 -DDK_ADJ_STAGE=3 -DDK_ADJ_NORMAL=0 -DDK_ADJ_PARALLEL=0 -o {out} {src}",
+     "L0": {
+      "source": "0da10aa615a349dda54f981cc3c4644dc20682b3ceabf82b11cc0289064bf3e1",
+      "defines": "91289f0a7fe9915bd8396bcb1398b3073c5d38eca6dcf6a484a024f02ce828c6",
+      "command": "142eef445a1e7b337aa15a4dbcd6ff802350a6b894d226456078f88aba568777",
+      "source_bytes": 258681,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_86",
+      "device": "e30932946433d70a8baff6b4eb089db9da79fa93c3017fb46cc031ca762898c9",
+      "host": "1c31ea1b8558fc8643fbc9368af8a5293dddef72d446052cc2040ed557da1d0d"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_86",
+      "ptx": "1d7a8ed21b309b85eb4105e99d21ec38ec9f2f6b4844b65d58152da88c59b2a8",
+      "sass": "1154da0b7e211e03bf8291dc94d131bb4119ec916e4a29149939bfe27dc17770",
+      "sass_lines": 84748,
+      "resources": {
+       "_Z5k_preiPKfS0_S0_S0_S0_iiP4HandPfS3_": {
+        "REG": 153,
+        "STACK": 32,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 24,
+        "CONSTANT[0]": 432,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z6k_postiPKfS0_S0_iiiP4HandPfS3_S3_PiS3_": {
+        "REG": 168,
+        "STACK": 32,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 16,
+        "CONSTANT[0]": 448,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z9k_adjointiiPKfS0_S0_S0_S0_PfS1_S1_PiS1_S0_": {
+        "REG": 131,
+        "STACK": 288,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 8,
+        "CONSTANT[0]": 448,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z9k_substepiPKfS0_S0_S0_S0_S0_iiPfS1_S1_PiS1_S1_": {
+        "REG": 240,
+        "STACK": 72,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[2]": 16,
+        "CONSTANT[0]": 464,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "c7ee094e1ce5e71fe820faa157aef7de31727b7f9ad3a859e9663b6d4be18e74"
+     }
+    }
+   }
+  },
+  "sm_90 nvcc 12.4.131 gcc 11.4.0 cuobjdump 12.8.55": {
+   "arch": "sm_90",
+   "toolchain": {
+    "nvcc": "12.4.131 (cuda_12.4.r12.4/compiler.34097967_0)",
+    "host": "gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0",
+    "cuobjdump": "12.8.55 (cuda_12.8.r12.8/compiler.35351055_0)"
+   },
+   "route": "nvcc",
+   "units": {
+    "ffi/dk_ffi.cu": {
+     "defines": [],
+     "command": "nvcc -O3 -arch=sm_90 -std=c++17 -Xcompiler -fPIC -I{jax_ffi_include} -c -o {out} {src}",
+     "L0": {
+      "source": "b2ca9071cb091ff116cecdc3631a6d0fd74d9318e1434624cce1db2ec709e03d",
+      "defines": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "command": "2fb0c46a5f80c13f277a7368ce336964329a92b6e69c03702d16088216e2d478",
+      "source_bytes": 39739,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_90",
+      "device": "ab327db55242e05a7913c9eb5e196e51d48ef64e94746db9165135f5a1f2e2bb",
+      "host": "b7a87e13a1c93fdf8b698936ddc5023910ca9a75cec625110aceeebbd3abe934"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_90",
+      "ptx": "b63c46423344a5ea1159ecbc1fba77f9c24995779d6308503eafd19bfec48562",
+      "sass": "ae676f75976aa6a796779dfbe86199fdccbb2ca80f20a2d048b092b80e2fe668",
+      "sass_lines": 2543,
+      "resources": {
+       "_Z10k_diag_bwdiPKfS0_S0_S0_S0_Pi": {
+        "REG": 31,
+        "STACK": 0,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[0]": 584,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z10k_diag_fwdiiiPKiPKf": {
+        "REG": 31,
+        "STACK": 0,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[0]": 560,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z10k_last_fwdiPKii": {
+        "REG": 29,
+        "STACK": 0,
+        "SHARED": 1408,
+        "LOCAL": 0,
+        "CONSTANT[0]": 548,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z11k_diag_readPji": {
+        "REG": 16,
+        "STACK": 0,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[0]": 540,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z11k_last_readPj": {
+        "REG": 14,
+        "STACK": 0,
+        "SHARED": 0,
+        "LOCAL": 0,
+        "CONSTANT[0]": 536,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "bc3d6b8d4b1aaa69e6b6730d2694c7d0385510ab6958811d8040889b04b95496"
+     }
+    },
+    "ffi/dk_kv0_n0.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=0",
+      "-DDK_ADJ_NORMAL=0"
+     ],
+     "command": "nvcc -O3 -arch=sm_90 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=0 -DDK_ADJ_NORMAL=0 -c -o {out} {src}",
+     "L0": {
+      "source": "d1d1061a2ba7c0af897aafd94a99053591fca686c55c6a25df84893d148f3a79",
+      "defines": "8c5065ef04151f5876cf2cd820bbacd4890982ba8f6943277f41b49d579e7c46",
+      "command": "f85905216880a3df1792c3988e2c164600a71b07501279d6fea476948e6ef2fd",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_90",
+      "device": "c14c11e75184aa0a6cc0c6e01eea9e89feab0ef3114f0ced553b87719d8116c1",
+      "host": "929756abcec7444a72a18dfff44dd8d4445fcdb0cdc9af65a60d96b0550893d3"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_90",
+      "ptx": "d12cd162027d99fcaa055b8e63b16de2505eb51e5fef8ff7265f5ec86f5579e0",
+      "sass": "64b8d749a563c04595683ac209804ded1639b1a35df33a12d61c62a41665fd28",
+      "sass_lines": 18755,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_": {
+        "REG": 126,
+        "STACK": 288,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 624,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "0e4939ca2b973b63a8110fdbe429d27de604c8c3a7caaab3413ea8ef0adfcf09"
+     }
+    },
+    "ffi/dk_kv0_n1.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=0",
+      "-DDK_ADJ_NORMAL=1"
+     ],
+     "command": "nvcc -O3 -arch=sm_90 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=0 -DDK_ADJ_NORMAL=1 -c -o {out} {src}",
+     "L0": {
+      "source": "1639fa8135121df7f2b41ffdf8df5cd13684cddb6c872c388582b75cf6163fbc",
+      "defines": "8496c7924b10c76a488bb05ab64984020f312adf30f4f8f66ead3eeb20d7e16a",
+      "command": "5db807ff39884e525b63300d988b0c0876c60e4b33d2d1851881e9976b988c35",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_90",
+      "device": "68c5c70f48ecdb7322e02c972a7d0b04ae833cb73f876bfec65a22a5f7937801",
+      "host": "59b113a933f1d402959d8db897c565bf9ef6af8be81fd5d96beffc2d615d6de2"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_90",
+      "ptx": "2f42d32dfa84afed22a1e9743c3335c0e332fcd13740844a1fccdeed10128047",
+      "sass": "2e92691ce3e5b786c2290876c816ea3bafc568f1eabbaf9841745acf3039e5f5",
+      "sass_lines": 18691,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_": {
+        "REG": 126,
+        "STACK": 288,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 624,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "968c74820b4caef4b6ba0ad6b13992209600ea0e2d8ed8625a61d979b7d46b2e"
+     }
+    },
+    "ffi/dk_kv0_n2.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=0",
+      "-DDK_ADJ_NORMAL=2"
+     ],
+     "command": "nvcc -O3 -arch=sm_90 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=0 -DDK_ADJ_NORMAL=2 -c -o {out} {src}",
+     "L0": {
+      "source": "9711707f598d2f1c7f9fbfdd52c3f295fa729e112d51f5fcb380336ef1a2bede",
+      "defines": "3de37a4fad396da9e94b322e17df92c1b4a77b2d65a6c9402ffefabdbcd77572",
+      "command": "ab6a811a16cb51df8bab257a3a54af1cffba1a454a04adeaac8c58435d89a5bc",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_90",
+      "device": "e199c4d4df677119c9c4ecc7040f18544cf98be761032c11eead5fc4a9b80caa",
+      "host": "e421e5205d0d536a131c052d8b106cc608815032233f3ea0dd24e47aa9287bab"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_90",
+      "ptx": "7bec0bf49756582a8214bac16dd42b1d5c5d689e1cc04df313725344e8857dcb",
+      "sass": "65b32c05bfa6c1620aa056121e2e76aaf50d932c7f14a072668f0077a0096414",
+      "sass_lines": 18819,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_": {
+        "REG": 126,
+        "STACK": 288,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 624,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "9357cd4bafb2e2c89f4db29b4090ab194dd85770be683188a935c86e7e127cfc"
+     }
+    },
+    "ffi/dk_kv0_n3.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=0",
+      "-DDK_ADJ_NORMAL=3",
+      "-DSPLIT_PRE_MINB=16",
+      "-DSPLIT_POST_MAXNREG=128"
+     ],
+     "command": "nvcc -O3 -arch=sm_90 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=0 -DDK_ADJ_NORMAL=3 -DSPLIT_PRE_MINB=16 -DSPLIT_POST_MAXNREG=128 -c -o {out} {src}",
+     "L0": {
+      "source": "cc27fecb5f574cca969b257054d55bf45f3afb50c036c2f0f3f12098c1fda1ff",
+      "defines": "d32fc80a3d7cb55cb51301f93e645800196ac21fba6b4810de6df06c1a533764",
+      "command": "86028e178ce650c70f75068d9716df76756f0e241d72c8e3a3ef705c1a0b685a",
+      "source_bytes": 270935,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_90",
+      "device": "23d55734c494316420e802cc24137376ed861a3b14f1375a900e97aa4fd869bf",
+      "host": "58213ccf576183c4c35fe7bc98a8950694bfa26b2af9fd052a4e1c9aba7ecbed"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_90",
+      "ptx": "8d9614c8e7253294d473acc69cd86c54e8d38daa6a33a6f2f9d45846a872d601",
+      "sass": "4825e211fd9ded66841be3e7df4a57843ad4fd966c326a3b485a64e0acf60eae",
+      "sass_lines": 100386,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>5k_kinEiPKfS1_S1_PfS2_S2_S2_S2_": {
+        "REG": 48,
+        "STACK": 0,
+        "SHARED": 10640,
+        "LOCAL": 0,
+        "CONSTANT[0]": 600,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_ZN45_GLOBAL__N_<MODULE>5k_preEiPKfS1_S1_S1_S1_iiPNS_4HandEPfS4_": {
+        "REG": 128,
+        "STACK": 32,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 608,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_ZN45_GLOBAL__N_<MODULE>6k_postEiPKfS1_S1_iiiPNS_4HandEPfS4_S4_PiS4_": {
+        "REG": 128,
+        "STACK": 64,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 624,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_": {
+        "REG": 126,
+        "STACK": 288,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 624,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_ZN45_GLOBAL__N_<MODULE>9k_kin_vjpEiPKfS1_S1_S1_S1_S1_S1_S1_S1_S1_PfS2_": {
+        "REG": 65,
+        "STACK": 0,
+        "SHARED": 19216,
+        "LOCAL": 0,
+        "CONSTANT[0]": 632,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_ZN45_GLOBAL__N_<MODULE>9k_substepEiPKfS1_S1_S1_S1_S1_iiPfS2_S2_PiS2_S2_": {
+        "REG": 255,
+        "STACK": 72,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 640,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "a42941d91b6f8e75a16cca48d15cffbb2634ac8048cff4d53dcfcead6db70bbb"
+     }
+    },
+    "ffi/dk_kv1_n0.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=1",
+      "-DDK_ADJ_NORMAL=0"
+     ],
+     "command": "nvcc -O3 -arch=sm_90 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=1 -DDK_ADJ_NORMAL=0 -c -o {out} {src}",
+     "L0": {
+      "source": "6d3f04a30d4b985936049d64cc612601903b36a59ce6e826b8a6fb5abcd268eb",
+      "defines": "b636d6162de2290328b33720293945e3c00a3a00bcfafc72516baf8081f335ca",
+      "command": "aa928c12ef680de617bda85190abade4dd8201d5c1558c2c54090d1158fa9aee",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_90",
+      "device": "5dbca6ff26a68b43df39ce76139b49ffd760d9fda35d22d57a69bd5d18852a26",
+      "host": "698351ad5dbf7e7820f66747a13ccc2b2e65377f5f5726c9dd0fefa59856d323"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_90",
+      "ptx": "397b550257305060d4bad7b8a93adbe714b7cebca4b3da1f164cf66302577e57",
+      "sass": "19cb293b93cf61b8a4b2490002aee70eae2bde795afa5309e2bfaa33c7d1fa29",
+      "sass_lines": 18755,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_": {
+        "REG": 126,
+        "STACK": 288,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 624,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "58304e63d272ed76961b75da9c622990bf3379a4a5e1d8429586c56c90530a81"
+     }
+    },
+    "ffi/dk_kv1_n1.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=1",
+      "-DDK_ADJ_NORMAL=1"
+     ],
+     "command": "nvcc -O3 -arch=sm_90 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=1 -DDK_ADJ_NORMAL=1 -c -o {out} {src}",
+     "L0": {
+      "source": "8eedf36b9181954abd30f93d658d139e6ab66faf676c2b0d61622278247ac538",
+      "defines": "864ddc919284bf728c1621eb8d2f6ac6359455773b4fc5ed672a11a32e3db05a",
+      "command": "2b1d8b0cf792b4d6e2edc90ab5093bddbd409b583be7da06dc9ed5c47ac4b130",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_90",
+      "device": "bae683b62984d39c9c4a11fc445cba44cbea5b95b60360054f213b713284a3da",
+      "host": "9729a83ddf10f2eda27f4215530f170e38c95446bd488303704601579145b48f"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_90",
+      "ptx": "452a38c6da208a9e4a74ee56978bcb43a33c723426708f01e4fea3ada9440236",
+      "sass": "a20ad80dbc67c9e59036a314bac0e20cf02f8beef53fc3fccc4106386a8b90e1",
+      "sass_lines": 18691,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_": {
+        "REG": 126,
+        "STACK": 288,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 624,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "ea5589e259da20520fd28d346f8c6df43a02a9912c63ba81e14c3c049be6c6bc"
+     }
+    },
+    "ffi/dk_kv1_n2.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=1",
+      "-DDK_ADJ_NORMAL=2"
+     ],
+     "command": "nvcc -O3 -arch=sm_90 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=1 -DDK_ADJ_NORMAL=2 -c -o {out} {src}",
+     "L0": {
+      "source": "ade225cafef66c37344dee522c7803a3ba859cf096e0475c16f2ebd0b9445f78",
+      "defines": "77e92c03510ed52b83c99a40cebfbc00eda6f15edc494220a2e71dca8185340b",
+      "command": "2cb2145b3a98769cc0b146e78b7b352bf27f157c16171b87f1095ff6c9ad204a",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_90",
+      "device": "096d7f90b9127392deca06af412e9fba7f9535b4e8bf487133a461a82f88b797",
+      "host": "bfdbc09fe2e8ee8fa371085d3aaec2db58ef41de2e1718d4e3b49add234bffa1"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_90",
+      "ptx": "0c0ee47f0cd81d558ffefd818def6b9865616a4c204d2832f2afaac1979e0347",
+      "sass": "8cc66eaa49d4ce578aa077e2f6ab227d1de397c3ddbbb8767d7cb21cb0a02d58",
+      "sass_lines": 18819,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_": {
+        "REG": 126,
+        "STACK": 288,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 624,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "ca8f156301a3b66cba0ae66d852012bb7aa1fa2bed29c689afe33fc4f0f009c7"
+     }
+    },
+    "ffi/dk_kv1_n3.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=1",
+      "-DDK_ADJ_NORMAL=3"
+     ],
+     "command": "nvcc -O3 -arch=sm_90 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=1 -DDK_ADJ_NORMAL=3 -c -o {out} {src}",
+     "L0": {
+      "source": "20fcb6c0a62dda78577df3406a7b56e1c6aca8a7751ee36868b37fc5e30cb92c",
+      "defines": "4a6c1c9ef899dae62139137720055ce85353e4351365f87fe2482a50a1903b9e",
+      "command": "766cd5ab0ca7f87a8d36c48c8d249f0f1325debf00d1a35241c502ac8e1aa543",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_90",
+      "device": "de7df505b6f501a207805da9f569e57508851b06de131d63092abf9c93faeb7e",
+      "host": "321a929b0ab6f15a3eca7aab7f5a030dd101c644ee64b5c2d75b747e49a38fae"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_90",
+      "ptx": "3760917a3570bf6f1946122c31d67351eb505e75976b51aff84c473efbb4ac1a",
+      "sass": "4027403ee50bcdeec0ed00726fa07fb589b49addfd0554a229ba605102eafe2c",
+      "sass_lines": 18803,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_": {
+        "REG": 126,
+        "STACK": 288,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 624,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "98ecf11fa5db77d87bb1edcdf22bd8f8b67ae97944b331bf68faf3ee98ee03d0"
+     }
+    },
+    "ffi/dk_kv2_n0.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=2",
+      "-DDK_ADJ_NORMAL=0"
+     ],
+     "command": "nvcc -O3 -arch=sm_90 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=2 -DDK_ADJ_NORMAL=0 -c -o {out} {src}",
+     "L0": {
+      "source": "c484f3b8bc54262eeadaf58400e943e096d1ef94e86bed942e03c1cef3651222",
+      "defines": "9fbdccbf13146828516685612cd41492c4848be2058da4931a471c4fa48cfbf4",
+      "command": "83fa8f6566ffd47e3c5cb8adf47245d82da82df391ecd1c1b1cf742d7ba2eb1a",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_90",
+      "device": "863da0e3037ad469e1d8293a15977db99ff800832b68edb72be37f9d4d632198",
+      "host": "44cda8ccdf40c4b12f03a5fc230de9229459894371bde6126b3951fbf0ebd360"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_90",
+      "ptx": "0045d08ca944151c8dd2158b71aabf1c0d9150e31d158d4a7260ebade16ca669",
+      "sass": "ea8468e7306a955e196ce690c98644280fc596399162be16f996984f4bed3df2",
+      "sass_lines": 18899,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_f": {
+        "REG": 127,
+        "STACK": 288,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 628,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "69f93688dace6680c0ba60b96df2133124e0e426f1cb7dc7c49c5aaf9cbb6ce3"
+     }
+    },
+    "ffi/dk_kv2_n1.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=2",
+      "-DDK_ADJ_NORMAL=1"
+     ],
+     "command": "nvcc -O3 -arch=sm_90 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=2 -DDK_ADJ_NORMAL=1 -c -o {out} {src}",
+     "L0": {
+      "source": "e7f6cf3c00df00da72bd2741127fc5cd5d0cf2bfffb4dde92373aeba0541a502",
+      "defines": "96a0bc4d0e233aa82137f7195a191dffbd17c91b948c835146ee1fc0c40bbf1d",
+      "command": "b94c1608569ccefc81f48511e8e238d23e71ad80ab0bddbfd9aba7ce6e752cb7",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_90",
+      "device": "b67d26a4eb164d4463332e7ec9f897a85f74f3d950c67bdcc903ba73b98254e2",
+      "host": "e7582b689ef2db13cd7f4bff8f2a115f4c5fd343eb4bab8286170ed50104a3b8"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_90",
+      "ptx": "25a3487b02d65dddac87d5d675cecf686835adc30440da738ea265a5f8eb3c68",
+      "sass": "680159b739070a5c577e4b64fd86a8d88353df5e9c25a05abc7345c623c3c84d",
+      "sass_lines": 18835,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_f": {
+        "REG": 127,
+        "STACK": 288,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 628,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "1bb9c397851b75e080ab97451bea090b08848cfa9f6114f2d8b61615ea57b286"
+     }
+    },
+    "ffi/dk_kv2_n2.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=2",
+      "-DDK_ADJ_NORMAL=2"
+     ],
+     "command": "nvcc -O3 -arch=sm_90 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=2 -DDK_ADJ_NORMAL=2 -c -o {out} {src}",
+     "L0": {
+      "source": "9e7361310c9e0ce45ef83575d073f8345b6c1a79d439bdf43e19acba9fe6db79",
+      "defines": "bfe2a96c191113efd4f53042894fc90bd72226747007eaa5b42099f36b7ab29e",
+      "command": "5d65f25506ad30fc09cd6f69336ba93fb120c92eaa11dbbb4bb6b69a547bb104",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_90",
+      "device": "cb9f8584ff2e1ed8777d87eb5dda75087b4b89b02b9abdc16631bc67bbfb9e17",
+      "host": "ad1666aa09041dea5d72a595c792afcd8a374baae319be6845c692066557a17d"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_90",
+      "ptx": "83da6b56e6e2443cff0ac6f721e4aa537403aec9b36c9c2a0a6de2b2f2ac6022",
+      "sass": "b46736f82d43ee96e399780bc0a584c2f3fb8f4e3b9057ea119507acd36a6326",
+      "sass_lines": 18979,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_f": {
+        "REG": 127,
+        "STACK": 288,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 628,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "cca1e50d0033781c1fb8dd15a8ad8611328558becd1fff0e271c65c10f14cf79"
+     }
+    },
+    "ffi/dk_kv2_n3.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=2",
+      "-DDK_ADJ_NORMAL=3"
+     ],
+     "command": "nvcc -O3 -arch=sm_90 -std=c++17 -Xcompiler -fPIC -DDK_ADJ_CLAMP_KV=2 -DDK_ADJ_NORMAL=3 -c -o {out} {src}",
+     "L0": {
+      "source": "cf4d2a5a43c953277141851becfad67cb41b5e0072137f7e2170dd5ae2ab6aab",
+      "defines": "4e1dfcf9a137e45eb66985b793f2db9c788c4456971ac032b65fc684981b454c",
+      "command": "6ab3ed5748cd6eed2f0fd8c449becdc67853257cc61d98fb3bdacdde89a2fa61",
+      "source_bytes": 235787,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_90",
+      "device": "513c112d3ed4cd1951f4d9fc10f113a0d4fcdd52ddcca6275d0c8a6a34f3c836",
+      "host": "6b094c36793614810920b0becb3db2d186f132d1c72f52a0f416fb7fcc1f4116"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_90",
+      "ptx": "7c8567baa646249f917c6a4223478bd474b15a4579cf5e01baaa7fea4fabfa5e",
+      "sass": "9fe6207ea3b8f6d749e25d12d8aad3a08a955d12f47c172cedb338a8c2ef796d",
+      "sass_lines": 18979,
+      "resources": {
+       "_ZN45_GLOBAL__N_<MODULE>9k_adjointEiiPKfS1_S1_S1_S1_PfS2_S2_PiS2_S1_f": {
+        "REG": 127,
+        "STACK": 288,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 628,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "2816612130026489a56d527289ec57c4e6b80a11cadfb6766b556b9df75cc4bf"
+     }
+    },
+    "check/step.cu": {
+     "defines": [
+      "-DSPLIT_PRE_MINB=16",
+      "-DSPLIT_POST_MAXNREG=128"
+     ],
+     "command": "nvcc -O3 -arch=sm_90 -std=c++17 -DSPLIT_PRE_MINB=16 -DSPLIT_POST_MAXNREG=128 -o {out} {src}",
+     "L0": {
+      "source": "b95427a8e42aea86595607089f0caaecdae63046ee45655b8bd650a59a7772b0",
+      "defines": "3f92ac96bc0cf68afc715de90b69d7eeec3387a006525d9b8baeeb78100a4ee9",
+      "command": "936e574e563efe37751eb1c9d51c3b8988f0fea412b2ec3d2fb5fb16c1c46f6e",
+      "source_bytes": 160142,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_90",
+      "device": "37740a28bc4807751b34a8196e03c3835989c3415bd8c4392c258dd6f338cd42",
+      "host": "a339963fa9c33e1744e4ac954ee7a68d3efea0fbfcb7751f95847fc59cf48702"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_90",
+      "ptx": "6b49c5a03f9d64c8eba6f6f49949ce3ac8c3d517ba6b0b5cfa8656340528eba8",
+      "sass": "f5bc34a9cd78e0d98afc2414864c85177fcdb9af253e3ebe09ef5c9a78949886",
+      "sass_lines": 74713,
+      "resources": {
+       "_Z5k_preiPKfS0_S0_S0_S0_iiP4HandPfS3_": {
+        "REG": 128,
+        "STACK": 32,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 608,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z6k_postiPKfS0_S0_iiiP4HandPfS3_S3_PiS3_": {
+        "REG": 128,
+        "STACK": 64,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 624,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z9k_substepiPKfS0_S0_S0_S0_S0_iiPfS1_S1_PiS1_S1_": {
+        "REG": 255,
+        "STACK": 72,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 640,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "6118912c0bae2268171909fbecc97c1cc358be5e406e0376b4e65b561e5e3ebb"
+     }
+    },
+    "check/step_fused.cu": {
+     "defines": [
+      "-DDK_SPLIT=0",
+      "-DSPLIT_PRE_MINB=16",
+      "-DSPLIT_POST_MAXNREG=128"
+     ],
+     "command": "nvcc -O3 -arch=sm_90 -std=c++17 -DDK_SPLIT=0 -DSPLIT_PRE_MINB=16 -DSPLIT_POST_MAXNREG=128 -o {out} {src}",
+     "L0": {
+      "source": "b95427a8e42aea86595607089f0caaecdae63046ee45655b8bd650a59a7772b0",
+      "defines": "a2222227a64eeaac026d4ef42a85decd2c0e2c59f78bc364f539d6fd96fd6d78",
+      "command": "06cd3279a1139e7028d03a3c50ff4755980f3106f9f036d5fe921d90cc650718",
+      "source_bytes": 160142,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_90",
+      "device": "e400d6133efa563acc3ecd45d3429dee0736547fe80254e2f0650e2ebfc44772",
+      "host": "b3be95dd7de983e4e9f900721ee2e7a831767f7697384ed890361cd907b60b72"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_90",
+      "ptx": "6b49c5a03f9d64c8eba6f6f49949ce3ac8c3d517ba6b0b5cfa8656340528eba8",
+      "sass": "f5bc34a9cd78e0d98afc2414864c85177fcdb9af253e3ebe09ef5c9a78949886",
+      "sass_lines": 74713,
+      "resources": {
+       "_Z5k_preiPKfS0_S0_S0_S0_iiP4HandPfS3_": {
+        "REG": 128,
+        "STACK": 32,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 608,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z6k_postiPKfS0_S0_iiiP4HandPfS3_S3_PiS3_": {
+        "REG": 128,
+        "STACK": 64,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 624,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z9k_substepiPKfS0_S0_S0_S0_S0_iiPfS1_S1_PiS1_S1_": {
+        "REG": 255,
+        "STACK": 72,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 640,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "092a6cf2b90d131a4bc9881d7fc81f4253a73ede977a4c74aeaf53c95095b271"
+     }
+    },
+    "check/adj.cu": {
+     "defines": [
+      "-DDK_ADJ_CLAMP_KV=1",
+      "-DDK_ADJ_STAGE=3",
+      "-DDK_ADJ_NORMAL=0",
+      "-DDK_ADJ_PARALLEL=0",
+      "-DSPLIT_PRE_MINB=16",
+      "-DSPLIT_POST_MAXNREG=128"
+     ],
+     "command": "nvcc -O3 -arch=sm_90 -std=c++17 -DDK_ADJ_CLAMP_KV=1 -DDK_ADJ_STAGE=3 -DDK_ADJ_NORMAL=0 -DDK_ADJ_PARALLEL=0 -DSPLIT_PRE_MINB=16 -DSPLIT_POST_MAXNREG=128 -o {out} {src}",
+     "L0": {
+      "source": "0da10aa615a349dda54f981cc3c4644dc20682b3ceabf82b11cc0289064bf3e1",
+      "defines": "c9a36b43c0c048bb254f904c7ad6f6da6e9cbdcf8c92033e1c149300220c8534",
+      "command": "d35f2e849ea8fc9f7d8c1babe1973b49582caadc1d7d246603b75ad6d63dda6e",
+      "source_bytes": 258681,
+      "consts": "695812e392a4ce393d462b8b89efd54f1d564371a37c2ded41d6e542515c4c80",
+      "consts_count": 3230
+     },
+     "L1": {
+      "virtual": "compute_90",
+      "device": "60365186574713c500b80e10a3ff53f73cc728c33062d1aedc32547bd08ca749",
+      "host": "e47a9b6a62475189661fe5f5f81e6245ebb2de95c2b8e7b513a917cfa40858ba"
+     },
+     "L2": {
+      "route": "nvcc",
+      "ptx_virtual": "compute_90",
+      "ptx": "e95c7fe6348020ba755ed2e67fbf0a33f7cdddc9250b7e6e799772cdf3630d3d",
+      "sass": "aa369a66e226388800b0b8821087dee426bef6871cec2e9f70e8606f0c9b0c0f",
+      "sass_lines": 93468,
+      "resources": {
+       "_Z5k_preiPKfS0_S0_S0_S0_iiP4HandPfS3_": {
+        "REG": 128,
+        "STACK": 32,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 608,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z6k_postiPKfS0_S0_iiiP4HandPfS3_S3_PiS3_": {
+        "REG": 128,
+        "STACK": 64,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 624,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z9k_adjointiiPKfS0_S0_S0_S0_PfS1_S1_PiS1_S0_": {
+        "REG": 126,
+        "STACK": 288,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 624,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       },
+       "_Z9k_substepiPKfS0_S0_S0_S0_S0_iiPfS1_S1_PiS1_S1_": {
+        "REG": 255,
+        "STACK": 72,
+        "SHARED": 1024,
+        "LOCAL": 0,
+        "CONSTANT[0]": 640,
+        "TEXTURE": 0,
+        "SURFACE": 0,
+        "SAMPLER": 0
+       }
+      },
+      "host": "f45928c90ba36980931296392db642b930731776b1738697bade678b5ffa70a3"
+     }
+    }
+   }
+  }
+ },
+ "provenance": {
+  "date": "2026-10-31T06:48:31Z",
+  "nablaengine": {
+   "version": "0.1.0",
+   "commit": null,
+   "dirty": null,
+   "commit_note": "a revision before this repository's history: not recorded"
+  },
+  "arch": "sm_70",
+  "nvcc": "12.4.131",
+  "python": "3.12.4",
+  "packages": {
+   "numpy": "2.5.4",
+   "mujoco": "3.17.0",
+   "mujoco-mjx": "3.17.0",
+   "jax": "0.12.0.1",
+   "jaxlib": "0.12.0.1",
+   "jax-cuda12-plugin": "0.12.0.1",
+   "warp-lang": "1.18.0+cu12",
+   "scipy": "1.18.1"
+  },
+  "fixtures": "fixtures/mjlab"
+ }
+}

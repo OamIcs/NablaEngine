@@ -1,0 +1,328 @@
+{
+ "part": "mjx",
+ "impl": "jax",
+ "nworld": 4096,
+ "env": {
+  "python": "3.12.3",
+  "executable": ".../python",
+  "packages": {
+   "mujoco": "3.17.0",
+   "mujoco-mjx": "3.17.0",
+   "jax": "0.12.0.1",
+   "jaxlib": "0.12.0.1",
+   "jax-cuda12-plugin": "0.12.0.1",
+   "jax-cuda13-plugin": null,
+   "numpy": "2.5.4"
+  },
+  "cpu": {
+   "model": "AMD EPYC 9555 64-Core Processor",
+   "logical_cpus": 16,
+   "allocated": 16,
+   "affinity": "0-15",
+   "omp_num_threads": null,
+   "scheduler_cpu_counts": null,
+   "cpu_engine_threads": {
+    "threads": 16,
+    "rule": "len(os.sched_getaffinity(0))"
+   }
+  },
+  "gpu": {
+   "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+   "compute_cap": "12.0",
+   "driver": "595.58.03",
+   "memory": "97887 MiB"
+  },
+  "env": {
+   "XLA_PYTHON_CLIENT_PREALLOCATE": "false",
+   "PAPER_BENCH_JOB_START": "1793232249",
+   "PAPER_BENCH_PYTHON": ".../python",
+   "PAPER_BENCH_DEV_PYTHON": ".../python",
+   "PAPER_BENCH_PREFIX": ".../paper_bench_env",
+   "DK_FIXTURES": "fixtures/mjlab"
+  },
+  "quick": false
+ },
+ "device": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+ "mujoco_version": "3.17.0",
+ "cells": {
+  "mjlab/mf_s0/nw4096": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "forward": {
+    "ms": {
+     "median": 255.63295,
+     "p10": 255.56462,
+     "p90": 256.00612,
+     "min": 255.55918,
+     "max": 256.14163,
+     "rounds": [
+      255.55918,
+      255.63295,
+      255.57279,
+      256.14163,
+      255.80284
+     ]
+    },
+    "n": 1,
+    "kept_rounds": 5,
+    "warmup_calls": 5,
+    "warmup_s": 1.304
+   },
+   "finite": true,
+   "peak_bytes": 2419064832
+  },
+  "mjlab/mf_s1/nw4096": {
+   "corpus": {
+    "name": "mf_s1",
+    "path": "benchmarks/data/mf_s1.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "forward": {
+    "ms": {
+     "median": 254.3036,
+     "p10": 254.27346,
+     "p90": 254.86242,
+     "min": 254.26838,
+     "max": 255.20448,
+     "rounds": [
+      255.20448,
+      254.3036,
+      254.26838,
+      254.34934,
+      254.28106
+     ]
+    },
+    "n": 1,
+    "kept_rounds": 5,
+    "warmup_calls": 5,
+    "warmup_s": 1.28
+   },
+   "finite": true,
+   "peak_bytes": 2419064832
+  },
+  "menagerie/nw4096": {
+   "model": {
+    "file": "unitree_g1/scene_mjx.xml",
+    "commit": "f3b6013629c7b94f8ee93fd977b161fa8350f9bc",
+    "substeps": 5,
+    "timestep": 0.004,
+    "iterations": 5,
+    "ls_iterations": 8,
+    "tolerance": 1e-08,
+    "solver": 2,
+    "integrator": 3,
+    "cone": 0,
+    "nsensor": 14,
+    "static": {
+     "ncon": 77,
+     "nefc": 267
+    }
+   },
+   "states": {
+    "source": "MuJoCo C float64 rollouts from keyframe 'home' + noise, seed 0",
+    "count": 1024,
+    "seconds": 5.07
+   },
+   "compile_s": {
+    "trace_lower": 3.06,
+    "compile": 13.643
+   },
+   "compiled_memory": {
+    "temp": 411194720,
+    "argument": 2227004,
+    "output": 1736728
+   },
+   "forward": {
+    "ms": {
+     "median": 50.71097,
+     "p10": 50.69801,
+     "p90": 50.72782,
+     "min": 50.68966,
+     "max": 50.73372,
+     "rounds": [
+      50.71097,
+      50.71055,
+      50.73372,
+      50.68966,
+      50.71899
+     ]
+    },
+    "n": 5,
+    "kept_rounds": 5,
+    "warmup_calls": 20,
+    "warmup_s": 1.046
+   },
+   "finite": true
+  },
+  "jacfwd/mf_s0/B64": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "B": 64,
+   "chunk": 33,
+   "chunks": 3,
+   "directions": 99,
+   "outputs": 71,
+   "compile_s": {
+    "trace_lower": 7.859,
+    "compile": 31.811
+   },
+   "compiled_memory": {
+    "temp": 1148651952,
+    "argument": 1571756,
+    "output": 599824
+   },
+   "jacobian": {
+    "ms": {
+     "median": 530.72662,
+     "p10": 530.69017,
+     "p90": 531.33547,
+     "min": 530.68106,
+     "max": 531.48769,
+     "rounds": [
+      530.72662,
+      530.68106,
+      531.48769
+     ]
+    },
+    "n": 1,
+    "kept_rounds": 3,
+    "warmup_calls": 1,
+    "warmup_s": 0.565
+   },
+   "ms_per_world": 8.2926,
+   "finite": true,
+   "peak_bytes": 2419064832
+  },
+  "jacfwd/mf_s0/B256": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "B": 256,
+   "chunk": 33,
+   "chunks": 3,
+   "directions": 99,
+   "outputs": 71,
+   "compile_s": {
+    "trace_lower": 7.752,
+    "compile": 30.386
+   },
+   "compiled_memory": {
+    "temp": 4682104496,
+    "argument": 6208940,
+    "output": 2399248
+   },
+   "jacobian": {
+    "ms": {
+     "median": 2100.41038,
+     "p10": 2099.47105,
+     "p90": 2105.6848,
+     "min": 2099.23622,
+     "max": 2107.00341,
+     "rounds": [
+      2107.00341,
+      2100.41038,
+      2099.23622
+     ]
+    },
+    "n": 1,
+    "kept_rounds": 3,
+    "warmup_calls": 1,
+    "warmup_s": 2.206
+   },
+   "ms_per_world": 8.2047,
+   "finite": true,
+   "peak_bytes": 6448234240
+  },
+  "jacfwd/mf_s0/B1024": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "B": 1024,
+   "chunk": 33,
+   "chunks": 3,
+   "directions": 99,
+   "outputs": 71,
+   "compile_s": {
+    "trace_lower": 7.448,
+    "compile": 39.764
+   },
+   "compiled_memory": {
+    "temp": 21967625904,
+    "argument": 24757676,
+    "output": 9596944
+   },
+   "jacobian": {
+    "ms": {
+     "median": 8840.14424,
+     "p10": 8840.012,
+     "p90": 8840.19172,
+     "min": 8839.97894,
+     "max": 8840.20359,
+     "rounds": [
+      8840.20359,
+      8839.97894,
+      8840.14424
+     ]
+    },
+    "n": 1,
+    "kept_rounds": 3,
+    "warmup_calls": 1,
+    "warmup_s": 9.086
+   },
+   "ms_per_world": 8.633,
+   "finite": true,
+   "peak_bytes": 24788230144
+  },
+  "reverse_mode": {
+   "supported": false,
+   "type": "ValueError",
+   "message": "Reverse-mode differentiation does not work for lax.while_loop or lax.fori_loop with dynamic start/stop values. Try using lax.scan, or using fori_loop with static start/stop.",
+   "B": 2,
+   "call": "jax.vjp(control step) then its pullback under jax.jit"
+  }
+ },
+ "errors": {},
+ "mjlab_model": {
+  "path": "fixtures/mjlab/g1_train.mjb",
+  "substeps": 4,
+  "timestep": 0.005,
+  "iterations": 10,
+  "ls_iterations": 8,
+  "tolerance": 1e-08,
+  "sensors_disabled": true,
+  "static": {
+   "ncon": 533,
+   "nefc": 1699
+  },
+  "dtype": "float32"
+ },
+ "mjlab_compile_s": {
+  "trace_lower": 2.687,
+  "compile": 13.814
+ },
+ "mjlab_compiled_memory": {
+  "temp": 2102190152,
+  "argument": 44885420,
+  "output": 1736728
+ }
+}

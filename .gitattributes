@@ -1,0 +1,9 @@
+# binary data (models, corpora, results): no text diffs or merges, no line-ending conversion
+*.npz binary
+*.mjb binary
+# patches must reach their tools byte for byte
+*.patch -text
+*.diff -text
+*.sh text eol=lf
+# language statistics: documentation is not the project's code
+docs/** linguist-documentation

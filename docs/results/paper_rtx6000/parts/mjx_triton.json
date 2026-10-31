@@ -1,0 +1,105 @@
+{
+ "part": "mjx",
+ "impl": "jax",
+ "nworld": 4096,
+ "env": {
+  "python": "3.12.3",
+  "executable": ".../python",
+  "packages": {
+   "mujoco": "3.17.0",
+   "mujoco-mjx": "3.17.0",
+   "jax": "0.12.0.1",
+   "jaxlib": "0.12.0.1",
+   "jax-cuda12-plugin": "0.12.0.1",
+   "jax-cuda13-plugin": null,
+   "numpy": "2.5.4"
+  },
+  "cpu": {
+   "model": "AMD EPYC 9555 64-Core Processor",
+   "logical_cpus": 16,
+   "allocated": 16,
+   "affinity": "0-15",
+   "omp_num_threads": null,
+   "scheduler_cpu_counts": null,
+   "cpu_engine_threads": {
+    "threads": 16,
+    "rule": "len(os.sched_getaffinity(0))"
+   }
+  },
+  "gpu": {
+   "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+   "compute_cap": "12.0",
+   "driver": "595.58.03",
+   "memory": "97887 MiB"
+  },
+  "env": {
+   "XLA_PYTHON_CLIENT_PREALLOCATE": "false",
+   "PAPER_BENCH_JOB_START": "1793232249",
+   "XLA_FLAGS": "--xla_gpu_triton_gemm_any=true",
+   "PAPER_BENCH_PYTHON": ".../python",
+   "PAPER_BENCH_DEV_PYTHON": ".../python",
+   "PAPER_BENCH_PREFIX": ".../paper_bench_env",
+   "DK_FIXTURES": "fixtures/mjlab"
+  },
+  "quick": false
+ },
+ "device": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+ "mujoco_version": "3.17.0",
+ "cells": {
+  "mjlab/mf_s0/nw4096": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "forward": {
+    "ms": {
+     "median": 255.61054,
+     "p10": 255.58373,
+     "p90": 255.65275,
+     "min": 255.57291,
+     "max": 255.6566,
+     "rounds": [
+      255.64696,
+      255.61054,
+      255.57291,
+      255.6566,
+      255.59996
+     ]
+    },
+    "n": 1,
+    "kept_rounds": 5,
+    "warmup_calls": 5,
+    "warmup_s": 1.305
+   },
+   "finite": true,
+   "peak_bytes": 2419064832
+  }
+ },
+ "errors": {},
+ "mjlab_model": {
+  "path": "fixtures/mjlab/g1_train.mjb",
+  "substeps": 4,
+  "timestep": 0.005,
+  "iterations": 10,
+  "ls_iterations": 8,
+  "tolerance": 1e-08,
+  "sensors_disabled": true,
+  "static": {
+   "ncon": 533,
+   "nefc": 1699
+  },
+  "dtype": "float32"
+ },
+ "mjlab_compile_s": {
+  "trace_lower": 2.805,
+  "compile": 14.652
+ },
+ "mjlab_compiled_memory": {
+  "temp": 2102190152,
+  "argument": 44885420,
+  "output": 1736728
+ }
+}

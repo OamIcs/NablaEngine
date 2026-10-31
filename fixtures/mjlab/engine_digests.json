@@ -1,0 +1,984 @@
+{
+ "about": "sha256 digests of scripts/engine_step_check.py's forward outputs per corpus, run and build (nablaengine.checks)",
+ "entries": [
+  {
+   "key": {
+    "build": {
+     "arch": "sm_70",
+     "forward_flags": [
+      "-arch=sm_70"
+     ],
+     "nvcc": "12.4.131",
+     "options": []
+    },
+    "corpus": "mf_s0",
+    "inputs_sha256": "88c57f6787989e34ae09bd1d611abf080f4b146250d040d89e17360e7a94c8a3",
+    "model_sha256": "757b0997d992073b645732a1daaeab92587f00e29691b93aa76094a3f02ef379",
+    "run": {
+     "fused": false,
+     "iterations": 50,
+     "nworld": 256,
+     "select": "truth",
+     "substeps": 4,
+     "tape": false,
+     "tolerance": 1e-08
+    },
+    "unit": "check_forward"
+   },
+   "made": {
+    "date": "2026-10-29",
+    "gpu": {
+     "compute_cap": "7.0",
+     "driver": "550.90.07",
+     "name": "Tesla V100-SXM2-16GB"
+    },
+    "source_sha256": "1878a8f8b8119375e929376ac138ae544eed7ce937757660be75eb44487982cb"
+   },
+   "outputs": {
+    "con": {
+     "dtype": "<f4",
+     "sha256": "aaa26f7b8ae4ac416064776ef7260db86d87c18fe04fe5f3a8c1e7a7c810fa84",
+     "shape": [
+      256,
+      64,
+      8
+     ]
+    },
+    "info": {
+     "dtype": "<i4",
+     "sha256": "0fe99ba12b90d029893db6770e971cef32bbfa337797fef7221f0aa68decffa9",
+     "shape": [
+      256,
+      4
+     ]
+    },
+    "qpos": {
+     "dtype": "<f4",
+     "sha256": "ba9da1a10c00e540b2396c1ca109cff6ccbc24e8a76382d903a06d9b34713816",
+     "shape": [
+      256,
+      36
+     ]
+    },
+    "qvel": {
+     "dtype": "<f4",
+     "sha256": "710e3b286972292fcb139f97492ade5880c1f4f5dcd8c0a692b0bdcdb6332501",
+     "shape": [
+      256,
+      35
+     ]
+    },
+    "warm": {
+     "dtype": "<f4",
+     "sha256": "ae1495d4cc678d04f0f4fb536d878e08c67a93595c6b169304c5b9c612366dee",
+     "shape": [
+      256,
+      35
+     ]
+    }
+   }
+  },
+  {
+   "key": {
+    "build": {
+     "arch": "sm_70",
+     "forward_flags": [
+      "-arch=sm_70"
+     ],
+     "nvcc": "12.4.131",
+     "options": []
+    },
+    "corpus": "mf_s0",
+    "inputs_sha256": "b2dbcd8858ec807cb2e4dfc9641c625bbfaeed44c688c2440185f2e9ee0a0253",
+    "model_sha256": "757b0997d992073b645732a1daaeab92587f00e29691b93aa76094a3f02ef379",
+    "run": {
+     "fused": false,
+     "iterations": 50,
+     "nworld": 4096,
+     "select": "first",
+     "substeps": 1,
+     "tape": false,
+     "tolerance": 1e-08
+    },
+    "unit": "check_forward"
+   },
+   "made": {
+    "date": "2026-10-29",
+    "gpu": {
+     "compute_cap": "7.0",
+     "driver": "550.90.07",
+     "name": "Tesla V100-SXM2-16GB"
+    },
+    "source_sha256": "1878a8f8b8119375e929376ac138ae544eed7ce937757660be75eb44487982cb"
+   },
+   "outputs": {
+    "con": {
+     "dtype": "<f4",
+     "sha256": "5ce36d16dd562b81193705ec50336432e146cf542c08785cfac643e96cc39fe8",
+     "shape": [
+      4096,
+      64,
+      8
+     ]
+    },
+    "info": {
+     "dtype": "<i4",
+     "sha256": "6570ca25c49fb1363fab67139466d85f84330f7ad7d84f87c515dcef31a507e4",
+     "shape": [
+      4096,
+      4
+     ]
+    },
+    "qpos": {
+     "dtype": "<f4",
+     "sha256": "9c77a48caa87a1c23dd34885e7b7bab86c97ff2c3e719c88dd0c71cd19215b1e",
+     "shape": [
+      4096,
+      36
+     ]
+    },
+    "qvel": {
+     "dtype": "<f4",
+     "sha256": "a749319d7972917263be307bfed29d76e8ce794a4ea998dff316c48cbbf74e33",
+     "shape": [
+      4096,
+      35
+     ]
+    },
+    "warm": {
+     "dtype": "<f4",
+     "sha256": "fae6dd99f6b66a3d16275acd7c78ab430201c36607043740fb018c2dc3b67bc8",
+     "shape": [
+      4096,
+      35
+     ]
+    }
+   }
+  },
+  {
+   "key": {
+    "build": {
+     "arch": "sm_70",
+     "forward_flags": [
+      "-arch=sm_70"
+     ],
+     "nvcc": "12.4.131",
+     "options": []
+    },
+    "corpus": "mf_s0",
+    "inputs_sha256": "b2dbcd8858ec807cb2e4dfc9641c625bbfaeed44c688c2440185f2e9ee0a0253",
+    "model_sha256": "757b0997d992073b645732a1daaeab92587f00e29691b93aa76094a3f02ef379",
+    "run": {
+     "fused": false,
+     "iterations": 50,
+     "nworld": 4096,
+     "select": "first",
+     "substeps": 4,
+     "tape": true,
+     "tolerance": 1e-08
+    },
+    "unit": "check_forward"
+   },
+   "made": {
+    "date": "2026-10-29",
+    "gpu": {
+     "compute_cap": "7.0",
+     "driver": "550.90.07",
+     "name": "Tesla V100-SXM2-16GB"
+    },
+    "source_sha256": "1878a8f8b8119375e929376ac138ae544eed7ce937757660be75eb44487982cb"
+   },
+   "outputs": {
+    "con": {
+     "dtype": "<f4",
+     "sha256": "aac93e6ebb65e18a3a030ad5d3335ec355555bc69ff5b876cded2d564436417e",
+     "shape": [
+      4096,
+      64,
+      8
+     ]
+    },
+    "info": {
+     "dtype": "<i4",
+     "sha256": "347e75ebe36a259ff799532bb1410d05f07a4abe7c3e4be5ac7bb955b7a386ac",
+     "shape": [
+      4096,
+      4
+     ]
+    },
+    "qpos": {
+     "dtype": "<f4",
+     "sha256": "81ac291416d1ea201f706d783a3a2c2e3218794c6f7ce1a979c75500640b48f2",
+     "shape": [
+      4096,
+      36
+     ]
+    },
+    "qvel": {
+     "dtype": "<f4",
+     "sha256": "8bf75dbe9ed53df66083cdd032949e3910e8b97ef329527473b1d3117fabc7d2",
+     "shape": [
+      4096,
+      35
+     ]
+    },
+    "tape": {
+     "dtype": "<f4",
+     "sha256": "b460144c48185d9c705ecf95fde3666e379ed7f968b02ec45d9640afd2020ec3",
+     "shape": [
+      4096,
+      4,
+      1472
+     ]
+    },
+    "warm": {
+     "dtype": "<f4",
+     "sha256": "9a77e03478ce3f0a633659cce6e9bad03c208ecfa0a447278c61604b793ed08a",
+     "shape": [
+      4096,
+      35
+     ]
+    }
+   }
+  },
+  {
+   "key": {
+    "build": {
+     "arch": "sm_70",
+     "forward_flags": [
+      "-arch=sm_70"
+     ],
+     "nvcc": "12.4.131",
+     "options": []
+    },
+    "corpus": "mf_s1",
+    "inputs_sha256": "a67672f096e21a39d0699c2ce66fd79f46489b9c4057a34fb191fc4488f6c604",
+    "model_sha256": "757b0997d992073b645732a1daaeab92587f00e29691b93aa76094a3f02ef379",
+    "run": {
+     "fused": false,
+     "iterations": 50,
+     "nworld": 256,
+     "select": "truth",
+     "substeps": 4,
+     "tape": false,
+     "tolerance": 1e-08
+    },
+    "unit": "check_forward"
+   },
+   "made": {
+    "date": "2026-10-29",
+    "gpu": {
+     "compute_cap": "7.0",
+     "driver": "550.90.07",
+     "name": "Tesla V100-SXM2-16GB"
+    },
+    "source_sha256": "1878a8f8b8119375e929376ac138ae544eed7ce937757660be75eb44487982cb"
+   },
+   "outputs": {
+    "con": {
+     "dtype": "<f4",
+     "sha256": "7a32e4fd191325112c33cb2904b86db4cdcb8e94c38e35c03ff4c053c895eb3d",
+     "shape": [
+      256,
+      64,
+      8
+     ]
+    },
+    "info": {
+     "dtype": "<i4",
+     "sha256": "d8c231a6e1c1acfa2135cbc833a8146d5a3c35932b9371ee7a1c1ce82756d305",
+     "shape": [
+      256,
+      4
+     ]
+    },
+    "qpos": {
+     "dtype": "<f4",
+     "sha256": "4296ae1708830ef31087af9e78e8c8d3f066a514cc4e24d6c99e33eadbd31187",
+     "shape": [
+      256,
+      36
+     ]
+    },
+    "qvel": {
+     "dtype": "<f4",
+     "sha256": "1762e26abc1f7ecdb371cd2aa8972a24d7cf32996f8129f69d77c448ed8e4045",
+     "shape": [
+      256,
+      35
+     ]
+    },
+    "warm": {
+     "dtype": "<f4",
+     "sha256": "38f33768fd73289542f552eeafb4aa4ef22f0c14d03ae326df320c094618b0e8",
+     "shape": [
+      256,
+      35
+     ]
+    }
+   }
+  },
+  {
+   "key": {
+    "build": {
+     "arch": "sm_70",
+     "forward_flags": [
+      "-arch=sm_70"
+     ],
+     "nvcc": "12.4.131",
+     "options": []
+    },
+    "corpus": "mf_s1",
+    "inputs_sha256": "f5956e18dfcfee6088c9e3c6c32b27f74076bb103c50cebc9f1600372ed452cd",
+    "model_sha256": "757b0997d992073b645732a1daaeab92587f00e29691b93aa76094a3f02ef379",
+    "run": {
+     "fused": false,
+     "iterations": 50,
+     "nworld": 4096,
+     "select": "first",
+     "substeps": 1,
+     "tape": false,
+     "tolerance": 1e-08
+    },
+    "unit": "check_forward"
+   },
+   "made": {
+    "date": "2026-10-29",
+    "gpu": {
+     "compute_cap": "7.0",
+     "driver": "550.90.07",
+     "name": "Tesla V100-SXM2-16GB"
+    },
+    "source_sha256": "1878a8f8b8119375e929376ac138ae544eed7ce937757660be75eb44487982cb"
+   },
+   "outputs": {
+    "con": {
+     "dtype": "<f4",
+     "sha256": "342550a52d0383325361cfcdab2ede1fc30c3e4802253a679bba0b6a9574648e",
+     "shape": [
+      4096,
+      64,
+      8
+     ]
+    },
+    "info": {
+     "dtype": "<i4",
+     "sha256": "ba56c8f4e0aad70db106eb40ae14d4cb7cc4a86a3c2e219a5e14f83ff5216ab4",
+     "shape": [
+      4096,
+      4
+     ]
+    },
+    "qpos": {
+     "dtype": "<f4",
+     "sha256": "e071a4fd2355e52a1ba182b48c525fea1bb07efd572967b381274e1fe7dabd4f",
+     "shape": [
+      4096,
+      36
+     ]
+    },
+    "qvel": {
+     "dtype": "<f4",
+     "sha256": "094b3fe352f03df0035a6e55cf30ef0d546bfb6695ea9230705749d28908d469",
+     "shape": [
+      4096,
+      35
+     ]
+    },
+    "warm": {
+     "dtype": "<f4",
+     "sha256": "e5c7fb528a24db0e163a6948aa20f851680864cf8c3b372f1e96198fe38dcd44",
+     "shape": [
+      4096,
+      35
+     ]
+    }
+   }
+  },
+  {
+   "key": {
+    "build": {
+     "arch": "sm_70",
+     "forward_flags": [
+      "-arch=sm_70"
+     ],
+     "nvcc": "12.4.131",
+     "options": []
+    },
+    "corpus": "mf_s1",
+    "inputs_sha256": "f5956e18dfcfee6088c9e3c6c32b27f74076bb103c50cebc9f1600372ed452cd",
+    "model_sha256": "757b0997d992073b645732a1daaeab92587f00e29691b93aa76094a3f02ef379",
+    "run": {
+     "fused": false,
+     "iterations": 50,
+     "nworld": 4096,
+     "select": "first",
+     "substeps": 4,
+     "tape": true,
+     "tolerance": 1e-08
+    },
+    "unit": "check_forward"
+   },
+   "made": {
+    "date": "2026-10-29",
+    "gpu": {
+     "compute_cap": "7.0",
+     "driver": "550.90.07",
+     "name": "Tesla V100-SXM2-16GB"
+    },
+    "source_sha256": "1878a8f8b8119375e929376ac138ae544eed7ce937757660be75eb44487982cb"
+   },
+   "outputs": {
+    "con": {
+     "dtype": "<f4",
+     "sha256": "9b7eb78c9ed97fee0bbf46f568d197ff328fbc69cbe2f81be9218087ab145843",
+     "shape": [
+      4096,
+      64,
+      8
+     ]
+    },
+    "info": {
+     "dtype": "<i4",
+     "sha256": "5334d667d55441ae3089377e2a51547f28f82f508e4ae3be9eab6ffee6623850",
+     "shape": [
+      4096,
+      4
+     ]
+    },
+    "qpos": {
+     "dtype": "<f4",
+     "sha256": "ac53ce34038a1b759ac353951f7a0d4168cd5778650f14b30da967fe228ea406",
+     "shape": [
+      4096,
+      36
+     ]
+    },
+    "qvel": {
+     "dtype": "<f4",
+     "sha256": "9ab9fcc4b4071c1dbbeec1fbf87d09cb86b1428ed7c8fcbeb5fd916361d3b6c9",
+     "shape": [
+      4096,
+      35
+     ]
+    },
+    "tape": {
+     "dtype": "<f4",
+     "sha256": "1c6503800b0d1c9fec91cac16cd56c2a3047cbb1adca8f5ea5a10de84a8241c4",
+     "shape": [
+      4096,
+      4,
+      1472
+     ]
+    },
+    "warm": {
+     "dtype": "<f4",
+     "sha256": "21d2c3a2cca9dbe4c9e0c890f29ec095bb4e1c6bc4800bb4a96eb5805c8bb657",
+     "shape": [
+      4096,
+      35
+     ]
+    }
+   }
+  },
+  {
+   "key": {
+    "build": {
+     "arch": "sm_90",
+     "forward_flags": [
+      "-arch=sm_90"
+     ],
+     "nvcc": "12.8.93",
+     "options": [
+      "-DSPLIT_PRE_MINB=16",
+      "-DSPLIT_POST_MAXNREG=128"
+     ]
+    },
+    "corpus": "mf_s0",
+    "inputs_sha256": "88c57f6787989e34ae09bd1d611abf080f4b146250d040d89e17360e7a94c8a3",
+    "model_sha256": "757b0997d992073b645732a1daaeab92587f00e29691b93aa76094a3f02ef379",
+    "run": {
+     "fused": false,
+     "iterations": 50,
+     "nworld": 256,
+     "select": "truth",
+     "substeps": 4,
+     "tape": false,
+     "tolerance": 1e-08
+    },
+    "unit": "check_forward"
+   },
+   "made": {
+    "date": "2026-10-29",
+    "gpu": {
+     "compute_cap": "9.0",
+     "driver": "595.91.07",
+     "name": "NVIDIA H100 80GB HBM3"
+    },
+    "source_sha256": "30f259f21333581e336c2f08f0eb1524b5872b46341453428ac547de668f51ae"
+   },
+   "outputs": {
+    "con": {
+     "dtype": "<f4",
+     "sha256": "aaa26f7b8ae4ac416064776ef7260db86d87c18fe04fe5f3a8c1e7a7c810fa84",
+     "shape": [
+      256,
+      64,
+      8
+     ]
+    },
+    "info": {
+     "dtype": "<i4",
+     "sha256": "0fe99ba12b90d029893db6770e971cef32bbfa337797fef7221f0aa68decffa9",
+     "shape": [
+      256,
+      4
+     ]
+    },
+    "qpos": {
+     "dtype": "<f4",
+     "sha256": "ba9da1a10c00e540b2396c1ca109cff6ccbc24e8a76382d903a06d9b34713816",
+     "shape": [
+      256,
+      36
+     ]
+    },
+    "qvel": {
+     "dtype": "<f4",
+     "sha256": "710e3b286972292fcb139f97492ade5880c1f4f5dcd8c0a692b0bdcdb6332501",
+     "shape": [
+      256,
+      35
+     ]
+    },
+    "warm": {
+     "dtype": "<f4",
+     "sha256": "ae1495d4cc678d04f0f4fb536d878e08c67a93595c6b169304c5b9c612366dee",
+     "shape": [
+      256,
+      35
+     ]
+    }
+   }
+  },
+  {
+   "key": {
+    "build": {
+     "arch": "sm_90",
+     "forward_flags": [
+      "-arch=sm_90"
+     ],
+     "nvcc": "12.8.93",
+     "options": [
+      "-DSPLIT_PRE_MINB=16",
+      "-DSPLIT_POST_MAXNREG=128"
+     ]
+    },
+    "corpus": "mf_s0",
+    "inputs_sha256": "b2dbcd8858ec807cb2e4dfc9641c625bbfaeed44c688c2440185f2e9ee0a0253",
+    "model_sha256": "757b0997d992073b645732a1daaeab92587f00e29691b93aa76094a3f02ef379",
+    "run": {
+     "fused": false,
+     "iterations": 50,
+     "nworld": 4096,
+     "select": "first",
+     "substeps": 1,
+     "tape": false,
+     "tolerance": 1e-08
+    },
+    "unit": "check_forward"
+   },
+   "made": {
+    "date": "2026-10-29",
+    "gpu": {
+     "compute_cap": "9.0",
+     "driver": "595.91.07",
+     "name": "NVIDIA H100 80GB HBM3"
+    },
+    "source_sha256": "30f259f21333581e336c2f08f0eb1524b5872b46341453428ac547de668f51ae"
+   },
+   "outputs": {
+    "con": {
+     "dtype": "<f4",
+     "sha256": "5ce36d16dd562b81193705ec50336432e146cf542c08785cfac643e96cc39fe8",
+     "shape": [
+      4096,
+      64,
+      8
+     ]
+    },
+    "info": {
+     "dtype": "<i4",
+     "sha256": "6570ca25c49fb1363fab67139466d85f84330f7ad7d84f87c515dcef31a507e4",
+     "shape": [
+      4096,
+      4
+     ]
+    },
+    "qpos": {
+     "dtype": "<f4",
+     "sha256": "9c77a48caa87a1c23dd34885e7b7bab86c97ff2c3e719c88dd0c71cd19215b1e",
+     "shape": [
+      4096,
+      36
+     ]
+    },
+    "qvel": {
+     "dtype": "<f4",
+     "sha256": "a749319d7972917263be307bfed29d76e8ce794a4ea998dff316c48cbbf74e33",
+     "shape": [
+      4096,
+      35
+     ]
+    },
+    "warm": {
+     "dtype": "<f4",
+     "sha256": "fae6dd99f6b66a3d16275acd7c78ab430201c36607043740fb018c2dc3b67bc8",
+     "shape": [
+      4096,
+      35
+     ]
+    }
+   }
+  },
+  {
+   "key": {
+    "build": {
+     "arch": "sm_90",
+     "forward_flags": [
+      "-arch=sm_90"
+     ],
+     "nvcc": "12.8.93",
+     "options": [
+      "-DSPLIT_PRE_MINB=16",
+      "-DSPLIT_POST_MAXNREG=128"
+     ]
+    },
+    "corpus": "mf_s0",
+    "inputs_sha256": "b2dbcd8858ec807cb2e4dfc9641c625bbfaeed44c688c2440185f2e9ee0a0253",
+    "model_sha256": "757b0997d992073b645732a1daaeab92587f00e29691b93aa76094a3f02ef379",
+    "run": {
+     "fused": false,
+     "iterations": 50,
+     "nworld": 4096,
+     "select": "first",
+     "substeps": 4,
+     "tape": true,
+     "tolerance": 1e-08
+    },
+    "unit": "check_forward"
+   },
+   "made": {
+    "date": "2026-10-29",
+    "gpu": {
+     "compute_cap": "9.0",
+     "driver": "595.91.07",
+     "name": "NVIDIA H100 80GB HBM3"
+    },
+    "source_sha256": "30f259f21333581e336c2f08f0eb1524b5872b46341453428ac547de668f51ae"
+   },
+   "outputs": {
+    "con": {
+     "dtype": "<f4",
+     "sha256": "aac93e6ebb65e18a3a030ad5d3335ec355555bc69ff5b876cded2d564436417e",
+     "shape": [
+      4096,
+      64,
+      8
+     ]
+    },
+    "info": {
+     "dtype": "<i4",
+     "sha256": "347e75ebe36a259ff799532bb1410d05f07a4abe7c3e4be5ac7bb955b7a386ac",
+     "shape": [
+      4096,
+      4
+     ]
+    },
+    "qpos": {
+     "dtype": "<f4",
+     "sha256": "81ac291416d1ea201f706d783a3a2c2e3218794c6f7ce1a979c75500640b48f2",
+     "shape": [
+      4096,
+      36
+     ]
+    },
+    "qvel": {
+     "dtype": "<f4",
+     "sha256": "8bf75dbe9ed53df66083cdd032949e3910e8b97ef329527473b1d3117fabc7d2",
+     "shape": [
+      4096,
+      35
+     ]
+    },
+    "tape": {
+     "dtype": "<f4",
+     "sha256": "b460144c48185d9c705ecf95fde3666e379ed7f968b02ec45d9640afd2020ec3",
+     "shape": [
+      4096,
+      4,
+      1472
+     ]
+    },
+    "warm": {
+     "dtype": "<f4",
+     "sha256": "9a77e03478ce3f0a633659cce6e9bad03c208ecfa0a447278c61604b793ed08a",
+     "shape": [
+      4096,
+      35
+     ]
+    }
+   }
+  },
+  {
+   "key": {
+    "build": {
+     "arch": "sm_90",
+     "forward_flags": [
+      "-arch=sm_90"
+     ],
+     "nvcc": "12.8.93",
+     "options": [
+      "-DSPLIT_PRE_MINB=16",
+      "-DSPLIT_POST_MAXNREG=128"
+     ]
+    },
+    "corpus": "mf_s1",
+    "inputs_sha256": "a67672f096e21a39d0699c2ce66fd79f46489b9c4057a34fb191fc4488f6c604",
+    "model_sha256": "757b0997d992073b645732a1daaeab92587f00e29691b93aa76094a3f02ef379",
+    "run": {
+     "fused": false,
+     "iterations": 50,
+     "nworld": 256,
+     "select": "truth",
+     "substeps": 4,
+     "tape": false,
+     "tolerance": 1e-08
+    },
+    "unit": "check_forward"
+   },
+   "made": {
+    "date": "2026-10-29",
+    "gpu": {
+     "compute_cap": "9.0",
+     "driver": "595.91.07",
+     "name": "NVIDIA H100 80GB HBM3"
+    },
+    "source_sha256": "30f259f21333581e336c2f08f0eb1524b5872b46341453428ac547de668f51ae"
+   },
+   "outputs": {
+    "con": {
+     "dtype": "<f4",
+     "sha256": "7a32e4fd191325112c33cb2904b86db4cdcb8e94c38e35c03ff4c053c895eb3d",
+     "shape": [
+      256,
+      64,
+      8
+     ]
+    },
+    "info": {
+     "dtype": "<i4",
+     "sha256": "d8c231a6e1c1acfa2135cbc833a8146d5a3c35932b9371ee7a1c1ce82756d305",
+     "shape": [
+      256,
+      4
+     ]
+    },
+    "qpos": {
+     "dtype": "<f4",
+     "sha256": "4296ae1708830ef31087af9e78e8c8d3f066a514cc4e24d6c99e33eadbd31187",
+     "shape": [
+      256,
+      36
+     ]
+    },
+    "qvel": {
+     "dtype": "<f4",
+     "sha256": "1762e26abc1f7ecdb371cd2aa8972a24d7cf32996f8129f69d77c448ed8e4045",
+     "shape": [
+      256,
+      35
+     ]
+    },
+    "warm": {
+     "dtype": "<f4",
+     "sha256": "38f33768fd73289542f552eeafb4aa4ef22f0c14d03ae326df320c094618b0e8",
+     "shape": [
+      256,
+      35
+     ]
+    }
+   }
+  },
+  {
+   "key": {
+    "build": {
+     "arch": "sm_90",
+     "forward_flags": [
+      "-arch=sm_90"
+     ],
+     "nvcc": "12.8.93",
+     "options": [
+      "-DSPLIT_PRE_MINB=16",
+      "-DSPLIT_POST_MAXNREG=128"
+     ]
+    },
+    "corpus": "mf_s1",
+    "inputs_sha256": "f5956e18dfcfee6088c9e3c6c32b27f74076bb103c50cebc9f1600372ed452cd",
+    "model_sha256": "757b0997d992073b645732a1daaeab92587f00e29691b93aa76094a3f02ef379",
+    "run": {
+     "fused": false,
+     "iterations": 50,
+     "nworld": 4096,
+     "select": "first",
+     "substeps": 1,
+     "tape": false,
+     "tolerance": 1e-08
+    },
+    "unit": "check_forward"
+   },
+   "made": {
+    "date": "2026-10-29",
+    "gpu": {
+     "compute_cap": "9.0",
+     "driver": "595.91.07",
+     "name": "NVIDIA H100 80GB HBM3"
+    },
+    "source_sha256": "30f259f21333581e336c2f08f0eb1524b5872b46341453428ac547de668f51ae"
+   },
+   "outputs": {
+    "con": {
+     "dtype": "<f4",
+     "sha256": "342550a52d0383325361cfcdab2ede1fc30c3e4802253a679bba0b6a9574648e",
+     "shape": [
+      4096,
+      64,
+      8
+     ]
+    },
+    "info": {
+     "dtype": "<i4",
+     "sha256": "ba56c8f4e0aad70db106eb40ae14d4cb7cc4a86a3c2e219a5e14f83ff5216ab4",
+     "shape": [
+      4096,
+      4
+     ]
+    },
+    "qpos": {
+     "dtype": "<f4",
+     "sha256": "e071a4fd2355e52a1ba182b48c525fea1bb07efd572967b381274e1fe7dabd4f",
+     "shape": [
+      4096,
+      36
+     ]
+    },
+    "qvel": {
+     "dtype": "<f4",
+     "sha256": "094b3fe352f03df0035a6e55cf30ef0d546bfb6695ea9230705749d28908d469",
+     "shape": [
+      4096,
+      35
+     ]
+    },
+    "warm": {
+     "dtype": "<f4",
+     "sha256": "e5c7fb528a24db0e163a6948aa20f851680864cf8c3b372f1e96198fe38dcd44",
+     "shape": [
+      4096,
+      35
+     ]
+    }
+   }
+  },
+  {
+   "key": {
+    "build": {
+     "arch": "sm_90",
+     "forward_flags": [
+      "-arch=sm_90"
+     ],
+     "nvcc": "12.8.93",
+     "options": [
+      "-DSPLIT_PRE_MINB=16",
+      "-DSPLIT_POST_MAXNREG=128"
+     ]
+    },
+    "corpus": "mf_s1",
+    "inputs_sha256": "f5956e18dfcfee6088c9e3c6c32b27f74076bb103c50cebc9f1600372ed452cd",
+    "model_sha256": "757b0997d992073b645732a1daaeab92587f00e29691b93aa76094a3f02ef379",
+    "run": {
+     "fused": false,
+     "iterations": 50,
+     "nworld": 4096,
+     "select": "first",
+     "substeps": 4,
+     "tape": true,
+     "tolerance": 1e-08
+    },
+    "unit": "check_forward"
+   },
+   "made": {
+    "date": "2026-10-29",
+    "gpu": {
+     "compute_cap": "9.0",
+     "driver": "595.91.07",
+     "name": "NVIDIA H100 80GB HBM3"
+    },
+    "source_sha256": "30f259f21333581e336c2f08f0eb1524b5872b46341453428ac547de668f51ae"
+   },
+   "outputs": {
+    "con": {
+     "dtype": "<f4",
+     "sha256": "9b7eb78c9ed97fee0bbf46f568d197ff328fbc69cbe2f81be9218087ab145843",
+     "shape": [
+      4096,
+      64,
+      8
+     ]
+    },
+    "info": {
+     "dtype": "<i4",
+     "sha256": "5334d667d55441ae3089377e2a51547f28f82f508e4ae3be9eab6ffee6623850",
+     "shape": [
+      4096,
+      4
+     ]
+    },
+    "qpos": {
+     "dtype": "<f4",
+     "sha256": "ac53ce34038a1b759ac353951f7a0d4168cd5778650f14b30da967fe228ea406",
+     "shape": [
+      4096,
+      36
+     ]
+    },
+    "qvel": {
+     "dtype": "<f4",
+     "sha256": "9ab9fcc4b4071c1dbbeec1fbf87d09cb86b1428ed7c8fcbeb5fd916361d3b6c9",
+     "shape": [
+      4096,
+      35
+     ]
+    },
+    "tape": {
+     "dtype": "<f4",
+     "sha256": "1c6503800b0d1c9fec91cac16cd56c2a3047cbb1adca8f5ea5a10de84a8241c4",
+     "shape": [
+      4096,
+      4,
+      1472
+     ]
+    },
+    "warm": {
+     "dtype": "<f4",
+     "sha256": "21d2c3a2cca9dbe4c9e0c890f29ec095bb4e1c6bc4800bb4a96eb5805c8bb657",
+     "shape": [
+      4096,
+      35
+     ]
+    }
+   }
+  }
+ ],
+ "format": "dk-engine-digests/1"
+}

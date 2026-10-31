@@ -1,0 +1,293 @@
+{
+ "part": "mjx",
+ "impl": "jax",
+ "nworld": 4096,
+ "env": {
+  "python": "3.12.16",
+  "executable": ".../python",
+  "packages": {
+   "mujoco": "3.17.0",
+   "mujoco-mjx": "3.17.0",
+   "jax": "0.12.0.1",
+   "jaxlib": "0.12.0.1",
+   "jax-cuda12-plugin": "0.12.0.1",
+   "jax-cuda13-plugin": null,
+   "numpy": "2.5.4"
+  },
+  "cpu": {
+   "model": "Intel(R) Xeon(R) CPU E5-2699 v4 @ 2.20GHz",
+   "logical_cpus": 88,
+   "allocated": 88,
+   "affinity": "0-87",
+   "omp_num_threads": null,
+   "scheduler_cpu_counts": null,
+   "cpu_engine_threads": {
+    "threads": 32,
+    "rule": "PAPER_BENCH_MJC_THREADS"
+   }
+  },
+  "gpu": {
+   "name": "NVIDIA GeForce RTX 3090",
+   "compute_cap": "8.6",
+   "driver": "565.57.01",
+   "memory": "24576 MiB"
+  },
+  "env": {
+   "PAPER_BENCH_MJC_THREADS": "32",
+   "PAPER_BENCH_SKIP_SETUP": "1",
+   "XLA_PYTHON_CLIENT_PREALLOCATE": "false",
+   "PAPER_BENCH_JOB_START": "1793266160",
+   "PAPER_BENCH_PARTS": "ours,mjx,mjx_triton,rep2_ours,rep3_ours,rep2_mjx,rep3_mjx,rep2_mjc,rep3_mjc,rep3_mjw_native,rep3_mjw_pr1535,rep3_mjw_pr1535_fix",
+   "PAPER_BENCH_BUDGET_MIN": "150",
+   "PAPER_BENCH_TIMEOUT_SCALE": "2.5",
+   "PAPER_BENCH_PYTHON": ".../python3.12",
+   "PAPER_BENCH_DEV_PYTHON": ".../python",
+   "PAPER_BENCH_PREFIX": ".../paper_bench_env",
+   "DK_FIXTURES": "fixtures/mjlab"
+  },
+  "quick": false
+ },
+ "device": "NVIDIA GeForce RTX 3090",
+ "mujoco_version": "3.17.0",
+ "cells": {
+  "mjlab/mf_s0/nw4096": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "forward": {
+    "ms": {
+     "median": 512.12035,
+     "p10": 509.89582,
+     "p90": 515.73791,
+     "min": 509.46056,
+     "max": 516.83769,
+     "rounds": [
+      509.46056,
+      510.54873,
+      514.08823,
+      512.12035,
+      516.83769
+     ]
+    },
+    "n": 1,
+    "kept_rounds": 5,
+    "warmup_calls": 5,
+    "warmup_s": 2.612
+   },
+   "finite": true,
+   "peak_bytes": 2346942720
+  },
+  "mjlab/mf_s1/nw4096": {
+   "corpus": {
+    "name": "mf_s1",
+    "path": "benchmarks/data/mf_s1.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "forward": {
+    "ms": {
+     "median": 520.58177,
+     "p10": 519.78675,
+     "p90": 522.44714,
+     "min": 519.58014,
+     "max": 523.4006,
+     "rounds": [
+      523.4006,
+      521.01696,
+      519.58014,
+      520.58177,
+      520.09668
+     ]
+    },
+    "n": 1,
+    "kept_rounds": 5,
+    "warmup_calls": 5,
+    "warmup_s": 2.574
+   },
+   "finite": true,
+   "peak_bytes": 2346942720
+  },
+  "menagerie/nw4096": {
+   "model": {
+    "file": "unitree_g1/scene_mjx.xml",
+    "commit": "f3b6013629c7b94f8ee93fd977b161fa8350f9bc",
+    "substeps": 5,
+    "timestep": 0.004,
+    "iterations": 5,
+    "ls_iterations": 8,
+    "tolerance": 1e-08,
+    "solver": 2,
+    "integrator": 3,
+    "cone": 0,
+    "nsensor": 14,
+    "static": {
+     "ncon": 77,
+     "nefc": 267
+    }
+   },
+   "states": {
+    "source": "MuJoCo C float64 rollouts from keyframe 'home' + noise, seed 0",
+    "count": 1024,
+    "seconds": 16.5
+   },
+   "compile_s": {
+    "trace_lower": 11.385,
+    "compile": 51.155
+   },
+   "compiled_memory": {
+    "temp": 383806048,
+    "argument": 2227004,
+    "output": 1736728
+   },
+   "forward": {
+    "ms": {
+     "median": 129.15424,
+     "p10": 127.69871,
+     "p90": 130.69655,
+     "min": 127.31832,
+     "max": 130.72294,
+     "rounds": [
+      127.31832,
+      129.15424,
+      130.65697,
+      128.26929,
+      130.72294
+     ]
+    },
+    "n": 2,
+    "kept_rounds": 5,
+    "warmup_calls": 8,
+    "warmup_s": 1.126
+   },
+   "finite": true
+  },
+  "jacfwd/mf_s0/B64": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "B": 64,
+   "chunk": 33,
+   "chunks": 3,
+   "directions": 99,
+   "outputs": 71,
+   "compile_s": {
+    "trace_lower": 25.589,
+    "compile": 129.378
+   },
+   "compiled_memory": {
+    "temp": 1181746352,
+    "argument": 1571756,
+    "output": 599824
+   },
+   "jacobian": {
+    "ms": {
+     "median": 1019.54788,
+     "p10": 1014.54975,
+     "p90": 1020.18372,
+     "min": 1013.30022,
+     "max": 1020.34267,
+     "rounds": [
+      1013.30022,
+      1019.54788,
+      1020.34267
+     ]
+    },
+    "n": 1,
+    "kept_rounds": 3,
+    "warmup_calls": 1,
+    "warmup_s": 1.135
+   },
+   "ms_per_world": 15.9304,
+   "finite": true,
+   "peak_bytes": 2346942720
+  },
+  "jacfwd/mf_s0/B256": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "B": 256,
+   "chunk": 33,
+   "chunks": 3,
+   "directions": 99,
+   "outputs": 71,
+   "compile_s": {
+    "trace_lower": 25.066,
+    "compile": 134.17
+   },
+   "compiled_memory": {
+    "temp": 4959950768,
+    "argument": 6208940,
+    "output": 2399248
+   },
+   "jacobian": {
+    "ms": {
+     "median": 4203.00877,
+     "p10": 4176.49655,
+     "p90": 4231.11266,
+     "min": 4169.8685,
+     "max": 4238.13863,
+     "rounds": [
+      4169.8685,
+      4203.00877,
+      4238.13863
+     ]
+    },
+    "n": 1,
+    "kept_rounds": 3,
+    "warmup_calls": 1,
+    "warmup_s": 4.412
+   },
+   "ms_per_world": 16.418,
+   "finite": true,
+   "peak_bytes": 6448234240
+  },
+  "jacfwd/mf_s0/B1024": {
+   "skipped": "oom",
+   "message": "NOT_FOUND: Failed to get configs for: 6 out of 675 instructions. See logs for all failures. Example failure: \nAll configs failed during profiling or were excluded from selection.\nFailures (2):\nEXECUTION FAILED: RESOURCE_EXHAUSTED: Out of memory while trying to allocate 7.50GiB with allocator GPU_0_b"
+  },
+  "reverse_mode": {
+   "supported": false,
+   "type": "ValueError",
+   "message": "Reverse-mode differentiation does not work for lax.while_loop or lax.fori_loop with dynamic start/stop values. Try using lax.scan, or using fori_loop with static start/stop.",
+   "B": 2,
+   "call": "jax.vjp(control step) then its pullback under jax.jit"
+  }
+ },
+ "errors": {},
+ "mjlab_model": {
+  "path": "fixtures/mjlab/g1_train.mjb",
+  "substeps": 4,
+  "timestep": 0.005,
+  "iterations": 10,
+  "ls_iterations": 8,
+  "tolerance": 1e-08,
+  "sensors_disabled": true,
+  "static": {
+   "ncon": 533,
+   "nefc": 1699
+  },
+  "dtype": "float32"
+ },
+ "mjlab_compile_s": {
+  "trace_lower": 9.349,
+  "compile": 45.703
+ },
+ "mjlab_compiled_memory": {
+  "temp": 2109480008,
+  "argument": 44885420,
+  "output": 1736728
+ }
+}

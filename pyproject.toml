@@ -1,0 +1,67 @@
+[build-system]
+requires = ["setuptools>=77"]  # 77: license as an SPDX expression and license-files (PEP 639)
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nablaengine"
+dynamic = ["version"]  # nablaengine.__version__
+description = "Fused CUDA physics with an analytic adjoint for the Unitree G1 (mjlab model), with a JAX FFI"
+readme = "README.md"
+license = "Apache-2.0"
+license-files = ["LICENSE", "NOTICE", "THIRD_PARTY_NOTICES.md"]
+authors = [{name = "The NablaEngine Authors"}]
+requires-python = ">=3.12"
+keywords = ["physics", "simulation", "differentiable", "cuda", "jax", "robotics", "mujoco"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: GPU :: NVIDIA CUDA :: 12",
+    "Intended Audience :: Science/Research",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Physics",
+]
+# The package's runtime dependencies. The CUDA library is compiled by nvcc on first use, so a CUDA 12.x toolkit is
+# needed as well (not a Python package; see README.md). requirements.txt and requirements-lock.txt hold the tested
+# versions, the checks' packages included; scripts/setup_env.sh installs the lock.
+dependencies = [
+    "numpy>=2.2",
+    "mujoco==3.17.0",   # fixtures/mjlab/g1_train.mjb is in the binary format of this version
+]
+
+[project.optional-dependencies]
+jax = [  # nablaengine.jax_ffi: the FFI library is compiled against the installed jaxlib's XLA FFI headers
+    "jax==0.12.0.1",
+    "jaxlib==0.12.0.1",
+]
+cuda = [  # JAX on NVIDIA GPUs: the CUDA 12 plugin with the CUDA libraries as wheels, and ptxas
+    "jax-cuda12-plugin[with-cuda]==0.12.0.1",
+    "jax-cuda12-pjrt==0.12.0.1",
+    "nvidia-cuda-nvcc-cu12==12.9.86",
+]
+torch = [  # nablaengine.torch_ffi (on a V100, a PyTorch build that targets sm_70: docs/api_torch.md)
+    "torch>=2.6",
+]
+checks = [  # the verification scripts: MJX (the kinematics check) and SciPy (statistical tests)
+    "mujoco-mjx==3.17.0",
+    "scipy==1.18.1",
+]
+# The checks against MuJoCo Warp also need warp-lang from a pinned wheel and MuJoCo Warp itself; neither is on this
+# list (see requirements.txt and README.md).
+
+[project.urls]
+Repository = "https://github.com/OamIcs/NablaEngine"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.dynamic]
+version = {attr = "nablaengine.__version__"}
+
+[tool.ruff]
+line-length = 120
+extend-exclude = ["docs"]  # documentation and result files
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]
+ignore = ["E741"]  # l, I, O: the notation of the formulas the code follows

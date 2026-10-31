@@ -1,0 +1,166 @@
+{
+ "part": "mjc",
+ "nthread": 13,
+ "nthread_rule": "PAPER_BENCH_MJC_THREADS",
+ "nworld": 4096,
+ "fd_B": 512,
+ "eps": 1e-06,
+ "fd_full_B": 4096,
+ "env": {
+  "python": "3.12.3",
+  "executable": ".../python",
+  "packages": {
+   "mujoco": "3.17.0",
+   "numpy": "2.5.4"
+  },
+  "cpu": {
+   "model": "Intel(R) Xeon(R) Platinum 8462Y+",
+   "logical_cpus": 128,
+   "allocated": 128,
+   "affinity": "0-127",
+   "omp_num_threads": null,
+   "scheduler_cpu_counts": null,
+   "cpu_engine_threads": {
+    "threads": 13,
+    "rule": "PAPER_BENCH_MJC_THREADS"
+   }
+  },
+  "gpu": {
+   "name": "NVIDIA H100 80GB HBM3",
+   "compute_cap": "9.0",
+   "driver": "595.91.07",
+   "memory": "81559 MiB"
+  },
+  "env": {
+   "PAPER_BENCH_MJC_THREADS": "13",
+   "XLA_PYTHON_CLIENT_PREALLOCATE": "false",
+   "PAPER_BENCH_JOB_START": "1793258583",
+   "PAPER_BENCH_PYTHON": ".../python",
+   "PAPER_BENCH_DEV_PYTHON": ".../python",
+   "PAPER_BENCH_PREFIX": ".../paper_bench_env",
+   "DK_FIXTURES": "fixtures/mjlab"
+  },
+  "quick": false
+ },
+ "mujoco_version": "3.17.0",
+ "cells": {
+  "mf_s0/nw4096": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "nthread": 13,
+   "forward": {
+    "ms": {
+     "median": 57.13633,
+     "p10": 56.91396,
+     "p90": 57.61803,
+     "min": 56.85107,
+     "max": 57.84201,
+     "rounds": [
+      57.00829,
+      56.85107,
+      57.28206,
+      57.84201,
+      57.13633
+     ]
+    },
+    "n": 1,
+    "kept_rounds": 5,
+    "warmup_calls": 17,
+    "warmup_s": 1.074,
+    "us_per_world_substep": 3.4873
+   },
+   "finite": true,
+   "forward_1t": {
+    "ms": {
+     "median": 12.01195,
+     "p10": 11.80186,
+     "p90": 12.0293,
+     "min": 11.70439,
+     "max": 12.03604,
+     "rounds": [
+      12.0192,
+      11.70439,
+      11.94807,
+      12.03604,
+      12.01195
+     ]
+    },
+    "n": 1,
+    "kept_rounds": 5,
+    "warmup_calls": 84,
+    "warmup_s": 1.009,
+    "B": 64,
+    "us_per_world_substep": 46.9217
+   }
+  },
+  "mf_s1/nw4096": {
+   "corpus": {
+    "name": "mf_s1",
+    "path": "benchmarks/data/mf_s1.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "nthread": 13,
+   "forward": {
+    "ms": {
+     "median": 58.23188,
+     "p10": 58.11048,
+     "p90": 58.38433,
+     "min": 58.04662,
+     "max": 58.40951,
+     "rounds": [
+      58.23188,
+      58.34657,
+      58.04662,
+      58.20627,
+      58.40951
+     ]
+    },
+    "n": 1,
+    "kept_rounds": 5,
+    "warmup_calls": 17,
+    "warmup_s": 1.063,
+    "us_per_world_substep": 3.5542
+   },
+   "finite": true,
+   "forward_1t": {
+    "ms": {
+     "median": 11.9719,
+     "p10": 11.95699,
+     "p90": 12.02154,
+     "min": 11.95132,
+     "max": 12.02926,
+     "rounds": [
+      11.96551,
+      11.95132,
+      12.00996,
+      12.02926,
+      11.9719
+     ]
+    },
+    "n": 1,
+    "kept_rounds": 5,
+    "warmup_calls": 83,
+    "warmup_s": 1.005,
+    "B": 64,
+    "us_per_world_substep": 46.7652
+   }
+  }
+ },
+ "errors": {},
+ "opt": {
+  "iterations": 10,
+  "tolerance": 1e-08,
+  "ls_iterations": 8,
+  "solver": 2,
+  "integrator": 3,
+  "cone": 0,
+  "timestep": 0.005
+ }
+}

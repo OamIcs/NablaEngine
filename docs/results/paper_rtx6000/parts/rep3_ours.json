@@ -1,0 +1,496 @@
+{
+ "part": "ours",
+ "what": "nablaengine.jax_ffi under jax.jit",
+ "nworld": 4096,
+ "iterations": 10,
+ "substeps": 4,
+ "modes": {
+  "exact": {
+   "clamp_kv": 1,
+   "normal": 0
+  },
+  "interface": {
+   "clamp_kv": 0,
+   "normal": 3
+  }
+ },
+ "env": {
+  "python": "3.12.3",
+  "executable": ".../python",
+  "packages": {
+   "jax": "0.12.0.1",
+   "jaxlib": "0.12.0.1",
+   "jax-cuda12-plugin": "0.12.0.1",
+   "jax-cuda13-plugin": null,
+   "mujoco": "3.17.0",
+   "numpy": "2.5.4"
+  },
+  "cpu": {
+   "model": "AMD EPYC 9555 64-Core Processor",
+   "logical_cpus": 16,
+   "allocated": 16,
+   "affinity": "0-15",
+   "omp_num_threads": null,
+   "scheduler_cpu_counts": null,
+   "cpu_engine_threads": {
+    "threads": 16,
+    "rule": "len(os.sched_getaffinity(0))"
+   }
+  },
+  "gpu": {
+   "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+   "compute_cap": "12.0",
+   "driver": "595.58.03",
+   "memory": "97887 MiB"
+  },
+  "env": {
+   "XLA_PYTHON_CLIENT_PREALLOCATE": "false",
+   "PAPER_BENCH_JOB_START": "1793232249",
+   "PAPER_BENCH_PYTHON": ".../python",
+   "PAPER_BENCH_DEV_PYTHON": ".../python",
+   "PAPER_BENCH_PREFIX": ".../paper_bench_env",
+   "DK_FIXTURES": "fixtures/mjlab"
+  },
+  "quick": false
+ },
+ "provenance": {
+  "date": "2026-10-29T00:18:23Z",
+  "nablaengine": {
+   "version": "0.1.0",
+   "commit": null,
+   "dirty": null,
+   "commit_note": "a revision before this repository's history: not recorded"
+  },
+  "gpu": {
+   "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+   "compute_cap": "12.0",
+   "driver": "595.58.03"
+  },
+  "arch": "sm_120",
+  "nvcc": "12.8.93",
+  "python": "3.12.3",
+  "packages": {
+   "numpy": "2.5.4",
+   "mujoco": "3.17.0",
+   "mujoco-mjx": "3.17.0",
+   "jax": "0.12.0.1",
+   "jaxlib": "0.12.0.1",
+   "jax-cuda12-plugin": "0.12.0.1",
+   "warp-lang": "1.18.0+cu12",
+   "scipy": "1.18.1"
+  },
+  "environment": {
+   "CUDA_DEVICE_ORDER": "PCI_BUS_ID",
+   "DK_FIXTURES": "fixtures/mjlab",
+   "XLA_PYTHON_CLIENT_PREALLOCATE": "false"
+  },
+  "fixtures": "fixtures/mjlab"
+ },
+ "cells": {
+  "mf_s0/nw4096": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "compile_s": {
+    "fwd": 0.007,
+    "exact.bwd": 0.01,
+    "exact.vjp": 0.033,
+    "fwd_tape": 0.009,
+    "interface.bwd": 0.012,
+    "interface.vjp": 0.031
+   },
+   "fwd": {
+    "ms": {
+     "median": 1.20173,
+     "p10": 1.20066,
+     "p90": 1.20226,
+     "min": 1.20048,
+     "max": 1.20244,
+     "rounds": [
+      1.20173,
+      1.20093,
+      1.202,
+      1.20244,
+      1.20048
+     ]
+    },
+    "n": 185,
+    "kept_rounds": 5,
+    "warmup_calls": 742,
+    "warmup_s": 1.0,
+    "latency_ms_median": 1.3325
+   },
+   "finite_fwd": true,
+   "forward_info": {
+    "newton_iterations_mean": 4.4091796875,
+    "contacts_mean": 6.6201171875,
+    "rows_max": 112,
+    "unsupported_worlds": 0
+   },
+   "exact": {
+    "bwd": {
+     "ms": {
+      "median": 0.53562,
+      "p10": 0.53525,
+      "p90": 0.53605,
+      "min": 0.53515,
+      "max": 0.53612,
+      "rounds": [
+       0.53515,
+       0.53612,
+       0.53596,
+       0.5354,
+       0.53562
+      ]
+     },
+     "n": 200,
+     "kept_rounds": 5,
+     "warmup_calls": 1545,
+     "warmup_s": 1.0,
+     "latency_ms_median": 0.64793
+    },
+    "finite_bwd": true,
+    "vjp": {
+     "ms": {
+      "median": 1.78339,
+      "p10": 1.78245,
+      "p90": 1.7836,
+      "min": 1.78228,
+      "max": 1.7837,
+      "rounds": [
+       1.7837,
+       1.78339,
+       1.78271,
+       1.78347,
+       1.78228
+      ]
+     },
+     "n": 129,
+     "kept_rounds": 5,
+     "warmup_calls": 516,
+     "warmup_s": 1.0,
+     "latency_ms_median": 1.92285
+    }
+   },
+   "fwd_tape": {
+    "ms": {
+     "median": 1.25122,
+     "p10": 1.25106,
+     "p90": 1.25172,
+     "min": 1.25105,
+     "max": 1.25193,
+     "rounds": [
+      1.25139,
+      1.25105,
+      1.25107,
+      1.25193,
+      1.25122
+     ]
+    },
+    "n": 179,
+    "kept_rounds": 5,
+    "warmup_calls": 718,
+    "warmup_s": 1.001,
+    "latency_ms_median": 1.39596
+   },
+   "interface": {
+    "bwd": {
+     "ms": {
+      "median": 0.53729,
+      "p10": 0.53679,
+      "p90": 0.53736,
+      "min": 0.53674,
+      "max": 0.53738,
+      "rounds": [
+       0.53674,
+       0.53729,
+       0.53686,
+       0.53738,
+       0.53732
+      ]
+     },
+     "n": 200,
+     "kept_rounds": 5,
+     "warmup_calls": 1531,
+     "warmup_s": 1.0,
+     "latency_ms_median": 0.64789
+    },
+    "finite_bwd": true,
+    "vjp": {
+     "ms": {
+      "median": 1.78456,
+      "p10": 1.78395,
+      "p90": 1.78512,
+      "min": 1.78364,
+      "max": 1.78539,
+      "rounds": [
+       1.78364,
+       1.78441,
+       1.78456,
+       1.78539,
+       1.78473
+      ]
+     },
+     "n": 129,
+     "kept_rounds": 5,
+     "warmup_calls": 515,
+     "warmup_s": 1.0,
+     "latency_ms_median": 1.95538
+    }
+   }
+  },
+  "mf_s1/nw4096": {
+   "corpus": {
+    "name": "mf_s1",
+    "path": "benchmarks/data/mf_s1.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "compile_s": {
+    "fwd": 0.001,
+    "exact.bwd": 0.014,
+    "exact.vjp": 0.028,
+    "fwd_tape": 0.001,
+    "interface.bwd": 0.012,
+    "interface.vjp": 0.029
+   },
+   "fwd": {
+    "ms": {
+     "median": 1.18516,
+     "p10": 1.18466,
+     "p90": 1.18548,
+     "min": 1.18453,
+     "max": 1.18559,
+     "rounds": [
+      1.18486,
+      1.18559,
+      1.18453,
+      1.18531,
+      1.18516
+     ]
+    },
+    "n": 193,
+    "kept_rounds": 5,
+    "warmup_calls": 771,
+    "warmup_s": 1.0,
+    "latency_ms_median": 1.29851
+   },
+   "finite_fwd": true,
+   "forward_info": {
+    "newton_iterations_mean": 4.436767578125,
+    "contacts_mean": 6.868408203125,
+    "rows_max": 114,
+    "unsupported_worlds": 0
+   },
+   "exact": {
+    "bwd": {
+     "ms": {
+      "median": 0.53182,
+      "p10": 0.53179,
+      "p90": 0.53205,
+      "min": 0.53177,
+      "max": 0.53211,
+      "rounds": [
+       0.53182,
+       0.53182,
+       0.53211,
+       0.53197,
+       0.53177
+      ]
+     },
+     "n": 200,
+     "kept_rounds": 5,
+     "warmup_calls": 1546,
+     "warmup_s": 1.0,
+     "latency_ms_median": 0.65676
+    },
+    "finite_bwd": true,
+    "vjp": {
+     "ms": {
+      "median": 1.75142,
+      "p10": 1.75129,
+      "p90": 1.75177,
+      "min": 1.75121,
+      "max": 1.75193,
+      "rounds": [
+       1.75193,
+       1.75153,
+       1.75142,
+       1.75121,
+       1.75141
+      ]
+     },
+     "n": 131,
+     "kept_rounds": 5,
+     "warmup_calls": 523,
+     "warmup_s": 1.0,
+     "latency_ms_median": 1.94331
+    }
+   },
+   "fwd_tape": {
+    "ms": {
+     "median": 1.2239,
+     "p10": 1.22352,
+     "p90": 1.22427,
+     "min": 1.22342,
+     "max": 1.22442,
+     "rounds": [
+      1.22366,
+      1.22405,
+      1.22342,
+      1.2239,
+      1.22442
+     ]
+    },
+    "n": 186,
+    "kept_rounds": 5,
+    "warmup_calls": 743,
+    "warmup_s": 1.001,
+    "latency_ms_median": 1.3539
+   },
+   "interface": {
+    "bwd": {
+     "ms": {
+      "median": 0.53324,
+      "p10": 0.53287,
+      "p90": 0.53361,
+      "min": 0.53277,
+      "max": 0.53376,
+      "rounds": [
+       0.53339,
+       0.53301,
+       0.53324,
+       0.53277,
+       0.53376
+      ]
+     },
+     "n": 200,
+     "kept_rounds": 5,
+     "warmup_calls": 1542,
+     "warmup_s": 1.0,
+     "latency_ms_median": 0.64782
+    },
+    "finite_bwd": true,
+    "vjp": {
+     "ms": {
+      "median": 1.75426,
+      "p10": 1.75292,
+      "p90": 1.75487,
+      "min": 1.75274,
+      "max": 1.75526,
+      "rounds": [
+       1.75428,
+       1.75319,
+       1.75426,
+       1.75526,
+       1.75274
+      ]
+     },
+     "n": 131,
+     "kept_rounds": 5,
+     "warmup_calls": 526,
+     "warmup_s": 1.0,
+     "latency_ms_median": 1.92558
+    }
+   }
+  }
+ },
+ "errors": {},
+ "init": {
+  "seconds": 0.614,
+  "built": false,
+  "key": "edb8ac5ca1ebc71471b9",
+  "arch": "sm_120",
+  "arch_flags": {
+   "forward": [
+    "-arch=compute_90",
+    "-code=sm_120"
+   ],
+   "adjoint": [
+    "-arch=compute_90",
+    "-code=sm_120"
+   ]
+  },
+  "forward_defines": [
+   "-DSPLIT_PRE_MINB=16"
+  ],
+  "front_end": {
+   "forward": "NVVM 7.0.1",
+   "adjoint": "NVVM 7.0.1"
+  },
+  "forward_unit": "dk_kv0_n3",
+  "library": "<cache>/libdk_g1_sm_120_edb8ac5ca1ebc71471b9.so",
+  "cache_dir": "<cache>",
+  "commit": null,
+  "dirty": null,
+  "sizeof_adj": {
+   "dk_kv0_n0": 10108,
+   "dk_kv0_n1": 10108,
+   "dk_kv0_n2": 10108,
+   "dk_kv0_n3": 10108,
+   "dk_kv1_n0": 10108,
+   "dk_kv1_n1": 10108,
+   "dk_kv1_n2": 10108,
+   "dk_kv1_n3": 10108,
+   "dk_kv2_n0": 10228,
+   "dk_kv2_n1": 10228,
+   "dk_kv2_n2": 10228,
+   "dk_kv2_n3": 10228
+  }
+ },
+ "launch_info": {
+  "dk_kv0_n0": {
+   "smem": 10108,
+   "worlds_per_sm": 9
+  },
+  "dk_kv0_n1": {
+   "smem": 10108,
+   "worlds_per_sm": 9
+  },
+  "dk_kv0_n2": {
+   "smem": 10108,
+   "worlds_per_sm": 9
+  },
+  "dk_kv0_n3": {
+   "smem": 10108,
+   "worlds_per_sm": 9
+  },
+  "dk_kv1_n0": {
+   "smem": 10108,
+   "worlds_per_sm": 9
+  },
+  "dk_kv1_n1": {
+   "smem": 10108,
+   "worlds_per_sm": 9
+  },
+  "dk_kv1_n2": {
+   "smem": 10108,
+   "worlds_per_sm": 9
+  },
+  "dk_kv1_n3": {
+   "smem": 10108,
+   "worlds_per_sm": 9
+  },
+  "dk_kv2_n0": {
+   "smem": 10228,
+   "worlds_per_sm": 9
+  },
+  "dk_kv2_n1": {
+   "smem": 10228,
+   "worlds_per_sm": 9
+  },
+  "dk_kv2_n2": {
+   "smem": 10228,
+   "worlds_per_sm": 9
+  },
+  "dk_kv2_n3": {
+   "smem": 10228,
+   "worlds_per_sm": 9
+  }
+ }
+}

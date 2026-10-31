@@ -1,0 +1,306 @@
+{
+ "part": "mjw_native",
+ "nworld": 4096,
+ "iterations": 10,
+ "substeps": 4,
+ "env": {
+  "python": "3.12.16",
+  "executable": ".../python",
+  "packages": {
+   "mujoco": "3.17.0",
+   "mujoco-warp": "3.17.0",
+   "warp-lang": "1.18.0+cu12",
+   "numpy": "2.5.4"
+  },
+  "cpu": {
+   "model": "Intel(R) Xeon(R) CPU E5-2699 v4 @ 2.20GHz",
+   "logical_cpus": 88,
+   "allocated": 88,
+   "affinity": "0-87",
+   "omp_num_threads": null,
+   "scheduler_cpu_counts": null,
+   "cpu_engine_threads": {
+    "threads": 32,
+    "rule": "PAPER_BENCH_MJC_THREADS"
+   }
+  },
+  "gpu": {
+   "name": "NVIDIA GeForce RTX 3090",
+   "compute_cap": "8.6",
+   "driver": "565.57.01",
+   "memory": "24576 MiB"
+  },
+  "env": {
+   "PAPER_BENCH_MJC_THREADS": "32",
+   "PAPER_BENCH_SKIP_SETUP": "1",
+   "XLA_PYTHON_CLIENT_PREALLOCATE": "false",
+   "PAPER_BENCH_JOB_START": "1793266160",
+   "PAPER_BENCH_PARTS": "ours,mjx,mjx_triton,rep2_ours,rep3_ours,rep2_mjx,rep3_mjx,rep2_mjc,rep3_mjc,rep3_mjw_native,rep3_mjw_pr1535,rep3_mjw_pr1535_fix",
+   "PAPER_BENCH_BUDGET_MIN": "150",
+   "PAPER_BENCH_TIMEOUT_SCALE": "2.5",
+   "PAPER_BENCH_PYTHON": ".../python3.12",
+   "PAPER_BENCH_DEV_PYTHON": ".../python",
+   "PAPER_BENCH_PREFIX": ".../paper_bench_env",
+   "DK_FIXTURES": "fixtures/mjlab"
+  },
+  "quick": false
+ },
+ "mujoco_warp_file": ".../__init__.py",
+ "warp_version": "1.18.0",
+ "cells": {
+  "mf_s0/procedure/nw4096": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "capacity": "procedure",
+   "nconmax": 24,
+   "njmax": 128,
+   "naconmax": 94687,
+   "stats_last_substep": {
+    "overflow_bits_or": 1536,
+    "overflow_flags": [
+     "ITERATIONS",
+     "LS_ITERATIONS"
+    ],
+    "capacity_overflow": [],
+    "capacity_overflow_worlds": 0,
+    "nefc": {
+     "mean": 25.463623046875,
+     "max": 112.0
+    },
+    "solver_niter": {
+     "mean": 3.28759765625,
+     "max": 10.0
+    },
+    "nacon_total": 27117,
+    "finite_worlds": 4096
+   },
+   "graph_ctrlstep": {
+    "ms": {
+     "median": 13.01306,
+     "p10": 13.00232,
+     "p90": 13.01473,
+     "min": 12.99664,
+     "max": 13.01569,
+     "rounds": [
+      12.99664,
+      13.01306,
+      13.01084,
+      13.01329,
+      13.01569
+     ]
+    },
+    "n": 20,
+    "kept_rounds": 5,
+    "warmup_calls": 80,
+    "warmup_s": 1.012,
+    "latency_ms_median": 13.07215
+   },
+   "first_call_s": 1.37,
+   "capture_s": 0.074,
+   "put_model_s": 0.506
+  },
+  "mf_s1/procedure/nw4096": {
+   "corpus": {
+    "name": "mf_s1",
+    "path": "benchmarks/data/mf_s1.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "capacity": "procedure",
+   "nconmax": 24,
+   "njmax": 128,
+   "naconmax": 94687,
+   "stats_last_substep": {
+    "overflow_bits_or": 1536,
+    "overflow_flags": [
+     "ITERATIONS",
+     "LS_ITERATIONS"
+    ],
+    "capacity_overflow": [],
+    "capacity_overflow_worlds": 0,
+    "nefc": {
+     "mean": 26.466796875,
+     "max": 114.0
+    },
+    "solver_niter": {
+     "mean": 3.34033203125,
+     "max": 10.0
+    },
+    "nacon_total": 28130,
+    "finite_worlds": 4096
+   },
+   "graph_ctrlstep": {
+    "ms": {
+     "median": 13.41634,
+     "p10": 13.41209,
+     "p90": 13.51792,
+     "min": 13.40971,
+     "max": 13.5602,
+     "rounds": [
+      13.40971,
+      13.41565,
+      13.41634,
+      13.4545,
+      13.5602
+     ]
+    },
+    "n": 19,
+    "kept_rounds": 5,
+    "warmup_calls": 76,
+    "warmup_s": 1.008,
+    "latency_ms_median": 13.55421
+   },
+   "first_call_s": 1.37,
+   "capture_s": 0.074,
+   "put_model_s": 0.506
+  },
+  "mf_s0/matched/nw4096": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "capacity": "matched",
+   "nconmax": 64,
+   "njmax": 192,
+   "naconmax": 262144,
+   "stats_last_substep": {
+    "overflow_bits_or": 1536,
+    "overflow_flags": [
+     "ITERATIONS",
+     "LS_ITERATIONS"
+    ],
+    "capacity_overflow": [],
+    "capacity_overflow_worlds": 0,
+    "nefc": {
+     "mean": 25.463623046875,
+     "max": 112.0
+    },
+    "solver_niter": {
+     "mean": 3.2880859375,
+     "max": 10.0
+    },
+    "nacon_total": 27117,
+    "finite_worlds": 4096
+   },
+   "graph_ctrlstep": {
+    "ms": {
+     "median": 13.78981,
+     "p10": 13.7428,
+     "p90": 13.82333,
+     "min": 13.74232,
+     "max": 13.82779,
+     "rounds": [
+      13.74354,
+      13.74232,
+      13.81664,
+      13.82779,
+      13.78981
+     ]
+    },
+    "n": 19,
+    "kept_rounds": 5,
+    "warmup_calls": 75,
+    "warmup_s": 1.001,
+    "latency_ms_median": 13.92052
+   },
+   "first_call_s": 0.087,
+   "capture_s": 0.05,
+   "put_model_s": 0.506
+  },
+  "mf_s1/matched/nw4096": {
+   "corpus": {
+    "name": "mf_s1",
+    "path": "benchmarks/data/mf_s1.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "capacity": "matched",
+   "nconmax": 64,
+   "njmax": 192,
+   "naconmax": 262144,
+   "stats_last_substep": {
+    "overflow_bits_or": 1536,
+    "overflow_flags": [
+     "ITERATIONS",
+     "LS_ITERATIONS"
+    ],
+    "capacity_overflow": [],
+    "capacity_overflow_worlds": 0,
+    "nefc": {
+     "mean": 26.4658203125,
+     "max": 114.0
+    },
+    "solver_niter": {
+     "mean": 3.34033203125,
+     "max": 10.0
+    },
+    "nacon_total": 28129,
+    "finite_worlds": 4096
+   },
+   "graph_ctrlstep": {
+    "ms": {
+     "median": 13.9901,
+     "p10": 13.98748,
+     "p90": 13.99341,
+     "min": 13.98656,
+     "max": 13.99461,
+     "rounds": [
+      13.9901,
+      13.98656,
+      13.99162,
+      13.99461,
+      13.98886
+     ]
+    },
+    "n": 18,
+    "kept_rounds": 5,
+    "warmup_calls": 73,
+    "warmup_s": 1.007,
+    "latency_ms_median": 14.0474
+   },
+   "first_call_s": 0.087,
+   "capture_s": 0.05,
+   "put_model_s": 0.506
+  }
+ },
+ "errors": {},
+ "warp_cuda_toolkit": "12.9",
+ "warp_cuda_driver": "12.7",
+ "opt": {
+  "iterations": "10",
+  "ls_iterations": "8",
+  "tolerance": "[1.e-06]",
+  "ls_tolerance": "[0.01]",
+  "solver": "2",
+  "cone": "0",
+  "integrator": "3",
+  "graph_conditional": "True",
+  "warn_overflow": "2559"
+ },
+ "default_capacity": {
+  "nconmax": 48,
+  "njmax": 64
+ },
+ "procedure_capacity": {
+  "nconmax": 24,
+  "naconmax": 94687,
+  "njmax": 128,
+  "source": "benchmarks/data/mjw_capacity.json",
+  "inputs": {
+   "pool_mean_max": 18.487548828125,
+   "contacts_world_max": 30,
+   "rows_max": 114,
+   "margin": 0.25
+  }
+ }
+}

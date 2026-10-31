@@ -1,0 +1,329 @@
+{
+ "part": "genesis",
+ "nworld": 4096,
+ "iterations": 10,
+ "substeps": 4,
+ "engine": "Genesis 1.4.5 (native)",
+ "env": {
+  "python": "3.12.3",
+  "executable": "runs/genesis_probe/venv/bin/python",
+  "packages": {
+   "genesis-world": "1.4.5",
+   "quadrants": "1.3.3",
+   "torch": "2.11.0+cu128",
+   "mujoco": "3.17.0",
+   "numpy": "2.5.4"
+  },
+  "cpu": {
+   "model": "AMD EPYC 9555 64-Core Processor",
+   "logical_cpus": 16,
+   "allocated": 16,
+   "affinity": "0-15",
+   "omp_num_threads": null,
+   "scheduler_cpu_counts": null,
+   "cpu_engine_threads": {
+    "threads": 16,
+    "rule": "len(os.sched_getaffinity(0))"
+   }
+  },
+  "gpu": {
+   "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+   "compute_cap": "12.0",
+   "driver": "595.58.03",
+   "memory": "97887 MiB"
+  },
+  "env": {
+   "PAPER_BENCH_SKIP_SETUP": "1",
+   "PAPER_BENCH_JOB_START": "1793313408",
+   "PAPER_BENCH_PARTS": "genesis",
+   "XLA_PYTHON_CLIENT_PREALLOCATE": "false",
+   "PAPER_BENCH_PYTHON": ".../python",
+   "PAPER_BENCH_GENESIS_PYTHON": "runs/genesis_probe/venv/bin/python",
+   "PAPER_BENCH_DEV_PYTHON": ".../python",
+   "PAPER_BENCH_PREFIX": ".../paper_bench_env",
+   "DK_FIXTURES": "fixtures/mjlab"
+  },
+  "quick": false
+ },
+ "processes": "one fresh process per corpus",
+ "cells": {
+  "mf_s0/nw4096": {
+   "gs_init": "gs.init defaults",
+   "corpus": {
+    "name": "mf_s0",
+    "states": 4096,
+    "nworld": 4096,
+    "selection": "benchmarks.bench.problem.select subset 0 (every corpus state)"
+   },
+   "forward": {
+    "ms": {
+     "median": 13.45246,
+     "p10": 13.44982,
+     "p90": 13.45687,
+     "min": 13.44917,
+     "max": 13.45951,
+     "rounds": [
+      13.45951,
+      13.45246,
+      13.4529,
+      13.44917,
+      13.4508
+     ]
+    },
+    "n": 18,
+    "kept_rounds": 5,
+    "warmup_calls": 74,
+    "warmup_s": 1.007,
+    "latency_ms_median": 13.6118
+   },
+   "setup_s": 5.777,
+   "setup_parts": {
+    "build_s": 2.052,
+    "load_s": 0.158,
+    "import_s": 3.55
+   },
+   "first_call_s": 0.024,
+   "finite_worlds": 4096,
+   "timed_call": "set_qpos + set_dofs_velocity + control_dofs_position + scene.step() (4 substeps), inputs resident on the device",
+   "torch_max_memory_allocated_mib": 14.1,
+   "process_s": 9.9
+  },
+  "mf_s0/performance/nw4096": {
+   "gs_init": "gs.init(performance_mode=True)",
+   "corpus": {
+    "name": "mf_s0",
+    "states": 4096,
+    "nworld": 4096,
+    "selection": "benchmarks.bench.problem.select subset 0 (every corpus state)"
+   },
+   "forward": {
+    "ms": {
+     "median": 9.52953,
+     "p10": 9.52891,
+     "p90": 10.13525,
+     "min": 9.52878,
+     "max": 10.14244,
+     "rounds": [
+      10.12445,
+      9.52878,
+      9.52909,
+      10.14244,
+      9.52953
+     ]
+    },
+    "n": 25,
+    "kept_rounds": 5,
+    "warmup_calls": 102,
+    "warmup_s": 1.0,
+    "latency_ms_median": 9.64882
+   },
+   "setup_s": 18.655,
+   "setup_parts": {
+    "build_s": 13.968,
+    "load_s": 0.908,
+    "import_s": 3.761
+   },
+   "first_call_s": 0.114,
+   "finite_worlds": 4096,
+   "timed_call": "set_qpos + set_dofs_velocity + control_dofs_position + scene.step() (4 substeps), inputs resident on the device",
+   "torch_max_memory_allocated_mib": 14.1,
+   "process_s": 23.1
+  },
+  "mf_s1/nw4096": {
+   "gs_init": "gs.init defaults",
+   "corpus": {
+    "name": "mf_s1",
+    "states": 4096,
+    "nworld": 4096,
+    "selection": "benchmarks.bench.problem.select subset 0 (every corpus state)"
+   },
+   "forward": {
+    "ms": {
+     "median": 13.62761,
+     "p10": 13.62578,
+     "p90": 13.63503,
+     "min": 13.6246,
+     "max": 13.63761,
+     "rounds": [
+      13.62761,
+      13.62755,
+      13.63117,
+      13.6246,
+      13.63761
+     ]
+    },
+    "n": 18,
+    "kept_rounds": 5,
+    "warmup_calls": 73,
+    "warmup_s": 1.007,
+    "latency_ms_median": 13.7673
+   },
+   "setup_s": 5.765,
+   "setup_parts": {
+    "build_s": 2.053,
+    "load_s": 0.157,
+    "import_s": 3.538
+   },
+   "first_call_s": 0.025,
+   "finite_worlds": 4096,
+   "timed_call": "set_qpos + set_dofs_velocity + control_dofs_position + scene.step() (4 substeps), inputs resident on the device",
+   "torch_max_memory_allocated_mib": 13.2,
+   "process_s": 9.9
+  },
+  "mf_s1/performance/nw4096": {
+   "gs_init": "gs.init(performance_mode=True)",
+   "corpus": {
+    "name": "mf_s1",
+    "states": 4096,
+    "nworld": 4096,
+    "selection": "benchmarks.bench.problem.select subset 0 (every corpus state)"
+   },
+   "forward": {
+    "ms": {
+     "median": 9.92079,
+     "p10": 9.6417,
+     "p90": 10.16152,
+     "min": 9.6398,
+     "max": 10.28839,
+     "rounds": [
+      10.28839,
+      9.6398,
+      9.64454,
+      9.92079,
+      9.97121
+     ]
+    },
+    "n": 25,
+    "kept_rounds": 5,
+    "warmup_calls": 101,
+    "warmup_s": 1.001,
+    "latency_ms_median": 9.75684
+   },
+   "setup_s": 18.437,
+   "setup_parts": {
+    "build_s": 13.795,
+    "load_s": 0.89,
+    "import_s": 3.734
+   },
+   "first_call_s": 0.113,
+   "finite_worlds": 4096,
+   "timed_call": "set_qpos + set_dofs_velocity + control_dofs_position + scene.step() (4 substeps), inputs resident on the device",
+   "torch_max_memory_allocated_mib": 13.2,
+   "process_s": 22.9
+  }
+ },
+ "errors": {},
+ "provenance": {
+  "genesis": "1.4.5",
+  "quadrants": "1.3.3",
+  "torch": "2.11.0+cu128",
+  "torch_cuda": "12.8",
+  "mujoco": "3.17.0",
+  "precision": "32",
+  "backend": "cuda",
+  "device": "cuda:0",
+  "performance_mode": false,
+  "dispatch_override": null,
+  "options": {
+   "timestep": 0.005,
+   "iterations": 10,
+   "ls_iterations": 8,
+   "tolerance": 1e-08,
+   "solver": "mjSOL_NEWTON",
+   "cone": "mjCONE_PYRAMIDAL",
+   "integrator": "mjINT_IMPLICITFAST",
+   "disableflags": 40960,
+   "sensors": false,
+   "nq": 36,
+   "nv": 35,
+   "nu": 29,
+   "nbody": 31,
+   "npair": 502
+  },
+  "iterations": 10,
+  "substeps": 4,
+  "rigid_options": {
+   "constraint_solver": "Newton",
+   "iterations": "10",
+   "ls_iterations": "8",
+   "tolerance": "1e-08",
+   "integrator": "implicitfast",
+   "friction_cone": "pyramidal",
+   "constraint_timeconst": "0.02",
+   "batch_links_info": "True",
+   "gravity": "(0.0, 0.0, -9.81)"
+  },
+  "rigid_options_grad": {
+   "constraint_solver": "Newton",
+   "iterations": "10",
+   "ls_iterations": "8",
+   "tolerance": "1e-08",
+   "integrator": "approximate_implicitfast",
+   "friction_cone": "pyramidal",
+   "constraint_timeconst": "0.02",
+   "batch_links_info": "True",
+   "gravity": "(0.0, 0.0, -9.81)"
+  },
+  "sim_options": {
+   "dt": 0.02,
+   "substeps": 4
+  },
+  "control_step": "set_qpos, set_dofs_velocity, control_dofs_position(ctrl) on the actuated dofs, one scene.step() of `substeps` substeps",
+  "model": {
+   "importer": "gs.morphs.MJCF(file=<MJCF string>) of the problem's compiled model (mjcf_from_model)",
+   "edit": "contype = conaffinity = 1 on the robot geoms, no <pair> block: Genesis does not read <pair> and imports contype = conaffinity = 0 geoms as visual only",
+   "kept": "bodies, inertials, free and hinge joints (limits, armature), the general / affine actuators as the PD controller's kp = gainprm[0], kv = -biasprm[2], force limits from the joints' actuatorfrcrange, geom friction, solimp",
+   "dropped": {
+    "pairs": 502,
+    "pair_condim1": 154,
+    "pair_condim1_note": "these pairs are frictionless in MuJoCo and frictional in Genesis",
+    "options": "the MJCF <option> (Genesis takes the time step and the solver from SimOptions / RigidOptions, set from the problem)"
+   },
+   "cone": "mjCONE_PYRAMIDAL",
+   "integrator": "mjINT_IMPLICITFAST",
+   "conversion": {
+    "max_abs_diff": 4.6197377823631314e-05,
+    "fields_compared": 38,
+    "robot_geoms_made_colliding": 33,
+    "pairs_written": 0,
+    "pairs_in_model": 502
+   },
+   "pair_check": {
+    "genesis_pairs": 502,
+    "model_pairs": 502,
+    "pair_set_equal": true,
+    "only_genesis": [],
+    "only_model": []
+   }
+  },
+  "dr": {
+   "friction": "set_friction_ratio per world on the floor link and the sole links: floor-sole contact friction = max(floor x r_floor, sole x r_sole) = the corpus friction exactly",
+   "floor_friction": 1.0,
+   "sole_friction": 0.6,
+   "sole_links": [
+    7,
+    13
+   ],
+   "other_links": 16,
+   "worlds": 4096,
+   "worlds_friction_above_floor": 956,
+   "worlds_friction_below_sole": 1337,
+   "side_effect": "in those worlds the sole capsules' contacts with other robot geoms use the scaled sole friction (sole-sole: min(f, sole) or f instead of sole; sole-other: f instead of the larger geom friction when f > floor friction)",
+   "com": "set_links_COM per world: body_ipos0[torso] + com (RigidOptions(batch_links_info=True)); Genesis recomputes its inverse weights from the shifted COM",
+   "torso_link": "torso_link"
+  },
+  "grad_chunk": 512,
+  "grad_retries": 1,
+  "deviations": [
+   "model: robot geoms contype = conaffinity = 1 and no <pair> block (Genesis reads no <pair>); Genesis's default collision filter gives the same 502 pairs (provenance model.pair_check)",
+   "condim: 154 condim-1 (frictionless) pairs are frictional in Genesis (no per-contact condim)",
+   "solref: Genesis's constraint_timeconst = 0.02 (the model's solref) instead of a per-geom solref (Genesis drops an MJCF default solref in favour of its own time constant)",
+   "no qacc warm start input (cold constraint solve at every control step)",
+   "tolerance 1e-08 passed to Genesis as is (float32)",
+   "contact generation: Genesis's (multi-contact, contact_pruning_tolerance 0.02; MPR in the forward scene, GJK in the differentiable one), inverse weights recomputed by Genesis",
+   "gradient: integrator approximate_implicitfast (the only one Genesis differentiates), w.r.t. the initial qvel only",
+   "DR: foot friction through per-world friction ratios on the floor and sole links (956 worlds above the floor friction, 1337 below the sole friction get scaled sole friction on their sole-robot contacts too); COM through set_links_COM"
+  ],
+  "compile": "Genesis compiles its kernels on first use (scene.build runs one step); its kernel cache (the quadrants offline cache) makes later processes faster"
+ }
+}

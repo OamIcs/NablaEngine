@@ -1,0 +1,329 @@
+{
+ "part": "mjx",
+ "impl": "jax",
+ "nworld": 4096,
+ "env": {
+  "python": "3.12.3",
+  "executable": ".../python",
+  "packages": {
+   "mujoco": "3.17.0",
+   "mujoco-mjx": "3.17.0",
+   "jax": "0.12.0.1",
+   "jaxlib": "0.12.0.1",
+   "jax-cuda12-plugin": "0.12.0.1",
+   "jax-cuda13-plugin": null,
+   "numpy": "2.5.4"
+  },
+  "cpu": {
+   "model": "Intel(R) Xeon(R) Platinum 8462Y+",
+   "logical_cpus": 128,
+   "allocated": 128,
+   "affinity": "0-127",
+   "omp_num_threads": null,
+   "scheduler_cpu_counts": null,
+   "cpu_engine_threads": {
+    "threads": 13,
+    "rule": "PAPER_BENCH_MJC_THREADS"
+   }
+  },
+  "gpu": {
+   "name": "NVIDIA H100 80GB HBM3",
+   "compute_cap": "9.0",
+   "driver": "595.91.07",
+   "memory": "81559 MiB"
+  },
+  "env": {
+   "PAPER_BENCH_MJC_THREADS": "13",
+   "XLA_PYTHON_CLIENT_PREALLOCATE": "false",
+   "PAPER_BENCH_JOB_START": "1793258583",
+   "PAPER_BENCH_PYTHON": ".../python",
+   "PAPER_BENCH_DEV_PYTHON": ".../python",
+   "PAPER_BENCH_PREFIX": ".../paper_bench_env",
+   "DK_FIXTURES": "fixtures/mjlab"
+  },
+  "quick": false
+ },
+ "device": "NVIDIA H100 80GB HBM3",
+ "mujoco_version": "3.17.0",
+ "cells": {
+  "mjlab/mf_s0/nw4096": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "forward": {
+    "ms": {
+     "median": 215.98103,
+     "p10": 215.40107,
+     "p90": 218.84861,
+     "min": 215.24527,
+     "max": 218.9504,
+     "rounds": [
+      215.24527,
+      215.63478,
+      215.98103,
+      218.9504,
+      218.69594
+     ]
+    },
+    "n": 1,
+    "kept_rounds": 5,
+    "warmup_calls": 5,
+    "warmup_s": 1.106
+   },
+   "finite": true,
+   "peak_bytes": 2419064832
+  },
+  "mjlab/mf_s1/nw4096": {
+   "corpus": {
+    "name": "mf_s1",
+    "path": "benchmarks/data/mf_s1.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "forward": {
+    "ms": {
+     "median": 215.90975,
+     "p10": 215.8543,
+     "p90": 216.16623,
+     "min": 215.83055,
+     "max": 216.29881,
+     "rounds": [
+      216.29881,
+      215.90975,
+      215.96736,
+      215.83055,
+      215.88992
+     ]
+    },
+    "n": 1,
+    "kept_rounds": 5,
+    "warmup_calls": 5,
+    "warmup_s": 1.081
+   },
+   "finite": true,
+   "peak_bytes": 2419064832
+  },
+  "menagerie/nw4096": {
+   "model": {
+    "file": "unitree_g1/scene_mjx.xml",
+    "commit": "f3b6013629c7b94f8ee93fd977b161fa8350f9bc",
+    "substeps": 5,
+    "timestep": 0.004,
+    "iterations": 5,
+    "ls_iterations": 8,
+    "tolerance": 1e-08,
+    "solver": 2,
+    "integrator": 3,
+    "cone": 0,
+    "nsensor": 14,
+    "static": {
+     "ncon": 77,
+     "nefc": 267
+    }
+   },
+   "states": {
+    "source": "MuJoCo C float64 rollouts from keyframe 'home' + noise, seed 0",
+    "count": 1024,
+    "seconds": 7.08
+   },
+   "compile_s": {
+    "trace_lower": 3.9,
+    "compile": 25.191
+   },
+   "compiled_memory": {
+    "temp": 379376224,
+    "argument": 2227004,
+    "output": 1736728
+   },
+   "forward": {
+    "ms": {
+     "median": 58.3798,
+     "p10": 58.36781,
+     "p90": 58.79297,
+     "min": 58.36046,
+     "max": 58.88547,
+     "rounds": [
+      58.88547,
+      58.65422,
+      58.3798,
+      58.36046,
+      58.37882
+     ]
+    },
+    "n": 4,
+    "kept_rounds": 5,
+    "warmup_calls": 17,
+    "warmup_s": 1.035
+   },
+   "finite": true
+  },
+  "jacfwd/mf_s0/B64": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "B": 64,
+   "chunk": 33,
+   "chunks": 3,
+   "directions": 99,
+   "outputs": 71,
+   "compile_s": {
+    "trace_lower": 9.12,
+    "compile": 60.509
+   },
+   "compiled_memory": {
+    "temp": 1534020784,
+    "argument": 1571756,
+    "output": 599824
+   },
+   "jacobian": {
+    "ms": {
+     "median": 437.91645,
+     "p10": 436.93837,
+     "p90": 438.73737,
+     "min": 436.69385,
+     "max": 438.9426,
+     "rounds": [
+      436.69385,
+      437.91645,
+      438.9426
+     ]
+    },
+    "n": 1,
+    "kept_rounds": 3,
+    "warmup_calls": 1,
+    "warmup_s": 0.483
+   },
+   "ms_per_world": 6.8424,
+   "finite": true,
+   "peak_bytes": 2419064832
+  },
+  "jacfwd/mf_s0/B256": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "B": 256,
+   "chunk": 33,
+   "chunks": 3,
+   "directions": 99,
+   "outputs": 71,
+   "compile_s": {
+    "trace_lower": 9.592,
+    "compile": 65.504
+   },
+   "compiled_memory": {
+    "temp": 4571796912,
+    "argument": 6208940,
+    "output": 2399248
+   },
+   "jacobian": {
+    "ms": {
+     "median": 1564.7748,
+     "p10": 1557.76684,
+     "p90": 1574.56254,
+     "min": 1556.01485,
+     "max": 1577.00947,
+     "rounds": [
+      1564.7748,
+      1577.00947,
+      1556.01485
+     ]
+    },
+    "n": 1,
+    "kept_rounds": 3,
+    "warmup_calls": 1,
+    "warmup_s": 1.716
+   },
+   "ms_per_world": 6.1124,
+   "finite": true,
+   "peak_bytes": 6446789376
+  },
+  "jacfwd/mf_s0/B1024": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "B": 1024,
+   "chunk": 33,
+   "chunks": 3,
+   "directions": 99,
+   "outputs": 71,
+   "compile_s": {
+    "trace_lower": 9.627,
+    "compile": 57.906
+   },
+   "compiled_memory": {
+    "temp": 22337469144,
+    "argument": 24757676,
+    "output": 9596944
+   },
+   "jacobian": {
+    "ms": {
+     "median": 6124.92136,
+     "p10": 6124.82054,
+     "p90": 6125.38881,
+     "min": 6124.79533,
+     "max": 6125.50567,
+     "rounds": [
+      6124.79533,
+      6124.92136,
+      6125.50567
+     ]
+    },
+    "n": 1,
+    "kept_rounds": 3,
+    "warmup_calls": 1,
+    "warmup_s": 6.536
+   },
+   "ms_per_world": 5.9814,
+   "finite": true,
+   "peak_bytes": 24779451392
+  },
+  "reverse_mode": {
+   "supported": false,
+   "type": "ValueError",
+   "message": "Reverse-mode differentiation does not work for lax.while_loop or lax.fori_loop with dynamic start/stop values. Try using lax.scan, or using fori_loop with static start/stop.",
+   "B": 2,
+   "call": "jax.vjp(control step) then its pullback under jax.jit"
+  }
+ },
+ "errors": {},
+ "mjlab_model": {
+  "path": "fixtures/mjlab/g1_train.mjb",
+  "substeps": 4,
+  "timestep": 0.005,
+  "iterations": 10,
+  "ls_iterations": 8,
+  "tolerance": 1e-08,
+  "sensors_disabled": true,
+  "static": {
+   "ncon": 533,
+   "nefc": 1699
+  },
+  "dtype": "float32"
+ },
+ "mjlab_compile_s": {
+  "trace_lower": 3.443,
+  "compile": 26.197
+ },
+ "mjlab_compiled_memory": {
+  "temp": 2083962696,
+  "argument": 44885420,
+  "output": 1736728
+ }
+}

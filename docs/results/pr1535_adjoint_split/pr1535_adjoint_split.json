@@ -1,0 +1,72 @@
+{
+ "kind": "pr1535_adjoint_split",
+ "what": "MuJoCo Warp + upstream PR #1535 @357a75d (as published): its adjoint graph timed whole and as its two halves, each captured as its own CUDA graph and timed like every paper_bench row (scripts/paper_bench/mjw_adjoint.py --phase-graphs): taped forward recompute (DR, copies, wp.Tape over 4 x mjw.step) and backward only (tape.zero, cotangent copies, tape.backward, gradient copies)",
+ "problem": "mjlab G1, one control step (4 x 5 ms), Newton 10 iterations, corpus mf_s0, 4096 worlds, corpus cotangent 0",
+ "unit": "ms, median of kept rounds, one process",
+ "gpus": {
+  "rtx_pro_6000": {
+   "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+   "adjoint_graph": 20.961,
+   "adjoint_taped_forward": 6.577,
+   "adjoint_tape_backward": 14.275,
+   "sum_of_halves": 20.852,
+   "finite_grad_worlds": 4096,
+   "warp": "1.18.0",
+   "packages": {
+    "mujoco": "3.17.0",
+    "mujoco-warp": null,
+    "warp-lang": "1.18.0",
+    "numpy": "2.5.4"
+   },
+   "driver": "595.58.03"
+  },
+  "h100": {
+   "gpu": "NVIDIA H100 80GB HBM3",
+   "adjoint_graph": 25.133,
+   "adjoint_taped_forward": 9.277,
+   "adjoint_tape_backward": 15.775,
+   "sum_of_halves": 25.052,
+   "finite_grad_worlds": 4096,
+   "warp": "1.18.0",
+   "packages": {
+    "mujoco": "3.17.0",
+    "mujoco-warp": null,
+    "warp-lang": "1.18.0",
+    "numpy": "2.5.4"
+   },
+   "driver": "595.91.07"
+  },
+  "3090": {
+   "gpu": "NVIDIA GeForce RTX 3090",
+   "adjoint_graph": 40.832,
+   "adjoint_taped_forward": 13.884,
+   "adjoint_tape_backward": 28.464,
+   "sum_of_halves": 42.348,
+   "finite_grad_worlds": 4096,
+   "warp": "1.18.0",
+   "packages": {
+    "mujoco": "3.17.0",
+    "mujoco-warp": null,
+    "warp-lang": "1.18.0+cu12",
+    "numpy": "2.5.4"
+   },
+   "driver": "565.57.01"
+  },
+  "v100": {
+   "gpu": "Tesla V100-SXM2-16GB",
+   "adjoint_graph": 63.265,
+   "adjoint_taped_forward": 21.061,
+   "adjoint_tape_backward": 42.195,
+   "sum_of_halves": 63.256,
+   "finite_grad_worlds": 4096,
+   "warp": "1.18.0",
+   "packages": {
+    "mujoco": "3.17.0",
+    "mujoco-warp": null,
+    "warp-lang": "1.18.0+cu12",
+    "numpy": "2.5.4"
+   },
+   "driver": "550.90.07"
+  }
+ }
+}

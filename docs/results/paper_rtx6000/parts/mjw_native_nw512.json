@@ -1,0 +1,187 @@
+{
+ "part": "mjw_native",
+ "nworld": 512,
+ "iterations": 10,
+ "substeps": 4,
+ "env": {
+  "python": "3.12.3",
+  "executable": ".../python",
+  "packages": {
+   "mujoco": "3.17.0",
+   "mujoco-warp": "3.17.0",
+   "warp-lang": "1.18.0",
+   "numpy": "2.5.4"
+  },
+  "cpu": {
+   "model": "AMD EPYC 9555 64-Core Processor",
+   "logical_cpus": 16,
+   "allocated": 16,
+   "affinity": "0-15",
+   "omp_num_threads": null,
+   "scheduler_cpu_counts": null,
+   "cpu_engine_threads": {
+    "threads": 16,
+    "rule": "len(os.sched_getaffinity(0))"
+   }
+  },
+  "gpu": {
+   "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+   "compute_cap": "12.0",
+   "driver": "595.58.03",
+   "memory": "97887 MiB"
+  },
+  "env": {
+   "XLA_PYTHON_CLIENT_PREALLOCATE": "false",
+   "PAPER_BENCH_JOB_START": "1793232249",
+   "PAPER_BENCH_PYTHON": ".../python",
+   "PAPER_BENCH_DEV_PYTHON": ".../python",
+   "PAPER_BENCH_PREFIX": ".../paper_bench_env",
+   "DK_FIXTURES": "fixtures/mjlab"
+  },
+  "quick": false
+ },
+ "mujoco_warp_file": ".../__init__.py",
+ "warp_version": "1.18.0",
+ "cells": {
+  "mf_s0/procedure/nw512": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 512,
+    "tiled": false
+   },
+   "capacity": "procedure",
+   "nconmax": 24,
+   "njmax": 128,
+   "naconmax": 11864,
+   "stats_last_substep": {
+    "overflow_bits_or": 1024,
+    "overflow_flags": [
+     "LS_ITERATIONS"
+    ],
+    "capacity_overflow": [],
+    "capacity_overflow_worlds": 0,
+    "nefc": {
+     "mean": 25.884765625,
+     "max": 112.0
+    },
+    "solver_niter": {
+     "mean": 3.318359375,
+     "max": 8.0
+    },
+    "nacon_total": 3418,
+    "finite_worlds": 512
+   },
+   "graph_ctrlstep": {
+    "ms": {
+     "median": 3.77145,
+     "p10": 3.77067,
+     "p90": 3.7715,
+     "min": 3.77063,
+     "max": 3.7715,
+     "rounds": [
+      3.7715,
+      3.7715,
+      3.77072,
+      3.77145,
+      3.77063
+     ]
+    },
+    "n": 66,
+    "kept_rounds": 5,
+    "warmup_calls": 265,
+    "warmup_s": 1.002,
+    "latency_ms_median": 3.77775
+   },
+   "first_call_s": 0.532,
+   "capture_s": 0.021,
+   "put_model_s": 0.08
+  },
+  "mf_s0/matched/nw512": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 512,
+    "tiled": false
+   },
+   "capacity": "matched",
+   "nconmax": 64,
+   "njmax": 192,
+   "naconmax": 32768,
+   "stats_last_substep": {
+    "overflow_bits_or": 1024,
+    "overflow_flags": [
+     "LS_ITERATIONS"
+    ],
+    "capacity_overflow": [],
+    "capacity_overflow_worlds": 0,
+    "nefc": {
+     "mean": 25.884765625,
+     "max": 112.0
+    },
+    "solver_niter": {
+     "mean": 3.318359375,
+     "max": 8.0
+    },
+    "nacon_total": 3418,
+    "finite_worlds": 512
+   },
+   "graph_ctrlstep": {
+    "ms": {
+     "median": 3.75895,
+     "p10": 3.7588,
+     "p90": 3.75957,
+     "min": 3.75874,
+     "max": 3.75971,
+     "rounds": [
+      3.75971,
+      3.75874,
+      3.7589,
+      3.75895,
+      3.75936
+     ]
+    },
+    "n": 66,
+    "kept_rounds": 5,
+    "warmup_calls": 266,
+    "warmup_s": 1.002,
+    "latency_ms_median": 3.76606
+   },
+   "first_call_s": 0.022,
+   "capture_s": 0.012,
+   "put_model_s": 0.08
+  }
+ },
+ "errors": {},
+ "warp_cuda_toolkit": "13.4",
+ "warp_cuda_driver": "13.2",
+ "opt": {
+  "iterations": "10",
+  "ls_iterations": "8",
+  "tolerance": "[1.e-06]",
+  "ls_tolerance": "[0.01]",
+  "solver": "2",
+  "cone": "0",
+  "integrator": "3",
+  "graph_conditional": "True",
+  "warn_overflow": "2559"
+ },
+ "default_capacity": {
+  "nconmax": 48,
+  "njmax": 64
+ },
+ "procedure_capacity": {
+  "nconmax": 24,
+  "naconmax": 11864,
+  "njmax": 128,
+  "source": "benchmarks/data/mjw_capacity.json",
+  "inputs": {
+   "pool_mean_max": 18.487548828125,
+   "contacts_world_max": 31,
+   "rows_max": 122,
+   "margin": 0.25
+  }
+ }
+}

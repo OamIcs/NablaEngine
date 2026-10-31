@@ -1,0 +1,189 @@
+{
+ "part": "mjw_native",
+ "nworld": 16384,
+ "iterations": 10,
+ "substeps": 4,
+ "env": {
+  "python": "3.12.3",
+  "executable": ".../python",
+  "packages": {
+   "mujoco": "3.17.0",
+   "mujoco-warp": "3.17.0",
+   "warp-lang": "1.18.0",
+   "numpy": "2.5.4"
+  },
+  "cpu": {
+   "model": "AMD EPYC 9555 64-Core Processor",
+   "logical_cpus": 16,
+   "allocated": 16,
+   "affinity": "0-15",
+   "omp_num_threads": null,
+   "scheduler_cpu_counts": null,
+   "cpu_engine_threads": {
+    "threads": 16,
+    "rule": "len(os.sched_getaffinity(0))"
+   }
+  },
+  "gpu": {
+   "name": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+   "compute_cap": "12.0",
+   "driver": "595.58.03",
+   "memory": "97887 MiB"
+  },
+  "env": {
+   "XLA_PYTHON_CLIENT_PREALLOCATE": "false",
+   "PAPER_BENCH_JOB_START": "1793232249",
+   "PAPER_BENCH_PYTHON": ".../python",
+   "PAPER_BENCH_DEV_PYTHON": ".../python",
+   "PAPER_BENCH_PREFIX": ".../paper_bench_env",
+   "DK_FIXTURES": "fixtures/mjlab"
+  },
+  "quick": false
+ },
+ "mujoco_warp_file": ".../__init__.py",
+ "warp_version": "1.18.0",
+ "cells": {
+  "mf_s0/procedure/nw16384": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 16384,
+    "tiled": true
+   },
+   "capacity": "procedure",
+   "nconmax": 24,
+   "njmax": 128,
+   "naconmax": 378656,
+   "stats_last_substep": {
+    "overflow_bits_or": 1536,
+    "overflow_flags": [
+     "ITERATIONS",
+     "LS_ITERATIONS"
+    ],
+    "capacity_overflow": [],
+    "capacity_overflow_worlds": 0,
+    "nefc": {
+     "mean": 25.463623046875,
+     "max": 112.0
+    },
+    "solver_niter": {
+     "mean": 3.2879638671875,
+     "max": 10.0
+    },
+    "nacon_total": 108468,
+    "finite_worlds": 16384
+   },
+   "graph_ctrlstep": {
+    "ms": {
+     "median": 15.96473,
+     "p10": 15.96264,
+     "p90": 15.96615,
+     "min": 15.96173,
+     "max": 15.96698,
+     "rounds": [
+      15.96173,
+      15.96399,
+      15.96473,
+      15.96698,
+      15.9649
+     ]
+    },
+    "n": 15,
+    "kept_rounds": 5,
+    "warmup_calls": 62,
+    "warmup_s": 1.002,
+    "latency_ms_median": 15.96789
+   },
+   "first_call_s": 0.543,
+   "capture_s": 0.021,
+   "put_model_s": 0.127
+  },
+  "mf_s0/matched/nw16384": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 16384,
+    "tiled": true
+   },
+   "capacity": "matched",
+   "nconmax": 64,
+   "njmax": 192,
+   "naconmax": 1048576,
+   "stats_last_substep": {
+    "overflow_bits_or": 1536,
+    "overflow_flags": [
+     "ITERATIONS",
+     "LS_ITERATIONS"
+    ],
+    "capacity_overflow": [],
+    "capacity_overflow_worlds": 0,
+    "nefc": {
+     "mean": 25.463623046875,
+     "max": 112.0
+    },
+    "solver_niter": {
+     "mean": 3.28778076171875,
+     "max": 10.0
+    },
+    "nacon_total": 108468,
+    "finite_worlds": 16384
+   },
+   "graph_ctrlstep": {
+    "ms": {
+     "median": 16.22834,
+     "p10": 16.22621,
+     "p90": 16.23021,
+     "min": 16.22541,
+     "max": 16.23114,
+     "rounds": [
+      16.2274,
+      16.23114,
+      16.22834,
+      16.22541,
+      16.2288
+     ]
+    },
+    "n": 15,
+    "kept_rounds": 5,
+    "warmup_calls": 62,
+    "warmup_s": 1.012,
+    "latency_ms_median": 16.23772
+   },
+   "first_call_s": 0.028,
+   "capture_s": 0.012,
+   "put_model_s": 0.127
+  }
+ },
+ "errors": {},
+ "warp_cuda_toolkit": "13.4",
+ "warp_cuda_driver": "13.2",
+ "opt": {
+  "iterations": "10",
+  "ls_iterations": "8",
+  "tolerance": "[1.e-06]",
+  "ls_tolerance": "[0.01]",
+  "solver": "2",
+  "cone": "0",
+  "integrator": "3",
+  "graph_conditional": "True",
+  "warn_overflow": "2559"
+ },
+ "default_capacity": {
+  "nconmax": 48,
+  "njmax": 64
+ },
+ "procedure_capacity": {
+  "nconmax": 24,
+  "naconmax": 378656,
+  "njmax": 128,
+  "source": "benchmarks/data/mjw_capacity.json",
+  "inputs": {
+   "pool_mean_max": 18.487548828125,
+   "contacts_world_max": 31,
+   "rows_max": 122,
+   "margin": 0.25
+  }
+ }
+}

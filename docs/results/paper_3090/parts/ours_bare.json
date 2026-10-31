@@ -1,0 +1,227 @@
+{
+ "part": "ours_bare",
+ "corpus": "mf_s0",
+ "nworld": 4096,
+ "iterations": 10,
+ "substeps": 4,
+ "reps": 50,
+ "env": {
+  "python": "3.12.16",
+  "executable": ".../python",
+  "packages": {
+   "numpy": "2.5.4",
+   "mujoco": "3.17.0"
+  },
+  "cpu": {
+   "model": "Intel(R) Xeon(R) CPU E5-2699 v4 @ 2.20GHz",
+   "logical_cpus": 88,
+   "allocated": 88,
+   "affinity": "0-87",
+   "omp_num_threads": null,
+   "scheduler_cpu_counts": null,
+   "cpu_engine_threads": {
+    "threads": 32,
+    "rule": "PAPER_BENCH_MJC_THREADS"
+   }
+  },
+  "gpu": {
+   "name": "NVIDIA GeForce RTX 3090",
+   "compute_cap": "8.6",
+   "driver": "565.57.01",
+   "memory": "24576 MiB"
+  },
+  "env": {
+   "PAPER_BENCH_MJC_THREADS": "32",
+   "XLA_PYTHON_CLIENT_PREALLOCATE": "false",
+   "PAPER_BENCH_JOB_START": "1793262564",
+   "PAPER_BENCH_PYTHON": ".../python3.12",
+   "PAPER_BENCH_DEV_PYTHON": ".../python",
+   "PAPER_BENCH_PREFIX": ".../paper_bench_env",
+   "DK_FIXTURES": "fixtures/mjlab"
+  },
+  "quick": false
+ },
+ "provenance": {
+  "date": "2026-10-29T08:31:32Z",
+  "nablaengine": {
+   "version": "0.1.0",
+   "commit": null,
+   "dirty": null,
+   "commit_note": "a revision before this repository's history: not recorded"
+  },
+  "gpu": {
+   "name": "NVIDIA GeForce RTX 3090",
+   "compute_cap": "8.6",
+   "driver": "565.57.01"
+  },
+  "arch": "sm_86",
+  "nvcc": "12.6.85",
+  "python": "3.12.16",
+  "packages": {
+   "numpy": "2.5.4",
+   "mujoco": "3.17.0",
+   "mujoco-mjx": "3.17.0",
+   "jax": "0.12.0.1",
+   "jaxlib": "0.12.0.1",
+   "jax-cuda12-plugin": "0.12.0.1",
+   "warp-lang": "1.18.0+cu12",
+   "scipy": "1.18.1"
+  },
+  "environment": {
+   "CUDA_DEVICE_ORDER": "PCI_BUS_ID",
+   "DK_FIXTURES": "fixtures/mjlab",
+   "XLA_PYTHON_CLIENT_PREALLOCATE": "false"
+  },
+  "fixtures": "fixtures/mjlab"
+ },
+ "arch_flags": {
+  "forward": [
+   "-arch=sm_86"
+  ],
+  "adjoint": [
+   "-arch=sm_86"
+  ]
+ },
+ "cells": {
+  "step": {
+   "tape0": {
+    "ms": {
+     "median": 3.02269,
+     "p10": 3.00213,
+     "p90": 3.11915,
+     "min": 2.99729,
+     "max": 3.28212,
+     "rounds": [
+      3.28212,
+      3.04931,
+      3.03987,
+      3.01728,
+      2.99729,
+      3.00421,
+      3.02488,
+      3.02051
+     ]
+    },
+    "runs": 8,
+    "launches_per_run": 50
+   },
+   "tape1": {
+    "ms": {
+     "median": 3.13123,
+     "p10": 3.11011,
+     "p90": 3.13878,
+     "min": 3.10483,
+     "max": 3.14067,
+     "rounds": [
+      3.10483,
+      3.13123,
+      3.14067
+     ]
+    },
+    "runs": 3,
+    "launches_per_run": 50
+   },
+   "main_run_ms_tape1": 3.36523,
+   "blocks_per_sm": 12,
+   "blocks_per_sm_post": 11,
+   "arch_flags": null,
+   "forward_defines": null,
+   "ours_vs_mjw_qvel": {
+    "median": 1.3384548083195114e-06,
+    "p99": 1.631274244573433e-05,
+    "max": 1.8495748008717783e-05
+   },
+   "supported_share": 1.0,
+   "raw": ".../ours_bare_step_mf_s0.json"
+  },
+  "adjoint/exact": {
+   "defines": [
+    "DK_ADJ_CLAMP_KV=1",
+    "DK_ADJ_STAGE=3",
+    "DK_ADJ_NORMAL=0"
+   ],
+   "adjoint": {
+    "ms": {
+     "median": 1.27853,
+     "p10": 1.27074,
+     "p90": 1.28395,
+     "min": 1.26904,
+     "max": 1.28405,
+     "rounds": [
+      1.26904,
+      1.27853,
+      1.27328,
+      1.28405,
+      1.28379
+     ]
+    },
+    "runs": 5,
+    "launches_per_run": 50
+   },
+   "fused_forward_tape_not_production": {
+    "ms": {
+     "median": 6.78799,
+     "p10": 6.73933,
+     "p90": 7.05245,
+     "min": 6.72313,
+     "max": 7.21439,
+     "rounds": [
+      6.72313,
+      6.76362,
+      7.21439,
+      6.78799,
+      6.80954
+     ]
+    }
+   },
+   "worlds_per_sm_adjoint": 9,
+   "sizeof_adj": 10108,
+   "forward_build": null
+  },
+  "adjoint/interface": {
+   "defines": [
+    "DK_ADJ_CLAMP_KV=0",
+    "DK_ADJ_STAGE=3",
+    "DK_ADJ_NORMAL=3"
+   ],
+   "adjoint": {
+    "ms": {
+     "median": 1.28881,
+     "p10": 1.27599,
+     "p90": 1.29015,
+     "min": 1.27107,
+     "max": 1.29034,
+     "rounds": [
+      1.27107,
+      1.28881,
+      1.28338,
+      1.28987,
+      1.29034
+     ]
+    },
+    "runs": 5,
+    "launches_per_run": 50
+   },
+   "fused_forward_tape_not_production": {
+    "ms": {
+     "median": 6.78457,
+     "p10": 6.74389,
+     "p90": 7.25786,
+     "min": 6.72881,
+     "max": 7.25838,
+     "rounds": [
+      6.72881,
+      6.76651,
+      7.25838,
+      7.25707,
+      6.78457
+     ]
+    }
+   },
+   "worlds_per_sm_adjoint": 9,
+   "sizeof_adj": 10108,
+   "forward_build": null
+  }
+ },
+ "errors": {}
+}

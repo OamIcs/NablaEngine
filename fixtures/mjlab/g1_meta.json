@@ -1,0 +1,32 @@
+{
+ "mujoco_version": "3.17.0",
+ "foot_pairs": [
+  5,
+  6,
+  7,
+  8,
+  9,
+  10,
+  11,
+  16,
+  17,
+  18,
+  19,
+  20,
+  21,
+  22
+ ],
+ "torso_body": "torso_link",
+ "nq": 36,
+ "nv": 35,
+ "nu": 29,
+ "nbody": 31,
+ "npair": 502,
+ "timestep": 0.005,
+ "substeps_per_control_step": 4,
+ "solver": "Newton",
+ "cone": "pyramidal",
+ "integrator": "implicitfast",
+ "robot": "mjlab",
+ "source": "MuJoCo Menagerie unitree_g1/scene_mjx.xml at f3b6013 (Unitree Robotics, BSD-3-Clause), modified after mjlab's G1 configuration: sole capsules, explicit contact pairs, contact and joint parameters, PD gains, ctrlrange, 5 ms timestep; meshes and textures removed. See README.md."
+}

@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "NablaEngine: fused CUDA physics with an analytic adjoint for the Unitree G1"
+abstract: >-
+  A differentiable GPU physics engine for the Unitree G1 humanoid (mjlab model). It runs a whole control step
+  (collision, constraints, Newton solver and implicitfast integration over several substeps) for thousands of worlds
+  in one call, one warp per world in fused CUDA kernels, and provides an analytic adjoint of that step with JAX and
+  PyTorch interfaces. The engine is checked against MuJoCo and MuJoCo Warp.
+authors:
+  - name: "The NablaEngine Authors"
+version: 0.1.0
+license: Apache-2.0
+repository-code: "https://github.com/OamIcs/NablaEngine"
+keywords:
+  - physics simulation
+  - differentiable simulation
+  - CUDA
+  - JAX
+  - MuJoCo
+  - robotics
+  - humanoid

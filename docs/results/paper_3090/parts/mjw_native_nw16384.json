@@ -1,0 +1,190 @@
+{
+ "part": "mjw_native",
+ "nworld": 16384,
+ "iterations": 10,
+ "substeps": 4,
+ "env": {
+  "python": "3.12.16",
+  "executable": ".../python",
+  "packages": {
+   "mujoco": "3.17.0",
+   "mujoco-warp": "3.17.0",
+   "warp-lang": "1.18.0+cu12",
+   "numpy": "2.5.4"
+  },
+  "cpu": {
+   "model": "Intel(R) Xeon(R) CPU E5-2699 v4 @ 2.20GHz",
+   "logical_cpus": 88,
+   "allocated": 88,
+   "affinity": "0-87",
+   "omp_num_threads": null,
+   "scheduler_cpu_counts": null,
+   "cpu_engine_threads": {
+    "threads": 32,
+    "rule": "PAPER_BENCH_MJC_THREADS"
+   }
+  },
+  "gpu": {
+   "name": "NVIDIA GeForce RTX 3090",
+   "compute_cap": "8.6",
+   "driver": "565.57.01",
+   "memory": "24576 MiB"
+  },
+  "env": {
+   "PAPER_BENCH_MJC_THREADS": "32",
+   "XLA_PYTHON_CLIENT_PREALLOCATE": "false",
+   "PAPER_BENCH_JOB_START": "1793262564",
+   "PAPER_BENCH_PYTHON": ".../python3.12",
+   "PAPER_BENCH_DEV_PYTHON": ".../python",
+   "PAPER_BENCH_PREFIX": ".../paper_bench_env",
+   "DK_FIXTURES": "fixtures/mjlab"
+  },
+  "quick": false
+ },
+ "mujoco_warp_file": ".../__init__.py",
+ "warp_version": "1.18.0",
+ "cells": {
+  "mf_s0/procedure/nw16384": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 16384,
+    "tiled": true
+   },
+   "capacity": "procedure",
+   "nconmax": 24,
+   "njmax": 128,
+   "naconmax": 378655,
+   "stats_last_substep": {
+    "overflow_bits_or": 1536,
+    "overflow_flags": [
+     "ITERATIONS",
+     "LS_ITERATIONS"
+    ],
+    "capacity_overflow": [],
+    "capacity_overflow_worlds": 0,
+    "nefc": {
+     "mean": 25.463623046875,
+     "max": 112.0
+    },
+    "solver_niter": {
+     "mean": 3.28790283203125,
+     "max": 10.0
+    },
+    "nacon_total": 108468,
+    "finite_worlds": 16384
+   },
+   "graph_ctrlstep": {
+    "ms": {
+     "median": 41.53941,
+     "p10": 41.14279,
+     "p90": 42.11012,
+     "min": 40.92463,
+     "max": 42.37189,
+     "rounds": [
+      40.92463,
+      41.47002,
+      41.53941,
+      41.71748,
+      42.37189
+     ]
+    },
+    "n": 6,
+    "kept_rounds": 5,
+    "warmup_calls": 25,
+    "warmup_s": 1.016,
+    "latency_ms_median": 42.66432
+   },
+   "first_call_s": 1.508,
+   "capture_s": 0.08,
+   "put_model_s": 4.102
+  },
+  "mf_s0/matched/nw16384": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 16384,
+    "tiled": true
+   },
+   "capacity": "matched",
+   "nconmax": 64,
+   "njmax": 192,
+   "naconmax": 1048576,
+   "stats_last_substep": {
+    "overflow_bits_or": 1536,
+    "overflow_flags": [
+     "ITERATIONS",
+     "LS_ITERATIONS"
+    ],
+    "capacity_overflow": [],
+    "capacity_overflow_worlds": 0,
+    "nefc": {
+     "mean": 25.463623046875,
+     "max": 112.0
+    },
+    "solver_niter": {
+     "mean": 3.287841796875,
+     "max": 10.0
+    },
+    "nacon_total": 108468,
+    "finite_worlds": 16384
+   },
+   "graph_ctrlstep": {
+    "ms": {
+     "median": 43.00972,
+     "p10": 42.6586,
+     "p90": 43.45344,
+     "min": 42.50332,
+     "max": 43.58538,
+     "rounds": [
+      42.50332,
+      42.89151,
+      43.00972,
+      43.25553,
+      43.58538
+     ]
+    },
+    "n": 6,
+    "kept_rounds": 5,
+    "warmup_calls": 24,
+    "warmup_s": 1.014,
+    "latency_ms_median": 43.98788
+   },
+   "first_call_s": 0.114,
+   "capture_s": 0.061,
+   "put_model_s": 4.102
+  }
+ },
+ "errors": {},
+ "warp_cuda_toolkit": "12.9",
+ "warp_cuda_driver": "12.7",
+ "opt": {
+  "iterations": "10",
+  "ls_iterations": "8",
+  "tolerance": "[1.e-06]",
+  "ls_tolerance": "[0.01]",
+  "solver": "2",
+  "cone": "0",
+  "integrator": "3",
+  "graph_conditional": "True",
+  "warn_overflow": "2559"
+ },
+ "default_capacity": {
+  "nconmax": 48,
+  "njmax": 64
+ },
+ "procedure_capacity": {
+  "nconmax": 24,
+  "naconmax": 378655,
+  "njmax": 128,
+  "source": "benchmarks/data/mjw_capacity.json",
+  "inputs": {
+   "pool_mean_max": 18.487548828125,
+   "contacts_world_max": 30,
+   "rows_max": 114,
+   "margin": 0.25
+  }
+ }
+}

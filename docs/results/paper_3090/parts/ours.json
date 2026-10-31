@@ -1,0 +1,910 @@
+{
+ "part": "ours",
+ "what": "nablaengine.jax_ffi under jax.jit",
+ "nworld": 4096,
+ "iterations": 10,
+ "substeps": 4,
+ "modes": {
+  "exact": {
+   "clamp_kv": 1,
+   "normal": 0
+  },
+  "interface": {
+   "clamp_kv": 0,
+   "normal": 3
+  }
+ },
+ "env": {
+  "python": "3.12.16",
+  "executable": ".../python",
+  "packages": {
+   "jax": "0.12.0.1",
+   "jaxlib": "0.12.0.1",
+   "jax-cuda12-plugin": "0.12.0.1",
+   "jax-cuda13-plugin": null,
+   "mujoco": "3.17.0",
+   "numpy": "2.5.4"
+  },
+  "cpu": {
+   "model": "Intel(R) Xeon(R) CPU E5-2699 v4 @ 2.20GHz",
+   "logical_cpus": 88,
+   "allocated": 88,
+   "affinity": "0-87",
+   "omp_num_threads": null,
+   "scheduler_cpu_counts": null,
+   "cpu_engine_threads": {
+    "threads": 32,
+    "rule": "PAPER_BENCH_MJC_THREADS"
+   }
+  },
+  "gpu": {
+   "name": "NVIDIA GeForce RTX 3090",
+   "compute_cap": "8.6",
+   "driver": "565.57.01",
+   "memory": "24576 MiB"
+  },
+  "env": {
+   "PAPER_BENCH_MJC_THREADS": "32",
+   "PAPER_BENCH_SKIP_SETUP": "1",
+   "XLA_PYTHON_CLIENT_PREALLOCATE": "false",
+   "PAPER_BENCH_JOB_START": "1793266160",
+   "PAPER_BENCH_PARTS": "ours,mjx,mjx_triton,rep2_ours,rep3_ours,rep2_mjx,rep3_mjx,rep2_mjc,rep3_mjc,rep3_mjw_native,rep3_mjw_pr1535,rep3_mjw_pr1535_fix",
+   "PAPER_BENCH_BUDGET_MIN": "150",
+   "PAPER_BENCH_TIMEOUT_SCALE": "2.5",
+   "PAPER_BENCH_PYTHON": ".../python3.12",
+   "PAPER_BENCH_DEV_PYTHON": ".../python",
+   "PAPER_BENCH_PREFIX": ".../paper_bench_env",
+   "DK_FIXTURES": "fixtures/mjlab"
+  },
+  "quick": false
+ },
+ "provenance": {
+  "date": "2026-10-29T09:29:22Z",
+  "nablaengine": {
+   "version": "0.1.0",
+   "commit": null,
+   "dirty": null,
+   "commit_note": "a revision before this repository's history: not recorded"
+  },
+  "gpu": {
+   "name": "NVIDIA GeForce RTX 3090",
+   "compute_cap": "8.6",
+   "driver": "565.57.01"
+  },
+  "arch": "sm_86",
+  "nvcc": "12.6.85",
+  "python": "3.12.16",
+  "packages": {
+   "numpy": "2.5.4",
+   "mujoco": "3.17.0",
+   "mujoco-mjx": "3.17.0",
+   "jax": "0.12.0.1",
+   "jaxlib": "0.12.0.1",
+   "jax-cuda12-plugin": "0.12.0.1",
+   "warp-lang": "1.18.0+cu12",
+   "scipy": "1.18.1"
+  },
+  "environment": {
+   "CUDA_DEVICE_ORDER": "PCI_BUS_ID",
+   "DK_FIXTURES": "fixtures/mjlab",
+   "XLA_PYTHON_CLIENT_PREALLOCATE": "false"
+  },
+  "fixtures": "fixtures/mjlab"
+ },
+ "cells": {
+  "mf_s0/nw4096": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "compile_s": {
+    "fwd": 0.032,
+    "fwd_tape": 0.056,
+    "exact.bwd": 0.04,
+    "exact.vjp": 0.152,
+    "exact.jac_bwd": 0.248,
+    "exact.jac": 0.218,
+    "interface.bwd": 0.077,
+    "interface.vjp": 0.116,
+    "interface.jac_bwd": 0.206,
+    "interface.jac": 0.228
+   },
+   "fwd": {
+    "ms": {
+     "median": 3.15101,
+     "p10": 3.13792,
+     "p90": 3.17249,
+     "min": 3.13677,
+     "max": 3.18254,
+     "rounds": [
+      3.18254,
+      3.15101,
+      3.13964,
+      3.15742,
+      3.13677
+     ]
+    },
+    "n": 60,
+    "kept_rounds": 5,
+    "warmup_calls": 240,
+    "warmup_s": 1.003,
+    "latency_ms_median": 3.96662
+   },
+   "finite_fwd": true,
+   "fwd_tape": {
+    "ms": {
+     "median": 3.39696,
+     "p10": 3.38376,
+     "p90": 3.44395,
+     "min": 3.37578,
+     "max": 3.45736,
+     "rounds": [
+      3.37578,
+      3.39573,
+      3.39696,
+      3.42385,
+      3.45736
+     ]
+    },
+    "n": 60,
+    "kept_rounds": 5,
+    "warmup_calls": 239,
+    "warmup_s": 1.001,
+    "latency_ms_median": 4.47844
+   },
+   "forward_info": {
+    "newton_iterations_mean": 4.403076171875,
+    "contacts_mean": 6.6201171875,
+    "rows_max": 112,
+    "unsupported_worlds": 0
+   },
+   "exact": {
+    "bwd": {
+     "ms": {
+      "median": 1.45829,
+      "p10": 1.45682,
+      "p90": 1.46378,
+      "min": 1.45604,
+      "max": 1.46641,
+      "rounds": [
+       1.458,
+       1.45829,
+       1.46641,
+       1.45984,
+       1.45604
+      ]
+     },
+     "n": 114,
+     "kept_rounds": 5,
+     "warmup_calls": 457,
+     "warmup_s": 1.001,
+     "latency_ms_median": 2.29972
+    },
+    "finite_bwd": true,
+    "vjp": {
+     "ms": {
+      "median": 5.11838,
+      "p10": 5.00071,
+      "p90": 5.12315,
+      "min": 4.95442,
+      "max": 5.12316,
+      "rounds": [
+       4.95442,
+       5.12316,
+       5.12314,
+       5.11838,
+       5.07016
+      ]
+     },
+     "n": 43,
+     "kept_rounds": 5,
+     "warmup_calls": 173,
+     "warmup_s": 1.0,
+     "latency_ms_median": 5.98695
+    },
+    "jac_bwd": {
+     "ms": {
+      "median": 105.18329,
+      "p10": 104.63826,
+      "p90": 105.934,
+      "min": 104.60444,
+      "max": 105.95367,
+      "rounds": [
+       105.18329,
+       104.60444,
+       105.95367,
+       104.68898,
+       105.9045
+      ]
+     },
+     "n": 2,
+     "kept_rounds": 5,
+     "warmup_calls": 10,
+     "warmup_s": 1.048,
+     "latency_ms_median": 106.1919,
+     "us_per_world": 25.67951,
+     "backward_calls": 71
+    },
+    "jac": {
+     "ms": {
+      "median": 110.83062,
+      "p10": 110.54259,
+      "p90": 111.80596,
+      "min": 110.4694,
+      "max": 112.26791,
+      "rounds": [
+       110.4694,
+       111.11303,
+       110.83062,
+       110.65237,
+       112.26791
+      ]
+     },
+     "n": 2,
+     "kept_rounds": 5,
+     "warmup_calls": 10,
+     "warmup_s": 1.086,
+     "latency_ms_median": 111.53284,
+     "us_per_world": 27.05826,
+     "backward_calls": 71
+    }
+   },
+   "interface": {
+    "bwd": {
+     "ms": {
+      "median": 1.49983,
+      "p10": 1.46761,
+      "p90": 1.50696,
+      "min": 1.46639,
+      "max": 1.51106,
+      "rounds": [
+       1.46639,
+       1.46945,
+       1.49983,
+       1.50079,
+       1.51106
+      ]
+     },
+     "n": 108,
+     "kept_rounds": 5,
+     "warmup_calls": 431,
+     "warmup_s": 1.0,
+     "latency_ms_median": 2.37289
+    },
+    "finite_bwd": true,
+    "vjp": {
+     "ms": {
+      "median": 5.21621,
+      "p10": 5.18373,
+      "p90": 5.22978,
+      "min": 5.17081,
+      "max": 5.2305,
+      "rounds": [
+       5.22869,
+       5.17081,
+       5.20311,
+       5.21621,
+       5.2305
+      ]
+     },
+     "n": 42,
+     "kept_rounds": 5,
+     "warmup_calls": 167,
+     "warmup_s": 1.002,
+     "latency_ms_median": 6.20414
+    },
+    "jac_bwd": {
+     "ms": {
+      "median": 109.52724,
+      "p10": 109.27271,
+      "p90": 109.86822,
+      "min": 109.26016,
+      "max": 109.921,
+      "rounds": [
+       109.29153,
+       109.26016,
+       109.52724,
+       109.921,
+       109.78903
+      ]
+     },
+     "n": 2,
+     "kept_rounds": 5,
+     "warmup_calls": 10,
+     "warmup_s": 1.078,
+     "latency_ms_median": 110.54798,
+     "us_per_world": 26.74005,
+     "backward_calls": 71
+    },
+    "jac": {
+     "ms": {
+      "median": 114.77935,
+      "p10": 114.34178,
+      "p90": 114.78603,
+      "min": 114.25524,
+      "max": 114.78934,
+      "rounds": [
+       114.78106,
+       114.25524,
+       114.47161,
+       114.78934,
+       114.77935
+      ]
+     },
+     "n": 2,
+     "kept_rounds": 5,
+     "warmup_calls": 10,
+     "warmup_s": 1.111,
+     "latency_ms_median": 115.30545,
+     "us_per_world": 28.0223,
+     "backward_calls": 71
+    }
+   }
+  },
+  "mf_s1/nw4096": {
+   "corpus": {
+    "name": "mf_s1",
+    "path": "benchmarks/data/mf_s1.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "compile_s": {
+    "fwd": 0.002,
+    "fwd_tape": 0.002,
+    "exact.bwd": 0.068,
+    "exact.vjp": 0.125,
+    "exact.jac_bwd": 0.177,
+    "exact.jac": 0.227,
+    "interface.bwd": 0.068,
+    "interface.vjp": 0.12,
+    "interface.jac_bwd": 0.223,
+    "interface.jac": 0.229
+   },
+   "fwd": {
+    "ms": {
+     "median": 3.68378,
+     "p10": 3.66204,
+     "p90": 3.69116,
+     "min": 3.66176,
+     "max": 3.69249,
+     "rounds": [
+      3.66245,
+      3.68378,
+      3.66176,
+      3.68916,
+      3.69249
+     ]
+    },
+    "n": 56,
+    "kept_rounds": 5,
+    "warmup_calls": 225,
+    "warmup_s": 1.002,
+    "latency_ms_median": 4.66649
+   },
+   "finite_fwd": true,
+   "fwd_tape": {
+    "ms": {
+     "median": 3.81057,
+     "p10": 3.76864,
+     "p90": 3.81522,
+     "min": 3.7571,
+     "max": 3.8166,
+     "rounds": [
+      3.7571,
+      3.8166,
+      3.78596,
+      3.81313,
+      3.81057
+     ]
+    },
+    "n": 53,
+    "kept_rounds": 5,
+    "warmup_calls": 214,
+    "warmup_s": 1.003,
+    "latency_ms_median": 4.78836
+   },
+   "forward_info": {
+    "newton_iterations_mean": 4.441650390625,
+    "contacts_mean": 6.868408203125,
+    "rows_max": 114,
+    "unsupported_worlds": 0
+   },
+   "exact": {
+    "bwd": {
+     "ms": {
+      "median": 1.56658,
+      "p10": 1.56314,
+      "p90": 1.57522,
+      "min": 1.56212,
+      "max": 1.57547,
+      "rounds": [
+       1.56658,
+       1.56466,
+       1.57484,
+       1.56212,
+       1.57547
+      ]
+     },
+     "n": 115,
+     "kept_rounds": 5,
+     "warmup_calls": 461,
+     "warmup_s": 1.002,
+     "latency_ms_median": 2.34451
+    },
+    "finite_bwd": true,
+    "vjp": {
+     "ms": {
+      "median": 5.40154,
+      "p10": 5.38064,
+      "p90": 5.40443,
+      "min": 5.37154,
+      "max": 5.4061,
+      "rounds": [
+       5.40193,
+       5.37154,
+       5.39429,
+       5.4061,
+       5.40154
+      ]
+     },
+     "n": 41,
+     "kept_rounds": 5,
+     "warmup_calls": 165,
+     "warmup_s": 1.004,
+     "latency_ms_median": 6.5107
+    },
+    "jac_bwd": {
+     "ms": {
+      "median": 112.07421,
+      "p10": 111.61707,
+      "p90": 112.24364,
+      "min": 111.48976,
+      "max": 112.27943,
+      "rounds": [
+       112.07421,
+       111.48976,
+       112.27943,
+       112.18996,
+       111.80803
+      ]
+     },
+     "n": 2,
+     "kept_rounds": 5,
+     "warmup_calls": 10,
+     "warmup_s": 1.108,
+     "latency_ms_median": 112.59606,
+     "us_per_world": 27.36187,
+     "backward_calls": 71
+    },
+    "jac": {
+     "ms": {
+      "median": 116.16802,
+      "p10": 115.82678,
+      "p90": 116.96189,
+      "min": 115.63324,
+      "max": 117.10109,
+      "rounds": [
+       116.11709,
+       117.10109,
+       116.75309,
+       115.63324,
+       116.16802
+      ]
+     },
+     "n": 2,
+     "kept_rounds": 5,
+     "warmup_calls": 9,
+     "warmup_s": 1.003,
+     "latency_ms_median": 116.61336,
+     "us_per_world": 28.36133,
+     "backward_calls": 71
+    }
+   },
+   "interface": {
+    "bwd": {
+     "ms": {
+      "median": 1.57799,
+      "p10": 1.55426,
+      "p90": 1.57904,
+      "min": 1.54386,
+      "max": 1.57948,
+      "rounds": [
+       1.54386,
+       1.57839,
+       1.57948,
+       1.56984,
+       1.57799
+      ]
+     },
+     "n": 106,
+     "kept_rounds": 5,
+     "warmup_calls": 425,
+     "warmup_s": 1.0,
+     "latency_ms_median": 2.46084
+    },
+    "finite_bwd": true,
+    "vjp": {
+     "ms": {
+      "median": 5.45906,
+      "p10": 5.43249,
+      "p90": 5.46094,
+      "min": 5.41667,
+      "max": 5.4615,
+      "rounds": [
+       5.45906,
+       5.41667,
+       5.4601,
+       5.45623,
+       5.4615
+      ]
+     },
+     "n": 40,
+     "kept_rounds": 5,
+     "warmup_calls": 161,
+     "warmup_s": 1.003,
+     "latency_ms_median": 6.47755
+    },
+    "jac_bwd": {
+     "ms": {
+      "median": 113.06551,
+      "p10": 112.80456,
+      "p90": 113.32041,
+      "min": 112.69981,
+      "max": 113.41853,
+      "rounds": [
+       112.69981,
+       113.17322,
+       113.06551,
+       113.41853,
+       112.9617
+      ]
+     },
+     "n": 2,
+     "kept_rounds": 5,
+     "warmup_calls": 10,
+     "warmup_s": 1.11,
+     "latency_ms_median": 113.68115,
+     "us_per_world": 27.60388,
+     "backward_calls": 71
+    },
+    "jac": {
+     "ms": {
+      "median": 117.44667,
+      "p10": 116.79342,
+      "p90": 117.50612,
+      "min": 116.41465,
+      "max": 117.54138,
+      "rounds": [
+       117.36158,
+       116.41465,
+       117.45324,
+       117.54138,
+       117.44667
+      ]
+     },
+     "n": 2,
+     "kept_rounds": 5,
+     "warmup_calls": 9,
+     "warmup_s": 1.026,
+     "latency_ms_median": 117.86569,
+     "us_per_world": 28.6735,
+     "backward_calls": 71
+    }
+   }
+  },
+  "sweep/mf_s0/nw512": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 512,
+    "tiled": false
+   },
+   "mode": "exact",
+   "compile_s": {
+    "fwd": 0.039,
+    "vjp": 0.114
+   },
+   "fwd": {
+    "ms": {
+     "median": 0.9135,
+     "p10": 0.91174,
+     "p90": 0.91418,
+     "min": 0.91143,
+     "max": 0.91453,
+     "rounds": [
+      0.9135,
+      0.91219,
+      0.91143,
+      0.91366,
+      0.91453
+     ]
+    },
+    "n": 157,
+    "kept_rounds": 5,
+    "warmup_calls": 627,
+    "warmup_s": 1.001,
+    "latency_ms_median": 1.6581
+   },
+   "vjp": {
+    "ms": {
+     "median": 1.22179,
+     "p10": 1.22024,
+     "p90": 1.22668,
+     "min": 1.21961,
+     "max": 1.22916,
+     "rounds": [
+      1.22179,
+      1.22916,
+      1.22297,
+      1.21961,
+      1.22117
+     ]
+    },
+    "n": 121,
+    "kept_rounds": 5,
+    "warmup_calls": 484,
+    "warmup_s": 1.0,
+    "latency_ms_median": 2.11004
+   }
+  },
+  "sweep/mf_s0/nw1024": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 1024,
+    "tiled": false
+   },
+   "mode": "exact",
+   "compile_s": {
+    "fwd": 0.033,
+    "vjp": 0.125
+   },
+   "fwd": {
+    "ms": {
+     "median": 1.39882,
+     "p10": 1.3792,
+     "p90": 1.39978,
+     "min": 1.37476,
+     "max": 1.40033,
+     "rounds": [
+      1.37476,
+      1.38588,
+      1.39882,
+      1.39896,
+      1.40033
+     ]
+    },
+    "n": 119,
+    "kept_rounds": 5,
+    "warmup_calls": 475,
+    "warmup_s": 1.001,
+    "latency_ms_median": 2.30757
+   },
+   "vjp": {
+    "ms": {
+     "median": 1.95395,
+     "p10": 1.93737,
+     "p90": 1.95844,
+     "min": 1.92915,
+     "max": 1.96048,
+     "rounds": [
+      1.92915,
+      1.95395,
+      1.95538,
+      1.9497,
+      1.96048
+     ]
+    },
+    "n": 86,
+    "kept_rounds": 5,
+    "warmup_calls": 345,
+    "warmup_s": 1.003,
+    "latency_ms_median": 2.97377
+   }
+  },
+  "sweep/mf_s0/nw4096": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "mode": "exact",
+   "compile_s": {
+    "fwd": 0.001,
+    "vjp": 0.132
+   },
+   "fwd": {
+    "ms": {
+     "median": 3.75442,
+     "p10": 3.74329,
+     "p90": 3.7783,
+     "min": 3.73819,
+     "max": 3.78105,
+     "rounds": [
+      3.77416,
+      3.73819,
+      3.75093,
+      3.75442,
+      3.78105
+     ]
+    },
+    "n": 56,
+    "kept_rounds": 5,
+    "warmup_calls": 224,
+    "warmup_s": 1.003,
+    "latency_ms_median": 4.82727
+   },
+   "vjp": {
+    "ms": {
+     "median": 5.53436,
+     "p10": 5.52599,
+     "p90": 5.53997,
+     "min": 5.52503,
+     "max": 5.54066,
+     "rounds": [
+      5.53894,
+      5.54066,
+      5.52503,
+      5.53436,
+      5.52742
+     ]
+    },
+    "n": 40,
+    "kept_rounds": 5,
+    "warmup_calls": 159,
+    "warmup_s": 1.001,
+    "latency_ms_median": 6.55229
+   }
+  },
+  "sweep/mf_s0/nw16384": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 16384,
+    "tiled": true
+   },
+   "mode": "exact",
+   "compile_s": {
+    "fwd": 0.031,
+    "vjp": 0.136
+   },
+   "fwd": {
+    "ms": {
+     "median": 14.0436,
+     "p10": 13.97507,
+     "p90": 14.22264,
+     "min": 13.93662,
+     "max": 14.3363,
+     "rounds": [
+      13.93662,
+      14.05215,
+      14.03274,
+      14.0436,
+      14.3363
+     ]
+    },
+    "n": 17,
+    "kept_rounds": 5,
+    "warmup_calls": 69,
+    "warmup_s": 1.009,
+    "latency_ms_median": 15.06237
+   },
+   "vjp": {
+    "ms": {
+     "median": 20.74646,
+     "p10": 20.74154,
+     "p90": 20.75533,
+     "min": 20.74067,
+     "max": 20.75633,
+     "rounds": [
+      20.74646,
+      20.74283,
+      20.74067,
+      20.75633,
+      20.75384
+     ]
+    },
+    "n": 12,
+    "kept_rounds": 5,
+    "warmup_calls": 48,
+    "warmup_s": 1.021,
+    "latency_ms_median": 21.76936
+   }
+  }
+ },
+ "errors": {},
+ "init": {
+  "seconds": 0.953,
+  "built": false,
+  "key": "d793e7ab1b87343bfc92",
+  "arch": "sm_86",
+  "arch_flags": {
+   "forward": [
+    "-arch=sm_86"
+   ],
+   "adjoint": [
+    "-arch=sm_86"
+   ]
+  },
+  "forward_defines": [],
+  "front_end": null,
+  "forward_unit": "dk_kv0_n3",
+  "library": ".../libdk_g1_sm_86_d793e7ab1b87343bfc92.so",
+  "cache_dir": ".../dkcache",
+  "commit": null,
+  "dirty": null,
+  "sizeof_adj": {
+   "dk_kv0_n0": 10108,
+   "dk_kv0_n1": 10108,
+   "dk_kv0_n2": 10108,
+   "dk_kv0_n3": 10108,
+   "dk_kv1_n0": 10108,
+   "dk_kv1_n1": 10108,
+   "dk_kv1_n2": 10108,
+   "dk_kv1_n3": 10108,
+   "dk_kv2_n0": 10228,
+   "dk_kv2_n1": 10228,
+   "dk_kv2_n2": 10228,
+   "dk_kv2_n3": 10228
+  }
+ },
+ "launch_info": {
+  "dk_kv0_n0": {
+   "smem": 10108,
+   "worlds_per_sm": 9
+  },
+  "dk_kv0_n1": {
+   "smem": 10108,
+   "worlds_per_sm": 9
+  },
+  "dk_kv0_n2": {
+   "smem": 10108,
+   "worlds_per_sm": 9
+  },
+  "dk_kv0_n3": {
+   "smem": 10108,
+   "worlds_per_sm": 9
+  },
+  "dk_kv1_n0": {
+   "smem": 10108,
+   "worlds_per_sm": 9
+  },
+  "dk_kv1_n1": {
+   "smem": 10108,
+   "worlds_per_sm": 9
+  },
+  "dk_kv1_n2": {
+   "smem": 10108,
+   "worlds_per_sm": 9
+  },
+  "dk_kv1_n3": {
+   "smem": 10108,
+   "worlds_per_sm": 9
+  },
+  "dk_kv2_n0": {
+   "smem": 10228,
+   "worlds_per_sm": 9
+  },
+  "dk_kv2_n1": {
+   "smem": 10228,
+   "worlds_per_sm": 9
+  },
+  "dk_kv2_n2": {
+   "smem": 10228,
+   "worlds_per_sm": 9
+  },
+  "dk_kv2_n3": {
+   "smem": 10228,
+   "worlds_per_sm": 9
+  }
+ }
+}

@@ -1,0 +1,6840 @@
+{
+ "schema": "physx_bench/1",
+ "created_utc": "2026-10-29T00:33:33Z",
+ "mode": "full",
+ "budget_min": 55.0,
+ "task": "Isaac-Velocity-Flat-G1",
+ "provenance": {
+  "repo_commit": null,
+  "scripts_dirty": null,
+  "scripts": "scripts/physx_bench",
+  "commit_note": "a revision before this repository's history: not recorded"
+ },
+ "install": {
+  "torch_backend": "cu130",
+  "driver_below_isaaclab_minimum_580_65": false
+ },
+ "license": "NVIDIA Isaac Sim / Omniverse license accepted by the operator before the run; these scripts never accept it (operator-written marker file)",
+ "method": "bench_physics_only.py: gym.make of the registered task; per control step one action a~U[-1,1]^37 (JointPositionAction: target = default pose + 0.5 a, held), then decimation x (apply_action, scene.write_data_to_sim, sim.step(render=False), scene.update); no MDP managers or resets inside the timed loop; env.reset() before each round; median over timed rounds, sync at round ends",
+ "idle_check": true,
+ "runs": [
+  {
+   "label": "physx_task_n1024",
+   "n": 1024,
+   "describe": {
+    "backend": "PhysX (isaacsim_physx)",
+    "asset": "G1_MINIMAL_CFG (g1_minimal.usd, 3 box colliders: both feet, torso)",
+    "self_collision": "off (task default)"
+   },
+   "official": false,
+   "command": "python scripts/physx_bench/bench_physics_only.py --task Isaac-Velocity-Flat-G1 --num_envs 1024 --label physx_task_n1024 --out runs/physx_task_n1024.json --baseline_mem_mib 0.0 physics=isaacsim_physx",
+   "status": "ok",
+   "wall_s": 28.766656160354614,
+   "result": {
+    "label": "physx_task_n1024",
+    "task": "Isaac-Velocity-Flat-G1",
+    "num_envs": 1024,
+    "hydra_overrides": [
+     "physics=isaacsim_physx"
+    ],
+    "robot_variant": "task",
+    "self_collision_override": "default",
+    "rounds": 8,
+    "warmup_rounds": 1,
+    "steps_per_round": 50,
+    "seed": 0,
+    "backend": {
+     "physics_manager": "PhysxManager",
+     "physics_cfg_type": "PhysxCfg",
+     "physics_handles_decimation": false
+    },
+    "physics_cfg": {
+     "class_type": "isaaclab_physx.physics.physx_manager:PhysxManager",
+     "deterministic": false,
+     "solver_type": 1,
+     "solve_articulation_contact_last": false,
+     "min_position_iteration_count": 1,
+     "max_position_iteration_count": 255,
+     "min_velocity_iteration_count": 0,
+     "max_velocity_iteration_count": 255,
+     "enable_scene_query_support": false,
+     "enable_ccd": false,
+     "enable_stabilization": false,
+     "enable_external_forces_every_iteration": true,
+     "enable_enhanced_determinism": false,
+     "bounce_threshold_velocity": 0.5,
+     "friction_offset_threshold": 0.04,
+     "friction_correlation_distance": 0.025,
+     "gpu_max_rigid_contact_count": 8388608,
+     "gpu_max_rigid_patch_count": 327680,
+     "gpu_found_lost_pairs_capacity": 2097152,
+     "gpu_found_lost_aggregate_pairs_capacity": 33554432,
+     "gpu_total_aggregate_pairs_capacity": 2097152,
+     "gpu_collision_stack_size": 67108864,
+     "gpu_heap_capacity": 67108864,
+     "gpu_temp_buffer_capacity": 16777216,
+     "gpu_max_num_partitions": 8,
+     "gpu_max_soft_body_contacts": 1048576,
+     "gpu_max_particle_contacts": 1048576,
+     "launcher_type": "isaaclab_physx.app:KitLauncher"
+    },
+    "sim": {
+     "dt": 0.005,
+     "decimation": 4,
+     "control_dt": 0.02,
+     "device": "cuda:0",
+     "action_dim": 37
+    },
+    "robot": {
+     "num_joints": 37,
+     "num_bodies": 44
+    },
+    "live_stage": {
+     "physics_scenes": {
+      "/physicsScene": {
+       "physics:gravityDirection": "(0, 0, -1)",
+       "physics:gravityMagnitude": 9.8100004196167,
+       "physxScene:bounceThreshold": 0.5,
+       "physxScene:broadphaseType": "GPU",
+       "physxScene:collisionSystem": "PCM",
+       "physxScene:disableSleeping": false,
+       "physxScene:enableCCD": false,
+       "physxScene:enableEnhancedDeterminism": false,
+       "physxScene:enableExternalForcesEveryIteration": true,
+       "physxScene:enableGPUDynamics": true,
+       "physxScene:enableSceneQuerySupport": false,
+       "physxScene:enableStabilization": false,
+       "physxScene:envIdInBoundsBitCount": 4,
+       "physxScene:frictionCorrelationDistance": 0.02500000037252903,
+       "physxScene:frictionOffsetThreshold": 0.03999999910593033,
+       "physxScene:frictionType": "patch",
+       "physxScene:gpuCollisionStackSize": 67108864,
+       "physxScene:gpuFoundLostAggregatePairsCapacity": 33554432,
+       "physxScene:gpuFoundLostPairsCapacity": 2097152,
+       "physxScene:gpuHeapCapacity": 67108864,
+       "physxScene:gpuMaxDeformableSurfaceContacts": 1048576,
+       "physxScene:gpuMaxDeformableVolumeContacts": 1048576,
+       "physxScene:gpuMaxNumPartitions": 8,
+       "physxScene:gpuMaxParticleContacts": 1048576,
+       "physxScene:gpuMaxRigidContactCount": 8388608,
+       "physxScene:gpuMaxRigidPatchCount": 327680,
+       "physxScene:gpuMaxSoftBodyContacts": 1048576,
+       "physxScene:gpuTempBufferCapacity": 16777216,
+       "physxScene:gpuTotalAggregatePairsCapacity": 2097152,
+       "physxScene:invertCollisionGroupFilter": true,
+       "physxScene:launcherType": "isaaclab_physx.app:KitLauncher",
+       "physxScene:maxBiasCoefficient": "inf",
+       "physxScene:maxPositionIterationCount": 255,
+       "physxScene:maxVelocityIterationCount": 255,
+       "physxScene:minPositionIterationCount": 1,
+       "physxScene:minVelocityIterationCount": 0,
+       "physxScene:reportKinematicKinematicPairs": false,
+       "physxScene:reportKinematicStaticPairs": false,
+       "physxScene:solveArticulationContactLast": false,
+       "physxScene:solverType": "TGS",
+       "physxScene:timeStepsPerSecond": 200,
+       "physxScene:updateType": "Synchronous"
+      }
+     },
+     "articulation_root": {
+      "/pelvis": {
+       "physxArticulation:articulationEnabled": true,
+       "physxArticulation:enabledSelfCollisions": false,
+       "physxArticulation:sleepThreshold": 4.999999873689376e-05,
+       "physxArticulation:solverPositionIterationCount": 8,
+       "physxArticulation:solverVelocityIterationCount": 4,
+       "physxArticulation:stabilizationThreshold": 9.999999747378752e-06,
+       "physxRigidBody:angularDamping": 0.0,
+       "physxRigidBody:cfmScale": 0.02500000037252903,
+       "physxRigidBody:contactSlopCoefficient": 0.0,
+       "physxRigidBody:disableGravity": false,
+       "physxRigidBody:enableCCD": false,
+       "physxRigidBody:enableGyroscopicForces": true,
+       "physxRigidBody:enableSpeculativeCCD": false,
+       "physxRigidBody:linearDamping": 0.0,
+       "physxRigidBody:lockedPosAxis": 0,
+       "physxRigidBody:lockedRotAxis": 0,
+       "physxRigidBody:maxAngularVelocity": 1000.0,
+       "physxRigidBody:maxContactImpulse": "inf",
+       "physxRigidBody:maxDepenetrationVelocity": 1.0,
+       "physxRigidBody:maxLinearVelocity": 1000.0,
+       "physxRigidBody:retainAccelerations": false,
+       "physxRigidBody:sleepThreshold": 0.0,
+       "physxRigidBody:solveContact": true,
+       "physxRigidBody:solverPositionIterationCount": 16,
+       "physxRigidBody:solverVelocityIterationCount": 1,
+       "physxRigidBody:stabilizationThreshold": 9.999999747378752e-06
+      }
+     },
+     "robot_collider_count": 3,
+     "robot_collider_types": {
+      "Mesh[convexHull]": 3
+     },
+     "robot_colliders": [
+      {
+       "path": "/left_ankle_roll_link/Cube",
+       "type": "Mesh[convexHull]",
+       "physxCollision:contactOffset": "-inf",
+       "physxCollision:minTorsionalPatchRadius": 0.0,
+       "physxCollision:restOffset": "-inf",
+       "physxCollision:torsionalPatchRadius": 0.0,
+       "physxConvexHullCollision:hullVertexLimit": 64,
+       "physxConvexHullCollision:minThickness": 0.0010000000474974513
+      },
+      {
+       "path": "/right_ankle_roll_link/Cube",
+       "type": "Mesh[convexHull]",
+       "physxCollision:contactOffset": "-inf",
+       "physxCollision:minTorsionalPatchRadius": 0.0,
+       "physxCollision:restOffset": "-inf",
+       "physxCollision:torsionalPatchRadius": 0.0,
+       "physxConvexHullCollision:hullVertexLimit": 64,
+       "physxConvexHullCollision:minThickness": 0.0010000000474974513
+      },
+      {
+       "path": "/torso_link/Cube",
+       "type": "Mesh[convexHull]",
+       "physxCollision:contactOffset": "-inf",
+       "physxCollision:minTorsionalPatchRadius": 0.0,
+       "physxCollision:restOffset": "-inf",
+       "physxCollision:torsionalPatchRadius": 0.0,
+       "physxConvexHullCollision:hullVertexLimit": 64,
+       "physxConvexHullCollision:minThickness": 0.0010000000474974513
+      }
+     ],
+     "joints_env0": {
+      "names": [
+       "left_hip_pitch_joint",
+       "right_hip_pitch_joint",
+       "torso_joint",
+       "left_hip_roll_joint",
+       "right_hip_roll_joint",
+       "left_shoulder_pitch_joint",
+       "right_shoulder_pitch_joint",
+       "left_hip_yaw_joint",
+       "right_hip_yaw_joint",
+       "left_shoulder_roll_joint",
+       "right_shoulder_roll_joint",
+       "left_knee_joint",
+       "right_knee_joint",
+       "left_shoulder_yaw_joint",
+       "right_shoulder_yaw_joint",
+       "left_ankle_pitch_joint",
+       "right_ankle_pitch_joint",
+       "left_elbow_pitch_joint",
+       "right_elbow_pitch_joint",
+       "left_ankle_roll_joint",
+       "right_ankle_roll_joint",
+       "left_elbow_roll_joint",
+       "right_elbow_roll_joint",
+       "left_five_joint",
+       "left_three_joint",
+       "left_zero_joint",
+       "right_five_joint",
+       "right_three_joint",
+       "right_zero_joint",
+       "left_six_joint",
+       "left_four_joint",
+       "left_one_joint",
+       "right_six_joint",
+       "right_four_joint",
+       "right_one_joint",
+       "left_two_joint",
+       "right_two_joint"
+      ],
+      "joint_stiffness": [
+       200.0,
+       200.0,
+       200.0,
+       150.0,
+       150.0,
+       40.0,
+       40.0,
+       150.0,
+       150.0,
+       40.0,
+       40.0,
+       200.0,
+       200.0,
+       40.0,
+       40.0,
+       20.0,
+       20.0,
+       40.0,
+       40.0,
+       20.0,
+       20.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0
+      ],
+      "joint_damping": [
+       5.0,
+       5.0,
+       5.0,
+       5.0,
+       5.0,
+       10.0,
+       10.0,
+       5.0,
+       5.0,
+       10.0,
+       10.0,
+       5.0,
+       5.0,
+       10.0,
+       10.0,
+       2.0,
+       2.0,
+       10.0,
+       10.0,
+       2.0,
+       2.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0
+      ],
+      "joint_armature": [
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513
+      ],
+      "joint_friction_coeff": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "joint_effort_limits": [
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       20.0,
+       20.0,
+       300.0,
+       300.0,
+       20.0,
+       20.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0
+      ],
+      "joint_vel_limits": [
+       32.0,
+       32.0,
+       32.0,
+       32.0,
+       32.0,
+       53.0,
+       53.0,
+       32.0,
+       32.0,
+       53.0,
+       53.0,
+       20.0,
+       20.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0
+      ],
+      "joint_pos_limits": [
+       [
+        -2.3499996662139893,
+        3.049999952316284
+       ],
+       [
+        -2.3499996662139893,
+        3.049999952316284
+       ],
+       [
+        -2.618000030517578,
+        2.618000030517578
+       ],
+       [
+        -0.25999996066093445,
+        2.5299997329711914
+       ],
+       [
+        -2.5299997329711914,
+        0.25999996066093445
+       ],
+       [
+        -2.967099666595459,
+        2.7924997806549072
+       ],
+       [
+        -2.967099666595459,
+        2.7924997806549072
+       ],
+       [
+        -2.749999761581421,
+        2.749999761581421
+       ],
+       [
+        -2.749999761581421,
+        2.749999761581421
+       ],
+       [
+        -1.5881999731063843,
+        2.251499652862549
+       ],
+       [
+        -2.251499652862549,
+        1.5881999731063843
+       ],
+       [
+        -0.3348899781703949,
+        2.5448997020721436
+       ],
+       [
+        -0.3348899781703949,
+        2.5448997020721436
+       ],
+       [
+        -2.618000030517578,
+        2.618000030517578
+       ],
+       [
+        -2.618000030517578,
+        2.618000030517578
+       ],
+       [
+        -0.6799999475479126,
+        0.7299999594688416
+       ],
+       [
+        -0.6799999475479126,
+        0.7299999594688416
+       ],
+       [
+        -0.22679997980594635,
+        3.420799732208252
+       ],
+       [
+        -0.22679997980594635,
+        3.420799732208252
+       ],
+       [
+        -0.26179996132850647,
+        0.26179996132850647
+       ],
+       [
+        -0.26179996132850647,
+        0.26179996132850647
+       ],
+       [
+        -2.094299793243408,
+        2.094299793243408
+       ],
+       [
+        -2.094299793243408,
+        2.094299793243408
+       ],
+       [
+        -1.8399999141693115,
+        0.30000001192092896
+       ],
+       [
+        -1.8399999141693115,
+        0.30000001192092896
+       ],
+       [
+        -0.5235979557037354,
+        0.5235979557037354
+       ],
+       [
+        -0.30000001192092896,
+        1.8399999141693115
+       ],
+       [
+        -0.30000001192092896,
+        1.8399999141693115
+       ],
+       [
+        -0.5235979557037354,
+        0.5235979557037354
+       ],
+       [
+        -1.8399999141693115,
+        0.0
+       ],
+       [
+        -1.8399999141693115,
+        0.0
+       ],
+       [
+        -0.9999999403953552,
+        1.2000000476837158
+       ],
+       [
+        0.0,
+        1.8399999141693115
+       ],
+       [
+        0.0,
+        1.8399999141693115
+       ],
+       [
+        -1.2000000476837158,
+        0.9999999403953552
+       ],
+       [
+        0.0,
+        1.8399999141693115
+       ],
+       [
+        -1.8399999141693115,
+        0.0
+       ]
+      ],
+      "default_joint_pos": [
+       -0.20000000298023224,
+       -0.20000000298023224,
+       0.0,
+       0.0,
+       0.0,
+       0.3499999940395355,
+       0.3499999940395355,
+       0.0,
+       0.0,
+       0.1599999964237213,
+       -0.1599999964237213,
+       0.41999998688697815,
+       0.41999998688697815,
+       0.0,
+       0.0,
+       -0.23000000417232513,
+       -0.23000000417232513,
+       0.8700000047683716,
+       0.8700000047683716,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       0.0,
+       0.0,
+       -1.0,
+       0.5199999809265137,
+       -0.5199999809265137
+      ]
+     }
+    },
+    "timing": {
+     "ms_per_control_step_median": 18.09479943000042,
+     "ms_per_control_step_p10_rounds": 17.865377948011883,
+     "ms_per_control_step_p90_rounds": 18.108122129991898,
+     "ms_per_control_step_min_rounds": 17.7959684400048,
+     "ms_per_control_step_max_rounds": 18.11163297999883,
+     "env_steps_per_s_at_median": 56590.84556097653,
+     "physics_steps_per_control_step": 4,
+     "rounds": [
+      {
+       "warmup": true,
+       "ms_per_control_step": 18.071134265316076,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.177734375,
+        "envs_with_contact_frac": 0.7431640625
+       },
+       "base_z_mean_end": 0.18925713002681732,
+       "frac_base_below_0p4m_end": 0.830078125
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 18.09778560000268,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.16796875,
+        "envs_with_contact_frac": 0.73046875
+       },
+       "base_z_mean_end": 0.18450099229812622,
+       "frac_base_below_0p4m_end": 0.8427734375
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 18.106617479988927,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.2490234375,
+        "envs_with_contact_frac": 0.7734375
+       },
+       "base_z_mean_end": 0.19052954018115997,
+       "frac_base_below_0p4m_end": 0.8349609375
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 18.11163297999883,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.197265625,
+        "envs_with_contact_frac": 0.7490234375
+       },
+       "base_z_mean_end": 0.1805417686700821,
+       "frac_base_below_0p4m_end": 0.85546875
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 18.104089320004277,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.1650390625,
+        "envs_with_contact_frac": 0.751953125
+       },
+       "base_z_mean_end": 0.1844007670879364,
+       "frac_base_below_0p4m_end": 0.833984375
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 18.091813259998162,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.19921875,
+        "envs_with_contact_frac": 0.7685546875
+       },
+       "base_z_mean_end": 0.18682803213596344,
+       "frac_base_below_0p4m_end": 0.8369140625
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 17.988789980008733,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.171875,
+        "envs_with_contact_frac": 0.7490234375
+       },
+       "base_z_mean_end": 0.1858360469341278,
+       "frac_base_below_0p4m_end": 0.833984375
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 17.89512488001492,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.1875,
+        "envs_with_contact_frac": 0.763671875
+       },
+       "base_z_mean_end": 0.18146014213562012,
+       "frac_base_below_0p4m_end": 0.841796875
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 17.7959684400048,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.154296875,
+        "envs_with_contact_frac": 0.734375
+       },
+       "base_z_mean_end": 0.1983577013015747,
+       "frac_base_below_0p4m_end": 0.8037109375
+      }
+     ],
+     "synced_each_control_step_ms": {
+      "p10": 17.492348000178026,
+      "median": 17.802239500269934,
+      "p90": 18.6069321004652
+     },
+     "synced_each_op_ms_per_control_step": {
+      "process_action": 0.08740419993955584,
+      "apply_action": 0.3102819001014723,
+      "write_data_to_sim": 0.506553450213687,
+      "sim_step": 16.415232699682747,
+      "scene_update": 0.9545449001507222
+     },
+     "first_control_step_ms": 24.75474499988195
+    },
+    "contacts": {
+     "bodies_in_contact_per_env_mean": 1.1865234375,
+     "envs_with_contact_frac_mean": 0.7525634765625,
+     "frac_base_below_0p4m_end_mean": 0.83544921875,
+     "note": "proxy from Isaac Lab's ContactSensor: bodies with net contact force > 1e-3 N, at round ends"
+    },
+    "startup_s": {
+     "imports_and_cfg": 0.2679075890000604,
+     "app_launch": 0.8916883789997883,
+     "env_creation": 15.507066189000398,
+     "process_start_to_env_ready": 17.65406978200008
+    },
+    "memory": {
+     "gpu_process_mib_nvidia_smi": 3376.0,
+     "gpu_device_used_mib_end": 3387.0,
+     "gpu_device_used_delta_mib": 3387.0,
+     "torch_max_allocated_mib": 25.8818359375
+    },
+    "environment": {
+     "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+     "driver": "595.58.03",
+     "gpu_memory_total_mib": "97887",
+     "cpu": "AMD EPYC 9555 64-Core Processor",
+     "logical_cpus": 16,
+     "python": "3.12.16",
+     "versions": {
+      "isaaclab": "3.0.0",
+      "isaacsim": "6.2.0.0",
+      "isaacsim-kernel": "6.2.0.0",
+      "torch": "2.11.0+cu130",
+      "warp-lang": "1.17.0",
+      "newton": "1.6.1",
+      "mujoco": "3.12.0",
+      "mujoco-warp": "3.12.0",
+      "usd-exchange": "3.0.1",
+      "numpy": "2.5.4"
+     }
+    }
+   }
+  },
+  {
+   "label": "physx_task_n4096",
+   "n": 4096,
+   "describe": {
+    "backend": "PhysX (isaacsim_physx)",
+    "asset": "G1_MINIMAL_CFG (g1_minimal.usd, 3 box colliders: both feet, torso)",
+    "self_collision": "off (task default)"
+   },
+   "official": false,
+   "command": "python scripts/physx_bench/bench_physics_only.py --task Isaac-Velocity-Flat-G1 --num_envs 4096 --label physx_task_n4096 --out runs/physx_task_n4096.json --baseline_mem_mib 0.0 physics=isaacsim_physx",
+   "status": "ok",
+   "wall_s": 82.84272456169128,
+   "result": {
+    "label": "physx_task_n4096",
+    "task": "Isaac-Velocity-Flat-G1",
+    "num_envs": 4096,
+    "hydra_overrides": [
+     "physics=isaacsim_physx"
+    ],
+    "robot_variant": "task",
+    "self_collision_override": "default",
+    "rounds": 8,
+    "warmup_rounds": 1,
+    "steps_per_round": 50,
+    "seed": 0,
+    "backend": {
+     "physics_manager": "PhysxManager",
+     "physics_cfg_type": "PhysxCfg",
+     "physics_handles_decimation": false
+    },
+    "physics_cfg": {
+     "class_type": "isaaclab_physx.physics.physx_manager:PhysxManager",
+     "deterministic": false,
+     "solver_type": 1,
+     "solve_articulation_contact_last": false,
+     "min_position_iteration_count": 1,
+     "max_position_iteration_count": 255,
+     "min_velocity_iteration_count": 0,
+     "max_velocity_iteration_count": 255,
+     "enable_scene_query_support": false,
+     "enable_ccd": false,
+     "enable_stabilization": false,
+     "enable_external_forces_every_iteration": true,
+     "enable_enhanced_determinism": false,
+     "bounce_threshold_velocity": 0.5,
+     "friction_offset_threshold": 0.04,
+     "friction_correlation_distance": 0.025,
+     "gpu_max_rigid_contact_count": 8388608,
+     "gpu_max_rigid_patch_count": 327680,
+     "gpu_found_lost_pairs_capacity": 2097152,
+     "gpu_found_lost_aggregate_pairs_capacity": 33554432,
+     "gpu_total_aggregate_pairs_capacity": 2097152,
+     "gpu_collision_stack_size": 67108864,
+     "gpu_heap_capacity": 67108864,
+     "gpu_temp_buffer_capacity": 16777216,
+     "gpu_max_num_partitions": 8,
+     "gpu_max_soft_body_contacts": 1048576,
+     "gpu_max_particle_contacts": 1048576,
+     "launcher_type": "isaaclab_physx.app:KitLauncher"
+    },
+    "sim": {
+     "dt": 0.005,
+     "decimation": 4,
+     "control_dt": 0.02,
+     "device": "cuda:0",
+     "action_dim": 37
+    },
+    "robot": {
+     "num_joints": 37,
+     "num_bodies": 44
+    },
+    "live_stage": {
+     "physics_scenes": {
+      "/physicsScene": {
+       "physics:gravityDirection": "(0, 0, -1)",
+       "physics:gravityMagnitude": 9.8100004196167,
+       "physxScene:bounceThreshold": 0.5,
+       "physxScene:broadphaseType": "GPU",
+       "physxScene:collisionSystem": "PCM",
+       "physxScene:disableSleeping": false,
+       "physxScene:enableCCD": false,
+       "physxScene:enableEnhancedDeterminism": false,
+       "physxScene:enableExternalForcesEveryIteration": true,
+       "physxScene:enableGPUDynamics": true,
+       "physxScene:enableSceneQuerySupport": false,
+       "physxScene:enableStabilization": false,
+       "physxScene:envIdInBoundsBitCount": 4,
+       "physxScene:frictionCorrelationDistance": 0.02500000037252903,
+       "physxScene:frictionOffsetThreshold": 0.03999999910593033,
+       "physxScene:frictionType": "patch",
+       "physxScene:gpuCollisionStackSize": 67108864,
+       "physxScene:gpuFoundLostAggregatePairsCapacity": 33554432,
+       "physxScene:gpuFoundLostPairsCapacity": 2097152,
+       "physxScene:gpuHeapCapacity": 67108864,
+       "physxScene:gpuMaxDeformableSurfaceContacts": 1048576,
+       "physxScene:gpuMaxDeformableVolumeContacts": 1048576,
+       "physxScene:gpuMaxNumPartitions": 8,
+       "physxScene:gpuMaxParticleContacts": 1048576,
+       "physxScene:gpuMaxRigidContactCount": 8388608,
+       "physxScene:gpuMaxRigidPatchCount": 327680,
+       "physxScene:gpuMaxSoftBodyContacts": 1048576,
+       "physxScene:gpuTempBufferCapacity": 16777216,
+       "physxScene:gpuTotalAggregatePairsCapacity": 2097152,
+       "physxScene:invertCollisionGroupFilter": true,
+       "physxScene:launcherType": "isaaclab_physx.app:KitLauncher",
+       "physxScene:maxBiasCoefficient": "inf",
+       "physxScene:maxPositionIterationCount": 255,
+       "physxScene:maxVelocityIterationCount": 255,
+       "physxScene:minPositionIterationCount": 1,
+       "physxScene:minVelocityIterationCount": 0,
+       "physxScene:reportKinematicKinematicPairs": false,
+       "physxScene:reportKinematicStaticPairs": false,
+       "physxScene:solveArticulationContactLast": false,
+       "physxScene:solverType": "TGS",
+       "physxScene:timeStepsPerSecond": 200,
+       "physxScene:updateType": "Synchronous"
+      }
+     },
+     "articulation_root": {
+      "/pelvis": {
+       "physxArticulation:articulationEnabled": true,
+       "physxArticulation:enabledSelfCollisions": false,
+       "physxArticulation:sleepThreshold": 4.999999873689376e-05,
+       "physxArticulation:solverPositionIterationCount": 8,
+       "physxArticulation:solverVelocityIterationCount": 4,
+       "physxArticulation:stabilizationThreshold": 9.999999747378752e-06,
+       "physxRigidBody:angularDamping": 0.0,
+       "physxRigidBody:cfmScale": 0.02500000037252903,
+       "physxRigidBody:contactSlopCoefficient": 0.0,
+       "physxRigidBody:disableGravity": false,
+       "physxRigidBody:enableCCD": false,
+       "physxRigidBody:enableGyroscopicForces": true,
+       "physxRigidBody:enableSpeculativeCCD": false,
+       "physxRigidBody:linearDamping": 0.0,
+       "physxRigidBody:lockedPosAxis": 0,
+       "physxRigidBody:lockedRotAxis": 0,
+       "physxRigidBody:maxAngularVelocity": 1000.0,
+       "physxRigidBody:maxContactImpulse": "inf",
+       "physxRigidBody:maxDepenetrationVelocity": 1.0,
+       "physxRigidBody:maxLinearVelocity": 1000.0,
+       "physxRigidBody:retainAccelerations": false,
+       "physxRigidBody:sleepThreshold": 0.0,
+       "physxRigidBody:solveContact": true,
+       "physxRigidBody:solverPositionIterationCount": 16,
+       "physxRigidBody:solverVelocityIterationCount": 1,
+       "physxRigidBody:stabilizationThreshold": 9.999999747378752e-06
+      }
+     },
+     "robot_collider_count": 3,
+     "robot_collider_types": {
+      "Mesh[convexHull]": 3
+     },
+     "robot_colliders": [
+      {
+       "path": "/left_ankle_roll_link/Cube",
+       "type": "Mesh[convexHull]",
+       "physxCollision:contactOffset": "-inf",
+       "physxCollision:minTorsionalPatchRadius": 0.0,
+       "physxCollision:restOffset": "-inf",
+       "physxCollision:torsionalPatchRadius": 0.0,
+       "physxConvexHullCollision:hullVertexLimit": 64,
+       "physxConvexHullCollision:minThickness": 0.0010000000474974513
+      },
+      {
+       "path": "/right_ankle_roll_link/Cube",
+       "type": "Mesh[convexHull]",
+       "physxCollision:contactOffset": "-inf",
+       "physxCollision:minTorsionalPatchRadius": 0.0,
+       "physxCollision:restOffset": "-inf",
+       "physxCollision:torsionalPatchRadius": 0.0,
+       "physxConvexHullCollision:hullVertexLimit": 64,
+       "physxConvexHullCollision:minThickness": 0.0010000000474974513
+      },
+      {
+       "path": "/torso_link/Cube",
+       "type": "Mesh[convexHull]",
+       "physxCollision:contactOffset": "-inf",
+       "physxCollision:minTorsionalPatchRadius": 0.0,
+       "physxCollision:restOffset": "-inf",
+       "physxCollision:torsionalPatchRadius": 0.0,
+       "physxConvexHullCollision:hullVertexLimit": 64,
+       "physxConvexHullCollision:minThickness": 0.0010000000474974513
+      }
+     ],
+     "joints_env0": {
+      "names": [
+       "left_hip_pitch_joint",
+       "right_hip_pitch_joint",
+       "torso_joint",
+       "left_hip_roll_joint",
+       "right_hip_roll_joint",
+       "left_shoulder_pitch_joint",
+       "right_shoulder_pitch_joint",
+       "left_hip_yaw_joint",
+       "right_hip_yaw_joint",
+       "left_shoulder_roll_joint",
+       "right_shoulder_roll_joint",
+       "left_knee_joint",
+       "right_knee_joint",
+       "left_shoulder_yaw_joint",
+       "right_shoulder_yaw_joint",
+       "left_ankle_pitch_joint",
+       "right_ankle_pitch_joint",
+       "left_elbow_pitch_joint",
+       "right_elbow_pitch_joint",
+       "left_ankle_roll_joint",
+       "right_ankle_roll_joint",
+       "left_elbow_roll_joint",
+       "right_elbow_roll_joint",
+       "left_five_joint",
+       "left_three_joint",
+       "left_zero_joint",
+       "right_five_joint",
+       "right_three_joint",
+       "right_zero_joint",
+       "left_six_joint",
+       "left_four_joint",
+       "left_one_joint",
+       "right_six_joint",
+       "right_four_joint",
+       "right_one_joint",
+       "left_two_joint",
+       "right_two_joint"
+      ],
+      "joint_stiffness": [
+       200.0,
+       200.0,
+       200.0,
+       150.0,
+       150.0,
+       40.0,
+       40.0,
+       150.0,
+       150.0,
+       40.0,
+       40.0,
+       200.0,
+       200.0,
+       40.0,
+       40.0,
+       20.0,
+       20.0,
+       40.0,
+       40.0,
+       20.0,
+       20.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0
+      ],
+      "joint_damping": [
+       5.0,
+       5.0,
+       5.0,
+       5.0,
+       5.0,
+       10.0,
+       10.0,
+       5.0,
+       5.0,
+       10.0,
+       10.0,
+       5.0,
+       5.0,
+       10.0,
+       10.0,
+       2.0,
+       2.0,
+       10.0,
+       10.0,
+       2.0,
+       2.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0
+      ],
+      "joint_armature": [
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513
+      ],
+      "joint_friction_coeff": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "joint_effort_limits": [
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       20.0,
+       20.0,
+       300.0,
+       300.0,
+       20.0,
+       20.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0
+      ],
+      "joint_vel_limits": [
+       32.0,
+       32.0,
+       32.0,
+       32.0,
+       32.0,
+       53.0,
+       53.0,
+       32.0,
+       32.0,
+       53.0,
+       53.0,
+       20.0,
+       20.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0
+      ],
+      "joint_pos_limits": [
+       [
+        -2.3499996662139893,
+        3.049999952316284
+       ],
+       [
+        -2.3499996662139893,
+        3.049999952316284
+       ],
+       [
+        -2.618000030517578,
+        2.618000030517578
+       ],
+       [
+        -0.25999996066093445,
+        2.5299997329711914
+       ],
+       [
+        -2.5299997329711914,
+        0.25999996066093445
+       ],
+       [
+        -2.967099666595459,
+        2.7924997806549072
+       ],
+       [
+        -2.967099666595459,
+        2.7924997806549072
+       ],
+       [
+        -2.749999761581421,
+        2.749999761581421
+       ],
+       [
+        -2.749999761581421,
+        2.749999761581421
+       ],
+       [
+        -1.5881999731063843,
+        2.251499652862549
+       ],
+       [
+        -2.251499652862549,
+        1.5881999731063843
+       ],
+       [
+        -0.3348899781703949,
+        2.5448997020721436
+       ],
+       [
+        -0.3348899781703949,
+        2.5448997020721436
+       ],
+       [
+        -2.618000030517578,
+        2.618000030517578
+       ],
+       [
+        -2.618000030517578,
+        2.618000030517578
+       ],
+       [
+        -0.6799999475479126,
+        0.7299999594688416
+       ],
+       [
+        -0.6799999475479126,
+        0.7299999594688416
+       ],
+       [
+        -0.22679997980594635,
+        3.420799732208252
+       ],
+       [
+        -0.22679997980594635,
+        3.420799732208252
+       ],
+       [
+        -0.26179996132850647,
+        0.26179996132850647
+       ],
+       [
+        -0.26179996132850647,
+        0.26179996132850647
+       ],
+       [
+        -2.094299793243408,
+        2.094299793243408
+       ],
+       [
+        -2.094299793243408,
+        2.094299793243408
+       ],
+       [
+        -1.8399999141693115,
+        0.30000001192092896
+       ],
+       [
+        -1.8399999141693115,
+        0.30000001192092896
+       ],
+       [
+        -0.5235979557037354,
+        0.5235979557037354
+       ],
+       [
+        -0.30000001192092896,
+        1.8399999141693115
+       ],
+       [
+        -0.30000001192092896,
+        1.8399999141693115
+       ],
+       [
+        -0.5235979557037354,
+        0.5235979557037354
+       ],
+       [
+        -1.8399999141693115,
+        0.0
+       ],
+       [
+        -1.8399999141693115,
+        0.0
+       ],
+       [
+        -0.9999999403953552,
+        1.2000000476837158
+       ],
+       [
+        0.0,
+        1.8399999141693115
+       ],
+       [
+        0.0,
+        1.8399999141693115
+       ],
+       [
+        -1.2000000476837158,
+        0.9999999403953552
+       ],
+       [
+        0.0,
+        1.8399999141693115
+       ],
+       [
+        -1.8399999141693115,
+        0.0
+       ]
+      ],
+      "default_joint_pos": [
+       -0.20000000298023224,
+       -0.20000000298023224,
+       0.0,
+       0.0,
+       0.0,
+       0.3499999940395355,
+       0.3499999940395355,
+       0.0,
+       0.0,
+       0.1599999964237213,
+       -0.1599999964237213,
+       0.41999998688697815,
+       0.41999998688697815,
+       0.0,
+       0.0,
+       -0.23000000417232513,
+       -0.23000000417232513,
+       0.8700000047683716,
+       0.8700000047683716,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       0.0,
+       0.0,
+       -1.0,
+       0.5199999809265137,
+       -0.5199999809265137
+      ]
+     }
+    },
+    "timing": {
+     "ms_per_control_step_median": 27.522439349995693,
+     "ms_per_control_step_p10_rounds": 27.223427490005633,
+     "ms_per_control_step_p90_rounds": 27.613747200000944,
+     "ms_per_control_step_min_rounds": 27.1361251000053,
+     "ms_per_control_step_max_rounds": 27.66473464000228,
+     "env_steps_per_s_at_median": 148824.01766472202,
+     "physics_steps_per_control_step": 4,
+     "rounds": [
+      {
+       "warmup": true,
+       "ms_per_control_step": 28.920649836733475,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.172119140625,
+        "envs_with_contact_frac": 0.7509765625
+       },
+       "base_z_mean_end": 0.1843806356191635,
+       "frac_base_below_0p4m_end": 0.838623046875
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 27.1361251000053,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.187255859375,
+        "envs_with_contact_frac": 0.748291015625
+       },
+       "base_z_mean_end": 0.18393564224243164,
+       "frac_base_below_0p4m_end": 0.837890625
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 27.260842800005776,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.1904296875,
+        "envs_with_contact_frac": 0.758544921875
+       },
+       "base_z_mean_end": 0.18294815719127655,
+       "frac_base_below_0p4m_end": 0.845458984375
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 27.43566193999868,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.18603515625,
+        "envs_with_contact_frac": 0.753173828125
+       },
+       "base_z_mean_end": 0.18637865781784058,
+       "frac_base_below_0p4m_end": 0.83447265625
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 27.491351419994317,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.167236328125,
+        "envs_with_contact_frac": 0.7421875
+       },
+       "base_z_mean_end": 0.19119927287101746,
+       "frac_base_below_0p4m_end": 0.827880859375
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 27.55352727999707,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.162109375,
+        "envs_with_contact_frac": 0.7431640625
+       },
+       "base_z_mean_end": 0.18945786356925964,
+       "frac_base_below_0p4m_end": 0.828125
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 27.584146019999025,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.150146484375,
+        "envs_with_contact_frac": 0.741943359375
+       },
+       "base_z_mean_end": 0.18864816427230835,
+       "frac_base_below_0p4m_end": 0.828857421875
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 27.59189544000037,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.19970703125,
+        "envs_with_contact_frac": 0.759765625
+       },
+       "base_z_mean_end": 0.18594923615455627,
+       "frac_base_below_0p4m_end": 0.82861328125
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 27.66473464000228,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.156494140625,
+        "envs_with_contact_frac": 0.74951171875
+       },
+       "base_z_mean_end": 0.18338564038276672,
+       "frac_base_below_0p4m_end": 0.84033203125
+      }
+     ],
+     "synced_each_control_step_ms": {
+      "p10": 26.5809330004231,
+      "median": 27.154368000083196,
+      "p90": 28.52750000065498
+     },
+     "synced_each_op_ms_per_control_step": {
+      "process_action": 0.09070174996850255,
+      "apply_action": 0.311665100252867,
+      "write_data_to_sim": 0.5285239499244199,
+      "sim_step": 25.60286114999144,
+      "scene_update": 0.9828539999944041
+     },
+     "first_control_step_ms": 106.68950299987046
+    },
+    "contacts": {
+     "bodies_in_contact_per_env_mean": 1.1749267578125,
+     "envs_with_contact_frac_mean": 0.74957275390625,
+     "frac_base_below_0p4m_end_mean": 0.833953857421875,
+     "note": "proxy from Isaac Lab's ContactSensor: bodies with net contact force > 1e-3 N, at round ends"
+    },
+    "startup_s": {
+     "imports_and_cfg": 0.26639247799994337,
+     "app_launch": 0.8810635990002993,
+     "env_creation": 62.14472951500011,
+     "process_start_to_env_ready": 64.2835597180001
+    },
+    "memory": {
+     "gpu_process_mib_nvidia_smi": 4764.0,
+     "gpu_device_used_mib_end": 4775.0,
+     "gpu_device_used_delta_mib": 4775.0,
+     "torch_max_allocated_mib": 103.4951171875
+    },
+    "environment": {
+     "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+     "driver": "595.58.03",
+     "gpu_memory_total_mib": "97887",
+     "cpu": "AMD EPYC 9555 64-Core Processor",
+     "logical_cpus": 16,
+     "python": "3.12.16",
+     "versions": {
+      "isaaclab": "3.0.0",
+      "isaacsim": "6.2.0.0",
+      "isaacsim-kernel": "6.2.0.0",
+      "torch": "2.11.0+cu130",
+      "warp-lang": "1.17.0",
+      "newton": "1.6.1",
+      "mujoco": "3.12.0",
+      "mujoco-warp": "3.12.0",
+      "usd-exchange": "3.0.1",
+      "numpy": "2.5.4"
+     }
+    }
+   }
+  },
+  {
+   "label": "physx_task_n8192",
+   "n": 8192,
+   "describe": {
+    "backend": "PhysX (isaacsim_physx)",
+    "asset": "G1_MINIMAL_CFG (g1_minimal.usd, 3 box colliders: both feet, torso)",
+    "self_collision": "off (task default)"
+   },
+   "official": false,
+   "command": "python scripts/physx_bench/bench_physics_only.py --task Isaac-Velocity-Flat-G1 --num_envs 8192 --label physx_task_n8192 --out runs/physx_task_n8192.json --baseline_mem_mib 0.0 physics=isaacsim_physx",
+   "status": "ok",
+   "wall_s": 164.06118416786194,
+   "result": {
+    "label": "physx_task_n8192",
+    "task": "Isaac-Velocity-Flat-G1",
+    "num_envs": 8192,
+    "hydra_overrides": [
+     "physics=isaacsim_physx"
+    ],
+    "robot_variant": "task",
+    "self_collision_override": "default",
+    "rounds": 8,
+    "warmup_rounds": 1,
+    "steps_per_round": 50,
+    "seed": 0,
+    "backend": {
+     "physics_manager": "PhysxManager",
+     "physics_cfg_type": "PhysxCfg",
+     "physics_handles_decimation": false
+    },
+    "physics_cfg": {
+     "class_type": "isaaclab_physx.physics.physx_manager:PhysxManager",
+     "deterministic": false,
+     "solver_type": 1,
+     "solve_articulation_contact_last": false,
+     "min_position_iteration_count": 1,
+     "max_position_iteration_count": 255,
+     "min_velocity_iteration_count": 0,
+     "max_velocity_iteration_count": 255,
+     "enable_scene_query_support": false,
+     "enable_ccd": false,
+     "enable_stabilization": false,
+     "enable_external_forces_every_iteration": true,
+     "enable_enhanced_determinism": false,
+     "bounce_threshold_velocity": 0.5,
+     "friction_offset_threshold": 0.04,
+     "friction_correlation_distance": 0.025,
+     "gpu_max_rigid_contact_count": 8388608,
+     "gpu_max_rigid_patch_count": 327680,
+     "gpu_found_lost_pairs_capacity": 2097152,
+     "gpu_found_lost_aggregate_pairs_capacity": 33554432,
+     "gpu_total_aggregate_pairs_capacity": 2097152,
+     "gpu_collision_stack_size": 67108864,
+     "gpu_heap_capacity": 67108864,
+     "gpu_temp_buffer_capacity": 16777216,
+     "gpu_max_num_partitions": 8,
+     "gpu_max_soft_body_contacts": 1048576,
+     "gpu_max_particle_contacts": 1048576,
+     "launcher_type": "isaaclab_physx.app:KitLauncher"
+    },
+    "sim": {
+     "dt": 0.005,
+     "decimation": 4,
+     "control_dt": 0.02,
+     "device": "cuda:0",
+     "action_dim": 37
+    },
+    "robot": {
+     "num_joints": 37,
+     "num_bodies": 44
+    },
+    "live_stage": {
+     "physics_scenes": {
+      "/physicsScene": {
+       "physics:gravityDirection": "(0, 0, -1)",
+       "physics:gravityMagnitude": 9.8100004196167,
+       "physxScene:bounceThreshold": 0.5,
+       "physxScene:broadphaseType": "GPU",
+       "physxScene:collisionSystem": "PCM",
+       "physxScene:disableSleeping": false,
+       "physxScene:enableCCD": false,
+       "physxScene:enableEnhancedDeterminism": false,
+       "physxScene:enableExternalForcesEveryIteration": true,
+       "physxScene:enableGPUDynamics": true,
+       "physxScene:enableSceneQuerySupport": false,
+       "physxScene:enableStabilization": false,
+       "physxScene:envIdInBoundsBitCount": 4,
+       "physxScene:frictionCorrelationDistance": 0.02500000037252903,
+       "physxScene:frictionOffsetThreshold": 0.03999999910593033,
+       "physxScene:frictionType": "patch",
+       "physxScene:gpuCollisionStackSize": 67108864,
+       "physxScene:gpuFoundLostAggregatePairsCapacity": 33554432,
+       "physxScene:gpuFoundLostPairsCapacity": 2097152,
+       "physxScene:gpuHeapCapacity": 67108864,
+       "physxScene:gpuMaxDeformableSurfaceContacts": 1048576,
+       "physxScene:gpuMaxDeformableVolumeContacts": 1048576,
+       "physxScene:gpuMaxNumPartitions": 8,
+       "physxScene:gpuMaxParticleContacts": 1048576,
+       "physxScene:gpuMaxRigidContactCount": 8388608,
+       "physxScene:gpuMaxRigidPatchCount": 327680,
+       "physxScene:gpuMaxSoftBodyContacts": 1048576,
+       "physxScene:gpuTempBufferCapacity": 16777216,
+       "physxScene:gpuTotalAggregatePairsCapacity": 2097152,
+       "physxScene:invertCollisionGroupFilter": true,
+       "physxScene:launcherType": "isaaclab_physx.app:KitLauncher",
+       "physxScene:maxBiasCoefficient": "inf",
+       "physxScene:maxPositionIterationCount": 255,
+       "physxScene:maxVelocityIterationCount": 255,
+       "physxScene:minPositionIterationCount": 1,
+       "physxScene:minVelocityIterationCount": 0,
+       "physxScene:reportKinematicKinematicPairs": false,
+       "physxScene:reportKinematicStaticPairs": false,
+       "physxScene:solveArticulationContactLast": false,
+       "physxScene:solverType": "TGS",
+       "physxScene:timeStepsPerSecond": 200,
+       "physxScene:updateType": "Synchronous"
+      }
+     },
+     "articulation_root": {
+      "/pelvis": {
+       "physxArticulation:articulationEnabled": true,
+       "physxArticulation:enabledSelfCollisions": false,
+       "physxArticulation:sleepThreshold": 4.999999873689376e-05,
+       "physxArticulation:solverPositionIterationCount": 8,
+       "physxArticulation:solverVelocityIterationCount": 4,
+       "physxArticulation:stabilizationThreshold": 9.999999747378752e-06,
+       "physxRigidBody:angularDamping": 0.0,
+       "physxRigidBody:cfmScale": 0.02500000037252903,
+       "physxRigidBody:contactSlopCoefficient": 0.0,
+       "physxRigidBody:disableGravity": false,
+       "physxRigidBody:enableCCD": false,
+       "physxRigidBody:enableGyroscopicForces": true,
+       "physxRigidBody:enableSpeculativeCCD": false,
+       "physxRigidBody:linearDamping": 0.0,
+       "physxRigidBody:lockedPosAxis": 0,
+       "physxRigidBody:lockedRotAxis": 0,
+       "physxRigidBody:maxAngularVelocity": 1000.0,
+       "physxRigidBody:maxContactImpulse": "inf",
+       "physxRigidBody:maxDepenetrationVelocity": 1.0,
+       "physxRigidBody:maxLinearVelocity": 1000.0,
+       "physxRigidBody:retainAccelerations": false,
+       "physxRigidBody:sleepThreshold": 0.0,
+       "physxRigidBody:solveContact": true,
+       "physxRigidBody:solverPositionIterationCount": 16,
+       "physxRigidBody:solverVelocityIterationCount": 1,
+       "physxRigidBody:stabilizationThreshold": 9.999999747378752e-06
+      }
+     },
+     "robot_collider_count": 3,
+     "robot_collider_types": {
+      "Mesh[convexHull]": 3
+     },
+     "robot_colliders": [
+      {
+       "path": "/left_ankle_roll_link/Cube",
+       "type": "Mesh[convexHull]",
+       "physxCollision:contactOffset": "-inf",
+       "physxCollision:minTorsionalPatchRadius": 0.0,
+       "physxCollision:restOffset": "-inf",
+       "physxCollision:torsionalPatchRadius": 0.0,
+       "physxConvexHullCollision:hullVertexLimit": 64,
+       "physxConvexHullCollision:minThickness": 0.0010000000474974513
+      },
+      {
+       "path": "/right_ankle_roll_link/Cube",
+       "type": "Mesh[convexHull]",
+       "physxCollision:contactOffset": "-inf",
+       "physxCollision:minTorsionalPatchRadius": 0.0,
+       "physxCollision:restOffset": "-inf",
+       "physxCollision:torsionalPatchRadius": 0.0,
+       "physxConvexHullCollision:hullVertexLimit": 64,
+       "physxConvexHullCollision:minThickness": 0.0010000000474974513
+      },
+      {
+       "path": "/torso_link/Cube",
+       "type": "Mesh[convexHull]",
+       "physxCollision:contactOffset": "-inf",
+       "physxCollision:minTorsionalPatchRadius": 0.0,
+       "physxCollision:restOffset": "-inf",
+       "physxCollision:torsionalPatchRadius": 0.0,
+       "physxConvexHullCollision:hullVertexLimit": 64,
+       "physxConvexHullCollision:minThickness": 0.0010000000474974513
+      }
+     ],
+     "joints_env0": {
+      "names": [
+       "left_hip_pitch_joint",
+       "right_hip_pitch_joint",
+       "torso_joint",
+       "left_hip_roll_joint",
+       "right_hip_roll_joint",
+       "left_shoulder_pitch_joint",
+       "right_shoulder_pitch_joint",
+       "left_hip_yaw_joint",
+       "right_hip_yaw_joint",
+       "left_shoulder_roll_joint",
+       "right_shoulder_roll_joint",
+       "left_knee_joint",
+       "right_knee_joint",
+       "left_shoulder_yaw_joint",
+       "right_shoulder_yaw_joint",
+       "left_ankle_pitch_joint",
+       "right_ankle_pitch_joint",
+       "left_elbow_pitch_joint",
+       "right_elbow_pitch_joint",
+       "left_ankle_roll_joint",
+       "right_ankle_roll_joint",
+       "left_elbow_roll_joint",
+       "right_elbow_roll_joint",
+       "left_five_joint",
+       "left_three_joint",
+       "left_zero_joint",
+       "right_five_joint",
+       "right_three_joint",
+       "right_zero_joint",
+       "left_six_joint",
+       "left_four_joint",
+       "left_one_joint",
+       "right_six_joint",
+       "right_four_joint",
+       "right_one_joint",
+       "left_two_joint",
+       "right_two_joint"
+      ],
+      "joint_stiffness": [
+       200.0,
+       200.0,
+       200.0,
+       150.0,
+       150.0,
+       40.0,
+       40.0,
+       150.0,
+       150.0,
+       40.0,
+       40.0,
+       200.0,
+       200.0,
+       40.0,
+       40.0,
+       20.0,
+       20.0,
+       40.0,
+       40.0,
+       20.0,
+       20.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0
+      ],
+      "joint_damping": [
+       5.0,
+       5.0,
+       5.0,
+       5.0,
+       5.0,
+       10.0,
+       10.0,
+       5.0,
+       5.0,
+       10.0,
+       10.0,
+       5.0,
+       5.0,
+       10.0,
+       10.0,
+       2.0,
+       2.0,
+       10.0,
+       10.0,
+       2.0,
+       2.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0
+      ],
+      "joint_armature": [
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513
+      ],
+      "joint_friction_coeff": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "joint_effort_limits": [
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       20.0,
+       20.0,
+       300.0,
+       300.0,
+       20.0,
+       20.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0
+      ],
+      "joint_vel_limits": [
+       32.0,
+       32.0,
+       32.0,
+       32.0,
+       32.0,
+       53.0,
+       53.0,
+       32.0,
+       32.0,
+       53.0,
+       53.0,
+       20.0,
+       20.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0
+      ],
+      "joint_pos_limits": [
+       [
+        -2.3499996662139893,
+        3.049999952316284
+       ],
+       [
+        -2.3499996662139893,
+        3.049999952316284
+       ],
+       [
+        -2.618000030517578,
+        2.618000030517578
+       ],
+       [
+        -0.25999996066093445,
+        2.5299997329711914
+       ],
+       [
+        -2.5299997329711914,
+        0.25999996066093445
+       ],
+       [
+        -2.967099666595459,
+        2.7924997806549072
+       ],
+       [
+        -2.967099666595459,
+        2.7924997806549072
+       ],
+       [
+        -2.749999761581421,
+        2.749999761581421
+       ],
+       [
+        -2.749999761581421,
+        2.749999761581421
+       ],
+       [
+        -1.5881999731063843,
+        2.251499652862549
+       ],
+       [
+        -2.251499652862549,
+        1.5881999731063843
+       ],
+       [
+        -0.3348899781703949,
+        2.5448997020721436
+       ],
+       [
+        -0.3348899781703949,
+        2.5448997020721436
+       ],
+       [
+        -2.618000030517578,
+        2.618000030517578
+       ],
+       [
+        -2.618000030517578,
+        2.618000030517578
+       ],
+       [
+        -0.6799999475479126,
+        0.7299999594688416
+       ],
+       [
+        -0.6799999475479126,
+        0.7299999594688416
+       ],
+       [
+        -0.22679997980594635,
+        3.420799732208252
+       ],
+       [
+        -0.22679997980594635,
+        3.420799732208252
+       ],
+       [
+        -0.26179996132850647,
+        0.26179996132850647
+       ],
+       [
+        -0.26179996132850647,
+        0.26179996132850647
+       ],
+       [
+        -2.094299793243408,
+        2.094299793243408
+       ],
+       [
+        -2.094299793243408,
+        2.094299793243408
+       ],
+       [
+        -1.8399999141693115,
+        0.30000001192092896
+       ],
+       [
+        -1.8399999141693115,
+        0.30000001192092896
+       ],
+       [
+        -0.5235979557037354,
+        0.5235979557037354
+       ],
+       [
+        -0.30000001192092896,
+        1.8399999141693115
+       ],
+       [
+        -0.30000001192092896,
+        1.8399999141693115
+       ],
+       [
+        -0.5235979557037354,
+        0.5235979557037354
+       ],
+       [
+        -1.8399999141693115,
+        0.0
+       ],
+       [
+        -1.8399999141693115,
+        0.0
+       ],
+       [
+        -0.9999999403953552,
+        1.2000000476837158
+       ],
+       [
+        0.0,
+        1.8399999141693115
+       ],
+       [
+        0.0,
+        1.8399999141693115
+       ],
+       [
+        -1.2000000476837158,
+        0.9999999403953552
+       ],
+       [
+        0.0,
+        1.8399999141693115
+       ],
+       [
+        -1.8399999141693115,
+        0.0
+       ]
+      ],
+      "default_joint_pos": [
+       -0.20000000298023224,
+       -0.20000000298023224,
+       0.0,
+       0.0,
+       0.0,
+       0.3499999940395355,
+       0.3499999940395355,
+       0.0,
+       0.0,
+       0.1599999964237213,
+       -0.1599999964237213,
+       0.41999998688697815,
+       0.41999998688697815,
+       0.0,
+       0.0,
+       -0.23000000417232513,
+       -0.23000000417232513,
+       0.8700000047683716,
+       0.8700000047683716,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       0.0,
+       0.0,
+       -1.0,
+       0.5199999809265137,
+       -0.5199999809265137
+      ]
+     }
+    },
+    "timing": {
+     "ms_per_control_step_median": 36.31289588999607,
+     "ms_per_control_step_p10_rounds": 36.27231849199052,
+     "ms_per_control_step_p90_rounds": 36.53399199999512,
+     "ms_per_control_step_min_rounds": 36.25578494000365,
+     "ms_per_control_step_max_rounds": 36.65170805999878,
+     "env_steps_per_s_at_median": 225594.78662391214,
+     "physics_steps_per_control_step": 4,
+     "rounds": [
+      {
+       "warmup": true,
+       "ms_per_control_step": 44.15115514286893,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.1754150390625,
+        "envs_with_contact_frac": 0.751708984375
+       },
+       "base_z_mean_end": 0.18795840442180634,
+       "frac_base_below_0p4m_end": 0.8314208984375
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 36.27940429998489,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.1943359375,
+        "envs_with_contact_frac": 0.7569580078125
+       },
+       "base_z_mean_end": 0.18711355328559875,
+       "frac_base_below_0p4m_end": 0.831787109375
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 36.25578494000365,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.181640625,
+        "envs_with_contact_frac": 0.7569580078125
+       },
+       "base_z_mean_end": 0.1880088746547699,
+       "frac_base_below_0p4m_end": 0.830810546875
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 36.30630735999148,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.1683349609375,
+        "envs_with_contact_frac": 0.74462890625
+       },
+       "base_z_mean_end": 0.1880265772342682,
+       "frac_base_below_0p4m_end": 0.8302001953125
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 36.30016835999413,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.1815185546875,
+        "envs_with_contact_frac": 0.7493896484375
+       },
+       "base_z_mean_end": 0.18287591636180878,
+       "frac_base_below_0p4m_end": 0.8397216796875
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 36.36140971999339,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.181396484375,
+        "envs_with_contact_frac": 0.75341796875
+       },
+       "base_z_mean_end": 0.18992260098457336,
+       "frac_base_below_0p4m_end": 0.8294677734375
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 36.31948442000066,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.175537109375,
+        "envs_with_contact_frac": 0.7530517578125
+       },
+       "base_z_mean_end": 0.18448425829410553,
+       "frac_base_below_0p4m_end": 0.837646484375
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 36.483542259993555,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.1707763671875,
+        "envs_with_contact_frac": 0.7476806640625
+       },
+       "base_z_mean_end": 0.18452031910419464,
+       "frac_base_below_0p4m_end": 0.838134765625
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 36.65170805999878,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.177490234375,
+        "envs_with_contact_frac": 0.7542724609375
+       },
+       "base_z_mean_end": 0.1826142966747284,
+       "frac_base_below_0p4m_end": 0.8424072265625
+      }
+     ],
+     "synced_each_control_step_ms": {
+      "p10": 35.049083899593825,
+      "median": 36.096520999763015,
+      "p90": 37.56549600047947
+     },
+     "synced_each_op_ms_per_control_step": {
+      "process_action": 0.08692154997334,
+      "apply_action": 0.3095003502039617,
+      "write_data_to_sim": 0.5888651497571118,
+      "sim_step": 34.21447220007394,
+      "scene_update": 1.1096296999312472
+     },
+     "first_control_step_ms": 127.93056600003183
+    },
+    "contacts": {
+     "bodies_in_contact_per_env_mean": 1.1788787841796875,
+     "envs_with_contact_frac_mean": 0.752044677734375,
+     "frac_base_below_0p4m_end_mean": 0.83502197265625,
+     "note": "proxy from Isaac Lab's ContactSensor: bodies with net contact force > 1e-3 N, at round ends"
+    },
+    "startup_s": {
+     "imports_and_cfg": 0.26029776300038066,
+     "app_launch": 0.906003213999611,
+     "env_creation": 134.74936805299967,
+     "process_start_to_env_ready": 136.91490609099947
+    },
+    "memory": {
+     "gpu_process_mib_nvidia_smi": 6670.0,
+     "gpu_device_used_mib_end": 6681.0,
+     "gpu_device_used_delta_mib": 6681.0,
+     "torch_max_allocated_mib": 207.5419921875
+    },
+    "environment": {
+     "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+     "driver": "595.58.03",
+     "gpu_memory_total_mib": "97887",
+     "cpu": "AMD EPYC 9555 64-Core Processor",
+     "logical_cpus": 16,
+     "python": "3.12.16",
+     "versions": {
+      "isaaclab": "3.0.0",
+      "isaacsim": "6.2.0.0",
+      "isaacsim-kernel": "6.2.0.0",
+      "torch": "2.11.0+cu130",
+      "warp-lang": "1.17.0",
+      "newton": "1.6.1",
+      "mujoco": "3.12.0",
+      "mujoco-warp": "3.12.0",
+      "usd-exchange": "3.0.1",
+      "numpy": "2.5.4"
+     }
+    }
+   }
+  },
+  {
+   "label": "physx_full_selfcoll_n4096",
+   "n": 4096,
+   "describe": {
+    "backend": "PhysX (isaacsim_physx)",
+    "asset": "G1_CFG (g1.usd, 38 colliders: 32 convex hulls, 4 cylinders, 2 boxes)",
+    "self_collision": "on"
+   },
+   "official": false,
+   "command": "python scripts/physx_bench/bench_physics_only.py --task Isaac-Velocity-Flat-G1 --num_envs 4096 --label physx_full_selfcoll_n4096 --out runs/physx_full_selfcoll_n4096.json --baseline_mem_mib 0.0 --robot full --self_collision on physics=isaacsim_physx",
+   "status": "ok",
+   "wall_s": 117.56019020080566,
+   "result": {
+    "label": "physx_full_selfcoll_n4096",
+    "task": "Isaac-Velocity-Flat-G1",
+    "num_envs": 4096,
+    "hydra_overrides": [
+     "physics=isaacsim_physx"
+    ],
+    "robot_variant": "full",
+    "self_collision_override": "on",
+    "rounds": 8,
+    "warmup_rounds": 1,
+    "steps_per_round": 50,
+    "seed": 0,
+    "backend": {
+     "physics_manager": "PhysxManager",
+     "physics_cfg_type": "PhysxCfg",
+     "physics_handles_decimation": false
+    },
+    "physics_cfg": {
+     "class_type": "isaaclab_physx.physics.physx_manager:PhysxManager",
+     "deterministic": false,
+     "solver_type": 1,
+     "solve_articulation_contact_last": false,
+     "min_position_iteration_count": 1,
+     "max_position_iteration_count": 255,
+     "min_velocity_iteration_count": 0,
+     "max_velocity_iteration_count": 255,
+     "enable_scene_query_support": false,
+     "enable_ccd": false,
+     "enable_stabilization": false,
+     "enable_external_forces_every_iteration": true,
+     "enable_enhanced_determinism": false,
+     "bounce_threshold_velocity": 0.5,
+     "friction_offset_threshold": 0.04,
+     "friction_correlation_distance": 0.025,
+     "gpu_max_rigid_contact_count": 8388608,
+     "gpu_max_rigid_patch_count": 327680,
+     "gpu_found_lost_pairs_capacity": 2097152,
+     "gpu_found_lost_aggregate_pairs_capacity": 33554432,
+     "gpu_total_aggregate_pairs_capacity": 2097152,
+     "gpu_collision_stack_size": 67108864,
+     "gpu_heap_capacity": 67108864,
+     "gpu_temp_buffer_capacity": 16777216,
+     "gpu_max_num_partitions": 8,
+     "gpu_max_soft_body_contacts": 1048576,
+     "gpu_max_particle_contacts": 1048576,
+     "launcher_type": "isaaclab_physx.app:KitLauncher"
+    },
+    "sim": {
+     "dt": 0.005,
+     "decimation": 4,
+     "control_dt": 0.02,
+     "device": "cuda:0",
+     "action_dim": 37
+    },
+    "robot": {
+     "num_joints": 37,
+     "num_bodies": 44
+    },
+    "live_stage": {
+     "physics_scenes": {
+      "/physicsScene": {
+       "physics:gravityDirection": "(0, 0, -1)",
+       "physics:gravityMagnitude": 9.8100004196167,
+       "physxScene:bounceThreshold": 0.5,
+       "physxScene:broadphaseType": "GPU",
+       "physxScene:collisionSystem": "PCM",
+       "physxScene:disableSleeping": false,
+       "physxScene:enableCCD": false,
+       "physxScene:enableEnhancedDeterminism": false,
+       "physxScene:enableExternalForcesEveryIteration": true,
+       "physxScene:enableGPUDynamics": true,
+       "physxScene:enableSceneQuerySupport": false,
+       "physxScene:enableStabilization": false,
+       "physxScene:envIdInBoundsBitCount": 4,
+       "physxScene:frictionCorrelationDistance": 0.02500000037252903,
+       "physxScene:frictionOffsetThreshold": 0.03999999910593033,
+       "physxScene:frictionType": "patch",
+       "physxScene:gpuCollisionStackSize": 67108864,
+       "physxScene:gpuFoundLostAggregatePairsCapacity": 33554432,
+       "physxScene:gpuFoundLostPairsCapacity": 2097152,
+       "physxScene:gpuHeapCapacity": 67108864,
+       "physxScene:gpuMaxDeformableSurfaceContacts": 1048576,
+       "physxScene:gpuMaxDeformableVolumeContacts": 1048576,
+       "physxScene:gpuMaxNumPartitions": 8,
+       "physxScene:gpuMaxParticleContacts": 1048576,
+       "physxScene:gpuMaxRigidContactCount": 8388608,
+       "physxScene:gpuMaxRigidPatchCount": 327680,
+       "physxScene:gpuMaxSoftBodyContacts": 1048576,
+       "physxScene:gpuTempBufferCapacity": 16777216,
+       "physxScene:gpuTotalAggregatePairsCapacity": 2097152,
+       "physxScene:invertCollisionGroupFilter": true,
+       "physxScene:launcherType": "isaaclab_physx.app:KitLauncher",
+       "physxScene:maxBiasCoefficient": "inf",
+       "physxScene:maxPositionIterationCount": 255,
+       "physxScene:maxVelocityIterationCount": 255,
+       "physxScene:minPositionIterationCount": 1,
+       "physxScene:minVelocityIterationCount": 0,
+       "physxScene:reportKinematicKinematicPairs": false,
+       "physxScene:reportKinematicStaticPairs": false,
+       "physxScene:solveArticulationContactLast": false,
+       "physxScene:solverType": "TGS",
+       "physxScene:timeStepsPerSecond": 200,
+       "physxScene:updateType": "Synchronous"
+      }
+     },
+     "articulation_root": {
+      "/pelvis": {
+       "physxArticulation:articulationEnabled": true,
+       "physxArticulation:enabledSelfCollisions": true,
+       "physxArticulation:sleepThreshold": 4.999999873689376e-05,
+       "physxArticulation:solverPositionIterationCount": 8,
+       "physxArticulation:solverVelocityIterationCount": 4,
+       "physxArticulation:stabilizationThreshold": 9.999999747378752e-06,
+       "physxRigidBody:angularDamping": 0.0,
+       "physxRigidBody:cfmScale": 0.02500000037252903,
+       "physxRigidBody:contactSlopCoefficient": 0.0,
+       "physxRigidBody:disableGravity": false,
+       "physxRigidBody:enableCCD": false,
+       "physxRigidBody:enableGyroscopicForces": true,
+       "physxRigidBody:enableSpeculativeCCD": false,
+       "physxRigidBody:linearDamping": 0.0,
+       "physxRigidBody:lockedPosAxis": 0,
+       "physxRigidBody:lockedRotAxis": 0,
+       "physxRigidBody:maxAngularVelocity": 1000.0,
+       "physxRigidBody:maxContactImpulse": "inf",
+       "physxRigidBody:maxDepenetrationVelocity": 1.0,
+       "physxRigidBody:maxLinearVelocity": 1000.0,
+       "physxRigidBody:retainAccelerations": false,
+       "physxRigidBody:sleepThreshold": 0.0,
+       "physxRigidBody:solveContact": true,
+       "physxRigidBody:solverPositionIterationCount": 16,
+       "physxRigidBody:solverVelocityIterationCount": 1,
+       "physxRigidBody:stabilizationThreshold": 9.999999747378752e-06
+      }
+     },
+     "robot_collider_count": 38,
+     "robot_collider_types": {
+      "Mesh[convexHull]": 32,
+      "Cylinder": 4,
+      "Cube": 2
+     },
+     "robot_colliders": [
+      {
+       "path": "/pelvis/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/left_hip_pitch_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/left_hip_roll_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/left_hip_yaw_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/left_knee_link/collisions/mesh_0",
+       "type": "Cylinder"
+      },
+      {
+       "path": "/left_ankle_roll_link/Cube",
+       "type": "Mesh[convexHull]",
+       "physxCollision:contactOffset": "-inf",
+       "physxCollision:minTorsionalPatchRadius": 0.0,
+       "physxCollision:restOffset": "-inf",
+       "physxCollision:torsionalPatchRadius": 0.0,
+       "physxConvexHullCollision:hullVertexLimit": 64,
+       "physxConvexHullCollision:minThickness": 0.0010000000474974513
+      },
+      {
+       "path": "/right_hip_pitch_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/right_hip_roll_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/right_hip_yaw_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/right_knee_link/collisions/mesh_0",
+       "type": "Cylinder"
+      },
+      {
+       "path": "/right_ankle_roll_link/Cube",
+       "type": "Mesh[convexHull]",
+       "physxCollision:contactOffset": "-inf",
+       "physxCollision:minTorsionalPatchRadius": 0.0,
+       "physxCollision:restOffset": "-inf",
+       "physxCollision:torsionalPatchRadius": 0.0,
+       "physxConvexHullCollision:hullVertexLimit": 64,
+       "physxConvexHullCollision:minThickness": 0.0010000000474974513
+      },
+      {
+       "path": "/torso_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/head_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/left_shoulder_pitch_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/left_shoulder_roll_link/collisions/mesh_0",
+       "type": "Cylinder"
+      },
+      {
+       "path": "/left_shoulder_yaw_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/left_elbow_pitch_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/left_elbow_roll_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/left_palm_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/left_five_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/left_six_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/left_three_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/left_four_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/left_one_link/collisions/mesh_0",
+       "type": "Cube"
+      },
+      {
+       "path": "/left_two_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/logo_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/right_shoulder_pitch_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/right_shoulder_roll_link/collisions/mesh_0",
+       "type": "Cylinder"
+      },
+      {
+       "path": "/right_shoulder_yaw_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/right_elbow_pitch_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/right_elbow_roll_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/right_palm_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/right_five_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/right_six_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/right_three_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/right_four_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/right_one_link/collisions/mesh_0",
+       "type": "Cube"
+      },
+      {
+       "path": "/right_two_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      }
+     ],
+     "joints_env0": {
+      "names": [
+       "left_hip_pitch_joint",
+       "right_hip_pitch_joint",
+       "torso_joint",
+       "left_hip_roll_joint",
+       "right_hip_roll_joint",
+       "left_shoulder_pitch_joint",
+       "right_shoulder_pitch_joint",
+       "left_hip_yaw_joint",
+       "right_hip_yaw_joint",
+       "left_shoulder_roll_joint",
+       "right_shoulder_roll_joint",
+       "left_knee_joint",
+       "right_knee_joint",
+       "left_shoulder_yaw_joint",
+       "right_shoulder_yaw_joint",
+       "left_ankle_pitch_joint",
+       "right_ankle_pitch_joint",
+       "left_elbow_pitch_joint",
+       "right_elbow_pitch_joint",
+       "left_ankle_roll_joint",
+       "right_ankle_roll_joint",
+       "left_elbow_roll_joint",
+       "right_elbow_roll_joint",
+       "left_five_joint",
+       "left_three_joint",
+       "left_zero_joint",
+       "right_five_joint",
+       "right_three_joint",
+       "right_zero_joint",
+       "left_six_joint",
+       "left_four_joint",
+       "left_one_joint",
+       "right_six_joint",
+       "right_four_joint",
+       "right_one_joint",
+       "left_two_joint",
+       "right_two_joint"
+      ],
+      "joint_stiffness": [
+       200.0,
+       200.0,
+       200.0,
+       150.0,
+       150.0,
+       40.0,
+       40.0,
+       150.0,
+       150.0,
+       40.0,
+       40.0,
+       200.0,
+       200.0,
+       40.0,
+       40.0,
+       20.0,
+       20.0,
+       40.0,
+       40.0,
+       20.0,
+       20.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0
+      ],
+      "joint_damping": [
+       5.0,
+       5.0,
+       5.0,
+       5.0,
+       5.0,
+       10.0,
+       10.0,
+       5.0,
+       5.0,
+       10.0,
+       10.0,
+       5.0,
+       5.0,
+       10.0,
+       10.0,
+       2.0,
+       2.0,
+       10.0,
+       10.0,
+       2.0,
+       2.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0
+      ],
+      "joint_armature": [
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513
+      ],
+      "joint_friction_coeff": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "joint_effort_limits": [
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       20.0,
+       20.0,
+       300.0,
+       300.0,
+       20.0,
+       20.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0
+      ],
+      "joint_vel_limits": [
+       32.0,
+       32.0,
+       32.0,
+       32.0,
+       32.0,
+       53.0,
+       53.0,
+       32.0,
+       32.0,
+       53.0,
+       53.0,
+       20.0,
+       20.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0
+      ],
+      "joint_pos_limits": [
+       [
+        -2.3499996662139893,
+        3.049999952316284
+       ],
+       [
+        -2.3499996662139893,
+        3.049999952316284
+       ],
+       [
+        -2.618000030517578,
+        2.618000030517578
+       ],
+       [
+        -0.25999996066093445,
+        2.5299997329711914
+       ],
+       [
+        -2.5299997329711914,
+        0.25999996066093445
+       ],
+       [
+        -2.967099666595459,
+        2.7924997806549072
+       ],
+       [
+        -2.967099666595459,
+        2.7924997806549072
+       ],
+       [
+        -2.749999761581421,
+        2.749999761581421
+       ],
+       [
+        -2.749999761581421,
+        2.749999761581421
+       ],
+       [
+        -1.5881999731063843,
+        2.251499652862549
+       ],
+       [
+        -2.251499652862549,
+        1.5881999731063843
+       ],
+       [
+        -0.3348899781703949,
+        2.5448997020721436
+       ],
+       [
+        -0.3348899781703949,
+        2.5448997020721436
+       ],
+       [
+        -2.618000030517578,
+        2.618000030517578
+       ],
+       [
+        -2.618000030517578,
+        2.618000030517578
+       ],
+       [
+        -0.6799999475479126,
+        0.7299999594688416
+       ],
+       [
+        -0.6799999475479126,
+        0.7299999594688416
+       ],
+       [
+        -0.22679997980594635,
+        3.420799732208252
+       ],
+       [
+        -0.22679997980594635,
+        3.420799732208252
+       ],
+       [
+        -0.26179996132850647,
+        0.26179996132850647
+       ],
+       [
+        -0.26179996132850647,
+        0.26179996132850647
+       ],
+       [
+        -2.094299793243408,
+        2.094299793243408
+       ],
+       [
+        -2.094299793243408,
+        2.094299793243408
+       ],
+       [
+        -1.8399999141693115,
+        0.30000001192092896
+       ],
+       [
+        -1.8399999141693115,
+        0.30000001192092896
+       ],
+       [
+        -0.5235979557037354,
+        0.5235979557037354
+       ],
+       [
+        -0.30000001192092896,
+        1.8399999141693115
+       ],
+       [
+        -0.30000001192092896,
+        1.8399999141693115
+       ],
+       [
+        -0.5235979557037354,
+        0.5235979557037354
+       ],
+       [
+        -1.8399999141693115,
+        0.0
+       ],
+       [
+        -1.8399999141693115,
+        0.0
+       ],
+       [
+        -0.9999999403953552,
+        1.2000000476837158
+       ],
+       [
+        0.0,
+        1.8399999141693115
+       ],
+       [
+        0.0,
+        1.8399999141693115
+       ],
+       [
+        -1.2000000476837158,
+        0.9999999403953552
+       ],
+       [
+        0.0,
+        1.8399999141693115
+       ],
+       [
+        -1.8399999141693115,
+        0.0
+       ]
+      ],
+      "default_joint_pos": [
+       -0.20000000298023224,
+       -0.20000000298023224,
+       0.0,
+       0.0,
+       0.0,
+       0.3499999940395355,
+       0.3499999940395355,
+       0.0,
+       0.0,
+       0.1599999964237213,
+       -0.1599999964237213,
+       0.41999998688697815,
+       0.41999998688697815,
+       0.0,
+       0.0,
+       -0.23000000417232513,
+       -0.23000000417232513,
+       0.8700000047683716,
+       0.8700000047683716,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       0.0,
+       0.0,
+       -1.0,
+       0.5199999809265137,
+       -0.5199999809265137
+      ]
+     }
+    },
+    "timing": {
+     "ms_per_control_step_median": 54.136099439992904,
+     "ms_per_control_step_p10_rounds": 54.08939160599948,
+     "ms_per_control_step_p90_rounds": 54.63162631601335,
+     "ms_per_control_step_min_rounds": 54.05996124000012,
+     "ms_per_control_step_max_rounds": 54.80615768001371,
+     "env_steps_per_s_at_median": 75661.15849443876,
+     "physics_steps_per_control_step": 4,
+     "rounds": [
+      {
+       "warmup": true,
+       "ms_per_control_step": 54.075346061223655,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.632568359375,
+        "envs_with_contact_frac": 0.77783203125
+       },
+       "base_z_mean_end": 0.22485128045082092,
+       "frac_base_below_0p4m_end": 0.837158203125
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 54.05996124000012,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.596923828125,
+        "envs_with_contact_frac": 0.76904296875
+       },
+       "base_z_mean_end": 0.22756427526474,
+       "frac_base_below_0p4m_end": 0.833251953125
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 54.135362559991336,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.61328125,
+        "envs_with_contact_frac": 0.779296875
+       },
+       "base_z_mean_end": 0.22381719946861267,
+       "frac_base_below_0p4m_end": 0.840087890625
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 54.418442320002214,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.60498046875,
+        "envs_with_contact_frac": 0.779052734375
+       },
+       "base_z_mean_end": 0.22750313580036163,
+       "frac_base_below_0p4m_end": 0.8310546875
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 54.10615624001366,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.59814453125,
+        "envs_with_contact_frac": 0.78369140625
+       },
+       "base_z_mean_end": 0.2309121936559677,
+       "frac_base_below_0p4m_end": 0.8271484375
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 54.13683631999447,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.63818359375,
+        "envs_with_contact_frac": 0.77490234375
+       },
+       "base_z_mean_end": 0.22986264526844025,
+       "frac_base_below_0p4m_end": 0.82568359375
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 54.80615768001371,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.60888671875,
+        "envs_with_contact_frac": 0.780517578125
+       },
+       "base_z_mean_end": 0.22851049900054932,
+       "frac_base_below_0p4m_end": 0.823486328125
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 54.10200461999921,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.608154296875,
+        "envs_with_contact_frac": 0.778076171875
+       },
+       "base_z_mean_end": 0.22627273201942444,
+       "frac_base_below_0p4m_end": 0.830078125
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 54.5568271600132,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.624267578125,
+        "envs_with_contact_frac": 0.77587890625
+       },
+       "base_z_mean_end": 0.2245105803012848,
+       "frac_base_below_0p4m_end": 0.838134765625
+      }
+     ],
+     "synced_each_control_step_ms": {
+      "p10": 45.55170210023789,
+      "median": 48.808316500526416,
+      "p90": 62.93916300001001
+     },
+     "synced_each_op_ms_per_control_step": {
+      "process_action": 0.08589210005993664,
+      "apply_action": 0.30878124994160316,
+      "write_data_to_sim": 0.5049588999554544,
+      "sim_step": 48.025376949908605,
+      "scene_update": 1.1886794500696851
+     },
+     "first_control_step_ms": 155.47901300033118
+    },
+    "contacts": {
+     "bodies_in_contact_per_env_mean": 1.611602783203125,
+     "envs_with_contact_frac_mean": 0.777557373046875,
+     "frac_base_below_0p4m_end_mean": 0.83111572265625,
+     "note": "proxy from Isaac Lab's ContactSensor: bodies with net contact force > 1e-3 N, at round ends"
+    },
+    "startup_s": {
+     "imports_and_cfg": 0.26931701400008023,
+     "app_launch": 0.8629375660002552,
+     "env_creation": 81.89915200799987,
+     "process_start_to_env_ready": 84.03730044199983
+    },
+    "memory": {
+     "gpu_process_mib_nvidia_smi": 6008.0,
+     "gpu_device_used_mib_end": 6019.0,
+     "gpu_device_used_delta_mib": 6019.0,
+     "torch_max_allocated_mib": 103.4951171875
+    },
+    "environment": {
+     "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+     "driver": "595.58.03",
+     "gpu_memory_total_mib": "97887",
+     "cpu": "AMD EPYC 9555 64-Core Processor",
+     "logical_cpus": 16,
+     "python": "3.12.16",
+     "versions": {
+      "isaaclab": "3.0.0",
+      "isaacsim": "6.2.0.0",
+      "isaacsim-kernel": "6.2.0.0",
+      "torch": "2.11.0+cu130",
+      "warp-lang": "1.17.0",
+      "newton": "1.6.1",
+      "mujoco": "3.12.0",
+      "mujoco-warp": "3.12.0",
+      "usd-exchange": "3.0.1",
+      "numpy": "2.5.4"
+     }
+    }
+   }
+  },
+  {
+   "label": "newton_task_n1024",
+   "n": 1024,
+   "describe": {
+    "backend": "Newton / MuJoCo Warp (newton_mjwarp)",
+    "asset": "G1_MINIMAL_CFG (g1_minimal.usd, 3 box colliders: both feet, torso)",
+    "self_collision": "off (task default)"
+   },
+   "official": false,
+   "command": "python scripts/physx_bench/bench_physics_only.py --task Isaac-Velocity-Flat-G1 --num_envs 1024 --label newton_task_n1024 --out runs/newton_task_n1024.json --baseline_mem_mib 0.0 physics=newton_mjwarp",
+   "status": "ok",
+   "wall_s": 16.24263095855713,
+   "result": {
+    "label": "newton_task_n1024",
+    "task": "Isaac-Velocity-Flat-G1",
+    "num_envs": 1024,
+    "hydra_overrides": [
+     "physics=newton_mjwarp"
+    ],
+    "robot_variant": "task",
+    "self_collision_override": "default",
+    "rounds": 8,
+    "warmup_rounds": 1,
+    "steps_per_round": 50,
+    "seed": 0,
+    "backend": {
+     "physics_manager": "NewtonMJWarpManager",
+     "physics_cfg_type": "NewtonCfg",
+     "physics_handles_decimation": false
+    },
+    "physics_cfg": {
+     "class_type": "isaaclab_newton.physics.mjwarp_manager:NewtonMJWarpManager",
+     "launcher_type": null,
+     "deterministic": false,
+     "num_substeps": 2,
+     "collision_decimation": 0,
+     "debug_mode": false,
+     "use_cuda_graph": true,
+     "deterministic_mode": "not_guaranteed",
+     "solver_cfg": "MJWarpSolverCfg(class_type='isaaclab_newton.physics.mjwarp_manager:NewtonMJWarpManager', solver_type='mujoco_warp', njmax=95, nconmax=10, iterations=100, ls_iterations=50, solver='newton', integrator='implicitfast', use_mujoco_cpu=False, disable_contacts=False, disable_sensors=False, default_actuator_gear=None, actuator_gears=None, update_data_interval=1, save_to_mjcf=None, impratio=1.0, cone='pyramidal', ccd_iterations=35, enable_multiccd=False, ls_parallel=False, use_mujoco_contacts=False, tolerance=1e-06)",
+     "soft_contact_cfg": null,
+     "collision_cfg": "NewtonCollisionPipelineCfg(broad_phase='explicit', reduce_contacts=True, rigid_contact_max=None, max_triangle_pairs=2500000, soft_contact_max=None, soft_contact_margin=0.01, enable_rigid_soft_full_surface_contact=False, requires_grad=None, sdf_hydroelastic_config=None)",
+     "default_shape_cfg": "NewtonShapeCfg(margin=0.0, gap=0.01, ke=160000.0, kd=1100.0, mu=1.0)",
+     "load_visual_shapes": null,
+     "bvh_constructor_geometry": "cubql",
+     "bvh_constructor_scene": "sah",
+     "bvh_constructor_gaussian": "cubql"
+    },
+    "sim": {
+     "dt": 0.005,
+     "decimation": 4,
+     "control_dt": 0.02,
+     "device": "cuda:0",
+     "action_dim": 37
+    },
+    "robot": {
+     "num_joints": 37,
+     "num_bodies": 44
+    },
+    "live_stage": {
+     "physics_scenes": {
+      "/physicsScene": {
+       "physics:gravityDirection": "(0, 0, -1)",
+       "physics:gravityMagnitude": 9.8100004196167
+      }
+     },
+     "articulation_root": {
+      "/pelvis": {
+       "physxArticulation:enabledSelfCollisions": false,
+       "physxArticulation:solverPositionIterationCount": 8,
+       "physxArticulation:solverVelocityIterationCount": 4,
+       "physxRigidBody:angularDamping": 0.0,
+       "physxRigidBody:disableGravity": false,
+       "physxRigidBody:linearDamping": 0.0,
+       "physxRigidBody:maxAngularVelocity": 1000.0,
+       "physxRigidBody:maxDepenetrationVelocity": 1.0,
+       "physxRigidBody:maxLinearVelocity": 1000.0,
+       "physxRigidBody:retainAccelerations": false,
+       "physxRigidBody:sleepThreshold": 0.0
+      }
+     },
+     "robot_collider_count": 3,
+     "robot_collider_types": {
+      "Mesh[convexHull]": 3
+     },
+     "robot_colliders": [
+      {
+       "path": "/left_ankle_roll_link/Cube",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/right_ankle_roll_link/Cube",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/torso_link/Cube",
+       "type": "Mesh[convexHull]"
+      }
+     ],
+     "joints_env0": {
+      "names": [
+       "left_hip_pitch_joint",
+       "left_hip_roll_joint",
+       "left_hip_yaw_joint",
+       "left_knee_joint",
+       "left_ankle_pitch_joint",
+       "left_ankle_roll_joint",
+       "right_hip_pitch_joint",
+       "right_hip_roll_joint",
+       "right_hip_yaw_joint",
+       "right_knee_joint",
+       "right_ankle_pitch_joint",
+       "right_ankle_roll_joint",
+       "torso_joint",
+       "left_shoulder_pitch_joint",
+       "left_shoulder_roll_joint",
+       "left_shoulder_yaw_joint",
+       "left_elbow_pitch_joint",
+       "left_elbow_roll_joint",
+       "left_five_joint",
+       "left_six_joint",
+       "left_three_joint",
+       "left_four_joint",
+       "left_zero_joint",
+       "left_one_joint",
+       "left_two_joint",
+       "right_shoulder_pitch_joint",
+       "right_shoulder_roll_joint",
+       "right_shoulder_yaw_joint",
+       "right_elbow_pitch_joint",
+       "right_elbow_roll_joint",
+       "right_five_joint",
+       "right_six_joint",
+       "right_three_joint",
+       "right_four_joint",
+       "right_zero_joint",
+       "right_one_joint",
+       "right_two_joint"
+      ],
+      "joint_stiffness": [
+       200.0,
+       150.0,
+       150.0,
+       200.0,
+       20.0,
+       20.0,
+       200.0,
+       150.0,
+       150.0,
+       200.0,
+       20.0,
+       20.0,
+       200.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0
+      ],
+      "joint_damping": [
+       5.0,
+       5.0,
+       5.0,
+       5.0,
+       2.0,
+       2.0,
+       5.0,
+       5.0,
+       5.0,
+       5.0,
+       2.0,
+       2.0,
+       5.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0
+      ],
+      "joint_armature": [
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513
+      ],
+      "joint_friction_coeff": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "joint_effort_limits": [
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       20.0,
+       20.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       20.0,
+       20.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0
+      ],
+      "joint_vel_limits": [
+       32.0,
+       32.0,
+       32.0,
+       20.000001907348633,
+       53.0,
+       53.0,
+       32.0,
+       32.0,
+       32.0,
+       20.000001907348633,
+       53.0,
+       53.0,
+       32.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0
+      ],
+      "joint_pos_limits": [
+       [
+        -2.3499996662139893,
+        3.049999952316284
+       ],
+       [
+        -0.25999996066093445,
+        2.5299997329711914
+       ],
+       [
+        -2.749999761581421,
+        2.749999761581421
+       ],
+       [
+        -0.3348899781703949,
+        2.5448997020721436
+       ],
+       [
+        -0.6799999475479126,
+        0.7299999594688416
+       ],
+       [
+        -0.26179996132850647,
+        0.26179996132850647
+       ],
+       [
+        -2.3499996662139893,
+        3.049999952316284
+       ],
+       [
+        -2.5299997329711914,
+        0.25999996066093445
+       ],
+       [
+        -2.749999761581421,
+        2.749999761581421
+       ],
+       [
+        -0.3348899781703949,
+        2.5448997020721436
+       ],
+       [
+        -0.6799999475479126,
+        0.7299999594688416
+       ],
+       [
+        -0.26179996132850647,
+        0.26179996132850647
+       ],
+       [
+        -2.618000030517578,
+        2.618000030517578
+       ],
+       [
+        -2.967099666595459,
+        2.7925000190734863
+       ],
+       [
+        -1.5881999731063843,
+        2.251499652862549
+       ],
+       [
+        -2.618000030517578,
+        2.618000030517578
+       ],
+       [
+        -0.22679997980594635,
+        3.420799732208252
+       ],
+       [
+        -2.094299793243408,
+        2.094299793243408
+       ],
+       [
+        -1.8399999141693115,
+        0.30000001192092896
+       ],
+       [
+        -1.8399999141693115,
+        0.0
+       ],
+       [
+        -1.8399999141693115,
+        0.30000001192092896
+       ],
+       [
+        -1.8399999141693115,
+        0.0
+       ],
+       [
+        -0.5235979557037354,
+        0.5235979557037354
+       ],
+       [
+        -0.9999999403953552,
+        1.2000000476837158
+       ],
+       [
+        0.0,
+        1.8399999141693115
+       ],
+       [
+        -2.967099666595459,
+        2.7925000190734863
+       ],
+       [
+        -2.251499652862549,
+        1.5881999731063843
+       ],
+       [
+        -2.618000030517578,
+        2.618000030517578
+       ],
+       [
+        -0.22679997980594635,
+        3.420799732208252
+       ],
+       [
+        -2.094299793243408,
+        2.094299793243408
+       ],
+       [
+        -0.30000001192092896,
+        1.8399999141693115
+       ],
+       [
+        0.0,
+        1.8399999141693115
+       ],
+       [
+        -0.30000001192092896,
+        1.8399999141693115
+       ],
+       [
+        0.0,
+        1.8399999141693115
+       ],
+       [
+        -0.5235979557037354,
+        0.5235979557037354
+       ],
+       [
+        -1.2000000476837158,
+        0.9999999403953552
+       ],
+       [
+        -1.8399999141693115,
+        0.0
+       ]
+      ],
+      "default_joint_pos": [
+       -0.20000000298023224,
+       0.0,
+       0.0,
+       0.41999998688697815,
+       -0.23000000417232513,
+       0.0,
+       -0.20000000298023224,
+       0.0,
+       0.0,
+       0.41999998688697815,
+       -0.23000000417232513,
+       0.0,
+       0.0,
+       0.3499999940395355,
+       0.1599999964237213,
+       0.0,
+       0.8700000047683716,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       0.5199999809265137,
+       0.3499999940395355,
+       -0.1599999964237213,
+       0.0,
+       0.8700000047683716,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       -1.0,
+       -0.5199999809265137
+      ]
+     }
+    },
+    "timing": {
+     "ms_per_control_step_median": 7.730334050002057,
+     "ms_per_control_step_p10_rounds": 7.7099953740034834,
+     "ms_per_control_step_p90_rounds": 7.737960201993701,
+     "ms_per_control_step_min_rounds": 7.707948420011235,
+     "ms_per_control_step_max_rounds": 7.742546279987437,
+     "env_steps_per_s_at_median": 132465.1681772701,
+     "physics_steps_per_control_step": 4,
+     "rounds": [
+      {
+       "warmup": true,
+       "ms_per_control_step": 7.798630306120796,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 0.6396484375,
+        "envs_with_contact_frac": 0.5078125
+       },
+       "base_z_mean_end": 0.20005735754966736,
+       "frac_base_below_0p4m_end": 0.8291015625
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 7.7108726400001615,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 0.681640625,
+        "envs_with_contact_frac": 0.509765625
+       },
+       "base_z_mean_end": 0.21112442016601562,
+       "frac_base_below_0p4m_end": 0.80859375
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 7.735994739996386,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 0.6767578125,
+        "envs_with_contact_frac": 0.5263671875
+       },
+       "base_z_mean_end": 0.20283567905426025,
+       "frac_base_below_0p4m_end": 0.818359375
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 7.729096980001486,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 0.6650390625,
+        "envs_with_contact_frac": 0.5166015625
+       },
+       "base_z_mean_end": 0.2047613263130188,
+       "frac_base_below_0p4m_end": 0.8203125
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 7.707948420011235,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 0.6533203125,
+        "envs_with_contact_frac": 0.50390625
+       },
+       "base_z_mean_end": 0.20939329266548157,
+       "frac_base_below_0p4m_end": 0.8125
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 7.733777499997814,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 0.6669921875,
+        "envs_with_contact_frac": 0.52734375
+       },
+       "base_z_mean_end": 0.19597655534744263,
+       "frac_base_below_0p4m_end": 0.830078125
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 7.731571120002627,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 0.69140625,
+        "envs_with_contact_frac": 0.52734375
+       },
+       "base_z_mean_end": 0.2054603546857834,
+       "frac_base_below_0p4m_end": 0.8056640625
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 7.7135572000042885,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 0.666015625,
+        "envs_with_contact_frac": 0.5146484375
+       },
+       "base_z_mean_end": 0.1925249695777893,
+       "frac_base_below_0p4m_end": 0.837890625
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 7.742546279987437,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 0.6513671875,
+        "envs_with_contact_frac": 0.4951171875
+       },
+       "base_z_mean_end": 0.21576948463916779,
+       "frac_base_below_0p4m_end": 0.806640625
+      }
+     ],
+     "synced_each_control_step_ms": {
+      "p10": 7.546959000319475,
+      "median": 7.887945000220498,
+      "p90": 8.211635100451531
+     },
+     "synced_each_op_ms_per_control_step": {
+      "process_action": 0.05030080014876148,
+      "apply_action": 0.21455129995047173,
+      "write_data_to_sim": 0.18309004981347243,
+      "sim_step": 7.8552902003139025,
+      "scene_update": 0.6868888998724287
+     },
+     "first_control_step_ms": 1146.9138649999877
+    },
+    "contacts": {
+     "bodies_in_contact_per_env_mean": 0.6690673828125,
+     "envs_with_contact_frac_mean": 0.51513671875,
+     "frac_base_below_0p4m_end_mean": 0.8175048828125,
+     "note": "proxy from Isaac Lab's ContactSensor: bodies with net contact force > 1e-3 N, at round ends"
+    },
+    "startup_s": {
+     "imports_and_cfg": 0.26330812000014703,
+     "app_launch": 0.0004882080002062139,
+     "env_creation": 5.97289563600043,
+     "process_start_to_env_ready": 7.209520793000593
+    },
+    "memory": {
+     "gpu_process_mib_nvidia_smi": 930.0,
+     "gpu_device_used_mib_end": 939.0,
+     "gpu_device_used_delta_mib": 939.0,
+     "torch_max_allocated_mib": 25.8583984375
+    },
+    "environment": {
+     "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+     "driver": "595.58.03",
+     "gpu_memory_total_mib": "97887",
+     "cpu": "AMD EPYC 9555 64-Core Processor",
+     "logical_cpus": 16,
+     "python": "3.12.16",
+     "versions": {
+      "isaaclab": "3.0.0",
+      "isaacsim": "6.2.0.0",
+      "isaacsim-kernel": "6.2.0.0",
+      "torch": "2.11.0+cu130",
+      "warp-lang": "1.17.0",
+      "newton": "1.6.1",
+      "mujoco": "3.12.0",
+      "mujoco-warp": "3.12.0",
+      "usd-exchange": "3.0.1",
+      "numpy": "2.5.4"
+     }
+    }
+   }
+  },
+  {
+   "label": "newton_task_n4096",
+   "n": 4096,
+   "describe": {
+    "backend": "Newton / MuJoCo Warp (newton_mjwarp)",
+    "asset": "G1_MINIMAL_CFG (g1_minimal.usd, 3 box colliders: both feet, torso)",
+    "self_collision": "off (task default)"
+   },
+   "official": false,
+   "command": "python scripts/physx_bench/bench_physics_only.py --task Isaac-Velocity-Flat-G1 --num_envs 4096 --label newton_task_n4096 --out runs/newton_task_n4096.json --baseline_mem_mib 0.0 physics=newton_mjwarp",
+   "status": "ok",
+   "wall_s": 20.951898097991943,
+   "result": {
+    "label": "newton_task_n4096",
+    "task": "Isaac-Velocity-Flat-G1",
+    "num_envs": 4096,
+    "hydra_overrides": [
+     "physics=newton_mjwarp"
+    ],
+    "robot_variant": "task",
+    "self_collision_override": "default",
+    "rounds": 8,
+    "warmup_rounds": 1,
+    "steps_per_round": 50,
+    "seed": 0,
+    "backend": {
+     "physics_manager": "NewtonMJWarpManager",
+     "physics_cfg_type": "NewtonCfg",
+     "physics_handles_decimation": false
+    },
+    "physics_cfg": {
+     "class_type": "isaaclab_newton.physics.mjwarp_manager:NewtonMJWarpManager",
+     "launcher_type": null,
+     "deterministic": false,
+     "num_substeps": 2,
+     "collision_decimation": 0,
+     "debug_mode": false,
+     "use_cuda_graph": true,
+     "deterministic_mode": "not_guaranteed",
+     "solver_cfg": "MJWarpSolverCfg(class_type='isaaclab_newton.physics.mjwarp_manager:NewtonMJWarpManager', solver_type='mujoco_warp', njmax=95, nconmax=10, iterations=100, ls_iterations=50, solver='newton', integrator='implicitfast', use_mujoco_cpu=False, disable_contacts=False, disable_sensors=False, default_actuator_gear=None, actuator_gears=None, update_data_interval=1, save_to_mjcf=None, impratio=1.0, cone='pyramidal', ccd_iterations=35, enable_multiccd=False, ls_parallel=False, use_mujoco_contacts=False, tolerance=1e-06)",
+     "soft_contact_cfg": null,
+     "collision_cfg": "NewtonCollisionPipelineCfg(broad_phase='explicit', reduce_contacts=True, rigid_contact_max=None, max_triangle_pairs=2500000, soft_contact_max=None, soft_contact_margin=0.01, enable_rigid_soft_full_surface_contact=False, requires_grad=None, sdf_hydroelastic_config=None)",
+     "default_shape_cfg": "NewtonShapeCfg(margin=0.0, gap=0.01, ke=160000.0, kd=1100.0, mu=1.0)",
+     "load_visual_shapes": null,
+     "bvh_constructor_geometry": "cubql",
+     "bvh_constructor_scene": "sah",
+     "bvh_constructor_gaussian": "cubql"
+    },
+    "sim": {
+     "dt": 0.005,
+     "decimation": 4,
+     "control_dt": 0.02,
+     "device": "cuda:0",
+     "action_dim": 37
+    },
+    "robot": {
+     "num_joints": 37,
+     "num_bodies": 44
+    },
+    "live_stage": {
+     "physics_scenes": {
+      "/physicsScene": {
+       "physics:gravityDirection": "(0, 0, -1)",
+       "physics:gravityMagnitude": 9.8100004196167
+      }
+     },
+     "articulation_root": {
+      "/pelvis": {
+       "physxArticulation:enabledSelfCollisions": false,
+       "physxArticulation:solverPositionIterationCount": 8,
+       "physxArticulation:solverVelocityIterationCount": 4,
+       "physxRigidBody:angularDamping": 0.0,
+       "physxRigidBody:disableGravity": false,
+       "physxRigidBody:linearDamping": 0.0,
+       "physxRigidBody:maxAngularVelocity": 1000.0,
+       "physxRigidBody:maxDepenetrationVelocity": 1.0,
+       "physxRigidBody:maxLinearVelocity": 1000.0,
+       "physxRigidBody:retainAccelerations": false,
+       "physxRigidBody:sleepThreshold": 0.0
+      }
+     },
+     "robot_collider_count": 3,
+     "robot_collider_types": {
+      "Mesh[convexHull]": 3
+     },
+     "robot_colliders": [
+      {
+       "path": "/left_ankle_roll_link/Cube",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/right_ankle_roll_link/Cube",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/torso_link/Cube",
+       "type": "Mesh[convexHull]"
+      }
+     ],
+     "joints_env0": {
+      "names": [
+       "left_hip_pitch_joint",
+       "left_hip_roll_joint",
+       "left_hip_yaw_joint",
+       "left_knee_joint",
+       "left_ankle_pitch_joint",
+       "left_ankle_roll_joint",
+       "right_hip_pitch_joint",
+       "right_hip_roll_joint",
+       "right_hip_yaw_joint",
+       "right_knee_joint",
+       "right_ankle_pitch_joint",
+       "right_ankle_roll_joint",
+       "torso_joint",
+       "left_shoulder_pitch_joint",
+       "left_shoulder_roll_joint",
+       "left_shoulder_yaw_joint",
+       "left_elbow_pitch_joint",
+       "left_elbow_roll_joint",
+       "left_five_joint",
+       "left_six_joint",
+       "left_three_joint",
+       "left_four_joint",
+       "left_zero_joint",
+       "left_one_joint",
+       "left_two_joint",
+       "right_shoulder_pitch_joint",
+       "right_shoulder_roll_joint",
+       "right_shoulder_yaw_joint",
+       "right_elbow_pitch_joint",
+       "right_elbow_roll_joint",
+       "right_five_joint",
+       "right_six_joint",
+       "right_three_joint",
+       "right_four_joint",
+       "right_zero_joint",
+       "right_one_joint",
+       "right_two_joint"
+      ],
+      "joint_stiffness": [
+       200.0,
+       150.0,
+       150.0,
+       200.0,
+       20.0,
+       20.0,
+       200.0,
+       150.0,
+       150.0,
+       200.0,
+       20.0,
+       20.0,
+       200.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0
+      ],
+      "joint_damping": [
+       5.0,
+       5.0,
+       5.0,
+       5.0,
+       2.0,
+       2.0,
+       5.0,
+       5.0,
+       5.0,
+       5.0,
+       2.0,
+       2.0,
+       5.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0
+      ],
+      "joint_armature": [
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513
+      ],
+      "joint_friction_coeff": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "joint_effort_limits": [
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       20.0,
+       20.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       20.0,
+       20.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0
+      ],
+      "joint_vel_limits": [
+       32.0,
+       32.0,
+       32.0,
+       20.000001907348633,
+       53.0,
+       53.0,
+       32.0,
+       32.0,
+       32.0,
+       20.000001907348633,
+       53.0,
+       53.0,
+       32.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0
+      ],
+      "joint_pos_limits": [
+       [
+        -2.3499996662139893,
+        3.049999952316284
+       ],
+       [
+        -0.25999996066093445,
+        2.5299997329711914
+       ],
+       [
+        -2.749999761581421,
+        2.749999761581421
+       ],
+       [
+        -0.3348899781703949,
+        2.5448997020721436
+       ],
+       [
+        -0.6799999475479126,
+        0.7299999594688416
+       ],
+       [
+        -0.26179996132850647,
+        0.26179996132850647
+       ],
+       [
+        -2.3499996662139893,
+        3.049999952316284
+       ],
+       [
+        -2.5299997329711914,
+        0.25999996066093445
+       ],
+       [
+        -2.749999761581421,
+        2.749999761581421
+       ],
+       [
+        -0.3348899781703949,
+        2.5448997020721436
+       ],
+       [
+        -0.6799999475479126,
+        0.7299999594688416
+       ],
+       [
+        -0.26179996132850647,
+        0.26179996132850647
+       ],
+       [
+        -2.618000030517578,
+        2.618000030517578
+       ],
+       [
+        -2.967099666595459,
+        2.7925000190734863
+       ],
+       [
+        -1.5881999731063843,
+        2.251499652862549
+       ],
+       [
+        -2.618000030517578,
+        2.618000030517578
+       ],
+       [
+        -0.22679997980594635,
+        3.420799732208252
+       ],
+       [
+        -2.094299793243408,
+        2.094299793243408
+       ],
+       [
+        -1.8399999141693115,
+        0.30000001192092896
+       ],
+       [
+        -1.8399999141693115,
+        0.0
+       ],
+       [
+        -1.8399999141693115,
+        0.30000001192092896
+       ],
+       [
+        -1.8399999141693115,
+        0.0
+       ],
+       [
+        -0.5235979557037354,
+        0.5235979557037354
+       ],
+       [
+        -0.9999999403953552,
+        1.2000000476837158
+       ],
+       [
+        0.0,
+        1.8399999141693115
+       ],
+       [
+        -2.967099666595459,
+        2.7925000190734863
+       ],
+       [
+        -2.251499652862549,
+        1.5881999731063843
+       ],
+       [
+        -2.618000030517578,
+        2.618000030517578
+       ],
+       [
+        -0.22679997980594635,
+        3.420799732208252
+       ],
+       [
+        -2.094299793243408,
+        2.094299793243408
+       ],
+       [
+        -0.30000001192092896,
+        1.8399999141693115
+       ],
+       [
+        0.0,
+        1.8399999141693115
+       ],
+       [
+        -0.30000001192092896,
+        1.8399999141693115
+       ],
+       [
+        0.0,
+        1.8399999141693115
+       ],
+       [
+        -0.5235979557037354,
+        0.5235979557037354
+       ],
+       [
+        -1.2000000476837158,
+        0.9999999403953552
+       ],
+       [
+        -1.8399999141693115,
+        0.0
+       ]
+      ],
+      "default_joint_pos": [
+       -0.20000000298023224,
+       0.0,
+       0.0,
+       0.41999998688697815,
+       -0.23000000417232513,
+       0.0,
+       -0.20000000298023224,
+       0.0,
+       0.0,
+       0.41999998688697815,
+       -0.23000000417232513,
+       0.0,
+       0.0,
+       0.3499999940395355,
+       0.1599999964237213,
+       0.0,
+       0.8700000047683716,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       0.5199999809265137,
+       0.3499999940395355,
+       -0.1599999964237213,
+       0.0,
+       0.8700000047683716,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       -1.0,
+       -0.5199999809265137
+      ]
+     }
+    },
+    "timing": {
+     "ms_per_control_step_median": 12.857782549999683,
+     "ms_per_control_step_p10_rounds": 12.843654711989075,
+     "ms_per_control_step_p90_rounds": 12.869513741989067,
+     "ms_per_control_step_min_rounds": 12.835874239990517,
+     "ms_per_control_step_max_rounds": 12.871455639997293,
+     "env_steps_per_s_at_median": 318561.9280830116,
+     "physics_steps_per_control_step": 4,
+     "rounds": [
+      {
+       "warmup": true,
+       "ms_per_control_step": 12.905302653071347,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 0.67578125,
+        "envs_with_contact_frac": 0.52490234375
+       },
+       "base_z_mean_end": 0.2055559903383255,
+       "frac_base_below_0p4m_end": 0.8134765625
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 12.835874239990517,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 0.666015625,
+        "envs_with_contact_frac": 0.517822265625
+       },
+       "base_z_mean_end": 0.2045261263847351,
+       "frac_base_below_0p4m_end": 0.8125
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 12.846989199988457,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 0.660400390625,
+        "envs_with_contact_frac": 0.513427734375
+       },
+       "base_z_mean_end": 0.20357437431812286,
+       "frac_base_below_0p4m_end": 0.8203125
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 12.868681499985541,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 0.656494140625,
+        "envs_with_contact_frac": 0.50439453125
+       },
+       "base_z_mean_end": 0.20306721329689026,
+       "frac_base_below_0p4m_end": 0.82373046875
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 12.871455639997293,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 0.693603515625,
+        "envs_with_contact_frac": 0.531005859375
+       },
+       "base_z_mean_end": 0.20330286026000977,
+       "frac_base_below_0p4m_end": 0.8203125
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 12.855643080001755,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 0.677978515625,
+        "envs_with_contact_frac": 0.519775390625
+       },
+       "base_z_mean_end": 0.20337964594364166,
+       "frac_base_below_0p4m_end": 0.822021484375
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 12.854479880006693,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 0.655517578125,
+        "envs_with_contact_frac": 0.50927734375
+       },
+       "base_z_mean_end": 0.20743265748023987,
+       "frac_base_below_0p4m_end": 0.811279296875
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 12.866286219996255,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 0.6533203125,
+        "envs_with_contact_frac": 0.507568359375
+       },
+       "base_z_mean_end": 0.20637941360473633,
+       "frac_base_below_0p4m_end": 0.814697265625
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 12.859922019997612,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 0.661376953125,
+        "envs_with_contact_frac": 0.509521484375
+       },
+       "base_z_mean_end": 0.2038457691669464,
+       "frac_base_below_0p4m_end": 0.81982421875
+      }
+     ],
+     "synced_each_control_step_ms": {
+      "p10": 12.57515900006183,
+      "median": 12.997445499877358,
+      "p90": 13.578140999561583
+     },
+     "synced_each_op_ms_per_control_step": {
+      "process_action": 0.04881774998466426,
+      "apply_action": 0.21013069981563604,
+      "write_data_to_sim": 0.1790608002920635,
+      "sim_step": 12.96340915005203,
+      "scene_update": 0.6815755498337239
+     },
+     "first_control_step_ms": 1268.5255169999436
+    },
+    "contacts": {
+     "bodies_in_contact_per_env_mean": 0.66558837890625,
+     "envs_with_contact_frac_mean": 0.51409912109375,
+     "frac_base_below_0p4m_end_mean": 0.818084716796875,
+     "note": "proxy from Isaac Lab's ContactSensor: bodies with net contact force > 1e-3 N, at round ends"
+    },
+    "startup_s": {
+     "imports_and_cfg": 0.26179149499967025,
+     "app_launch": 0.000497148000249581,
+     "env_creation": 7.414904991000185,
+     "process_start_to_env_ready": 8.651832524000383
+    },
+    "memory": {
+     "gpu_process_mib_nvidia_smi": 1554.0,
+     "gpu_device_used_mib_end": 1563.0,
+     "gpu_device_used_delta_mib": 1563.0,
+     "torch_max_allocated_mib": 103.4013671875
+    },
+    "environment": {
+     "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+     "driver": "595.58.03",
+     "gpu_memory_total_mib": "97887",
+     "cpu": "AMD EPYC 9555 64-Core Processor",
+     "logical_cpus": 16,
+     "python": "3.12.16",
+     "versions": {
+      "isaaclab": "3.0.0",
+      "isaacsim": "6.2.0.0",
+      "isaacsim-kernel": "6.2.0.0",
+      "torch": "2.11.0+cu130",
+      "warp-lang": "1.17.0",
+      "newton": "1.6.1",
+      "mujoco": "3.12.0",
+      "mujoco-warp": "3.12.0",
+      "usd-exchange": "3.0.1",
+      "numpy": "2.5.4"
+     }
+    }
+   }
+  },
+  {
+   "label": "official_runtime_physx_n4096",
+   "n": 4096,
+   "describe": {
+    "backend": "PhysX (isaacsim_physx)",
+    "asset": "G1_MINIMAL_CFG (g1_minimal.usd, 3 box colliders: both feet, torso)",
+    "self_collision": "off (task default)"
+   },
+   "official": {
+    "env_steps_per_s_mean": 119739.9482191766,
+    "env_step_ms_mean": 34.20746426666667,
+    "physics_frametime_ms_mean": 6.8,
+    "measurements": {
+     "startup App Launch Time": {
+      "value": 819.262253,
+      "unit": "ms"
+     },
+     "startup Python Imports Time": {
+      "value": 347.671786,
+      "unit": "ms"
+     },
+     "startup Task Creation and Start Time": {
+      "value": 172.761997,
+      "unit": "ms"
+     },
+     "startup Scene Creation Time": {
+      "value": 75701.20974699999,
+      "unit": "ms"
+     },
+     "startup Simulation Start Time": {
+      "value": 228.386106,
+      "unit": "ms"
+     },
+     "startup Total Start Time (Launch to Train)": {
+      "value": 77269.29188899999,
+      "unit": "ms"
+     },
+     "runtime Iterations Completed": {
+      "value": 300,
+      "unit": "count"
+     },
+     "runtime Total Wall Time": {
+      "value": 10.26223928,
+      "unit": "s"
+     },
+     "runtime Steps per Iteration": {
+      "value": 4096,
+      "unit": "frames"
+     },
+     "runtime Mean Iteration Time": {
+      "value": 34.20746426666667,
+      "unit": "ms"
+     },
+     "runtime Std Iteration Time": {
+      "value": 5.172948690063647,
+      "unit": "ms"
+     },
+     "runtime Max Iteration Time": {
+      "value": 69.65845399999999,
+      "unit": "ms"
+     },
+     "runtime Mean Collection FPS": {
+      "value": 119739.9482191766,
+      "unit": "FPS"
+     },
+     "runtime Std Collection FPS": {
+      "value": 10755.292299595994,
+      "unit": "FPS"
+     },
+     "runtime Max Collection FPS": {
+      "value": 127183.31618200902,
+      "unit": "FPS"
+     },
+     "runtime Mean Total FPS": {
+      "value": 119739.9482191766,
+      "unit": "FPS"
+     },
+     "runtime Std Total FPS": {
+      "value": 10755.292299595994,
+      "unit": "FPS"
+     },
+     "runtime Max Total FPS": {
+      "value": 127183.31618200902,
+      "unit": "FPS"
+     },
+     "runtime Mean Environment Step Host-Return FPS": {
+      "value": 119748.23022301833,
+      "unit": "FPS"
+     },
+     "runtime Std Environment Step Host-Return FPS": {
+      "value": 10756.194804869965,
+      "unit": "FPS"
+     },
+     "runtime Max Environment Step Host-Return FPS": {
+      "value": 127191.7678606152,
+      "unit": "FPS"
+     },
+     "runtime Mean Iterations per Second": {
+      "value": 29.233385795697412,
+      "unit": "iterations/s"
+     },
+     "runtime Std Iterations per Second": {
+      "value": 2.6258037840810533,
+      "unit": "iterations/s"
+     },
+     "runtime Max Iterations per Second": {
+      "value": 31.050614302248295,
+      "unit": "iterations/s"
+     },
+     "runtime CPU Utilization": {
+      "value": 252.68181818181816,
+      "unit": "%"
+     },
+     "runtime CPU Utilization std": {
+      "value": 83.8337261271598,
+      "unit": "%"
+     },
+     "runtime CPU Utilization n": {
+      "value": 11,
+      "unit": ""
+     },
+     "runtime GPU Memory Used": {
+      "value": 8.14,
+      "unit": "GB"
+     },
+     "runtime GPU Memory Used std": {
+      "value": 0.0,
+      "unit": "GB"
+     },
+     "runtime GPU Memory Used n": {
+      "value": 11,
+      "unit": ""
+     },
+     "runtime GPU Memory Used peak": {
+      "value": 8.14,
+      "unit": "GB"
+     },
+     "runtime GPU Utilization": {
+      "value": 73.55,
+      "unit": "%"
+     },
+     "runtime GPU Utilization std": {
+      "value": 0.82,
+      "unit": "%"
+     },
+     "runtime GPU Utilization n": {
+      "value": 11,
+      "unit": ""
+     },
+     "runtime System Memory RSS": {
+      "value": 13.2,
+      "unit": "GB"
+     },
+     "runtime System Memory RSS std": {
+      "value": 0.0,
+      "unit": "GB"
+     },
+     "runtime System Memory RSS peak": {
+      "value": 13.2,
+      "unit": "GB"
+     },
+     "runtime System Memory RSS n": {
+      "value": 11,
+      "unit": ""
+     },
+     "runtime System Memory VMS": {
+      "value": 489.1,
+      "unit": "GB"
+     },
+     "runtime System Memory VMS std": {
+      "value": 0.0,
+      "unit": "GB"
+     },
+     "runtime System Memory VMS peak": {
+      "value": 489.1,
+      "unit": "GB"
+     },
+     "runtime System Memory VMS n": {
+      "value": 11,
+      "unit": ""
+     },
+     "runtime System Memory USS": {
+      "value": 13.19,
+      "unit": "GB"
+     },
+     "runtime System Memory USS std": {
+      "value": 0.0,
+      "unit": "GB"
+     },
+     "runtime System Memory USS peak": {
+      "value": 13.19,
+      "unit": "GB"
+     },
+     "runtime System Memory USS n": {
+      "value": 11,
+      "unit": ""
+     },
+     "frametime Mean Physics Frametime": {
+      "value": 6.8,
+      "unit": "ms"
+     },
+     "frametime Stdev Physics Frametime": {
+      "value": 1.09,
+      "unit": "ms"
+     },
+     "frametime Min Physics Frametime": {
+      "value": 6.19,
+      "unit": "ms"
+     },
+     "frametime Max Physics Frametime": {
+      "value": 25.07,
+      "unit": "ms"
+     },
+     "frametime Mean Render Frametime": {
+      "value": 21.18,
+      "unit": "ms"
+     },
+     "frametime Stdev Render Frametime": {
+      "value": 366.99,
+      "unit": "ms"
+     },
+     "frametime Min Render Frametime": {
+      "value": 0.02,
+      "unit": "ms"
+     },
+     "frametime Max Render Frametime": {
+      "value": 14301.55,
+      "unit": "ms"
+     },
+     "frametime Render Thread FPS": {
+      "value": 47.214,
+      "unit": "FPS"
+     },
+     "frametime Mean App_Update Frametime": {
+      "value": 60844.03,
+      "unit": "ms"
+     },
+     "frametime Stdev App_Update Frametime": {
+      "value": 0.0,
+      "unit": "ms"
+     },
+     "frametime Min App_Update Frametime": {
+      "value": 60844.03,
+      "unit": "ms"
+     },
+     "frametime Max App_Update Frametime": {
+      "value": 60844.03,
+      "unit": "ms"
+     },
+     "frametime Mean FPS": {
+      "value": 0.016,
+      "unit": "FPS"
+     },
+     "frametime Num App Updates": {
+      "value": 1,
+      "unit": ""
+     },
+     "frametime Real Time Factor": {
+      "value": 0.703,
+      "unit": ""
+     }
+    },
+    "files": [
+     "runs/physx_bench/20261029T003333Z_full/runs/official_runtime_physx_n4096/benchmark_runtime_Isaac-Velocity-Flat-G1_2026-10-29_00-40-46-535698_a6e4b5c4_json.json"
+    ]
+   },
+   "command": "isaaclab benchmark runtime --task Isaac-Velocity-Flat-G1 --num_envs 4096 --num_steps 300 --warmup_steps 50 --benchmark_formatter json,summary --output_path . physics=isaacsim_physx",
+   "status": "ok",
+   "wall_s": 98.32177400588989
+  },
+  {
+   "label": "physx_task_n16384",
+   "n": 16384,
+   "describe": {
+    "backend": "PhysX (isaacsim_physx)",
+    "asset": "G1_MINIMAL_CFG (g1_minimal.usd, 3 box colliders: both feet, torso)",
+    "self_collision": "off (task default)"
+   },
+   "official": false,
+   "command": "python scripts/physx_bench/bench_physics_only.py --task Isaac-Velocity-Flat-G1 --num_envs 16384 --label physx_task_n16384 --out runs/physx_task_n16384.json --baseline_mem_mib 0.0 physics=isaacsim_physx",
+   "status": "ok",
+   "wall_s": 354.37075185775757,
+   "result": {
+    "label": "physx_task_n16384",
+    "task": "Isaac-Velocity-Flat-G1",
+    "num_envs": 16384,
+    "hydra_overrides": [
+     "physics=isaacsim_physx"
+    ],
+    "robot_variant": "task",
+    "self_collision_override": "default",
+    "rounds": 8,
+    "warmup_rounds": 1,
+    "steps_per_round": 50,
+    "seed": 0,
+    "backend": {
+     "physics_manager": "PhysxManager",
+     "physics_cfg_type": "PhysxCfg",
+     "physics_handles_decimation": false
+    },
+    "physics_cfg": {
+     "class_type": "isaaclab_physx.physics.physx_manager:PhysxManager",
+     "deterministic": false,
+     "solver_type": 1,
+     "solve_articulation_contact_last": false,
+     "min_position_iteration_count": 1,
+     "max_position_iteration_count": 255,
+     "min_velocity_iteration_count": 0,
+     "max_velocity_iteration_count": 255,
+     "enable_scene_query_support": false,
+     "enable_ccd": false,
+     "enable_stabilization": false,
+     "enable_external_forces_every_iteration": true,
+     "enable_enhanced_determinism": false,
+     "bounce_threshold_velocity": 0.5,
+     "friction_offset_threshold": 0.04,
+     "friction_correlation_distance": 0.025,
+     "gpu_max_rigid_contact_count": 8388608,
+     "gpu_max_rigid_patch_count": 327680,
+     "gpu_found_lost_pairs_capacity": 2097152,
+     "gpu_found_lost_aggregate_pairs_capacity": 33554432,
+     "gpu_total_aggregate_pairs_capacity": 2097152,
+     "gpu_collision_stack_size": 67108864,
+     "gpu_heap_capacity": 67108864,
+     "gpu_temp_buffer_capacity": 16777216,
+     "gpu_max_num_partitions": 8,
+     "gpu_max_soft_body_contacts": 1048576,
+     "gpu_max_particle_contacts": 1048576,
+     "launcher_type": "isaaclab_physx.app:KitLauncher"
+    },
+    "sim": {
+     "dt": 0.005,
+     "decimation": 4,
+     "control_dt": 0.02,
+     "device": "cuda:0",
+     "action_dim": 37
+    },
+    "robot": {
+     "num_joints": 37,
+     "num_bodies": 44
+    },
+    "live_stage": {
+     "physics_scenes": {
+      "/physicsScene": {
+       "physics:gravityDirection": "(0, 0, -1)",
+       "physics:gravityMagnitude": 9.8100004196167,
+       "physxScene:bounceThreshold": 0.5,
+       "physxScene:broadphaseType": "GPU",
+       "physxScene:collisionSystem": "PCM",
+       "physxScene:disableSleeping": false,
+       "physxScene:enableCCD": false,
+       "physxScene:enableEnhancedDeterminism": false,
+       "physxScene:enableExternalForcesEveryIteration": true,
+       "physxScene:enableGPUDynamics": true,
+       "physxScene:enableSceneQuerySupport": false,
+       "physxScene:enableStabilization": false,
+       "physxScene:envIdInBoundsBitCount": 4,
+       "physxScene:frictionCorrelationDistance": 0.02500000037252903,
+       "physxScene:frictionOffsetThreshold": 0.03999999910593033,
+       "physxScene:frictionType": "patch",
+       "physxScene:gpuCollisionStackSize": 67108864,
+       "physxScene:gpuFoundLostAggregatePairsCapacity": 33554432,
+       "physxScene:gpuFoundLostPairsCapacity": 2097152,
+       "physxScene:gpuHeapCapacity": 67108864,
+       "physxScene:gpuMaxDeformableSurfaceContacts": 1048576,
+       "physxScene:gpuMaxDeformableVolumeContacts": 1048576,
+       "physxScene:gpuMaxNumPartitions": 8,
+       "physxScene:gpuMaxParticleContacts": 1048576,
+       "physxScene:gpuMaxRigidContactCount": 8388608,
+       "physxScene:gpuMaxRigidPatchCount": 327680,
+       "physxScene:gpuMaxSoftBodyContacts": 1048576,
+       "physxScene:gpuTempBufferCapacity": 16777216,
+       "physxScene:gpuTotalAggregatePairsCapacity": 2097152,
+       "physxScene:invertCollisionGroupFilter": true,
+       "physxScene:launcherType": "isaaclab_physx.app:KitLauncher",
+       "physxScene:maxBiasCoefficient": "inf",
+       "physxScene:maxPositionIterationCount": 255,
+       "physxScene:maxVelocityIterationCount": 255,
+       "physxScene:minPositionIterationCount": 1,
+       "physxScene:minVelocityIterationCount": 0,
+       "physxScene:reportKinematicKinematicPairs": false,
+       "physxScene:reportKinematicStaticPairs": false,
+       "physxScene:solveArticulationContactLast": false,
+       "physxScene:solverType": "TGS",
+       "physxScene:timeStepsPerSecond": 200,
+       "physxScene:updateType": "Synchronous"
+      }
+     },
+     "articulation_root": {
+      "/pelvis": {
+       "physxArticulation:articulationEnabled": true,
+       "physxArticulation:enabledSelfCollisions": false,
+       "physxArticulation:sleepThreshold": 4.999999873689376e-05,
+       "physxArticulation:solverPositionIterationCount": 8,
+       "physxArticulation:solverVelocityIterationCount": 4,
+       "physxArticulation:stabilizationThreshold": 9.999999747378752e-06,
+       "physxRigidBody:angularDamping": 0.0,
+       "physxRigidBody:cfmScale": 0.02500000037252903,
+       "physxRigidBody:contactSlopCoefficient": 0.0,
+       "physxRigidBody:disableGravity": false,
+       "physxRigidBody:enableCCD": false,
+       "physxRigidBody:enableGyroscopicForces": true,
+       "physxRigidBody:enableSpeculativeCCD": false,
+       "physxRigidBody:linearDamping": 0.0,
+       "physxRigidBody:lockedPosAxis": 0,
+       "physxRigidBody:lockedRotAxis": 0,
+       "physxRigidBody:maxAngularVelocity": 1000.0,
+       "physxRigidBody:maxContactImpulse": "inf",
+       "physxRigidBody:maxDepenetrationVelocity": 1.0,
+       "physxRigidBody:maxLinearVelocity": 1000.0,
+       "physxRigidBody:retainAccelerations": false,
+       "physxRigidBody:sleepThreshold": 0.0,
+       "physxRigidBody:solveContact": true,
+       "physxRigidBody:solverPositionIterationCount": 16,
+       "physxRigidBody:solverVelocityIterationCount": 1,
+       "physxRigidBody:stabilizationThreshold": 9.999999747378752e-06
+      }
+     },
+     "robot_collider_count": 3,
+     "robot_collider_types": {
+      "Mesh[convexHull]": 3
+     },
+     "robot_colliders": [
+      {
+       "path": "/left_ankle_roll_link/Cube",
+       "type": "Mesh[convexHull]",
+       "physxCollision:contactOffset": "-inf",
+       "physxCollision:minTorsionalPatchRadius": 0.0,
+       "physxCollision:restOffset": "-inf",
+       "physxCollision:torsionalPatchRadius": 0.0,
+       "physxConvexHullCollision:hullVertexLimit": 64,
+       "physxConvexHullCollision:minThickness": 0.0010000000474974513
+      },
+      {
+       "path": "/right_ankle_roll_link/Cube",
+       "type": "Mesh[convexHull]",
+       "physxCollision:contactOffset": "-inf",
+       "physxCollision:minTorsionalPatchRadius": 0.0,
+       "physxCollision:restOffset": "-inf",
+       "physxCollision:torsionalPatchRadius": 0.0,
+       "physxConvexHullCollision:hullVertexLimit": 64,
+       "physxConvexHullCollision:minThickness": 0.0010000000474974513
+      },
+      {
+       "path": "/torso_link/Cube",
+       "type": "Mesh[convexHull]",
+       "physxCollision:contactOffset": "-inf",
+       "physxCollision:minTorsionalPatchRadius": 0.0,
+       "physxCollision:restOffset": "-inf",
+       "physxCollision:torsionalPatchRadius": 0.0,
+       "physxConvexHullCollision:hullVertexLimit": 64,
+       "physxConvexHullCollision:minThickness": 0.0010000000474974513
+      }
+     ],
+     "joints_env0": {
+      "names": [
+       "left_hip_pitch_joint",
+       "right_hip_pitch_joint",
+       "torso_joint",
+       "left_hip_roll_joint",
+       "right_hip_roll_joint",
+       "left_shoulder_pitch_joint",
+       "right_shoulder_pitch_joint",
+       "left_hip_yaw_joint",
+       "right_hip_yaw_joint",
+       "left_shoulder_roll_joint",
+       "right_shoulder_roll_joint",
+       "left_knee_joint",
+       "right_knee_joint",
+       "left_shoulder_yaw_joint",
+       "right_shoulder_yaw_joint",
+       "left_ankle_pitch_joint",
+       "right_ankle_pitch_joint",
+       "left_elbow_pitch_joint",
+       "right_elbow_pitch_joint",
+       "left_ankle_roll_joint",
+       "right_ankle_roll_joint",
+       "left_elbow_roll_joint",
+       "right_elbow_roll_joint",
+       "left_five_joint",
+       "left_three_joint",
+       "left_zero_joint",
+       "right_five_joint",
+       "right_three_joint",
+       "right_zero_joint",
+       "left_six_joint",
+       "left_four_joint",
+       "left_one_joint",
+       "right_six_joint",
+       "right_four_joint",
+       "right_one_joint",
+       "left_two_joint",
+       "right_two_joint"
+      ],
+      "joint_stiffness": [
+       200.0,
+       200.0,
+       200.0,
+       150.0,
+       150.0,
+       40.0,
+       40.0,
+       150.0,
+       150.0,
+       40.0,
+       40.0,
+       200.0,
+       200.0,
+       40.0,
+       40.0,
+       20.0,
+       20.0,
+       40.0,
+       40.0,
+       20.0,
+       20.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0
+      ],
+      "joint_damping": [
+       5.0,
+       5.0,
+       5.0,
+       5.0,
+       5.0,
+       10.0,
+       10.0,
+       5.0,
+       5.0,
+       10.0,
+       10.0,
+       5.0,
+       5.0,
+       10.0,
+       10.0,
+       2.0,
+       2.0,
+       10.0,
+       10.0,
+       2.0,
+       2.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0
+      ],
+      "joint_armature": [
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513
+      ],
+      "joint_friction_coeff": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "joint_effort_limits": [
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       20.0,
+       20.0,
+       300.0,
+       300.0,
+       20.0,
+       20.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0
+      ],
+      "joint_vel_limits": [
+       32.0,
+       32.0,
+       32.0,
+       32.0,
+       32.0,
+       53.0,
+       53.0,
+       32.0,
+       32.0,
+       53.0,
+       53.0,
+       20.0,
+       20.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0
+      ],
+      "joint_pos_limits": [
+       [
+        -2.3499996662139893,
+        3.049999952316284
+       ],
+       [
+        -2.3499996662139893,
+        3.049999952316284
+       ],
+       [
+        -2.618000030517578,
+        2.618000030517578
+       ],
+       [
+        -0.25999996066093445,
+        2.5299997329711914
+       ],
+       [
+        -2.5299997329711914,
+        0.25999996066093445
+       ],
+       [
+        -2.967099666595459,
+        2.7924997806549072
+       ],
+       [
+        -2.967099666595459,
+        2.7924997806549072
+       ],
+       [
+        -2.749999761581421,
+        2.749999761581421
+       ],
+       [
+        -2.749999761581421,
+        2.749999761581421
+       ],
+       [
+        -1.5881999731063843,
+        2.251499652862549
+       ],
+       [
+        -2.251499652862549,
+        1.5881999731063843
+       ],
+       [
+        -0.3348899781703949,
+        2.5448997020721436
+       ],
+       [
+        -0.3348899781703949,
+        2.5448997020721436
+       ],
+       [
+        -2.618000030517578,
+        2.618000030517578
+       ],
+       [
+        -2.618000030517578,
+        2.618000030517578
+       ],
+       [
+        -0.6799999475479126,
+        0.7299999594688416
+       ],
+       [
+        -0.6799999475479126,
+        0.7299999594688416
+       ],
+       [
+        -0.22679997980594635,
+        3.420799732208252
+       ],
+       [
+        -0.22679997980594635,
+        3.420799732208252
+       ],
+       [
+        -0.26179996132850647,
+        0.26179996132850647
+       ],
+       [
+        -0.26179996132850647,
+        0.26179996132850647
+       ],
+       [
+        -2.094299793243408,
+        2.094299793243408
+       ],
+       [
+        -2.094299793243408,
+        2.094299793243408
+       ],
+       [
+        -1.8399999141693115,
+        0.30000001192092896
+       ],
+       [
+        -1.8399999141693115,
+        0.30000001192092896
+       ],
+       [
+        -0.5235979557037354,
+        0.5235979557037354
+       ],
+       [
+        -0.30000001192092896,
+        1.8399999141693115
+       ],
+       [
+        -0.30000001192092896,
+        1.8399999141693115
+       ],
+       [
+        -0.5235979557037354,
+        0.5235979557037354
+       ],
+       [
+        -1.8399999141693115,
+        0.0
+       ],
+       [
+        -1.8399999141693115,
+        0.0
+       ],
+       [
+        -0.9999999403953552,
+        1.2000000476837158
+       ],
+       [
+        0.0,
+        1.8399999141693115
+       ],
+       [
+        0.0,
+        1.8399999141693115
+       ],
+       [
+        -1.2000000476837158,
+        0.9999999403953552
+       ],
+       [
+        0.0,
+        1.8399999141693115
+       ],
+       [
+        -1.8399999141693115,
+        0.0
+       ]
+      ],
+      "default_joint_pos": [
+       -0.20000000298023224,
+       -0.20000000298023224,
+       0.0,
+       0.0,
+       0.0,
+       0.3499999940395355,
+       0.3499999940395355,
+       0.0,
+       0.0,
+       0.1599999964237213,
+       -0.1599999964237213,
+       0.41999998688697815,
+       0.41999998688697815,
+       0.0,
+       0.0,
+       -0.23000000417232513,
+       -0.23000000417232513,
+       0.8700000047683716,
+       0.8700000047683716,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       0.0,
+       0.0,
+       -1.0,
+       0.5199999809265137,
+       -0.5199999809265137
+      ]
+     }
+    },
+    "timing": {
+     "ms_per_control_step_median": 53.02350496999679,
+     "ms_per_control_step_p10_rounds": 52.83581060999131,
+     "ms_per_control_step_p90_rounds": 53.353912882008444,
+     "ms_per_control_step_min_rounds": 52.78141662000053,
+     "ms_per_control_step_max_rounds": 53.385999580004864,
+     "env_steps_per_s_at_median": 308995.0392617546,
+     "physics_steps_per_control_step": 4,
+     "rounds": [
+      {
+       "warmup": true,
+       "ms_per_control_step": 73.17560508162926,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.1884765625,
+        "envs_with_contact_frac": 0.75274658203125
+       },
+       "base_z_mean_end": 0.18896135687828064,
+       "frac_base_below_0p4m_end": 0.82861328125
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 52.98442045999764,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.16912841796875,
+        "envs_with_contact_frac": 0.7469482421875
+       },
+       "base_z_mean_end": 0.18568696081638336,
+       "frac_base_below_0p4m_end": 0.83636474609375
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 52.78141662000053,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.1649169921875,
+        "envs_with_contact_frac": 0.746337890625
+       },
+       "base_z_mean_end": 0.1863023340702057,
+       "frac_base_below_0p4m_end": 0.8349609375
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 52.859122319987364,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.17816162109375,
+        "envs_with_contact_frac": 0.750732421875
+       },
+       "base_z_mean_end": 0.18695546686649323,
+       "frac_base_below_0p4m_end": 0.83306884765625
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 53.03980235999916,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.17694091796875,
+        "envs_with_contact_frac": 0.7489013671875
+       },
+       "base_z_mean_end": 0.18477919697761536,
+       "frac_base_below_0p4m_end": 0.8358154296875
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 53.34016144000998,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.1722412109375,
+        "envs_with_contact_frac": 0.74847412109375
+       },
+       "base_z_mean_end": 0.18730446696281433,
+       "frac_base_below_0p4m_end": 0.8365478515625
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 53.00720757999443,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.1724853515625,
+        "envs_with_contact_frac": 0.7471923828125
+       },
+       "base_z_mean_end": 0.18747293949127197,
+       "frac_base_below_0p4m_end": 0.83453369140625
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 53.10873297999933,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.16668701171875,
+        "envs_with_contact_frac": 0.7508544921875
+       },
+       "base_z_mean_end": 0.18741604685783386,
+       "frac_base_below_0p4m_end": 0.83349609375
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 53.385999580004864,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.1661376953125,
+        "envs_with_contact_frac": 0.74896240234375
+       },
+       "base_z_mean_end": 0.186708465218544,
+       "frac_base_below_0p4m_end": 0.833740234375
+      }
+     ],
+     "synced_each_control_step_ms": {
+      "p10": 50.60821300048701,
+      "median": 52.08633550000741,
+      "p90": 55.034368099404674
+     },
+     "synced_each_op_ms_per_control_step": {
+      "process_action": 0.10781744995256304,
+      "apply_action": 0.3217107503587613,
+      "write_data_to_sim": 0.7389958999283408,
+      "sim_step": 50.57796124988272,
+      "scene_update": 1.3819317498928285
+     },
+     "first_control_step_ms": 156.1554800000522
+    },
+    "contacts": {
+     "bodies_in_contact_per_env_mean": 1.17083740234375,
+     "envs_with_contact_frac_mean": 0.7485504150390625,
+     "frac_base_below_0p4m_end_mean": 0.8348159790039062,
+     "note": "proxy from Isaac Lab's ContactSensor: bodies with net contact force > 1e-3 N, at round ends"
+    },
+    "startup_s": {
+     "imports_and_cfg": 0.2599718390001726,
+     "app_launch": 0.8419143900000563,
+     "env_creation": 308.77423126600024,
+     "process_start_to_env_ready": 310.8505452270001
+    },
+    "memory": {
+     "gpu_process_mib_nvidia_smi": 10328.0,
+     "gpu_device_used_mib_end": 10339.0,
+     "gpu_device_used_delta_mib": 10339.0,
+     "torch_max_allocated_mib": 415.7607421875
+    },
+    "environment": {
+     "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+     "driver": "595.58.03",
+     "gpu_memory_total_mib": "97887",
+     "cpu": "AMD EPYC 9555 64-Core Processor",
+     "logical_cpus": 16,
+     "python": "3.12.16",
+     "versions": {
+      "isaaclab": "3.0.0",
+      "isaacsim": "6.2.0.0",
+      "isaacsim-kernel": "6.2.0.0",
+      "torch": "2.11.0+cu130",
+      "warp-lang": "1.17.0",
+      "newton": "1.6.1",
+      "mujoco": "3.12.0",
+      "mujoco-warp": "3.12.0",
+      "usd-exchange": "3.0.1",
+      "numpy": "2.5.4"
+     }
+    }
+   }
+  },
+  {
+   "label": "physx_full_selfcoll_n8192",
+   "n": 8192,
+   "describe": {
+    "backend": "PhysX (isaacsim_physx)",
+    "asset": "G1_CFG (g1.usd, 38 colliders: 32 convex hulls, 4 cylinders, 2 boxes)",
+    "self_collision": "on"
+   },
+   "official": false,
+   "command": "python scripts/physx_bench/bench_physics_only.py --task Isaac-Velocity-Flat-G1 --num_envs 8192 --label physx_full_selfcoll_n8192 --out runs/physx_full_selfcoll_n8192.json --baseline_mem_mib 0.0 --robot full --self_collision on physics=isaacsim_physx",
+   "status": "ok",
+   "wall_s": 234.42787718772888,
+   "result": {
+    "label": "physx_full_selfcoll_n8192",
+    "task": "Isaac-Velocity-Flat-G1",
+    "num_envs": 8192,
+    "hydra_overrides": [
+     "physics=isaacsim_physx"
+    ],
+    "robot_variant": "full",
+    "self_collision_override": "on",
+    "rounds": 8,
+    "warmup_rounds": 1,
+    "steps_per_round": 50,
+    "seed": 0,
+    "backend": {
+     "physics_manager": "PhysxManager",
+     "physics_cfg_type": "PhysxCfg",
+     "physics_handles_decimation": false
+    },
+    "physics_cfg": {
+     "class_type": "isaaclab_physx.physics.physx_manager:PhysxManager",
+     "deterministic": false,
+     "solver_type": 1,
+     "solve_articulation_contact_last": false,
+     "min_position_iteration_count": 1,
+     "max_position_iteration_count": 255,
+     "min_velocity_iteration_count": 0,
+     "max_velocity_iteration_count": 255,
+     "enable_scene_query_support": false,
+     "enable_ccd": false,
+     "enable_stabilization": false,
+     "enable_external_forces_every_iteration": true,
+     "enable_enhanced_determinism": false,
+     "bounce_threshold_velocity": 0.5,
+     "friction_offset_threshold": 0.04,
+     "friction_correlation_distance": 0.025,
+     "gpu_max_rigid_contact_count": 8388608,
+     "gpu_max_rigid_patch_count": 327680,
+     "gpu_found_lost_pairs_capacity": 2097152,
+     "gpu_found_lost_aggregate_pairs_capacity": 33554432,
+     "gpu_total_aggregate_pairs_capacity": 2097152,
+     "gpu_collision_stack_size": 67108864,
+     "gpu_heap_capacity": 67108864,
+     "gpu_temp_buffer_capacity": 16777216,
+     "gpu_max_num_partitions": 8,
+     "gpu_max_soft_body_contacts": 1048576,
+     "gpu_max_particle_contacts": 1048576,
+     "launcher_type": "isaaclab_physx.app:KitLauncher"
+    },
+    "sim": {
+     "dt": 0.005,
+     "decimation": 4,
+     "control_dt": 0.02,
+     "device": "cuda:0",
+     "action_dim": 37
+    },
+    "robot": {
+     "num_joints": 37,
+     "num_bodies": 44
+    },
+    "live_stage": {
+     "physics_scenes": {
+      "/physicsScene": {
+       "physics:gravityDirection": "(0, 0, -1)",
+       "physics:gravityMagnitude": 9.8100004196167,
+       "physxScene:bounceThreshold": 0.5,
+       "physxScene:broadphaseType": "GPU",
+       "physxScene:collisionSystem": "PCM",
+       "physxScene:disableSleeping": false,
+       "physxScene:enableCCD": false,
+       "physxScene:enableEnhancedDeterminism": false,
+       "physxScene:enableExternalForcesEveryIteration": true,
+       "physxScene:enableGPUDynamics": true,
+       "physxScene:enableSceneQuerySupport": false,
+       "physxScene:enableStabilization": false,
+       "physxScene:envIdInBoundsBitCount": 4,
+       "physxScene:frictionCorrelationDistance": 0.02500000037252903,
+       "physxScene:frictionOffsetThreshold": 0.03999999910593033,
+       "physxScene:frictionType": "patch",
+       "physxScene:gpuCollisionStackSize": 67108864,
+       "physxScene:gpuFoundLostAggregatePairsCapacity": 33554432,
+       "physxScene:gpuFoundLostPairsCapacity": 2097152,
+       "physxScene:gpuHeapCapacity": 67108864,
+       "physxScene:gpuMaxDeformableSurfaceContacts": 1048576,
+       "physxScene:gpuMaxDeformableVolumeContacts": 1048576,
+       "physxScene:gpuMaxNumPartitions": 8,
+       "physxScene:gpuMaxParticleContacts": 1048576,
+       "physxScene:gpuMaxRigidContactCount": 8388608,
+       "physxScene:gpuMaxRigidPatchCount": 327680,
+       "physxScene:gpuMaxSoftBodyContacts": 1048576,
+       "physxScene:gpuTempBufferCapacity": 16777216,
+       "physxScene:gpuTotalAggregatePairsCapacity": 2097152,
+       "physxScene:invertCollisionGroupFilter": true,
+       "physxScene:launcherType": "isaaclab_physx.app:KitLauncher",
+       "physxScene:maxBiasCoefficient": "inf",
+       "physxScene:maxPositionIterationCount": 255,
+       "physxScene:maxVelocityIterationCount": 255,
+       "physxScene:minPositionIterationCount": 1,
+       "physxScene:minVelocityIterationCount": 0,
+       "physxScene:reportKinematicKinematicPairs": false,
+       "physxScene:reportKinematicStaticPairs": false,
+       "physxScene:solveArticulationContactLast": false,
+       "physxScene:solverType": "TGS",
+       "physxScene:timeStepsPerSecond": 200,
+       "physxScene:updateType": "Synchronous"
+      }
+     },
+     "articulation_root": {
+      "/pelvis": {
+       "physxArticulation:articulationEnabled": true,
+       "physxArticulation:enabledSelfCollisions": true,
+       "physxArticulation:sleepThreshold": 4.999999873689376e-05,
+       "physxArticulation:solverPositionIterationCount": 8,
+       "physxArticulation:solverVelocityIterationCount": 4,
+       "physxArticulation:stabilizationThreshold": 9.999999747378752e-06,
+       "physxRigidBody:angularDamping": 0.0,
+       "physxRigidBody:cfmScale": 0.02500000037252903,
+       "physxRigidBody:contactSlopCoefficient": 0.0,
+       "physxRigidBody:disableGravity": false,
+       "physxRigidBody:enableCCD": false,
+       "physxRigidBody:enableGyroscopicForces": true,
+       "physxRigidBody:enableSpeculativeCCD": false,
+       "physxRigidBody:linearDamping": 0.0,
+       "physxRigidBody:lockedPosAxis": 0,
+       "physxRigidBody:lockedRotAxis": 0,
+       "physxRigidBody:maxAngularVelocity": 1000.0,
+       "physxRigidBody:maxContactImpulse": "inf",
+       "physxRigidBody:maxDepenetrationVelocity": 1.0,
+       "physxRigidBody:maxLinearVelocity": 1000.0,
+       "physxRigidBody:retainAccelerations": false,
+       "physxRigidBody:sleepThreshold": 0.0,
+       "physxRigidBody:solveContact": true,
+       "physxRigidBody:solverPositionIterationCount": 16,
+       "physxRigidBody:solverVelocityIterationCount": 1,
+       "physxRigidBody:stabilizationThreshold": 9.999999747378752e-06
+      }
+     },
+     "robot_collider_count": 38,
+     "robot_collider_types": {
+      "Mesh[convexHull]": 32,
+      "Cylinder": 4,
+      "Cube": 2
+     },
+     "robot_colliders": [
+      {
+       "path": "/pelvis/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/left_hip_pitch_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/left_hip_roll_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/left_hip_yaw_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/left_knee_link/collisions/mesh_0",
+       "type": "Cylinder"
+      },
+      {
+       "path": "/left_ankle_roll_link/Cube",
+       "type": "Mesh[convexHull]",
+       "physxCollision:contactOffset": "-inf",
+       "physxCollision:minTorsionalPatchRadius": 0.0,
+       "physxCollision:restOffset": "-inf",
+       "physxCollision:torsionalPatchRadius": 0.0,
+       "physxConvexHullCollision:hullVertexLimit": 64,
+       "physxConvexHullCollision:minThickness": 0.0010000000474974513
+      },
+      {
+       "path": "/right_hip_pitch_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/right_hip_roll_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/right_hip_yaw_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/right_knee_link/collisions/mesh_0",
+       "type": "Cylinder"
+      },
+      {
+       "path": "/right_ankle_roll_link/Cube",
+       "type": "Mesh[convexHull]",
+       "physxCollision:contactOffset": "-inf",
+       "physxCollision:minTorsionalPatchRadius": 0.0,
+       "physxCollision:restOffset": "-inf",
+       "physxCollision:torsionalPatchRadius": 0.0,
+       "physxConvexHullCollision:hullVertexLimit": 64,
+       "physxConvexHullCollision:minThickness": 0.0010000000474974513
+      },
+      {
+       "path": "/torso_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/head_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/left_shoulder_pitch_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/left_shoulder_roll_link/collisions/mesh_0",
+       "type": "Cylinder"
+      },
+      {
+       "path": "/left_shoulder_yaw_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/left_elbow_pitch_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/left_elbow_roll_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/left_palm_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/left_five_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/left_six_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/left_three_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/left_four_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/left_one_link/collisions/mesh_0",
+       "type": "Cube"
+      },
+      {
+       "path": "/left_two_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/logo_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/right_shoulder_pitch_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/right_shoulder_roll_link/collisions/mesh_0",
+       "type": "Cylinder"
+      },
+      {
+       "path": "/right_shoulder_yaw_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/right_elbow_pitch_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/right_elbow_roll_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/right_palm_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/right_five_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/right_six_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/right_three_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/right_four_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      },
+      {
+       "path": "/right_one_link/collisions/mesh_0",
+       "type": "Cube"
+      },
+      {
+       "path": "/right_two_link/collisions/mesh_0",
+       "type": "Mesh[convexHull]"
+      }
+     ],
+     "joints_env0": {
+      "names": [
+       "left_hip_pitch_joint",
+       "right_hip_pitch_joint",
+       "torso_joint",
+       "left_hip_roll_joint",
+       "right_hip_roll_joint",
+       "left_shoulder_pitch_joint",
+       "right_shoulder_pitch_joint",
+       "left_hip_yaw_joint",
+       "right_hip_yaw_joint",
+       "left_shoulder_roll_joint",
+       "right_shoulder_roll_joint",
+       "left_knee_joint",
+       "right_knee_joint",
+       "left_shoulder_yaw_joint",
+       "right_shoulder_yaw_joint",
+       "left_ankle_pitch_joint",
+       "right_ankle_pitch_joint",
+       "left_elbow_pitch_joint",
+       "right_elbow_pitch_joint",
+       "left_ankle_roll_joint",
+       "right_ankle_roll_joint",
+       "left_elbow_roll_joint",
+       "right_elbow_roll_joint",
+       "left_five_joint",
+       "left_three_joint",
+       "left_zero_joint",
+       "right_five_joint",
+       "right_three_joint",
+       "right_zero_joint",
+       "left_six_joint",
+       "left_four_joint",
+       "left_one_joint",
+       "right_six_joint",
+       "right_four_joint",
+       "right_one_joint",
+       "left_two_joint",
+       "right_two_joint"
+      ],
+      "joint_stiffness": [
+       200.0,
+       200.0,
+       200.0,
+       150.0,
+       150.0,
+       40.0,
+       40.0,
+       150.0,
+       150.0,
+       40.0,
+       40.0,
+       200.0,
+       200.0,
+       40.0,
+       40.0,
+       20.0,
+       20.0,
+       40.0,
+       40.0,
+       20.0,
+       20.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0,
+       40.0
+      ],
+      "joint_damping": [
+       5.0,
+       5.0,
+       5.0,
+       5.0,
+       5.0,
+       10.0,
+       10.0,
+       5.0,
+       5.0,
+       10.0,
+       10.0,
+       5.0,
+       5.0,
+       10.0,
+       10.0,
+       2.0,
+       2.0,
+       10.0,
+       10.0,
+       2.0,
+       2.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0,
+       10.0
+      ],
+      "joint_armature": [
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.009999999776482582,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513,
+       0.0010000000474974513
+      ],
+      "joint_friction_coeff": [
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0
+      ],
+      "joint_effort_limits": [
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       20.0,
+       20.0,
+       300.0,
+       300.0,
+       20.0,
+       20.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0,
+       300.0
+      ],
+      "joint_vel_limits": [
+       32.0,
+       32.0,
+       32.0,
+       32.0,
+       32.0,
+       53.0,
+       53.0,
+       32.0,
+       32.0,
+       53.0,
+       53.0,
+       20.0,
+       20.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       53.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0,
+       23.0
+      ],
+      "joint_pos_limits": [
+       [
+        -2.3499996662139893,
+        3.049999952316284
+       ],
+       [
+        -2.3499996662139893,
+        3.049999952316284
+       ],
+       [
+        -2.618000030517578,
+        2.618000030517578
+       ],
+       [
+        -0.25999996066093445,
+        2.5299997329711914
+       ],
+       [
+        -2.5299997329711914,
+        0.25999996066093445
+       ],
+       [
+        -2.967099666595459,
+        2.7924997806549072
+       ],
+       [
+        -2.967099666595459,
+        2.7924997806549072
+       ],
+       [
+        -2.749999761581421,
+        2.749999761581421
+       ],
+       [
+        -2.749999761581421,
+        2.749999761581421
+       ],
+       [
+        -1.5881999731063843,
+        2.251499652862549
+       ],
+       [
+        -2.251499652862549,
+        1.5881999731063843
+       ],
+       [
+        -0.3348899781703949,
+        2.5448997020721436
+       ],
+       [
+        -0.3348899781703949,
+        2.5448997020721436
+       ],
+       [
+        -2.618000030517578,
+        2.618000030517578
+       ],
+       [
+        -2.618000030517578,
+        2.618000030517578
+       ],
+       [
+        -0.6799999475479126,
+        0.7299999594688416
+       ],
+       [
+        -0.6799999475479126,
+        0.7299999594688416
+       ],
+       [
+        -0.22679997980594635,
+        3.420799732208252
+       ],
+       [
+        -0.22679997980594635,
+        3.420799732208252
+       ],
+       [
+        -0.26179996132850647,
+        0.26179996132850647
+       ],
+       [
+        -0.26179996132850647,
+        0.26179996132850647
+       ],
+       [
+        -2.094299793243408,
+        2.094299793243408
+       ],
+       [
+        -2.094299793243408,
+        2.094299793243408
+       ],
+       [
+        -1.8399999141693115,
+        0.30000001192092896
+       ],
+       [
+        -1.8399999141693115,
+        0.30000001192092896
+       ],
+       [
+        -0.5235979557037354,
+        0.5235979557037354
+       ],
+       [
+        -0.30000001192092896,
+        1.8399999141693115
+       ],
+       [
+        -0.30000001192092896,
+        1.8399999141693115
+       ],
+       [
+        -0.5235979557037354,
+        0.5235979557037354
+       ],
+       [
+        -1.8399999141693115,
+        0.0
+       ],
+       [
+        -1.8399999141693115,
+        0.0
+       ],
+       [
+        -0.9999999403953552,
+        1.2000000476837158
+       ],
+       [
+        0.0,
+        1.8399999141693115
+       ],
+       [
+        0.0,
+        1.8399999141693115
+       ],
+       [
+        -1.2000000476837158,
+        0.9999999403953552
+       ],
+       [
+        0.0,
+        1.8399999141693115
+       ],
+       [
+        -1.8399999141693115,
+        0.0
+       ]
+      ],
+      "default_joint_pos": [
+       -0.20000000298023224,
+       -0.20000000298023224,
+       0.0,
+       0.0,
+       0.0,
+       0.3499999940395355,
+       0.3499999940395355,
+       0.0,
+       0.0,
+       0.1599999964237213,
+       -0.1599999964237213,
+       0.41999998688697815,
+       0.41999998688697815,
+       0.0,
+       0.0,
+       -0.23000000417232513,
+       -0.23000000417232513,
+       0.8700000047683716,
+       0.8700000047683716,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       0.0,
+       1.0,
+       0.0,
+       0.0,
+       -1.0,
+       0.5199999809265137,
+       -0.5199999809265137
+      ]
+     }
+    },
+    "timing": {
+     "ms_per_control_step_median": 84.93876891000582,
+     "ms_per_control_step_p10_rounds": 84.19125020399952,
+     "ms_per_control_step_p90_rounds": 85.2186143459985,
+     "ms_per_control_step_min_rounds": 83.66730977999396,
+     "ms_per_control_step_max_rounds": 85.40233944000647,
+     "env_steps_per_s_at_median": 96445.94694655362,
+     "physics_steps_per_control_step": 4,
+     "rounds": [
+      {
+       "warmup": true,
+       "ms_per_control_step": 90.04440816326158,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.6258544921875,
+        "envs_with_contact_frac": 0.78564453125
+       },
+       "base_z_mean_end": 0.22921863198280334,
+       "frac_base_below_0p4m_end": 0.82861328125
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 84.46351262000462,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.618408203125,
+        "envs_with_contact_frac": 0.785888671875
+       },
+       "base_z_mean_end": 0.22766371071338654,
+       "frac_base_below_0p4m_end": 0.8280029296875
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 84.84838993999801,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.614990234375,
+        "envs_with_contact_frac": 0.7784423828125
+       },
+       "base_z_mean_end": 0.22864331305027008,
+       "frac_base_below_0p4m_end": 0.826171875
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 84.4157961000019,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.5968017578125,
+        "envs_with_contact_frac": 0.775390625
+       },
+       "base_z_mean_end": 0.23021703958511353,
+       "frac_base_below_0p4m_end": 0.826171875
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 83.66730977999396,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.6038818359375,
+        "envs_with_contact_frac": 0.77197265625
+       },
+       "base_z_mean_end": 0.22448955476284027,
+       "frac_base_below_0p4m_end": 0.8359375
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 85.13987501999509,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.6268310546875,
+        "envs_with_contact_frac": 0.779052734375
+       },
+       "base_z_mean_end": 0.23105430603027344,
+       "frac_base_below_0p4m_end": 0.825439453125
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 85.02914788001362,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.6376953125,
+        "envs_with_contact_frac": 0.7852783203125
+       },
+       "base_z_mean_end": 0.22529757022857666,
+       "frac_base_below_0p4m_end": 0.8355712890625
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 85.04086079999979,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.6324462890625,
+        "envs_with_contact_frac": 0.7806396484375
+       },
+       "base_z_mean_end": 0.22563472390174866,
+       "frac_base_below_0p4m_end": 0.8350830078125
+      },
+      {
+       "warmup": false,
+       "ms_per_control_step": 85.40233944000647,
+       "contacts_end": {
+        "bodies_in_contact_per_env": 1.6383056640625,
+        "envs_with_contact_frac": 0.7823486328125
+       },
+       "base_z_mean_end": 0.22385410964488983,
+       "frac_base_below_0p4m_end": 0.8416748046875
+      }
+     ],
+     "synced_each_control_step_ms": {
+      "p10": 71.21287710015167,
+      "median": 75.82917299987457,
+      "p90": 97.45380089962055
+     },
+     "synced_each_op_ms_per_control_step": {
+      "process_action": 0.11383300015950226,
+      "apply_action": 0.3260776500155771,
+      "write_data_to_sim": 0.6070590998660919,
+      "sim_step": 78.6228906503311,
+      "scene_update": 1.5590837499530608
+     },
+     "first_control_step_ms": 237.9979960005585
+    },
+    "contacts": {
+     "bodies_in_contact_per_env_mean": 1.6211700439453125,
+     "envs_with_contact_frac_mean": 0.779876708984375,
+     "frac_base_below_0p4m_end_mean": 0.831756591796875,
+     "note": "proxy from Isaac Lab's ContactSensor: bodies with net contact force > 1e-3 N, at round ends"
+    },
+    "startup_s": {
+     "imports_and_cfg": 0.2706372350003221,
+     "app_launch": 0.9054039809998358,
+     "env_creation": 175.86178352600018,
+     "process_start_to_env_ready": 178.04267606200028
+    },
+    "memory": {
+     "gpu_process_mib_nvidia_smi": 8276.0,
+     "gpu_device_used_mib_end": 8287.0,
+     "gpu_device_used_delta_mib": 8287.0,
+     "torch_max_allocated_mib": 207.5419921875
+    },
+    "environment": {
+     "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+     "driver": "595.58.03",
+     "gpu_memory_total_mib": "97887",
+     "cpu": "AMD EPYC 9555 64-Core Processor",
+     "logical_cpus": 16,
+     "python": "3.12.16",
+     "versions": {
+      "isaaclab": "3.0.0",
+      "isaacsim": "6.2.0.0",
+      "isaacsim-kernel": "6.2.0.0",
+      "torch": "2.11.0+cu130",
+      "warp-lang": "1.17.0",
+      "newton": "1.6.1",
+      "mujoco": "3.12.0",
+      "mujoco-warp": "3.12.0",
+      "usd-exchange": "3.0.1",
+      "numpy": "2.5.4"
+     }
+    }
+   }
+  }
+ ],
+ "skipped": [],
+ "environment": {
+  "gpu": "NVIDIA RTX PRO 6000 Blackwell Server Edition",
+  "driver": "595.58.03",
+  "gpu_memory_total_mib": "97887",
+  "cpu": "AMD EPYC 9555 64-Core Processor",
+  "logical_cpus": 16,
+  "python": "3.12.16",
+  "versions": {
+   "isaaclab": "3.0.0",
+   "isaacsim": "6.2.0.0",
+   "isaacsim-kernel": "6.2.0.0",
+   "torch": "2.11.0+cu130",
+   "warp-lang": "1.17.0",
+   "newton": "1.6.1",
+   "mujoco": "3.12.0",
+   "mujoco-warp": "3.12.0",
+   "usd-exchange": "3.0.1",
+   "numpy": "2.5.4"
+  }
+ },
+ "suite_wall_min": 18.63820623556773
+}

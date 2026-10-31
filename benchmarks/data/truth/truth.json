@@ -1,0 +1,306 @@
+{
+ "corpora": {
+  "menagerie_s0": {
+   "bytes": 110958,
+   "command": "python -m benchmarks.bench truth make --corpora mf_s0,mf_s1,mf_s2,mf_s3,menagerie_s0 --jobs 24",
+   "file": "benchmarks/data/truth/menagerie_s0.npz",
+   "gradient": null,
+   "groups": {
+    "G0": 3385,
+    "G1": 0,
+    "G4": 383,
+    "G5": 854,
+    "G6": 1243
+   },
+   "labels": {
+    "G0_normal": 3768,
+    "G1_axis_lt_1mm": 0,
+    "G1_axis_lt_5mm": 0,
+    "G2_contact_flip": 175,
+    "G3_kink": 33,
+    "G4_clamped": 423,
+    "G5_limits": 1073,
+    "G6_self_contact": 1637,
+    "G7_basis_switch": 124,
+    "G9_nonconv": 0,
+    "nonfinite": 0,
+    "truth_nonconv": 0
+   },
+   "model_check": {
+    "model_contacts": 73,
+    "model_frame": 24,
+    "model_zones": 42
+   },
+   "model_ok": 3994,
+   "provenance": {
+    "affinity": 48,
+    "cpu": "Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz",
+    "date": "2026-10-29",
+    "python": "3.12.4"
+   },
+   "sha256": "05e5a117c7c54b395fa9bee6a9f0ebb87430d7dd73c86156230ba46b895131f7"
+  },
+  "mf_s0": {
+   "bytes": 3166023,
+   "command": "python -m benchmarks.bench truth make --corpora mf_s0,mf_s1,mf_s2,mf_s3,menagerie_s0 --jobs 24",
+   "file": "benchmarks/data/truth/mf_s0.npz",
+   "gradient": {
+    "by_reason": {
+     "clamp": 0.0,
+     "contacts": 0.0,
+     "ctrlrange": 0.0,
+     "rows": 0.0,
+     "solver": 0.0,
+     "step": 0.0005210838544171877
+    },
+    "invalid_share": 0.0005210838544171877,
+    "sampled": {
+     "G0": 64,
+     "G1": 0,
+     "G4": 64,
+     "G5": 64,
+     "G6": 64
+    },
+    "sampled_model_ok": {
+     "G0": 64,
+     "G1": 0,
+     "G4": 64,
+     "G5": 62,
+     "G6": 64
+    },
+    "states": 252
+   },
+   "groups": {
+    "G0": 3368,
+    "G1": 0,
+    "G4": 111,
+    "G5": 1441,
+    "G6": 1416
+   },
+   "labels": {
+    "G0_normal": 3479,
+    "G1_axis_lt_1mm": 0,
+    "G1_axis_lt_5mm": 0,
+    "G2_contact_flip": 187,
+    "G3_kink": 307,
+    "G4_clamped": 128,
+    "G5_limits": 1710,
+    "G6_self_contact": 1813,
+    "G7_basis_switch": 157,
+    "G9_nonconv": 0,
+    "nonfinite": 0,
+    "truth_nonconv": 0
+   },
+   "model_check": {
+    "model_contacts": 8,
+    "model_frame": 26,
+    "model_zones": 31
+   },
+   "model_ok": 4059,
+   "provenance": {
+    "affinity": 48,
+    "cpu": "Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz",
+    "date": "2026-10-29",
+    "python": "3.12.4"
+   },
+   "sha256": "bfa326b57e01a235188d4284a57d92c1804d56b3b9f20d8a583be908755e3c25"
+  },
+  "mf_s1": {
+   "bytes": 3190027,
+   "command": "python -m benchmarks.bench truth make --corpora mf_s0,mf_s1,mf_s2,mf_s3,menagerie_s0 --jobs 24",
+   "file": "benchmarks/data/truth/mf_s1.npz",
+   "gradient": {
+    "by_reason": {
+     "clamp": 0.0,
+     "contacts": 0.0,
+     "ctrlrange": 0.0,
+     "rows": 3.930354124906654e-05,
+     "solver": 0.0,
+     "step": 0.00015721416499626616
+    },
+    "invalid_share": 0.00015721416499626616,
+    "sampled": {
+     "G0": 64,
+     "G1": 2,
+     "G4": 64,
+     "G5": 64,
+     "G6": 64
+    },
+    "sampled_model_ok": {
+     "G0": 64,
+     "G1": 2,
+     "G4": 63,
+     "G5": 64,
+     "G6": 64
+    },
+    "states": 257
+   },
+   "groups": {
+    "G0": 3400,
+    "G1": 2,
+    "G4": 120,
+    "G5": 1468,
+    "G6": 1427
+   },
+   "labels": {
+    "G0_normal": 3520,
+    "G1_axis_lt_1mm": 1,
+    "G1_axis_lt_5mm": 2,
+    "G2_contact_flip": 175,
+    "G3_kink": 281,
+    "G4_clamped": 143,
+    "G5_limits": 1745,
+    "G6_self_contact": 1829,
+    "G7_basis_switch": 145,
+    "G9_nonconv": 0,
+    "nonfinite": 0,
+    "truth_nonconv": 0
+   },
+   "model_check": {
+    "model_contacts": 10,
+    "model_frame": 25,
+    "model_zones": 31
+   },
+   "model_ok": 4058,
+   "provenance": {
+    "affinity": 48,
+    "cpu": "Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz",
+    "date": "2026-10-29",
+    "python": "3.12.4"
+   },
+   "sha256": "5c8c7fa251422d1d6f723aabb5ee3dfc8432dcb73ea9f37114e06674fb5d1ddb"
+  },
+  "mf_s2": {
+   "bytes": 3166304,
+   "command": "python -m benchmarks.bench truth make --corpora mf_s0,mf_s1,mf_s2,mf_s3,menagerie_s0 --jobs 24",
+   "file": "benchmarks/data/truth/mf_s2.npz",
+   "gradient": {
+    "by_reason": {
+     "clamp": 0.0,
+     "contacts": 0.0,
+     "ctrlrange": 0.0,
+     "rows": 0.0,
+     "solver": 0.0,
+     "step": 0.0007215007215007215
+    },
+    "invalid_share": 0.0007215007215007215,
+    "sampled": {
+     "G0": 64,
+     "G1": 0,
+     "G4": 64,
+     "G5": 64,
+     "G6": 64
+    },
+    "sampled_model_ok": {
+     "G0": 63,
+     "G1": 0,
+     "G4": 64,
+     "G5": 61,
+     "G6": 63
+    },
+    "states": 252
+   },
+   "groups": {
+    "G0": 3389,
+    "G1": 0,
+    "G4": 135,
+    "G5": 1360,
+    "G6": 1438
+   },
+   "labels": {
+    "G0_normal": 3524,
+    "G1_axis_lt_1mm": 0,
+    "G1_axis_lt_5mm": 0,
+    "G2_contact_flip": 176,
+    "G3_kink": 270,
+    "G4_clamped": 150,
+    "G5_limits": 1615,
+    "G6_self_contact": 1827,
+    "G7_basis_switch": 145,
+    "G9_nonconv": 0,
+    "nonfinite": 0,
+    "truth_nonconv": 0
+   },
+   "model_check": {
+    "model_contacts": 6,
+    "model_frame": 28,
+    "model_zones": 28
+   },
+   "model_ok": 4061,
+   "provenance": {
+    "affinity": 48,
+    "cpu": "Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz",
+    "date": "2026-10-29",
+    "python": "3.12.4"
+   },
+   "sha256": "59ebe8216f1cb497c5bc1f0d298027d0b05e8462c6fb1f2b01c7c53ee2c61e60"
+  },
+  "mf_s3": {
+   "bytes": 3171131,
+   "command": "python -m benchmarks.bench truth make --corpora mf_s0,mf_s1,mf_s2,mf_s3,menagerie_s0 --jobs 24",
+   "file": "benchmarks/data/truth/mf_s3.npz",
+   "gradient": {
+    "by_reason": {
+     "clamp": 0.0,
+     "contacts": 0.0,
+     "ctrlrange": 0.0,
+     "rows": 0.0,
+     "solver": 0.0,
+     "step": 7.984988222142372e-05
+    },
+    "invalid_share": 7.984988222142372e-05,
+    "sampled": {
+     "G0": 64,
+     "G1": 0,
+     "G4": 64,
+     "G5": 64,
+     "G6": 64
+    },
+    "sampled_model_ok": {
+     "G0": 63,
+     "G1": 0,
+     "G4": 63,
+     "G5": 63,
+     "G6": 62
+    },
+    "states": 253
+   },
+   "groups": {
+    "G0": 3417,
+    "G1": 0,
+    "G4": 115,
+    "G5": 1435,
+    "G6": 1419
+   },
+   "labels": {
+    "G0_normal": 3532,
+    "G1_axis_lt_1mm": 0,
+    "G1_axis_lt_5mm": 0,
+    "G2_contact_flip": 164,
+    "G3_kink": 306,
+    "G4_clamped": 130,
+    "G5_limits": 1684,
+    "G6_self_contact": 1789,
+    "G7_basis_switch": 126,
+    "G9_nonconv": 0,
+    "nonfinite": 0,
+    "truth_nonconv": 0
+   },
+   "model_check": {
+    "model_contacts": 3,
+    "model_frame": 28,
+    "model_zones": 35
+   },
+   "model_ok": 4059,
+   "provenance": {
+    "affinity": 48,
+    "cpu": "Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz",
+    "date": "2026-10-29",
+    "python": "3.12.4"
+   },
+   "sha256": "e2a5453163c98e2d5f1b65fe8204ef64a1f05415cfc16e1edeb73ce6705de91b"
+  }
+ },
+ "format": "dk-bench-truth-index/1",
+ "note": "Truth files of the benchmark corpora (benchmarks/bench/truth/store.py documents the format; python -m benchmarks.bench truth verify checks them)"
+}

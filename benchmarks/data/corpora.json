@@ -1,0 +1,281 @@
+{
+ "corpora": {
+  "menagerie_s0": {
+   "file": "benchmarks/data/menagerie_s0.npz",
+   "sha256": "b1b440a1f0b81f3ecdb49ae65e8010eb56fd21dd9da6696b7d500b406d3433b9",
+   "content_sha256": "92476fa3da1005327d7348fd40f69577786e4bb42c17e474d37ed6a2a44eb323",
+   "bytes": 5308170,
+   "track": "B",
+   "seed": 0,
+   "generator": {
+    "script": "benchmarks/bench/corpus/gen_mf.py",
+    "version": 1
+   },
+   "model": {
+    "repo": "google-deepmind/mujoco_menagerie",
+    "commit": "f3b6013629c7b94f8ee93fd977b161fa8350f9bc",
+    "file": "unitree_g1/scene_mjx.xml",
+    "files_sha256": "e83a2a167f86b0e75ec46e746d1c428718a862907460341a11ede056d513dfb1",
+    "license": "https://github.com/google-deepmind/mujoco_menagerie/blob/f3b6013629c7b94f8ee93fd977b161fa8350f9bc/unitree_g1/LICENSE",
+    "sha256": "112b12e4d2cb3330e5062ff7b331b946c3c37121f35de0bace507d274ef06bda",
+    "nq": 36,
+    "nv": 35,
+    "nu": 29
+   },
+   "counts": {
+    "states": 4096,
+    "picks": {
+     "prefall": 2048,
+     "self_contact": 0,
+     "uniform": 2048
+    },
+    "pool": 614400,
+    "rollout_pairs": 614400,
+    "falls": 14359,
+    "bad_steps": 0,
+    "labelled_for_self_contact": 0,
+    "shares": {
+     "prefall": 0.78662109375,
+     "self_contact": 0.399658203125,
+     "clamped": 0.103271484375,
+     "limit": 0.261962890625,
+     "nonconv": 0.005126953125,
+     "over_capacity": 0.0
+    }
+   },
+   "command": "python -m benchmarks.bench.corpus.gen_mf --track B --seed 0 --threads 24",
+   "threads": 24,
+   "seconds": 27.8,
+   "cpu": "Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz",
+   "provenance": {
+    "date": "2026-10-28T21:53:05Z",
+    "python": "3.12.4",
+    "packages": {
+     "mujoco": "3.17.0",
+     "numpy": "2.5.4"
+    },
+    "cpu": "Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz"
+   }
+  },
+  "mf_s0": {
+   "file": "benchmarks/data/mf_s0.npz",
+   "sha256": "d78930ce81c4d4ad3d0fd83ad93f7a393781e8227ed64e291749a85c45a45ef8",
+   "content_sha256": "9bba992c0de22d4c47ee16c8608225476aa2c38599f7fe2ac6875c177aa0689c",
+   "bytes": 5372366,
+   "track": "A",
+   "seed": 0,
+   "generator": {
+    "script": "benchmarks/bench/corpus/gen_mf.py",
+    "version": 1
+   },
+   "model": {
+    "meta": "fixtures/mjlab/g1_meta.json",
+    "meta_sha256": "640a082a81f97b01411e5a07a1483a56de8213f2d8ffa98a51d2222fdb5e22fa",
+    "path": "fixtures/mjlab/g1_train.mjb",
+    "sha256": "757b0997d992073b645732a1daaeab92587f00e29691b93aa76094a3f02ef379",
+    "nq": 36,
+    "nv": 35,
+    "nu": 29
+   },
+   "counts": {
+    "states": 4096,
+    "picks": {
+     "prefall": 2048,
+     "self_contact": 0,
+     "uniform": 2048
+    },
+    "pool": 614400,
+    "rollout_pairs": 614400,
+    "falls": 14569,
+    "bad_steps": 0,
+    "labelled_for_self_contact": 0,
+    "shares": {
+     "prefall": 0.792236328125,
+     "self_contact": 0.442626953125,
+     "clamped": 0.03125,
+     "limit": 0.41748046875,
+     "nonconv": 0.00341796875,
+     "over_capacity": 0.0
+    }
+   },
+   "command": "python -m benchmarks.bench.corpus.gen_mf --track A --seed 0 --threads 24",
+   "threads": 24,
+   "seconds": 19.1,
+   "cpu": "Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz",
+   "provenance": {
+    "date": "2026-10-28T21:51:38Z",
+    "python": "3.12.4",
+    "packages": {
+     "mujoco": "3.17.0",
+     "numpy": "2.5.4"
+    },
+    "cpu": "Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz"
+   }
+  },
+  "mf_s1": {
+   "file": "benchmarks/data/mf_s1.npz",
+   "sha256": "83632a500acf6fb6d283e5283b4576879f310c2cb3be5bfb731b999625a1b960",
+   "content_sha256": "58e672c5523e811126e9bcc189827a0a57d746a480cee3495ff4abe7403cc736",
+   "bytes": 5366865,
+   "track": "A",
+   "seed": 1,
+   "generator": {
+    "script": "benchmarks/bench/corpus/gen_mf.py",
+    "version": 1
+   },
+   "model": {
+    "meta": "fixtures/mjlab/g1_meta.json",
+    "meta_sha256": "640a082a81f97b01411e5a07a1483a56de8213f2d8ffa98a51d2222fdb5e22fa",
+    "path": "fixtures/mjlab/g1_train.mjb",
+    "sha256": "757b0997d992073b645732a1daaeab92587f00e29691b93aa76094a3f02ef379",
+    "nq": 36,
+    "nv": 35,
+    "nu": 29
+   },
+   "counts": {
+    "states": 4096,
+    "picks": {
+     "prefall": 2048,
+     "self_contact": 0,
+     "uniform": 2048
+    },
+    "pool": 614400,
+    "rollout_pairs": 614400,
+    "falls": 14524,
+    "bad_steps": 0,
+    "labelled_for_self_contact": 0,
+    "shares": {
+     "prefall": 0.7802734375,
+     "self_contact": 0.446533203125,
+     "clamped": 0.034912109375,
+     "limit": 0.426025390625,
+     "nonconv": 0.00439453125,
+     "over_capacity": 0.0
+    }
+   },
+   "command": "python -m benchmarks.bench.corpus.gen_mf --track A --seed 1 --threads 24",
+   "threads": 24,
+   "seconds": 18.1,
+   "cpu": "Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz",
+   "provenance": {
+    "date": "2026-10-28T21:51:56Z",
+    "python": "3.12.4",
+    "packages": {
+     "mujoco": "3.17.0",
+     "numpy": "2.5.4"
+    },
+    "cpu": "Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz"
+   }
+  },
+  "mf_s2": {
+   "file": "benchmarks/data/mf_s2.npz",
+   "sha256": "8f6c0a0eb0a183838062e6b63ff8831c7f92c6572574155a096a178c775c3cf3",
+   "content_sha256": "8e9bcfe47c08848bb0889eef865372d4ee59912e9510d3a91e946bb02b443628",
+   "bytes": 5369375,
+   "track": "A",
+   "seed": 2,
+   "generator": {
+    "script": "benchmarks/bench/corpus/gen_mf.py",
+    "version": 1
+   },
+   "model": {
+    "meta": "fixtures/mjlab/g1_meta.json",
+    "meta_sha256": "640a082a81f97b01411e5a07a1483a56de8213f2d8ffa98a51d2222fdb5e22fa",
+    "path": "fixtures/mjlab/g1_train.mjb",
+    "sha256": "757b0997d992073b645732a1daaeab92587f00e29691b93aa76094a3f02ef379",
+    "nq": 36,
+    "nv": 35,
+    "nu": 29
+   },
+   "counts": {
+    "states": 4096,
+    "picks": {
+     "prefall": 2048,
+     "self_contact": 0,
+     "uniform": 2048
+    },
+    "pool": 614400,
+    "rollout_pairs": 614400,
+    "falls": 14484,
+    "bad_steps": 0,
+    "labelled_for_self_contact": 0,
+    "shares": {
+     "prefall": 0.779541015625,
+     "self_contact": 0.446044921875,
+     "clamped": 0.03662109375,
+     "limit": 0.394287109375,
+     "nonconv": 0.001708984375,
+     "over_capacity": 0.0
+    }
+   },
+   "command": "python -m benchmarks.bench.corpus.gen_mf --track A --seed 2 --threads 24",
+   "threads": 24,
+   "seconds": 19.3,
+   "cpu": "Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz",
+   "provenance": {
+    "date": "2026-10-28T21:52:16Z",
+    "python": "3.12.4",
+    "packages": {
+     "mujoco": "3.17.0",
+     "numpy": "2.5.4"
+    },
+    "cpu": "Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz"
+   }
+  },
+  "mf_s3": {
+   "file": "benchmarks/data/mf_s3.npz",
+   "sha256": "6a79d39e87b5523719d7ae3bfc53ae04169306b3412a6b566191cc256bdc109d",
+   "content_sha256": "a6c3eaab6c3676a76d1c0d00ba0ecced7a0faea22d03dbedd24e7dcf722410ab",
+   "bytes": 5371834,
+   "track": "A",
+   "seed": 3,
+   "generator": {
+    "script": "benchmarks/bench/corpus/gen_mf.py",
+    "version": 1
+   },
+   "model": {
+    "meta": "fixtures/mjlab/g1_meta.json",
+    "meta_sha256": "640a082a81f97b01411e5a07a1483a56de8213f2d8ffa98a51d2222fdb5e22fa",
+    "path": "fixtures/mjlab/g1_train.mjb",
+    "sha256": "757b0997d992073b645732a1daaeab92587f00e29691b93aa76094a3f02ef379",
+    "nq": 36,
+    "nv": 35,
+    "nu": 29
+   },
+   "counts": {
+    "states": 4096,
+    "picks": {
+     "prefall": 2048,
+     "self_contact": 0,
+     "uniform": 2048
+    },
+    "pool": 614400,
+    "rollout_pairs": 614400,
+    "falls": 14557,
+    "bad_steps": 0,
+    "labelled_for_self_contact": 0,
+    "shares": {
+     "prefall": 0.790771484375,
+     "self_contact": 0.436767578125,
+     "clamped": 0.03173828125,
+     "limit": 0.4111328125,
+     "nonconv": 0.005615234375,
+     "over_capacity": 0.0
+    }
+   },
+   "command": "python -m benchmarks.bench.corpus.gen_mf --track A --seed 3 --threads 24",
+   "threads": 24,
+   "seconds": 19.2,
+   "cpu": "Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz",
+   "provenance": {
+    "date": "2026-10-28T21:52:36Z",
+    "python": "3.12.4",
+    "packages": {
+     "mujoco": "3.17.0",
+     "numpy": "2.5.4"
+    },
+    "cpu": "Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz"
+   }
+  }
+ }
+}

@@ -1,0 +1,378 @@
+{
+ "part": "mjc",
+ "nthread": 32,
+ "nthread_rule": "PAPER_BENCH_MJC_THREADS",
+ "nworld": 4096,
+ "fd_B": 512,
+ "eps": 1e-06,
+ "fd_full_B": 4096,
+ "env": {
+  "python": "3.12.16",
+  "executable": ".../python",
+  "packages": {
+   "mujoco": "3.17.0",
+   "numpy": "2.5.4"
+  },
+  "cpu": {
+   "model": "Intel(R) Xeon(R) CPU E5-2699 v4 @ 2.20GHz",
+   "logical_cpus": 88,
+   "allocated": 88,
+   "affinity": "0-87",
+   "omp_num_threads": null,
+   "scheduler_cpu_counts": null,
+   "cpu_engine_threads": {
+    "threads": 32,
+    "rule": "PAPER_BENCH_MJC_THREADS"
+   }
+  },
+  "gpu": {
+   "name": "NVIDIA GeForce RTX 3090",
+   "compute_cap": "8.6",
+   "driver": "565.57.01",
+   "memory": "24576 MiB"
+  },
+  "env": {
+   "PAPER_BENCH_MJC_THREADS": "32",
+   "XLA_PYTHON_CLIENT_PREALLOCATE": "false",
+   "PAPER_BENCH_JOB_START": "1793262564",
+   "PAPER_BENCH_PYTHON": ".../python3.12",
+   "PAPER_BENCH_DEV_PYTHON": ".../python",
+   "PAPER_BENCH_PREFIX": ".../paper_bench_env",
+   "DK_FIXTURES": "fixtures/mjlab"
+  },
+  "quick": false
+ },
+ "mujoco_version": "3.17.0",
+ "cells": {
+  "mf_s0/nw4096": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "nthread": 32,
+   "forward": {
+    "ms": {
+     "median": 68.08097,
+     "p10": 66.94201,
+     "p90": 68.31125,
+     "min": 66.29229,
+     "max": 68.32806,
+     "rounds": [
+      68.08097,
+      68.32806,
+      68.28602,
+      67.91658,
+      66.29229
+     ]
+    },
+    "n": 1,
+    "kept_rounds": 5,
+    "warmup_calls": 13,
+    "warmup_s": 1.08,
+    "us_per_world_substep": 4.1553
+   },
+   "finite": true,
+   "forward_1t": {
+    "ms": {
+     "median": 24.81383,
+     "p10": 24.57299,
+     "p90": 24.90195,
+     "min": 24.47455,
+     "max": 24.93716,
+     "rounds": [
+      24.47455,
+      24.81383,
+      24.72065,
+      24.84913,
+      24.93716
+     ]
+    },
+    "n": 1,
+    "kept_rounds": 5,
+    "warmup_calls": 41,
+    "warmup_s": 1.013,
+    "B": 64,
+    "us_per_world_substep": 96.929
+   },
+   "fd_forward": {
+    "ms": {
+     "median": 937.43356,
+     "p10": 913.51953,
+     "p90": 990.64211,
+     "min": 907.54102,
+     "max": 1003.94424,
+     "rounds": [
+      1003.94424,
+      907.54102,
+      937.43356
+     ]
+    },
+    "n": 1,
+    "kept_rounds": 3,
+    "warmup_calls": 1,
+    "warmup_s": 1.085,
+    "B": 512,
+    "nthread": 32,
+    "eps": 1e-06,
+    "ms_per_world": 1.83092,
+    "evaluations": "4 x mjd_transitionFD (100 evaluations each, stage skipping)",
+    "finite": true,
+    "extrapolated_ms_at_nworld": {
+     "nworld": 4096,
+     "ms": 7499.448,
+     "note": "linear extrapolation from B = 512, not measured"
+    }
+   },
+   "fd_centered": {
+    "ms": {
+     "median": 1574.73726,
+     "p10": 1570.31106,
+     "p90": 1628.06846,
+     "min": 1569.20451,
+     "max": 1641.40126,
+     "rounds": [
+      1569.20451,
+      1574.73726,
+      1641.40126
+     ]
+    },
+    "n": 1,
+    "kept_rounds": 3,
+    "warmup_calls": 1,
+    "warmup_s": 1.618,
+    "B": 512,
+    "nthread": 32,
+    "eps": 1e-06,
+    "ms_per_world": 3.07566,
+    "evaluations": "4 x mjd_transitionFD (199 evaluations each, stage skipping)",
+    "finite": true,
+    "extrapolated_ms_at_nworld": {
+     "nworld": 4096,
+     "ms": 12597.903,
+     "note": "linear extrapolation from B = 512, not measured"
+    }
+   },
+   "fd_forward_full": {
+    "ms": {
+     "median": 5830.14508,
+     "p10": 5686.64172,
+     "p90": 5861.68571,
+     "min": 5650.76588,
+     "max": 5869.57086,
+     "rounds": [
+      5650.76588,
+      5869.57086,
+      5830.14508
+     ]
+    },
+    "n": 1,
+    "kept_rounds": 3,
+    "warmup_calls": 1,
+    "warmup_s": 5.903,
+    "B": 4096,
+    "nthread": 32,
+    "eps": 1e-06,
+    "ms_per_world": 1.42338,
+    "evaluations": "4 x mjd_transitionFD (100 evaluations each, stage skipping)",
+    "finite": true
+   },
+   "fd_forward_1t": {
+    "ms": {
+     "median": 1922.13556,
+     "p10": 1920.95729,
+     "p90": 1925.70039,
+     "min": 1920.66272,
+     "max": 1926.59159,
+     "rounds": [
+      1926.59159,
+      1920.66272,
+      1922.13556
+     ]
+    },
+    "n": 1,
+    "kept_rounds": 3,
+    "warmup_calls": 1,
+    "warmup_s": 1.934,
+    "B": 64,
+    "nthread": 1,
+    "eps": 1e-06,
+    "ms_per_world": 30.03337,
+    "evaluations": "4 x mjd_transitionFD (100 evaluations each, stage skipping)",
+    "finite": true
+   },
+   "fd_centered_full": {
+    "ms": {
+     "median": 10912.65919,
+     "p10": 10644.74537,
+     "p90": 11263.46756,
+     "min": 10577.76691,
+     "max": 11351.16965,
+     "rounds": [
+      10912.65919,
+      11351.16965,
+      10577.76691
+     ]
+    },
+    "n": 1,
+    "kept_rounds": 3,
+    "warmup_calls": 1,
+    "warmup_s": 10.51,
+    "B": 4096,
+    "nthread": 32,
+    "eps": 1e-06,
+    "ms_per_world": 2.66422,
+    "evaluations": "4 x mjd_transitionFD (199 evaluations each, stage skipping)",
+    "finite": true
+   },
+   "fd_centered_1t": {
+    "ms": {
+     "median": 3692.38247,
+     "p10": 3667.27389,
+     "p90": 3705.8991,
+     "min": 3660.99675,
+     "max": 3709.27826,
+     "rounds": [
+      3709.27826,
+      3660.99675,
+      3692.38247
+     ]
+    },
+    "n": 1,
+    "kept_rounds": 3,
+    "warmup_calls": 1,
+    "warmup_s": 3.695,
+    "B": 64,
+    "nthread": 1,
+    "eps": 1e-06,
+    "ms_per_world": 57.69348,
+    "evaluations": "4 x mjd_transitionFD (199 evaluations each, stage skipping)",
+    "finite": true
+   }
+  },
+  "mf_s1/nw4096": {
+   "corpus": {
+    "name": "mf_s1",
+    "path": "benchmarks/data/mf_s1.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "nthread": 32,
+   "forward": {
+    "ms": {
+     "median": 67.6456,
+     "p10": 66.9069,
+     "p90": 69.43943,
+     "min": 66.64214,
+     "max": 69.95501,
+     "rounds": [
+      69.95501,
+      68.66606,
+      67.30404,
+      67.6456,
+      66.64214
+     ]
+    },
+    "n": 1,
+    "kept_rounds": 5,
+    "warmup_calls": 13,
+    "warmup_s": 1.095,
+    "us_per_world_substep": 4.1288
+   },
+   "finite": true,
+   "forward_1t": {
+    "ms": {
+     "median": 25.12443,
+     "p10": 24.92944,
+     "p90": 25.31776,
+     "min": 24.80695,
+     "max": 25.42171,
+     "rounds": [
+      25.12443,
+      25.11317,
+      25.16182,
+      24.80695,
+      25.42171
+     ]
+    },
+    "n": 1,
+    "kept_rounds": 5,
+    "warmup_calls": 40,
+    "warmup_s": 1.027,
+    "B": 64,
+    "us_per_world_substep": 98.1423
+   },
+   "fd_forward": {
+    "ms": {
+     "median": 948.70108,
+     "p10": 919.09176,
+     "p90": 973.02617,
+     "min": 911.68943,
+     "max": 979.10744,
+     "rounds": [
+      911.68943,
+      979.10744,
+      948.70108
+     ]
+    },
+    "n": 1,
+    "kept_rounds": 3,
+    "warmup_calls": 1,
+    "warmup_s": 0.985,
+    "B": 512,
+    "nthread": 32,
+    "eps": 1e-06,
+    "ms_per_world": 1.85293,
+    "evaluations": "4 x mjd_transitionFD (100 evaluations each, stage skipping)",
+    "finite": true,
+    "extrapolated_ms_at_nworld": {
+     "nworld": 4096,
+     "ms": 7589.601,
+     "note": "linear extrapolation from B = 512, not measured"
+    }
+   },
+   "fd_centered": {
+    "ms": {
+     "median": 1661.67223,
+     "p10": 1576.69571,
+     "p90": 1709.29986,
+     "min": 1555.45158,
+     "max": 1721.20677,
+     "rounds": [
+      1661.67223,
+      1555.45158,
+      1721.20677
+     ]
+    },
+    "n": 1,
+    "kept_rounds": 3,
+    "warmup_calls": 1,
+    "warmup_s": 1.706,
+    "B": 512,
+    "nthread": 32,
+    "eps": 1e-06,
+    "ms_per_world": 3.24545,
+    "evaluations": "4 x mjd_transitionFD (199 evaluations each, stage skipping)",
+    "finite": true,
+    "extrapolated_ms_at_nworld": {
+     "nworld": 4096,
+     "ms": 13293.363,
+     "note": "linear extrapolation from B = 512, not measured"
+    }
+   }
+  }
+ },
+ "errors": {},
+ "opt": {
+  "iterations": 10,
+  "tolerance": 1e-08,
+  "ls_iterations": 8,
+  "solver": 2,
+  "integrator": 3,
+  "cone": 0,
+  "timestep": 0.005
+ }
+}

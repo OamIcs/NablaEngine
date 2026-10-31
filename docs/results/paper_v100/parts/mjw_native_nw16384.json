@@ -1,0 +1,189 @@
+{
+ "part": "mjw_native",
+ "nworld": 16384,
+ "iterations": 10,
+ "substeps": 4,
+ "env": {
+  "python": "3.12.4",
+  "executable": "runs/paper_bench_env/venv_mjw/bin/python",
+  "packages": {
+   "mujoco": "3.17.0",
+   "mujoco-warp": "3.17.0",
+   "warp-lang": "1.18.0+cu12",
+   "numpy": "2.5.4"
+  },
+  "cpu": {
+   "model": "Intel(R) Xeon(R) CPU E5-2690 v3 @ 2.60GHz",
+   "logical_cpus": 48,
+   "allocated": 48,
+   "affinity": "0-47",
+   "omp_num_threads": null,
+   "scheduler_cpu_counts": null,
+   "cpu_engine_threads": {
+    "threads": 48,
+    "rule": "len(os.sched_getaffinity(0))"
+   }
+  },
+  "gpu": {
+   "name": "Tesla V100-SXM2-16GB",
+   "compute_cap": "7.0",
+   "driver": "550.90.07",
+   "memory": "16384 MiB"
+  },
+  "env": {
+   "XLA_PYTHON_CLIENT_PREALLOCATE": "false",
+   "PAPER_BENCH_JOB_START": "1793262001",
+   "PAPER_BENCH_PYTHON": ".../python",
+   "PAPER_BENCH_DEV_PYTHON": ".../python",
+   "PAPER_BENCH_PREFIX": "runs/paper_bench_env",
+   "DK_FIXTURES": "fixtures/mjlab"
+  },
+  "quick": false
+ },
+ "mujoco_warp_file": "runs/paper_bench_env/venv_mjw/lib/python3.12/site-packages/mujoco_warp/__init__.py",
+ "warp_version": "1.18.0",
+ "cells": {
+  "mf_s0/procedure/nw16384": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 16384,
+    "tiled": true
+   },
+   "capacity": "procedure",
+   "nconmax": 24,
+   "njmax": 128,
+   "naconmax": 378655,
+   "stats_last_substep": {
+    "overflow_bits_or": 1536,
+    "overflow_flags": [
+     "ITERATIONS",
+     "LS_ITERATIONS"
+    ],
+    "capacity_overflow": [],
+    "capacity_overflow_worlds": 0,
+    "nefc": {
+     "mean": 25.463623046875,
+     "max": 112.0
+    },
+    "solver_niter": {
+     "mean": 3.28778076171875,
+     "max": 10.0
+    },
+    "nacon_total": 108468,
+    "finite_worlds": 16384
+   },
+   "graph_ctrlstep": {
+    "ms": {
+     "median": 57.52917,
+     "p10": 57.5195,
+     "p90": 57.56758,
+     "min": 57.51785,
+     "max": 57.58533,
+     "rounds": [
+      57.54096,
+      57.52198,
+      57.58533,
+      57.51785,
+      57.52917
+     ]
+    },
+    "n": 4,
+    "kept_rounds": 5,
+    "warmup_calls": 18,
+    "warmup_s": 1.039,
+    "latency_ms_median": 57.52695
+   },
+   "first_call_s": 0.809,
+   "capture_s": 0.045,
+   "put_model_s": 0.417
+  },
+  "mf_s0/matched/nw16384": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 16384,
+    "tiled": true
+   },
+   "capacity": "matched",
+   "nconmax": 64,
+   "njmax": 192,
+   "naconmax": 1048576,
+   "stats_last_substep": {
+    "overflow_bits_or": 1536,
+    "overflow_flags": [
+     "ITERATIONS",
+     "LS_ITERATIONS"
+    ],
+    "capacity_overflow": [],
+    "capacity_overflow_worlds": 0,
+    "nefc": {
+     "mean": 25.463623046875,
+     "max": 112.0
+    },
+    "solver_niter": {
+     "mean": 3.28765869140625,
+     "max": 10.0
+    },
+    "nacon_total": 108468,
+    "finite_worlds": 16384
+   },
+   "graph_ctrlstep": {
+    "ms": {
+     "median": 59.6109,
+     "p10": 59.5459,
+     "p90": 59.67093,
+     "min": 59.54293,
+     "max": 59.69549,
+     "rounds": [
+      59.55035,
+      59.54293,
+      59.6109,
+      59.6341,
+      59.69549
+     ]
+    },
+    "n": 4,
+    "kept_rounds": 5,
+    "warmup_calls": 17,
+    "warmup_s": 1.016,
+    "latency_ms_median": 59.6692
+   },
+   "first_call_s": 0.079,
+   "capture_s": 0.03,
+   "put_model_s": 0.417
+  }
+ },
+ "errors": {},
+ "warp_cuda_toolkit": "12.9",
+ "warp_cuda_driver": "12.4",
+ "opt": {
+  "iterations": "10",
+  "ls_iterations": "8",
+  "tolerance": "[1.e-06]",
+  "ls_tolerance": "[0.01]",
+  "solver": "2",
+  "cone": "0",
+  "integrator": "3",
+  "graph_conditional": "True",
+  "warn_overflow": "2559"
+ },
+ "default_capacity": {
+  "nconmax": 48,
+  "njmax": 64
+ },
+ "procedure_capacity": {
+  "nconmax": 24,
+  "naconmax": 378655,
+  "njmax": 128,
+  "source": "benchmarks/data/mjw_capacity.json",
+  "inputs": {
+   "pool_mean_max": 18.487548828125,
+   "contacts_world_max": 30,
+   "rows_max": 114,
+   "margin": 0.25
+  }
+ }
+}

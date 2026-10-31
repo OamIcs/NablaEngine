@@ -1,0 +1,330 @@
+{
+ "part": "genesis",
+ "nworld": 4096,
+ "iterations": 10,
+ "substeps": 4,
+ "engine": "Genesis 1.4.5 (native)",
+ "env": {
+  "python": "3.12.3",
+  "executable": "runs/genesis_probe/venv/bin/python",
+  "packages": {
+   "genesis-world": "1.4.5",
+   "quadrants": "1.3.3",
+   "torch": "2.8.0+cu128",
+   "mujoco": "3.17.0",
+   "numpy": "2.5.2"
+  },
+  "cpu": {
+   "model": "Intel(R) Xeon(R) Platinum 8462Y+",
+   "logical_cpus": 128,
+   "allocated": 128,
+   "affinity": "0-127",
+   "omp_num_threads": null,
+   "scheduler_cpu_counts": null,
+   "cpu_engine_threads": {
+    "threads": 13,
+    "rule": "PAPER_BENCH_MJC_THREADS"
+   }
+  },
+  "gpu": {
+   "name": "NVIDIA H100 80GB HBM3",
+   "compute_cap": "9.0",
+   "driver": "595.91.07",
+   "memory": "81559 MiB"
+  },
+  "env": {
+   "PAPER_BENCH_MJC_THREADS": "13",
+   "PAPER_BENCH_SKIP_SETUP": "1",
+   "PAPER_BENCH_JOB_START": "1793285003",
+   "PAPER_BENCH_PARTS": "genesis",
+   "XLA_PYTHON_CLIENT_PREALLOCATE": "false",
+   "PAPER_BENCH_PYTHON": ".../python",
+   "PAPER_BENCH_GENESIS_PYTHON": "runs/genesis_probe/venv/bin/python",
+   "PAPER_BENCH_DEV_PYTHON": ".../python",
+   "PAPER_BENCH_PREFIX": ".../paper_bench_env",
+   "DK_FIXTURES": "fixtures/mjlab"
+  },
+  "quick": false
+ },
+ "processes": "one fresh process per corpus",
+ "cells": {
+  "mf_s0/nw4096": {
+   "gs_init": "gs.init defaults",
+   "corpus": {
+    "name": "mf_s0",
+    "states": 4096,
+    "nworld": 4096,
+    "selection": "benchmarks.bench.problem.select subset 0 (every corpus state)"
+   },
+   "forward": {
+    "ms": {
+     "median": 16.43549,
+     "p10": 16.42706,
+     "p90": 16.43671,
+     "min": 16.42401,
+     "max": 16.43743,
+     "rounds": [
+      16.43164,
+      16.42401,
+      16.43562,
+      16.43743,
+      16.43549
+     ]
+    },
+    "n": 15,
+    "kept_rounds": 5,
+    "warmup_calls": 60,
+    "warmup_s": 1.005,
+    "latency_ms_median": 16.73419
+   },
+   "setup_s": 60.483,
+   "setup_parts": {
+    "build_s": 50.971,
+    "load_s": 4.092,
+    "import_s": 5.396
+   },
+   "first_call_s": 0.346,
+   "finite_worlds": 4096,
+   "timed_call": "set_qpos + set_dofs_velocity + control_dofs_position + scene.step() (4 substeps), inputs resident on the device",
+   "torch_max_memory_allocated_mib": 14.1,
+   "process_s": 65.8
+  },
+  "mf_s0/performance/nw4096": {
+   "gs_init": "gs.init(performance_mode=True)",
+   "corpus": {
+    "name": "mf_s0",
+    "states": 4096,
+    "nworld": 4096,
+    "selection": "benchmarks.bench.problem.select subset 0 (every corpus state)"
+   },
+   "forward": {
+    "ms": {
+     "median": 11.97641,
+     "p10": 11.96333,
+     "p90": 12.40587,
+     "min": 11.96276,
+     "max": 12.69083,
+     "rounds": [
+      11.96276,
+      11.97641,
+      12.69083,
+      11.97844,
+      11.96418
+     ]
+    },
+    "n": 20,
+    "kept_rounds": 5,
+    "warmup_calls": 82,
+    "warmup_s": 1.011,
+    "latency_ms_median": 12.21193
+   },
+   "setup_s": 61.082,
+   "setup_parts": {
+    "build_s": 51.809,
+    "load_s": 3.671,
+    "import_s": 5.581
+   },
+   "first_call_s": 0.396,
+   "finite_worlds": 4096,
+   "timed_call": "set_qpos + set_dofs_velocity + control_dofs_position + scene.step() (4 substeps), inputs resident on the device",
+   "torch_max_memory_allocated_mib": 14.1,
+   "process_s": 66.1
+  },
+  "mf_s1/nw4096": {
+   "gs_init": "gs.init defaults",
+   "corpus": {
+    "name": "mf_s1",
+    "states": 4096,
+    "nworld": 4096,
+    "selection": "benchmarks.bench.problem.select subset 0 (every corpus state)"
+   },
+   "forward": {
+    "ms": {
+     "median": 16.47656,
+     "p10": 16.46657,
+     "p90": 16.49838,
+     "min": 16.46451,
+     "max": 16.50766,
+     "rounds": [
+      16.46966,
+      16.46451,
+      16.47656,
+      16.48445,
+      16.50766
+     ]
+    },
+    "n": 15,
+    "kept_rounds": 5,
+    "warmup_calls": 60,
+    "warmup_s": 1.006,
+    "latency_ms_median": 16.68949
+   },
+   "setup_s": 9.816,
+   "setup_parts": {
+    "build_s": 4.29,
+    "load_s": 0.251,
+    "import_s": 5.253
+   },
+   "first_call_s": 0.031,
+   "finite_worlds": 4096,
+   "timed_call": "set_qpos + set_dofs_velocity + control_dofs_position + scene.step() (4 substeps), inputs resident on the device",
+   "torch_max_memory_allocated_mib": 13.2,
+   "process_s": 13.9
+  },
+  "mf_s1/performance/nw4096": {
+   "gs_init": "gs.init(performance_mode=True)",
+   "corpus": {
+    "name": "mf_s1",
+    "states": 4096,
+    "nworld": 4096,
+    "selection": "benchmarks.bench.problem.select subset 0 (every corpus state)"
+   },
+   "forward": {
+    "ms": {
+     "median": 12.10746,
+     "p10": 12.09873,
+     "p90": 12.54478,
+     "min": 12.09859,
+     "max": 12.80178,
+     "rounds": [
+      12.10746,
+      12.09895,
+      12.80178,
+      12.09859,
+      12.15929
+     ]
+    },
+    "n": 20,
+    "kept_rounds": 5,
+    "warmup_calls": 81,
+    "warmup_s": 1.007,
+    "latency_ms_median": 12.24714
+   },
+   "setup_s": 32.356,
+   "setup_parts": {
+    "build_s": 25.289,
+    "load_s": 1.42,
+    "import_s": 5.623
+   },
+   "first_call_s": 0.153,
+   "finite_worlds": 4096,
+   "timed_call": "set_qpos + set_dofs_velocity + control_dofs_position + scene.step() (4 substeps), inputs resident on the device",
+   "torch_max_memory_allocated_mib": 13.2,
+   "process_s": 37.0
+  }
+ },
+ "errors": {},
+ "provenance": {
+  "genesis": "1.4.5",
+  "quadrants": "1.3.3",
+  "torch": "2.8.0+cu128",
+  "torch_cuda": "12.8",
+  "mujoco": "3.17.0",
+  "precision": "32",
+  "backend": "cuda",
+  "device": "cuda:0",
+  "performance_mode": false,
+  "dispatch_override": null,
+  "options": {
+   "timestep": 0.005,
+   "iterations": 10,
+   "ls_iterations": 8,
+   "tolerance": 1e-08,
+   "solver": "mjSOL_NEWTON",
+   "cone": "mjCONE_PYRAMIDAL",
+   "integrator": "mjINT_IMPLICITFAST",
+   "disableflags": 40960,
+   "sensors": false,
+   "nq": 36,
+   "nv": 35,
+   "nu": 29,
+   "nbody": 31,
+   "npair": 502
+  },
+  "iterations": 10,
+  "substeps": 4,
+  "rigid_options": {
+   "constraint_solver": "Newton",
+   "iterations": "10",
+   "ls_iterations": "8",
+   "tolerance": "1e-08",
+   "integrator": "implicitfast",
+   "friction_cone": "pyramidal",
+   "constraint_timeconst": "0.02",
+   "batch_links_info": "True",
+   "gravity": "(0.0, 0.0, -9.81)"
+  },
+  "rigid_options_grad": {
+   "constraint_solver": "Newton",
+   "iterations": "10",
+   "ls_iterations": "8",
+   "tolerance": "1e-08",
+   "integrator": "approximate_implicitfast",
+   "friction_cone": "pyramidal",
+   "constraint_timeconst": "0.02",
+   "batch_links_info": "True",
+   "gravity": "(0.0, 0.0, -9.81)"
+  },
+  "sim_options": {
+   "dt": 0.02,
+   "substeps": 4
+  },
+  "control_step": "set_qpos, set_dofs_velocity, control_dofs_position(ctrl) on the actuated dofs, one scene.step() of `substeps` substeps",
+  "model": {
+   "importer": "gs.morphs.MJCF(file=<MJCF string>) of the problem's compiled model (mjcf_from_model)",
+   "edit": "contype = conaffinity = 1 on the robot geoms, no <pair> block: Genesis does not read <pair> and imports contype = conaffinity = 0 geoms as visual only",
+   "kept": "bodies, inertials, free and hinge joints (limits, armature), the general / affine actuators as the PD controller's kp = gainprm[0], kv = -biasprm[2], force limits from the joints' actuatorfrcrange, geom friction, solimp",
+   "dropped": {
+    "pairs": 502,
+    "pair_condim1": 154,
+    "pair_condim1_note": "these pairs are frictionless in MuJoCo and frictional in Genesis",
+    "options": "the MJCF <option> (Genesis takes the time step and the solver from SimOptions / RigidOptions, set from the problem)"
+   },
+   "cone": "mjCONE_PYRAMIDAL",
+   "integrator": "mjINT_IMPLICITFAST",
+   "conversion": {
+    "max_abs_diff": 4.6197377823631314e-05,
+    "fields_compared": 38,
+    "robot_geoms_made_colliding": 33,
+    "pairs_written": 0,
+    "pairs_in_model": 502
+   },
+   "pair_check": {
+    "genesis_pairs": 502,
+    "model_pairs": 502,
+    "pair_set_equal": true,
+    "only_genesis": [],
+    "only_model": []
+   }
+  },
+  "dr": {
+   "friction": "set_friction_ratio per world on the floor link and the sole links: floor-sole contact friction = max(floor x r_floor, sole x r_sole) = the corpus friction exactly",
+   "floor_friction": 1.0,
+   "sole_friction": 0.6,
+   "sole_links": [
+    7,
+    13
+   ],
+   "other_links": 16,
+   "worlds": 4096,
+   "worlds_friction_above_floor": 956,
+   "worlds_friction_below_sole": 1337,
+   "side_effect": "in those worlds the sole capsules' contacts with other robot geoms use the scaled sole friction (sole-sole: min(f, sole) or f instead of sole; sole-other: f instead of the larger geom friction when f > floor friction)",
+   "com": "set_links_COM per world: body_ipos0[torso] + com (RigidOptions(batch_links_info=True)); Genesis recomputes its inverse weights from the shifted COM",
+   "torso_link": "torso_link"
+  },
+  "grad_chunk": 512,
+  "grad_retries": 1,
+  "deviations": [
+   "model: robot geoms contype = conaffinity = 1 and no <pair> block (Genesis reads no <pair>); Genesis's default collision filter gives the same 502 pairs (provenance model.pair_check)",
+   "condim: 154 condim-1 (frictionless) pairs are frictional in Genesis (no per-contact condim)",
+   "solref: Genesis's constraint_timeconst = 0.02 (the model's solref) instead of a per-geom solref (Genesis drops an MJCF default solref in favour of its own time constant)",
+   "no qacc warm start input (cold constraint solve at every control step)",
+   "tolerance 1e-08 passed to Genesis as is (float32)",
+   "contact generation: Genesis's (multi-contact, contact_pruning_tolerance 0.02; MPR in the forward scene, GJK in the differentiable one), inverse weights recomputed by Genesis",
+   "gradient: integrator approximate_implicitfast (the only one Genesis differentiates), w.r.t. the initial qvel only",
+   "DR: foot friction through per-world friction ratios on the floor and sole links (956 worlds above the floor friction, 1337 below the sole friction get scaled sole friction on their sole-robot contacts too); COM through set_links_COM"
+  ],
+  "compile": "Genesis compiles its kernels on first use (scene.build runs one step); its kernel cache (the quadrants offline cache) makes later processes faster"
+ }
+}

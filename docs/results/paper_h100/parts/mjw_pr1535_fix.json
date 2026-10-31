@@ -1,0 +1,237 @@
+{
+ "part": "mjw_pr1535_fix",
+ "nworld": 4096,
+ "iterations": 10,
+ "substeps": 4,
+ "nconmax": 64,
+ "njmax": 192,
+ "env": {
+  "python": "3.12.3",
+  "executable": ".../python",
+  "packages": {
+   "mujoco": "3.17.0",
+   "mujoco-warp": null,
+   "warp-lang": "1.18.0",
+   "numpy": "2.5.4"
+  },
+  "cpu": {
+   "model": "Intel(R) Xeon(R) Platinum 8462Y+",
+   "logical_cpus": 128,
+   "allocated": 128,
+   "affinity": "0-127",
+   "omp_num_threads": null,
+   "scheduler_cpu_counts": null,
+   "cpu_engine_threads": {
+    "threads": 13,
+    "rule": "PAPER_BENCH_MJC_THREADS"
+   }
+  },
+  "gpu": {
+   "name": "NVIDIA H100 80GB HBM3",
+   "compute_cap": "9.0",
+   "driver": "595.91.07",
+   "memory": "81559 MiB"
+  },
+  "env": {
+   "PAPER_BENCH_MJC_THREADS": "13",
+   "XLA_PYTHON_CLIENT_PREALLOCATE": "false",
+   "PAPER_BENCH_JOB_START": "1793258583",
+   "PAPER_BENCH_PYTHON": ".../python",
+   "PAPER_BENCH_DEV_PYTHON": ".../python",
+   "PAPER_BENCH_PREFIX": ".../paper_bench_env",
+   "DK_FIXTURES": "fixtures/mjlab"
+  },
+  "quick": false
+ },
+ "provenance": {
+  "date": "2026-10-29T07:29:47Z",
+  "nablaengine": {
+   "version": "0.1.0",
+   "commit": null,
+   "dirty": null,
+   "commit_note": "a revision before this repository's history: not recorded"
+  },
+  "gpu": {
+   "name": "NVIDIA H100 80GB HBM3",
+   "compute_cap": "9.0",
+   "driver": "595.91.07"
+  },
+  "arch": "sm_90",
+  "nvcc": "12.8.93",
+  "python": "3.12.3",
+  "packages": {
+   "numpy": "2.5.4",
+   "mujoco": "3.17.0",
+   "mujoco-mjx": null,
+   "jax": null,
+   "jaxlib": null,
+   "jax-cuda12-plugin": null,
+   "warp-lang": "1.18.0",
+   "mujoco-warp": null,
+   "scipy": null
+  },
+  "environment": {
+   "CUDA_DEVICE_ORDER": "PCI_BUS_ID",
+   "DK_FIXTURES": "fixtures/mjlab",
+   "XLA_PYTHON_CLIENT_PREALLOCATE": "false"
+  },
+  "fixtures": "fixtures/mjlab"
+ },
+ "mujoco_warp_file": ".../__init__.py",
+ "warp_version": "1.18.0",
+ "cells": {
+  "mf_s0/nw4096": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "cotangent": "corpus cot 0",
+   "forward_graph": {
+    "ms": {
+     "median": 9.18362,
+     "p10": 9.18234,
+     "p90": 9.18502,
+     "min": 9.182,
+     "max": 9.18523,
+     "rounds": [
+      9.18471,
+      9.182,
+      9.18523,
+      9.18284,
+      9.18362
+     ]
+    },
+    "n": 27,
+    "kept_rounds": 5,
+    "warmup_calls": 109,
+    "warmup_s": 1.004,
+    "latency_ms_median": 9.20039
+   },
+   "adjoint_graph": {
+    "ms": {
+     "median": 25.12687,
+     "p10": 25.12499,
+     "p90": 25.13257,
+     "min": 25.12479,
+     "max": 25.13432,
+     "rounds": [
+      25.1253,
+      25.12994,
+      25.12687,
+      25.12479,
+      25.13432
+     ]
+    },
+    "n": 10,
+    "kept_rounds": 5,
+    "warmup_calls": 40,
+    "warmup_s": 1.012,
+    "latency_ms_median": 25.13375
+   },
+   "first_call_s": {
+    "forward_graph": 0.639,
+    "adjoint_graph": 5.72
+   },
+   "capture_s": {
+    "forward_graph": 0.031,
+    "adjoint_graph": 0.042
+   },
+   "stats": {
+    "nefc": {
+     "mean": 25.463623046875,
+     "max": 112.0
+    },
+    "solver_niter": {
+     "mean": 3.289306640625,
+     "max": 10.0
+    },
+    "finite_out_qvel_worlds": 4096,
+    "finite_grad_worlds": 4096
+   },
+   "adjoint_split_gpu_ms": {
+    "taped_forward": 12.61,
+    "tape_backward_only": 18.092,
+    "launches_forward": 905,
+    "launches_backward": 1012
+   }
+  },
+  "mf_s1/nw4096": {
+   "corpus": {
+    "name": "mf_s1",
+    "path": "benchmarks/data/mf_s1.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "cotangent": "corpus cot 0",
+   "forward_graph": {
+    "ms": {
+     "median": 9.21192,
+     "p10": 9.20557,
+     "p90": 9.52803,
+     "min": 9.20455,
+     "max": 9.73663,
+     "rounds": [
+      9.21513,
+      9.20455,
+      9.20708,
+      9.21192,
+      9.73663
+     ]
+    },
+    "n": 27,
+    "kept_rounds": 5,
+    "warmup_calls": 109,
+    "warmup_s": 1.005,
+    "latency_ms_median": 9.22866
+   },
+   "adjoint_graph": {
+    "ms": {
+     "median": 25.17283,
+     "p10": 25.16175,
+     "p90": 25.17736,
+     "min": 25.16171,
+     "max": 25.17757,
+     "rounds": [
+      25.17704,
+      25.17283,
+      25.16182,
+      25.17757,
+      25.16171
+     ]
+    },
+    "n": 10,
+    "kept_rounds": 5,
+    "warmup_calls": 40,
+    "warmup_s": 1.008,
+    "latency_ms_median": 25.17821
+   },
+   "first_call_s": {
+    "forward_graph": 0.639,
+    "adjoint_graph": 5.72
+   },
+   "capture_s": {
+    "forward_graph": 0.031,
+    "adjoint_graph": 0.042
+   },
+   "stats": {
+    "nefc": {
+     "mean": 26.466796875,
+     "max": 114.0
+    },
+    "solver_niter": {
+     "mean": 3.33935546875,
+     "max": 10.0
+    },
+    "finite_out_qvel_worlds": 4096,
+    "finite_grad_worlds": 4096
+   }
+  }
+ },
+ "errors": {},
+ "warp_cuda_toolkit": "13.4",
+ "setup_s": 1.977
+}

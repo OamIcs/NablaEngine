@@ -1,0 +1,8 @@
+# The environment of the MuJoCo Warp source trees ('mjw-pr'): no mujoco_warp is installed; each engine puts its tree
+# (etaoxing/mujoco_warp @ 357a75d, or 357a75d + its PR #1) on PYTHONPATH (benchmarks/envs/envs.toml).
+# warp-lang: as in requirements-mjw-native.txt (setup.sh picks the default or the +cu12 wheel).
+mujoco==3.17.0
+warp-lang==1.18.0
+absl-py==2.5.1
+etils[epath]==1.14.0
+numpy==2.5.4

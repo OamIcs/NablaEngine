@@ -1,0 +1,493 @@
+{
+ "part": "ours",
+ "what": "nablaengine.jax_ffi under jax.jit",
+ "nworld": 4096,
+ "iterations": 10,
+ "substeps": 4,
+ "modes": {
+  "exact": {
+   "clamp_kv": 1,
+   "normal": 0
+  },
+  "interface": {
+   "clamp_kv": 0,
+   "normal": 3
+  }
+ },
+ "env": {
+  "python": "3.12.3",
+  "executable": ".../python",
+  "packages": {
+   "jax": "0.12.0.1",
+   "jaxlib": "0.12.0.1",
+   "jax-cuda12-plugin": "0.12.0.1",
+   "jax-cuda13-plugin": null,
+   "mujoco": "3.17.0",
+   "numpy": "2.5.4"
+  },
+  "cpu": {
+   "model": "Intel(R) Xeon(R) Platinum 8462Y+",
+   "logical_cpus": 128,
+   "allocated": 128,
+   "affinity": "0-127",
+   "omp_num_threads": null,
+   "scheduler_cpu_counts": null,
+   "cpu_engine_threads": {
+    "threads": 13,
+    "rule": "PAPER_BENCH_MJC_THREADS"
+   }
+  },
+  "gpu": {
+   "name": "NVIDIA H100 80GB HBM3",
+   "compute_cap": "9.0",
+   "driver": "595.91.07",
+   "memory": "81559 MiB"
+  },
+  "env": {
+   "PAPER_BENCH_MJC_THREADS": "13",
+   "XLA_PYTHON_CLIENT_PREALLOCATE": "false",
+   "PAPER_BENCH_JOB_START": "1793258583",
+   "PAPER_BENCH_PYTHON": ".../python",
+   "PAPER_BENCH_DEV_PYTHON": ".../python",
+   "PAPER_BENCH_PREFIX": ".../paper_bench_env",
+   "DK_FIXTURES": "fixtures/mjlab"
+  },
+  "quick": false
+ },
+ "provenance": {
+  "date": "2026-10-29T07:43:20Z",
+  "nablaengine": {
+   "version": "0.1.0",
+   "commit": null,
+   "dirty": null,
+   "commit_note": "a revision before this repository's history: not recorded"
+  },
+  "gpu": {
+   "name": "NVIDIA H100 80GB HBM3",
+   "compute_cap": "9.0",
+   "driver": "595.91.07"
+  },
+  "arch": "sm_90",
+  "nvcc": "12.8.93",
+  "python": "3.12.3",
+  "packages": {
+   "numpy": "2.5.4",
+   "mujoco": "3.17.0",
+   "mujoco-mjx": "3.17.0",
+   "jax": "0.12.0.1",
+   "jaxlib": "0.12.0.1",
+   "jax-cuda12-plugin": "0.12.0.1",
+   "warp-lang": "1.18.0+cu12",
+   "scipy": "1.18.1"
+  },
+  "environment": {
+   "CUDA_DEVICE_ORDER": "PCI_BUS_ID",
+   "DK_FIXTURES": "fixtures/mjlab",
+   "XLA_PYTHON_CLIENT_PREALLOCATE": "false"
+  },
+  "fixtures": "fixtures/mjlab"
+ },
+ "cells": {
+  "mf_s0/nw4096": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "compile_s": {
+    "fwd": 0.017,
+    "fwd_tape": 0.065,
+    "exact.bwd": 0.058,
+    "exact.vjp": 0.111,
+    "interface.bwd": 0.062,
+    "interface.vjp": 0.081
+   },
+   "fwd": {
+    "ms": {
+     "median": 1.70007,
+     "p10": 1.69787,
+     "p90": 1.70099,
+     "min": 1.69741,
+     "max": 1.70121,
+     "rounds": [
+      1.70066,
+      1.69856,
+      1.69741,
+      1.70007,
+      1.70121
+     ]
+    },
+    "n": 131,
+    "kept_rounds": 5,
+    "warmup_calls": 524,
+    "warmup_s": 1.0,
+    "latency_ms_median": 1.89609
+   },
+   "finite_fwd": true,
+   "fwd_tape": {
+    "ms": {
+     "median": 1.76659,
+     "p10": 1.7664,
+     "p90": 1.76698,
+     "min": 1.7663,
+     "max": 1.76704,
+     "rounds": [
+      1.76704,
+      1.76659,
+      1.76656,
+      1.76689,
+      1.7663
+     ]
+    },
+    "n": 127,
+    "kept_rounds": 5,
+    "warmup_calls": 508,
+    "warmup_s": 1.002,
+    "latency_ms_median": 1.97014
+   },
+   "forward_info": {
+    "newton_iterations_mean": 4.403076171875,
+    "contacts_mean": 6.6201171875,
+    "rows_max": 112,
+    "unsupported_worlds": 0
+   },
+   "exact": {
+    "bwd": {
+     "ms": {
+      "median": 0.9255,
+      "p10": 0.92485,
+      "p90": 0.92876,
+      "min": 0.92472,
+      "max": 0.92896,
+      "rounds": [
+       0.92472,
+       0.92846,
+       0.92505,
+       0.9255,
+       0.92896
+      ]
+     },
+     "n": 200,
+     "kept_rounds": 5,
+     "warmup_calls": 912,
+     "warmup_s": 1.0,
+     "latency_ms_median": 1.10934
+    },
+    "finite_bwd": true,
+    "vjp": {
+     "ms": {
+      "median": 2.72759,
+      "p10": 2.72191,
+      "p90": 2.72865,
+      "min": 2.72082,
+      "max": 2.7293,
+      "rounds": [
+       2.72082,
+       2.7293,
+       2.72353,
+       2.72767,
+       2.72759
+      ]
+     },
+     "n": 85,
+     "kept_rounds": 5,
+     "warmup_calls": 341,
+     "warmup_s": 1.003,
+     "latency_ms_median": 2.95129
+    }
+   },
+   "interface": {
+    "bwd": {
+     "ms": {
+      "median": 0.90178,
+      "p10": 0.90132,
+      "p90": 0.90273,
+      "min": 0.90129,
+      "max": 0.90298,
+      "rounds": [
+       0.90298,
+       0.90178,
+       0.90235,
+       0.90136,
+       0.90129
+      ]
+     },
+     "n": 200,
+     "kept_rounds": 5,
+     "warmup_calls": 928,
+     "warmup_s": 1.001,
+     "latency_ms_median": 1.05396
+    },
+    "finite_bwd": true,
+    "vjp": {
+     "ms": {
+      "median": 2.69028,
+      "p10": 2.68809,
+      "p90": 2.69462,
+      "min": 2.68789,
+      "max": 2.69664,
+      "rounds": [
+       2.68789,
+       2.69028,
+       2.68839,
+       2.69159,
+       2.69664
+      ]
+     },
+     "n": 88,
+     "kept_rounds": 5,
+     "warmup_calls": 353,
+     "warmup_s": 1.001,
+     "latency_ms_median": 2.91278
+    }
+   }
+  },
+  "mf_s1/nw4096": {
+   "corpus": {
+    "name": "mf_s1",
+    "path": "benchmarks/data/mf_s1.npz",
+    "states": 4096,
+    "nworld": 4096,
+    "tiled": false
+   },
+   "compile_s": {
+    "fwd": 0.002,
+    "fwd_tape": 0.002,
+    "exact.bwd": 0.067,
+    "exact.vjp": 0.129,
+    "interface.bwd": 0.06,
+    "interface.vjp": 0.12
+   },
+   "fwd": {
+    "ms": {
+     "median": 1.71164,
+     "p10": 1.71043,
+     "p90": 1.71193,
+     "min": 1.7103,
+     "max": 1.71204,
+     "rounds": [
+      1.7103,
+      1.71176,
+      1.71164,
+      1.71063,
+      1.71204
+     ]
+    },
+    "n": 132,
+    "kept_rounds": 5,
+    "warmup_calls": 527,
+    "warmup_s": 1.001,
+    "latency_ms_median": 1.9101
+   },
+   "finite_fwd": true,
+   "fwd_tape": {
+    "ms": {
+     "median": 1.78112,
+     "p10": 1.77924,
+     "p90": 1.78153,
+     "min": 1.77857,
+     "max": 1.78172,
+     "rounds": [
+      1.78172,
+      1.78024,
+      1.78112,
+      1.77857,
+      1.78126
+     ]
+    },
+    "n": 126,
+    "kept_rounds": 5,
+    "warmup_calls": 503,
+    "warmup_s": 1.001,
+    "latency_ms_median": 1.98699
+   },
+   "forward_info": {
+    "newton_iterations_mean": 4.441650390625,
+    "contacts_mean": 6.868408203125,
+    "rows_max": 114,
+    "unsupported_worlds": 0
+   },
+   "exact": {
+    "bwd": {
+     "ms": {
+      "median": 0.92173,
+      "p10": 0.92014,
+      "p90": 0.92288,
+      "min": 0.91982,
+      "max": 0.92358,
+      "rounds": [
+       0.92358,
+       0.91982,
+       0.92183,
+       0.92173,
+       0.92063
+      ]
+     },
+     "n": 200,
+     "kept_rounds": 5,
+     "warmup_calls": 913,
+     "warmup_s": 1.001,
+     "latency_ms_median": 1.09677
+    },
+    "finite_bwd": true,
+    "vjp": {
+     "ms": {
+      "median": 2.73107,
+      "p10": 2.73021,
+      "p90": 2.73515,
+      "min": 2.72978,
+      "max": 2.7371,
+      "rounds": [
+       2.7371,
+       2.73107,
+       2.73223,
+       2.73085,
+       2.72978
+      ]
+     },
+     "n": 85,
+     "kept_rounds": 5,
+     "warmup_calls": 342,
+     "warmup_s": 1.003,
+     "latency_ms_median": 2.96637
+    }
+   },
+   "interface": {
+    "bwd": {
+     "ms": {
+      "median": 0.89868,
+      "p10": 0.89809,
+      "p90": 0.89915,
+      "min": 0.89778,
+      "max": 0.89924,
+      "rounds": [
+       0.89924,
+       0.89868,
+       0.899,
+       0.89856,
+       0.89778
+      ]
+     },
+     "n": 200,
+     "kept_rounds": 5,
+     "warmup_calls": 912,
+     "warmup_s": 1.0,
+     "latency_ms_median": 1.07098
+    },
+    "finite_bwd": true,
+    "vjp": {
+     "ms": {
+      "median": 2.69736,
+      "p10": 2.69575,
+      "p90": 2.70065,
+      "min": 2.69486,
+      "max": 2.70191,
+      "rounds": [
+       2.70191,
+       2.69736,
+       2.69486,
+       2.69708,
+       2.69877
+      ]
+     },
+     "n": 86,
+     "kept_rounds": 5,
+     "warmup_calls": 345,
+     "warmup_s": 1.002,
+     "latency_ms_median": 2.93842
+    }
+   }
+  }
+ },
+ "errors": {},
+ "init": {
+  "seconds": 0.639,
+  "built": false,
+  "key": "806945bfc25e5686abac",
+  "arch": "sm_90",
+  "arch_flags": {
+   "forward": [
+    "-arch=sm_90"
+   ],
+   "adjoint": [
+    "-arch=sm_90"
+   ]
+  },
+  "forward_defines": [
+   "-DSPLIT_PRE_MINB=16",
+   "-DSPLIT_POST_MAXNREG=128"
+  ],
+  "front_end": null,
+  "forward_unit": "dk_kv0_n3",
+  "library": "<cache>/libdk_g1_sm_90_806945bfc25e5686abac.so",
+  "cache_dir": "<cache>",
+  "commit": null,
+  "dirty": null,
+  "sizeof_adj": {
+   "dk_kv0_n0": 10108,
+   "dk_kv0_n1": 10108,
+   "dk_kv0_n2": 10108,
+   "dk_kv0_n3": 10108,
+   "dk_kv1_n0": 10108,
+   "dk_kv1_n1": 10108,
+   "dk_kv1_n2": 10108,
+   "dk_kv1_n3": 10108,
+   "dk_kv2_n0": 10228,
+   "dk_kv2_n1": 10228,
+   "dk_kv2_n2": 10228,
+   "dk_kv2_n3": 10228
+  }
+ },
+ "launch_info": {
+  "dk_kv0_n0": {
+   "smem": 10108,
+   "worlds_per_sm": 16
+  },
+  "dk_kv0_n1": {
+   "smem": 10108,
+   "worlds_per_sm": 16
+  },
+  "dk_kv0_n2": {
+   "smem": 10108,
+   "worlds_per_sm": 16
+  },
+  "dk_kv0_n3": {
+   "smem": 10108,
+   "worlds_per_sm": 16
+  },
+  "dk_kv1_n0": {
+   "smem": 10108,
+   "worlds_per_sm": 16
+  },
+  "dk_kv1_n1": {
+   "smem": 10108,
+   "worlds_per_sm": 16
+  },
+  "dk_kv1_n2": {
+   "smem": 10108,
+   "worlds_per_sm": 16
+  },
+  "dk_kv1_n3": {
+   "smem": 10108,
+   "worlds_per_sm": 16
+  },
+  "dk_kv2_n0": {
+   "smem": 10228,
+   "worlds_per_sm": 16
+  },
+  "dk_kv2_n1": {
+   "smem": 10228,
+   "worlds_per_sm": 16
+  },
+  "dk_kv2_n2": {
+   "smem": 10228,
+   "worlds_per_sm": 16
+  },
+  "dk_kv2_n3": {
+   "smem": 10228,
+   "worlds_per_sm": 16
+  }
+ }
+}

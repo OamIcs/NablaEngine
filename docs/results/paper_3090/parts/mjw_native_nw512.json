@@ -1,0 +1,188 @@
+{
+ "part": "mjw_native",
+ "nworld": 512,
+ "iterations": 10,
+ "substeps": 4,
+ "env": {
+  "python": "3.12.16",
+  "executable": ".../python",
+  "packages": {
+   "mujoco": "3.17.0",
+   "mujoco-warp": "3.17.0",
+   "warp-lang": "1.18.0+cu12",
+   "numpy": "2.5.4"
+  },
+  "cpu": {
+   "model": "Intel(R) Xeon(R) CPU E5-2699 v4 @ 2.20GHz",
+   "logical_cpus": 88,
+   "allocated": 88,
+   "affinity": "0-87",
+   "omp_num_threads": null,
+   "scheduler_cpu_counts": null,
+   "cpu_engine_threads": {
+    "threads": 32,
+    "rule": "PAPER_BENCH_MJC_THREADS"
+   }
+  },
+  "gpu": {
+   "name": "NVIDIA GeForce RTX 3090",
+   "compute_cap": "8.6",
+   "driver": "565.57.01",
+   "memory": "24576 MiB"
+  },
+  "env": {
+   "PAPER_BENCH_MJC_THREADS": "32",
+   "XLA_PYTHON_CLIENT_PREALLOCATE": "false",
+   "PAPER_BENCH_JOB_START": "1793262564",
+   "PAPER_BENCH_PYTHON": ".../python3.12",
+   "PAPER_BENCH_DEV_PYTHON": ".../python",
+   "PAPER_BENCH_PREFIX": ".../paper_bench_env",
+   "DK_FIXTURES": "fixtures/mjlab"
+  },
+  "quick": false
+ },
+ "mujoco_warp_file": ".../__init__.py",
+ "warp_version": "1.18.0",
+ "cells": {
+  "mf_s0/procedure/nw512": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 512,
+    "tiled": false
+   },
+   "capacity": "procedure",
+   "nconmax": 24,
+   "njmax": 128,
+   "naconmax": 11863,
+   "stats_last_substep": {
+    "overflow_bits_or": 1024,
+    "overflow_flags": [
+     "LS_ITERATIONS"
+    ],
+    "capacity_overflow": [],
+    "capacity_overflow_worlds": 0,
+    "nefc": {
+     "mean": 25.884765625,
+     "max": 112.0
+    },
+    "solver_niter": {
+     "mean": 3.3203125,
+     "max": 8.0
+    },
+    "nacon_total": 3418,
+    "finite_worlds": 512
+   },
+   "graph_ctrlstep": {
+    "ms": {
+     "median": 4.67163,
+     "p10": 4.63934,
+     "p90": 4.6811,
+     "min": 4.63871,
+     "max": 4.68653,
+     "rounds": [
+      4.63871,
+      4.64028,
+      4.67163,
+      4.67296,
+      4.68653
+     ]
+    },
+    "n": 52,
+    "kept_rounds": 5,
+    "warmup_calls": 208,
+    "warmup_s": 1.002,
+    "latency_ms_median": 4.7653
+   },
+   "first_call_s": 1.433,
+   "capture_s": 0.076,
+   "put_model_s": 0.367
+  },
+  "mf_s0/matched/nw512": {
+   "corpus": {
+    "name": "mf_s0",
+    "path": "benchmarks/data/mf_s0.npz",
+    "states": 4096,
+    "nworld": 512,
+    "tiled": false
+   },
+   "capacity": "matched",
+   "nconmax": 64,
+   "njmax": 192,
+   "naconmax": 32768,
+   "stats_last_substep": {
+    "overflow_bits_or": 1024,
+    "overflow_flags": [
+     "LS_ITERATIONS"
+    ],
+    "capacity_overflow": [],
+    "capacity_overflow_worlds": 0,
+    "nefc": {
+     "mean": 25.884765625,
+     "max": 112.0
+    },
+    "solver_niter": {
+     "mean": 3.318359375,
+     "max": 8.0
+    },
+    "nacon_total": 3418,
+    "finite_worlds": 512
+   },
+   "graph_ctrlstep": {
+    "ms": {
+     "median": 4.80979,
+     "p10": 4.80476,
+     "p90": 4.861,
+     "min": 4.80441,
+     "max": 4.86155,
+     "rounds": [
+      4.80527,
+      4.80441,
+      4.80979,
+      4.86017,
+      4.86155
+     ]
+    },
+    "n": 52,
+    "kept_rounds": 5,
+    "warmup_calls": 207,
+    "warmup_s": 1.002,
+    "latency_ms_median": 4.8938
+   },
+   "first_call_s": 0.082,
+   "capture_s": 0.052,
+   "put_model_s": 0.367
+  }
+ },
+ "errors": {},
+ "warp_cuda_toolkit": "12.9",
+ "warp_cuda_driver": "12.7",
+ "opt": {
+  "iterations": "10",
+  "ls_iterations": "8",
+  "tolerance": "[1.e-06]",
+  "ls_tolerance": "[0.01]",
+  "solver": "2",
+  "cone": "0",
+  "integrator": "3",
+  "graph_conditional": "True",
+  "warn_overflow": "2559"
+ },
+ "default_capacity": {
+  "nconmax": 48,
+  "njmax": 64
+ },
+ "procedure_capacity": {
+  "nconmax": 24,
+  "naconmax": 11863,
+  "njmax": 128,
+  "source": "benchmarks/data/mjw_capacity.json",
+  "inputs": {
+   "pool_mean_max": 18.487548828125,
+   "contacts_world_max": 30,
+   "rows_max": 114,
+   "margin": 0.25
+  }
+ }
+}
