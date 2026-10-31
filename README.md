@@ -27,7 +27,7 @@ function, with bitwise the same results in both.
 **Used by.** [∇Mimic (NablaMimic)](https://github.com/OamIcs/NablaMimic), whole-body motion tracking learned with
 the engine's simulation gradients.
 
-**Paper.** Coming soon.
+**Paper.** [∇Mimic: Ultra-Efficient Humanoid Control with Differentiable Simulation](https://sailab.ai/nablamimic/assets/nablamimic.pdf) ([project page](https://sailab.ai/nablamimic/))
 
 ## Scope
 
